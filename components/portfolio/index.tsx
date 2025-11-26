@@ -1,0 +1,20 @@
+// Portfolio Case Study Components
+// Reusable components for detailed project case studies
+
+export { ProgressBar } from './progress-bar'
+export { TableOfContents } from './table-of-contents'
+export { MetricCard } from './metric-card'
+export { HeroSection } from './hero-section'
+export { ExecutiveSummary } from './executive-summary'
+export { ProblemSection } from './problem-section'
+export { PersonasSection } from './personas-section'
+export { SolutionSection } from './solution-section'
+export { ImplementationSection } from './implementation-section'
+export { DataSection } from './data-section'
+export { ResultsSection } from './results-section'
+export { EthicsSection } from './ethics-section'
+export { CompetitiveSection } from './competitive-section'
+export { OkrsSection } from './okrs-section'
+export { RoadmapSection } from './roadmap-section'
+export { LearningsSection } from './learnings-section'
+export { ContactSection } from './contact-section'
