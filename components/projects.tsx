@@ -14,11 +14,22 @@ export default function Projects() {
       description:
         "ML-powered pricing optimization for UK high-street coffee shops. Achieved R² = 0.997 accuracy with weather integration, SHAP explainability, and ethics guardrails. Projects 16% margin lift.",
       techStack: ["Python", "XGBoost", "SHAP", "Optuna", "Streamlit"],
-      github: "#",
-      demo: "#",
-      caseStudy: "/projects/ai-dynamic-pricing", // Link to detailed case study
+      github: "https://github.com/aiirveon/ai-dynamic-pricing",
+      demo: "https://ai-dynamic-pricing-fym9pp9mnhtwwpo5zpzud5.streamlit.app/",
+      caseStudy: "/projects/ai-dynamic-pricing",
       image: "/placeholder.svg?height=200&width=400",
-      featured: true, // Featured project gets special treatment
+      featured: true,
+    },
+    {
+      title: "AI Movie Recommender",
+      description:
+        "Explainable recommendation system using OpenAI embeddings and semantic search. Achieved 87% Precision@10 with GPT-powered explanations, solving streaming decision fatigue through transparent AI.",
+      techStack: ["Next.js", "TypeScript", "OpenAI", "TMDB API", "Vercel"],
+      github: "https://github.com/aiirveon",
+      demo: "https://v0-youtube-recommender.vercel.app/",
+      caseStudy: "/projects/ai-movie-recommender",
+      image: "/placeholder.svg?height=200&width=400",
+      featured: true,
     },
     {
       title: "Hospital Appointment System API",
