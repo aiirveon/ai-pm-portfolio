@@ -80,13 +80,13 @@ export default function About() {
             className="space-y-6"
           >
             <p className="text-lg text-slate-700 dark:text-slate-300">
-              I'm Ogbebor Osaheni — a Product Manager transitioning into AI Product Management by building end-to-end ML products that demonstrate technical depth and strategic product thinking.
+            I'm Ogbebor Osaheni — a Product Manager transitioning into AI Product Management by building end-to-end ML products that demonstrate technical depth and strategic product thinking.
             </p>
             <p className="text-lg text-slate-700 dark:text-slate-300">
-              I specialize in explainable AI (SHAP), responsible ML deployment, and translating technical complexity into stakeholder-ready narratives. My approach: make AI transparent enough to trust and simple enough to adopt.
+            I’m especially interested in explainable AI (using tools like SHAP), responsible ML deployment, and turning complex ideas into stories that make sense to stakeholders. My goal is simple: make AI transparent enough for people to trust and practical enough for teams to adopt.
             </p>
             <p className="text-lg text-slate-700 dark:text-slate-300">
-              Currently targeting AI PM roles at UK companies like Spotify, BBC, Monzo, and Deliveroo—where product thinking meets machine learning at scale.
+            Right now, I’m exploring AI PM roles in the UK, especially in product-led, data-driven companies like Spotify, BBC, Monzo, and Deliveroo.
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4">

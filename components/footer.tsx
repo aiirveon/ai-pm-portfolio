@@ -20,7 +20,7 @@ export default function Footer() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="mb-4 md:mb-0 flex items-center gap-3">
-            <img src="/images/kihuni.png" alt="Stephen Kihuni" className="h-10 w-10 rounded-md" />
+            <img src="/images/profile.png" alt="Stephen Kihuni" className="h-10 w-10 rounded-md" />
             <div>
               <p className="text-lg font-semibold flex items-center">
                 Stephen Kihuni <Leaf className="h-4 w-4 ml-1 text-jungle-400" />

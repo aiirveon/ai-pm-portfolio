@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import { Leaf } from "lucide-react"
+import Image from "next/image"
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -86,14 +87,20 @@ export default function Hero() {
         >
           <div className="flex justify-center mb-6">
             <motion.div
-              className="relative h-40 w-40 md:h-48 md:w-48 lg:h-56 lg:w-56 animate-float"
+              className="relative h-40 w-40 md:h-48 md:w-48 lg:h-56 lg:w-56"
               whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
             >
-              <img
-                src="/images/profile.png"
-                alt="Ogbebor Osaheni - AI Product Manager"
-                className="w-full h-full object-contain drop-shadow-xl"
-              />
+              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-jungle-400 shadow-2xl bg-white">
+                <img
+                  src="/images/profile.png"
+                  alt="Ogbebor Osaheni - AI Product Manager"
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: 'center' }}
+                />
+              </div>
+              {/* Glow effect */}
+              <div className="absolute inset-0 rounded-full bg-jungle-400 opacity-20 blur-xl -z-10"></div>
             </motion.div>
           </div>
 
@@ -108,7 +115,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto mb-8 drop-shadow">
-              I turn ML models into products people trust—bridging AI technology and business value through explainability, ethics, and stakeholder-first design.
+            I help turn ML models into real products people can trust, making sure they’re built with clarity, ethics, and the needs of the people who use them.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

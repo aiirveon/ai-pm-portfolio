@@ -39,7 +39,7 @@ export default function NotFound() {
             <div className="text-center">
               <div className="flex justify-center mb-6">
                 <img
-                  src="/images/kihuni.png"
+                  src="/images/profile.png"
                   alt="Stephen Kihuni - Lost in the Django Jungle"
                   className="w-32 h-32 object-contain"
                 />
@@ -105,7 +105,7 @@ export default function NotFound() {
               transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
             >
               <img
-                src="/images/kihuni.png"
+                src="/images/profile.png"
                 alt="Stephen Kihuni - Lost in the Django Jungle"
                 className="w-32 h-32 object-contain"
               />

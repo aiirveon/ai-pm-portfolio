@@ -25,16 +25,14 @@ export default function Contact() {
     const formData = new FormData(e.currentTarget)
 
     try {
-      // Using Formspree endpoint directly
-      const response = await fetch("https://formspree.io/f/xzzqnjyv", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
       })
 
-      if (response.ok) {
+      const data = await response.json()
+
+      if (data.success) {
         setSubmitted(true)
         setConsentChecked(false)
         e.currentTarget.reset()
@@ -86,7 +84,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-sm text-slate-500 dark:text-slate-400">Email</p>
-                      <p className="text-slate-800 dark:text-white font-medium">osaheniogbebor.c@gmail.com</p>
+                      <p className="text-slate-800 dark:text-white font-medium">stephenkihuni55@gmail.com</p>
                     </div>
                   </div>
 
@@ -152,6 +150,11 @@ export default function Contact() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
+                    {/* Web3Forms Access Key - REPLACE WITH YOUR KEY */}
+                    <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+                    <input type="hidden" name="subject" value="New Contact Form Submission from Portfolio" />
+                    <input type="hidden" name="from_name" value="Portfolio Contact Form" />
+
                     <div>
                       <label
                         htmlFor="name"

@@ -10,7 +10,7 @@ export const metadata = {
   title: "Stephen Kihuni | Backend Developer",
   description: "Backend Developer specializing in Django REST APIs",
   icons: {
-    icon: [{ url: "/images/kihuni.png" }],
+    icon: [{ url: "/images/profile.png" }],
   },
     generator: 'v0.app'
 }

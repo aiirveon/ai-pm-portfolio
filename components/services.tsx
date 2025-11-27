@@ -15,7 +15,7 @@ export default function Services() {
     },
     {
       title: "Explainable AI (SHAP/LIME)",
-      description: "Build trust through transparency—SHAP waterfall charts, feature importance analysis, and stakeholder-ready explanations for every model decision.",
+      description: "Drive trust through clarity, with SHAP insights, feature importance breakdowns, and stakeholder-friendly explanations.",
       icon: <BarChart3 className="h-10 w-10 text-jungle-500" />,
     },
     {
