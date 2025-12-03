@@ -7,8 +7,8 @@ import Navbar from "@/components/navbar"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "Stephen Kihuni | Backend Developer",
-  description: "Backend Developer specializing in Django REST APIs",
+  title: "Ogbebor Osaheni | AI  Product Manager",
+  description: "AI  Product Manager specializing in Django REST APIs",
   icons: {
     icon: [{ url: "/images/profile.png" }],
   },

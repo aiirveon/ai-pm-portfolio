@@ -40,7 +40,7 @@ export default function NotFound() {
               <div className="flex justify-center mb-6">
                 <img
                   src="/images/profile.png"
-                  alt="Stephen Kihuni - Lost in the Django Jungle"
+                  alt="Ogbebor Osaheni - Lost in the Django Jungle"
                   className="w-32 h-32 object-contain"
                 />
               </div>
@@ -106,7 +106,7 @@ export default function NotFound() {
             >
               <img
                 src="/images/profile.png"
-                alt="Stephen Kihuni - Lost in the Django Jungle"
+                alt="Ogbebor Osaheni - Lost in the Django Jungle"
                 className="w-32 h-32 object-contain"
               />
             </motion.div>
