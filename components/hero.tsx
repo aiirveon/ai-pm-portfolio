@@ -110,9 +110,11 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
-              AI Product Manager Building
-              <span className="text-jungle-300"> Intelligent, Trusted Products</span>
-            </h1>
+  AI Product Manager
+  <span className="text-jungle-300 block">
+    Building Intelligent, Trusted Products
+  </span>
+</h1>
 
             <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto mb-8 drop-shadow">
             I help turn ML models into real products people can trust, making sure they’re built with clarity, ethics, and the needs of the people who use them.
