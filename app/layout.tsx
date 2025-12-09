@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
   title: "Ogbebor Osaheni | AI  Product Manager",
-  description: "AI  Product Manager specializing in Django REST APIs",
+  description: "AI  Product Manager specializing in Building Intelligent, Trusted Products",
   icons: {
     icon: [{ url: "/images/profile.png" }],
   },
