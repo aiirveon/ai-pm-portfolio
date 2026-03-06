@@ -7,12 +7,24 @@ import { Button } from "@/components/ui/button"
 import { ExternalLink, Github, Leaf, ArrowRight } from "lucide-react"
 import Link from "next/link"
 
+interface Project {
+  title: string
+  description: string
+  techStack: string[]
+  github: string
+  demo: string | null
+  caseStudy: string | null
+  image: string
+  featured: boolean
+  status?: string
+}
+
 export default function Projects() {
-  const projects = [
+  const projects: Project[] = [
     {
-      title: "AI Dynamic Pricing",
+      title: "AI Dynamic Pricing System",
       description:
-        "ML-powered pricing optimization for UK high-street coffee shops. Achieved R² = 0.997 accuracy with weather integration, SHAP explainability, and ethics guardrails. Projects 16% margin lift.",
+        "ML-powered pricing optimization for UK e-commerce and retail. Achieved R² = 0.997 accuracy with weather integration, SHAP explainability, and ethics guardrails. Proves 16% margin lift (£17,959 annual revenue) through historical backtest validation.",
       techStack: ["Python", "XGBoost", "SHAP", "Optuna", "Streamlit"],
       github: "https://github.com/aiirveon/ai-dynamic-pricing",
       demo: "https://ai-dynamic-pricing-fym9pp9mnhtwwpo5zpzud5.streamlit.app/",
@@ -21,70 +33,38 @@ export default function Projects() {
       featured: true,
     },
     {
-      title: "AI Movie Recommender",
+      title: "AI Credit Scoring with Fairness Auditing",
       description:
-        "Explainable recommendation system using OpenAI embeddings and semantic search. Achieved 87% Precision@10 with GPT-powered explanations, solving streaming decision fatigue through transparent AI.",
-      techStack: ["Next.js", "TypeScript", "OpenAI", "TMDB API", "Vercel"],
+        "AI-powered credit scoring system with built-in fairness constraints for fintech lending. Uses alternative data signals (rent, utilities, savings) to expand financial inclusion while maintaining demographic parity. Features SHAP explainability for regulatory compliance.",
+      techStack: ["Python", "Scikit-learn", "Fairlearn", "SHAP", "Streamlit"],
+      github: "#",
+      demo: "#",
+      caseStudy: null,
+      image: "/placeholder.svg?height=200&width=400",
+      featured: false,
+    },
+    {
+      title: "Fraud Detection System for Digital Payments",
+      description:
+        "Real-time fraud detection for fintech payments with tiered intervention design. Balances security (90% fraud caught) with user experience (5% false positives) through anomaly detection and precision-recall optimization. Quantifies business impact in fraud prevented vs. UX cost.",
+      techStack: ["Python", "XGBoost", "Scikit-learn", "Streamlit"],
+      github: "#",
+      demo: "#",
+      caseStudy: null,
+      image: "/placeholder.svg?height=200&width=400",
+      featured: false,
+    },
+    {
+      title: "ChromaSync - AI Colour Intelligence for Indie Filmmakers",
+      description:
+        "End-to-end AI colour continuity system for solo indie filmmakers. Recommends camera settings pre-shoot, guides parameter adjustments on-set, and auto-corrects colour drift in post using XGBoost and SHAP explainability. Targets 70% reduction in manual colour correction time. Built for BBC R&D, Foundry, and Sky Studios audiences.",
+      techStack: ["Python", "OpenCV", "XGBoost", "SHAP", "MoviePy", "Streamlit"],
       github: "https://github.com/aiirveon",
-      demo: "https://v0-youtube-recommender.vercel.app/",
-      caseStudy: "/projects/ai-movie-recommender",
-      image: "/placeholder.svg?height=200&width=400",
-      featured: true,
-    },
-    {
-      title: "Hospital Appointment System API",
-      description:
-        "Django REST API for booking appointments between patients and doctors with role-based access, JWT authentication, and PostgreSQL backend.",
-      techStack: ["Django", "DRF", "PostgreSQL", "JWT", "Docker"],
-      github: "#",
-      demo: "#",
-      caseStudy: null, // No case study yet
-      image: "/placeholder.svg?height=200&width=400",
-      featured: false,
-    },
-    {
-      title: "Task Manager API",
-      description:
-        "A comprehensive task management API with user authentication, task categories, priorities, and deadline notifications.",
-      techStack: ["Django", "DRF", "PostgreSQL", "Celery", "Redis"],
-      github: "#",
-      demo: "#",
-      caseStudy: null,
-      image: "/placeholder.svg?height=200&width=400",
-      featured: false,
-    },
-    {
-      title: "Dockerized API + CI/CD Example",
-      description:
-        "A template project demonstrating best practices for containerizing Django APIs and setting up continuous integration/deployment.",
-      techStack: ["Docker", "GitHub Actions", "Django", "AWS"],
-      github: "#",
       demo: null,
-      caseStudy: null,
+      caseStudy: "/projects/ChromaSync",
       image: "/placeholder.svg?height=200&width=400",
       featured: false,
-    },
-    {
-      title: "Real-time Collaboration Tool",
-      description:
-        "API backend for a collaborative workspace with real-time updates, document sharing, and team management.",
-      techStack: ["Django", "Channels", "WebSockets", "PostgreSQL"],
-      github: "#",
-      demo: "#",
-      caseStudy: null,
-      image: "/placeholder.svg?height=200&width=400",
-      featured: false,
-    },
-    {
-      title: "LiveStatusAPI with OpenAPI Docs",
-      description:
-        "A service status monitoring API with comprehensive OpenAPI documentation and interactive testing interface.",
-      techStack: ["Django", "DRF", "Swagger", "Redis"],
-      github: "#",
-      demo: "#",
-      caseStudy: null,
-      image: "/placeholder.svg?height=200&width=400",
-      featured: false,
+      status: "In Progress",
     },
   ]
 

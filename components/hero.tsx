@@ -132,7 +132,7 @@ export default function Hero() {
                 size="lg"
                 variant="outline"
                 onClick={scrollToProjects}
-                className="border-2 border-jungle-300 text-white hover:bg-jungle-800/50"
+                className="border-2 border-jungle-600 dark:border-jungle-300 text-jungle-900 dark:text-white bg-white/90 dark:bg-transparent hover:bg-jungle-100 dark:hover:bg-jungle-800/50 font-semibold"
               >
                 View Projects
               </Button>

@@ -1,4 +1,4 @@
-import { BarChart3, TrendingUp, Users, Zap, Lightbulb, Code, Shield } from "lucide-react"
+import { BarChart3, TrendingUp, Users, Zap, Lightbulb, Code, Shield, FileText, AlertTriangle } from "lucide-react"
 import {
   ProgressBar,
   TableOfContents,
@@ -16,115 +16,218 @@ import {
   RoadmapSection,
   LearningsSection,
   ContactSection,
+  RiskRegisterSection,
+  ProductArtifactsSection,
 } from "@/components/portfolio"
 
 // ============================================================================
-// PROJECT DATA - AI Dynamic Pricing for UK High-Street Retail
+// PROJECT DATA - AI Dynamic Ticket Pricing for UK Live Events
 // ============================================================================
-// This is where you fill in YOUR actual project content
-// Replace all [placeholder] text with your real data
 
 const projectData = {
   // Hero Section
   hero: {
-    projectName: "AI Dynamic Pricing",
-    tagline: "Machine learning-powered pricing optimization for UK high-street coffee shops, delivering 16% margin lift through weather-aware, ethical price recommendations.",
+    projectName: "AI Dynamic Ticket Pricing",
+    tagline: "Machine learning-powered pricing engine for UK live events, delivering transparent, CMA-compliant price recommendations with SHAP explainability and real-time demand signal integration.",
     status: "Shipped",
     author: "Ogbebor Osaheni",
-    date: "November 2025",
-    demoUrl: "https://ai-dynamic-pricing-fym9pp9mnhtwwpo5zpzud5.streamlit.app/", // Add your Streamlit/demo URL
-    githubUrl: "https://github.com/aiirveon/ai-dynamic-pricing", // Add your GitHub URL
-    heroImage: undefined, // Add image path if available
+    date: "March 2026",
+    demoUrl: "https://ai-ticket-pricing.streamlit.app/",
+    githubUrl: "https://github.com/aiirveon/ai-event-ticket-pricing",
+    heroImage: undefined,
   },
 
   // Executive Summary
   summary: {
-    description: "Built an end-to-end AI pricing system that analyzes transaction history, integrates real-time London weather data, and generates explainable price recommendations with built-in ethics guardrails. The model achieves R² = 0.997 accuracy and projects £18,000+ annual revenue opportunity for a typical UK coffee shop through optimized pricing during peak demand periods.",
+    description: "Built an end-to-end AI pricing system for UK live events that integrates artist popularity, venue location premiums, demand urgency signals, and market conditions to generate explainable, ethical price recommendations. The model achieves R² = 0.79 on real demand signals — deliberately capturing genuine market unpredictability rather than overfitting — and is deployed as a production Streamlit dashboard with full SHAP explainability and CMA-compliant guardrails.",
     metrics: [
-      { icon: <BarChart3 className="w-5 h-5" />, value: "0.997", label: "R² Score", description: "Model prediction accuracy" },
-      { icon: <TrendingUp className="w-5 h-5" />, value: "16%", label: "Margin Lift", description: "Projected profit increase" },
-      { icon: <Users className="w-5 h-5" />, value: "388", label: "Days of Weather", description: "Real London data integrated" },
-      { icon: <Zap className="w-5 h-5" />, value: "25%", label: "RMSE Improvement", description: "After Optuna tuning" },
+      { icon: <BarChart3 className="w-5 h-5" />, value: "0.79", label: "R² Score", description: "Genuine demand signal learning" },
+      { icon: <TrendingUp className="w-5 h-5" />, value: "3.11%", label: "Mean Abs Error", description: "Avg prediction error on adj%" },
+      { icon: <Users className="w-5 h-5" />, value: "50", label: "Optuna Trials", description: "Hyperparameter optimisation" },
+      { icon: <Zap className="w-5 h-5" />, value: "±22%", label: "CMA Price Cap", description: "Ethical pricing boundary" },
     ],
   },
 
   // Problem Statement
   problem: {
     paragraphs: [
-      "UK high-street coffee shops lose an estimated £18,000+ annually through suboptimal pricing. Most independent retailers use static pricing that ignores demand fluctuations—charging the same for a latte at 2 PM during a lunch rush as they do at 6 PM when the store is empty.",
-      "The challenge isn't technology—XGBoost exists. The barrier is product thinking: How do you implement dynamic pricing without customer backlash? How do you make it transparent enough to build trust? How do you prove ROI to justify the investment?",
-      "This project addresses the full product lifecycle: from ML model development to ethics frameworks to go-to-market strategy, demonstrating how AI Product Managers bridge technical capability with business value.",
+      "UK live events venues lose significant revenue through static ticket pricing that ignores real-time demand signals. The same seat at the O2 Arena sells for the same price whether the artist has just gone viral on TikTok, whether there are 180 days or 3 days until the show, and whether a competing event is drawing fans away that same evening.",
+      "The challenge is not technical — XGBoost exists. The barrier is product thinking: How do you build dynamic pricing for live events without triggering the kind of fan backlash that Ticketmaster faced with Oasis tour pricing in 2024? How do you make recommendations transparent enough that venue managers trust and act on them? How do you operate within CMA guidelines while still capturing genuine demand uplift?",
+      "This project addresses the full product lifecycle: from ML model design decisions to SHAP explainability to ethics guardrails to a shipped, interactive demo — demonstrating how AI Product Managers bridge technical capability with business value and regulatory awareness.",
     ],
-    keyInsight: "Even Starbucks doesn't do dynamic pricing—they announced price freezes in 2024 because customers found variable pricing confusing. The opportunity is building AI that's smart enough to optimize AND transparent enough to trust.",
+    keyInsight: "When Oasis announced their 2024 reunion tour, Ticketmaster's dynamic pricing pushed tickets from £135 to £355 overnight. The CMA launched an investigation. The opportunity is building AI that's smart enough to capture demand uplift AND transparent enough that fans understand why prices changed — before regulators intervene.",
   },
 
   // User Personas
-  personas: [
-    {
-      name: "Sarah",
-      role: "Independent Coffee Shop Owner",
-      goals: [
-        "Maximize profit margins without losing loyal customers",
-        "Compete with chain stores on service, not just price",
-        "Make data-driven decisions without hiring analysts",
+  personas: {
+    introduction: "I created 3 detailed personas using the Jobs-to-be-Done framework combined with empathy mapping from Product Management & Strategy. Each persona represents a distinct stakeholder in the live events pricing ecosystem, with different goals, risk tolerances, and definitions of success.",
+    basic: [
+      {
+        name: "Marcus Webb",
+        role: "Head of Revenue, Mid-Tier Venue (SSE Hydro, Glasgow — 13,000 capacity)",
+        age: "41",
+        techComfort: "Medium-High",
+        goals: [
+          "Maximise revenue per event without triggering fan backlash or press coverage",
+          "Justify pricing decisions to artists and management with data, not gut feel",
+          "Reduce manual pricing work (currently 4-6 hrs per event setup)",
+        ],
+        painPoints: [
+          "Pricing blind spots: Sets prices 6 months out with no way to adjust for demand signals",
+          "Artist team pressure: Managers push for lower prices to protect artist reputation",
+          "Regulatory anxiety: CMA investigation of Oasis/Ticketmaster put dynamic pricing on front pages",
+        ],
+        quote: "I know we're undercharging for Ed Sheeran and overcharging for the support acts. I just can't prove it to anyone.",
+      },
+      {
+        name: "Priya Sharma",
+        role: "Ticketing Product Manager, Major Festival Group (Glastonbury-scale operations)",
+        age: "33",
+        techComfort: "High",
+        goals: [
+          "Build a defensible, auditable pricing system before regulators mandate one",
+          "Capture demand uplift from viral moments without reputational damage",
+          "Create data infrastructure that informs future event planning decisions",
+        ],
+        painPoints: [
+          "Viral moment lag: By the time team reacts to an artist going viral, tickets have sold at wrong price",
+          "Explainability gap: Cannot explain to artists why their support act tickets are priced differently",
+          "No market intelligence: No visibility into how competing events affect their own demand",
+        ],
+        quote: "We need to move faster than Twitter. When an artist goes viral at 9pm, we need to update 40,000 ticket prices by 9:15pm — with a clear audit trail for the CMA.",
+      },
+      {
+        name: "Dave Okonkwo",
+        role: "Independent Promoter (100-2,000 capacity venues, touring acts)",
+        age: "47",
+        techComfort: "Low-Medium",
+        goals: [
+          "Stop leaving money on the table for sold-out shows",
+          "Avoid refund requests from fans who bought early and feel cheated by late price drops",
+          "Build artist relationships by showing pricing data that respects their fanbase",
+        ],
+        painPoints: [
+          "Binary pricing: Either sells out (lost revenue) or doesn't (panic discounting)",
+          "No data: Makes pricing decisions based on 20 years experience, not evidence",
+          "Artist tension: Artists see resale prices and ask 'why didn't we get that money?'",
+        ],
+        quote: "Last month I sold out a 500-cap show in 6 hours at £25. Resale was £80 within a day. That's £27,500 I left for touts.",
+      },
+    ],
+    deepDive: {
+      empathyMaps: [
+        {
+          persona: "Marcus (Head of Revenue)",
+          thinksFeels: "\"If we get this wrong, it's front page news.\" \"The Oasis thing scared everyone — I need CMA compliance documentation before I touch dynamic pricing.\"",
+          sees: "Ticketmaster news coverage. Resale platforms showing 3x face value. Empty premium seats at sold-out shows.",
+          hears: "\"Why are you charging more than last year?\" (from artist managers). \"We need to maximise yield\" (from CFO).",
+          saysDoes: "Sets prices 6 months out, rarely adjusts. Reviews resale data post-event and feels frustrated.",
+          pains: "Regulatory risk. Reputational risk. Revenue left on table. No data to back decisions.",
+          gains: "Auditable pricing decisions. CMA compliance documentation. Revenue uplift with artist trust maintained.",
+        },
+        {
+          persona: "Priya (Ticketing PM)",
+          thinksFeels: "\"I want to build the right system before we're forced to.\" \"Our current stack is 10 years old — this is the moment to modernise.\"",
+          sees: "Spotify and Netflix using ML to personalise every interaction. Her own ticketing platform with no ML layer.",
+          hears: "\"Can we react faster to demand changes?\" (from CEO). \"Why did rival festival sell out in 2 hours?\" (from board).",
+          saysDoes: "Builds Jira tickets for pricing features. Evangelises data-driven culture internally. Reads CMA guidance documents.",
+          pains: "Legacy systems. Slow internal buy-in. Fear of getting pricing wrong at scale (40,000 tickets per festival).",
+          gains: "Modern ML infrastructure. Real-time demand response. Defensible audit trail. Internal credibility as innovator.",
+        },
+        {
+          persona: "Dave (Independent Promoter)",
+          thinksFeels: "\"I'm losing money to touts every week.\" \"I don't have time to learn software — I'm booking acts, not coding.\"",
+          sees: "Viagogo listings at 3x face value hours after his tickets go on sale. Bigger promoters with data teams.",
+          hears: "\"Those tickets are on Viagogo already\" (from artists). \"You should charge more\" (from accountant).",
+          saysDoes: "Prices by gut feel and historical precedent. Checks Spotify streams to gauge artist popularity.",
+          pains: "Revenue lost to secondary market. No data infrastructure. Artist relationships strained by resale prices.",
+          gains: "Simple tool that tells him what to charge. Proof that pricing was fair (for artist conversations). More revenue.",
+        },
       ],
-      painPoints: [
-        "No time to analyze sales patterns manually",
-        "Fears customer backlash from price changes",
-        "Doesn't trust 'black box' AI recommendations",
+      decisionCriteria: [
+        {
+          persona: "Marcus",
+          mustHaves: ["CMA compliance documentation", "Audit trail for every price change", "Artist manager explainability", "Integration with existing ticketing platform"],
+          niceToHaves: ["Real-time demand dashboard", "Competitor event monitoring", "Artist-specific pricing profiles"],
+          dealBreakers: ["No legal documentation", "Opaque algorithm", "Press risk with no guardrails", "Requires data science team to operate"],
+        },
+        {
+          persona: "Priya",
+          mustHaves: ["API-first architecture", "SHAP explainability layer", "Real-time signal processing", "Scalable to 40,000 tickets"],
+          niceToHaves: ["A/B testing framework", "Artist portal for transparency", "Predictive sell-out modelling"],
+          dealBreakers: ["Batch-only processing", "No explainability", "Vendor lock-in", "No UK regulatory alignment"],
+        },
+        {
+          persona: "Dave",
+          mustHaves: ["Simple interface (no code required)", "Plain English recommendations", "Profit/loss projection per event", "Works for 100-2,000 capacity shows"],
+          niceToHaves: ["Mobile access", "Artist comparison features", "Automated social monitoring"],
+          dealBreakers: ["Complex setup", "Long-term contract", "Requires data team", "No phone support"],
+        },
       ],
-      quote: "I know I should charge more during rush hour, but I don't want to feel like I'm gouging my regulars.",
+      objectionHandling: [
+        {
+          persona: "Marcus",
+          objection: "What happens if this triggers a CMA investigation like Oasis?",
+          response: "Every price change is logged with SHAP explanation. Max +22% cap enforced. Full audit trail available on demand. CMA guidance explicitly permits demand-based pricing with transparency.",
+          evidence: "Ethics framework includes CMA compliance checklist. Price cap prevents the 160% increases that triggered Oasis investigation.",
+        },
+        {
+          persona: "Priya",
+          objection: "Our current system processes 10,000 transactions per minute — can this scale?",
+          response: "Model inference is sub-millisecond per prediction (XGBoost). SHAP computation adds ~50ms. Stateless design means horizontal scaling is trivial.",
+          evidence: "Model pkl file is 2MB — deploys anywhere. Load testing results available on request.",
+        },
+        {
+          persona: "Dave",
+          objection: "I don't trust algorithms — what if it tells me to charge £200 for a £30 show?",
+          response: "Hard cap: +22% maximum above your set base price. You approve every recommendation. The AI suggests, you decide.",
+          evidence: "Demo shows real-time ethics panel with CMA compliance status on every recommendation.",
+        },
+      ],
+      howWeWin: [
+        {
+          persona: "Marcus",
+          stage1: "Industry conference: Whitepaper 'CMA-Compliant Dynamic Pricing: A Practical Guide for UK Venues'",
+          stage2: "Demo call: Show SHAP audit trail, CMA compliance documentation, price cap guardrails",
+          stage3: "Pilot: 3 events, full audit support, weekly revenue reviews with venue team",
+          stage4: "Proven uplift + zero compliance issues → Annual contract at £2,400/venue",
+        },
+        {
+          persona: "Priya",
+          stage1: "Tech blog: 'How We Built a Real-Time Ticketing ML System with SHAP Explainability'",
+          stage2: "API documentation walkthrough, architecture review, security audit",
+          stage3: "Integration pilot (2 festivals), engineering support, custom feature development",
+          stage4: "Successful integration → Platform licensing deal (£50k+ annual)",
+        },
+        {
+          persona: "Dave",
+          stage1: "Facebook Groups (UK Promoters Network): 'Stop Losing Money to Touts'",
+          stage2: "Free trial: Upload last 5 shows, get backtested revenue analysis",
+          stage3: "30-day trial with weekly check-in calls and plain English recommendations",
+          stage4: "Show £3k-£8k additional revenue per show → £49/month subscription",
+        },
+      ],
     },
-    {
-      name: "Marcus",
-      role: "Regional Manager (Chain)",
-      goals: [
-        "Standardize pricing across 15+ locations",
-        "Respond quickly to competitor promotions",
-        "Demonstrate ROI to corporate stakeholders",
-      ],
-      painPoints: [
-        "Head office wants data, not gut feelings",
-        "Each store has different demand patterns",
-        "Compliance concerns about algorithmic pricing",
-      ],
-      quote: "I need something I can explain to the board in 5 minutes and defend to customers in 30 seconds.",
-    },
-    {
-      name: "Emma",
-      role: "Price-Sensitive Customer",
-      goals: [
-        "Get good value without hunting for deals",
-        "Understand why prices vary",
-        "Feel treated fairly as a regular customer",
-      ],
-      painPoints: [
-        "Hates feeling 'tricked' by dynamic pricing",
-        "Wants transparency about price logic",
-        "Worried about being charged more than others",
-      ],
-      quote: "If you're going to charge me more because it's raining, at least tell me why.",
-    },
-  ],
+  },
 
   // Solution Overview
   solution: {
-    description: "An AI-powered pricing recommendation engine that combines historical transaction analysis, real-time weather integration, and explainable ML to deliver transparent, ethical price suggestions. Unlike black-box pricing algorithms, every recommendation includes a SHAP-powered explanation of WHY that price was suggested.",
+    description: "An AI-powered ticket pricing recommendation engine that combines 16 demand signals — artist popularity, venue location premium, days to event, genre, seasonal patterns, and real-time market conditions — to generate transparent, auditable price recommendations with a SHAP explanation for every decision. Unlike black-box dynamic pricing systems, every recommendation includes a plain English explanation of exactly why that price was suggested.",
     features: [
       {
         icon: <Lightbulb className="w-5 h-5" />,
-        title: "Weather-Aware Pricing",
-        description: "Integrates real London weather via Open-Meteo API. Rainy/cold days trigger modest premiums; sunny days suggest promotions.",
+        title: "Multi-Signal Demand Modelling",
+        description: "Integrates 16 features: artist popularity, venue location premiums, days to event urgency, genre demand patterns, competing events, viral moments, and transport disruptions — all in real time.",
       },
       {
         icon: <Code className="w-5 h-5" />,
         title: "SHAP Explainability",
-        description: "Every price recommendation comes with a waterfall chart showing which factors drove the suggestion—time, weather, product, day of week.",
+        description: "Every price recommendation includes a waterfall chart and plain English explanation showing exactly which factors drove the suggestion and by how much — in percentage points, not just feature names.",
       },
       {
         icon: <Shield className="w-5 h-5" />,
-        title: "Ethics Guardrails",
-        description: "Hard-coded 15% maximum price increase cap, customer loyalty protections, and audit trails for regulatory compliance.",
+        title: "CMA-Compliant Ethics Guardrails",
+        description: "Hard-coded +22% maximum increase cap and -28% minimum floor, surge pricing detection with human review flag, and full audit trail for regulatory compliance — built for the post-Oasis regulatory environment.",
       },
     ],
   },
@@ -133,140 +236,409 @@ const projectData = {
   phases: [
     {
       title: "Phase 1: MVP",
-      description: "Built foundational data pipeline and baseline XGBoost model to validate the core pricing prediction hypothesis.",
+      description: "Built foundational data pipeline and baseline XGBoost model. Made a critical early decision — changing the target variable from absolute price to price adjustment percentage — which transformed what the model learned.",
       deliverables: [
-        "Exploratory Data Analysis on 149K+ transactions",
-        "Feature engineering: 13 time-based features (is_peak_hour, is_weekend, etc.)",
-        "Baseline XGBoost model: R² = 0.978, MAE = £0.34",
-        "Discovered £18K pricing opportunity in fixed-price products",
+        "Designed synthetic UK market data with 8 venue profiles, 4 ticket tiers, 8 genres, and realistic demand shocks",
+        "Generated 5,000 transactions with 9.7% noise — genuine market unpredictability baked in by design",
+        "Discovered and fixed dominant feature problem: ticket_tier was absorbing 98.3% of feature importance",
+        "Baseline XGBoost model: R² = 0.7935, MAE = 3.11% on price adjustment percentage",
       ],
-      techStack: ["Python", "Pandas", "XGBoost", "Matplotlib", "Seaborn"],
+      techStack: ["Python", "Pandas", "XGBoost", "Scikit-learn", "NumPy"],
     },
     {
       title: "Phase 2: Production ML",
-      description: "Enhanced model with external weather data, hyperparameter optimization, and explainability features.",
+      description: "Enhanced model with Optuna hyperparameter optimisation and full SHAP explainability layer. Key finding: baseline was already well-calibrated — the performance ceiling is genuine market noise, not model weakness.",
       deliverables: [
-        "Open-Meteo API integration: 388 days of real London weather",
-        "Optuna hyperparameter tuning: 50+ trials",
-        "SHAP explainability dashboard",
-        "Optimized model: R² = 0.997, RMSE = £0.26",
+        "Optuna TPE hyperparameter search: 50 trials, 3-fold cross-validation per trial",
+        "Best parameters: 556 estimators, max_depth=4, learning_rate=0.032, L1+L2 regularisation",
+        "SHAP analysis: artist_popularity (26.2%) and venue_location_premium (24.2%) explain 50.4% of all price variation",
+        "3 production SHAP charts: global feature importance, dot plot (direction + magnitude), single-prediction waterfall",
       ],
-      techStack: ["Optuna", "SHAP", "Open-Meteo API", "Joblib"],
+      techStack: ["Optuna", "SHAP", "Matplotlib", "Joblib", "Pickle"],
       metrics: [
-        { name: "R² Score", baseline: "0.978", optimized: "0.997", improvement: "+1.9%" },
-        { name: "RMSE", baseline: "£0.42", optimized: "£0.26", improvement: "-38%" },
-        { name: "MAE", baseline: "£0.34", optimized: "£0.21", improvement: "-38%" },
+        { name: "R² Score", baseline: "0.7935", optimized: "0.7899", improvement: "Stable — ceiling is market noise" },
+        { name: "MAE", baseline: "3.11%", optimized: "3.24%", improvement: "Stable" },
+        { name: "RMSE", baseline: "4.38%", optimized: "4.42%", improvement: "Stable" },
       ],
     },
     {
-      title: "Phase 3: Product & Ethics",
-      description: "Translated ML model into product artifacts with ethics framework aligned to EU AI Act principles.",
+      title: "Phase 3: Product & Dashboard",
+      description: "Translated ML model into a production product with interactive Streamlit dashboard, ethics compliance panel, and plain English recommendation generator.",
       deliverables: [
-        "Product Requirements Document (PRD)",
-        "Ethics guardrails: 15% price cap, loyalty protections",
-        "Figma mockups for shop owner dashboard",
-        "Stakeholder objection handling framework",
+        "Premium navy/gold Streamlit dashboard with real-time price recommendations",
+        "SHAP waterfall chart updating dynamically with every input change",
+        "CMA ethics compliance panel with three automated checks per recommendation",
+        "Plain English explanation generator — every recommendation explained in one sentence",
+        "Market overview: venue benchmarks and artist popularity vs price adjustment curve",
       ],
-      techStack: ["Figma", "Notion", "Miro"],
+      techStack: ["Streamlit", "Matplotlib", "Custom CSS", "Google Fonts (Playfair Display + DM Mono)"],
     },
     {
       title: "Phase 4: Launch & Distribution",
-      description: "Go-to-market strategy targeting UK retail tech ecosystem and AI PM recruiters.",
+      description: "Deployed to Streamlit Cloud with public URL, GitHub repository, and portfolio integration.",
       deliverables: [
-        "Streamlit demo application",
-        "LinkedIn launch posts with SHAP visualizations",
-        "Loom walkthrough videos",
-        "GitHub README with full documentation",
+        "Live deployment: https://ai-ticket-pricing.streamlit.app",
+        "GitHub repository: github.com/aiirveon/ai-event-ticket-pricing",
+        "Portfolio page with complete PM artifact documentation",
+        "LinkedIn launch content series",
       ],
-      techStack: ["Streamlit", "Vercel", "Loom"],
+      techStack: ["Streamlit Cloud", "GitHub", "Vercel"],
     },
   ],
 
   // Data & Methodology
   data: {
     dataDict: [
-      { feature: "Date", type: "datetime", description: "Transaction timestamp", source: "Kaggle Coffee Sales" },
-      { feature: "Product", type: "categorical", description: "Coffee product name (Latte, Cappuccino, etc.)", source: "Kaggle Coffee Sales" },
-      { feature: "Money", type: "float", description: "Transaction amount in GBP", source: "Kaggle Coffee Sales" },
-      { feature: "temperature", type: "float", description: "Daily temperature (°C)", source: "Open-Meteo API" },
-      { feature: "rain_mm", type: "float", description: "Daily rainfall (mm)", source: "Open-Meteo API" },
-      { feature: "is_rainy", type: "binary", description: "1 if rain > 0mm", source: "Feature Engineering" },
-      { feature: "is_peak_hour", type: "binary", description: "1 if hour between 12-3 PM", source: "Feature Engineering" },
+      { feature: "artist_popularity", type: "integer (1-10)", description: "Artist popularity score — single biggest driver of price adjustment at 26.2% of total variance", source: "Synthetic (Spotify popularity distribution)" },
+      { feature: "venue_location_premium", type: "float (0.00-0.35)", description: "Venue location premium factor. O2 London: 0.22, Glastonbury: 0.35, Cardiff: 0.00", source: "UK venue research" },
+      { feature: "days_to_event", type: "integer (1-180)", description: "Days remaining until event — urgency signal. Lower = higher price pressure", source: "Feature Engineering" },
+      { feature: "genre", type: "categorical (8 values)", description: "Music genre — demand multiplier varies. Musical Theatre: 1.20x, Classical: 0.90x", source: "Synthetic with realistic demand distributions" },
+      { feature: "viral_shock", type: "binary", description: "1 if viral moment active (TikTok/press spike) — 8.2% occurrence rate in training data", source: "Synthetic demand shock" },
+      { feature: "transport_disruption", type: "binary", description: "1 if transport disruption — suppresses demand. 6.7% occurrence, -3.1pp average impact", source: "Synthetic demand shock" },
+      { feature: "has_competing_event", type: "binary", description: "1 if competing event same night — demand split signal", source: "Feature Engineering" },
+      { feature: "is_peak_season", type: "binary", description: "1 for Feb, Jul, Aug, Dec — peak live events months in UK", source: "Feature Engineering" },
+      { feature: "is_saturday", type: "binary", description: "Saturday premium — highest demand day of week", source: "Feature Engineering" },
+      { feature: "temperature_c", type: "float (-5 to 32)", description: "Temperature — relevant for outdoor festival venues (Glastonbury, Boardmasters)", source: "Synthetic weather" },
     ],
-    methodology: "Used a regression approach with XGBoost to predict optimal price points based on historical transaction patterns and external weather signals. The model was trained on 80% of data with 20% holdout for validation. Hyperparameters were optimized using Optuna's TPE sampler over 50 trials. All features were validated against business logic before inclusion.",
+    methodology: "Used XGBoost regression to predict price adjustment percentage (not absolute price) based on 16 demand signals. Critical design decision: targeting adjustment percentage rather than absolute price prevents ticket tier from dominating feature importance — first attempt with absolute price had ticket_tier absorbing 98.3% of importance. The model was trained on 80% of 5,000 synthetic transactions with 20% holdout validation. Hyperparameters optimised using Optuna TPE sampler over 50 trials with 3-fold cross-validation. Synthetic data designed with explicit documentation of every distributional assumption — more defensible than an unexplained Kaggle CSV because every design choice has a stated business rationale.",
     validationMethods: [
-      "Train/test split (80/20) with temporal ordering preserved",
-      "5-fold cross-validation during hyperparameter tuning",
-      "Business logic validation: all predictions checked against min/max price bounds",
-      "SHAP value analysis to confirm feature importance aligns with domain knowledge",
+      "Train/test split (80/20) — 4,000 training, 1,000 test transactions",
+      "3-fold cross-validation during all 50 Optuna hyperparameter trials",
+      "Feature importance validation: top features align with domain knowledge (artist popularity, venue premium)",
+      "SHAP directional validation: high popularity → positive SHAP, transport disruption → negative SHAP (correct)",
+      "Ethics validation: all predictions clipped to [-28%, +22%] CMA-compliant range, zero violations",
     ],
   },
 
   // Results
   results: {
-    heroMetric: { value: "£18,000", label: "Annual Revenue Opportunity per Shop" },
+    heroMetric: { value: "50.4%", label: "of all price variation explained by 2 features: artist popularity + venue location premium" },
     comparisons: [
-      { metric: "Monthly Revenue Impact", before: "£15,000 (static)", after: "£16,500 (dynamic)", change: "+10%" },
-      { metric: "Model Accuracy (R²)", before: "0.978", after: "0.997", change: "+1.9%" },
-      { metric: "Prediction Error (RMSE)", before: "£0.42", after: "£0.26", change: "-38%" },
-      { metric: "Customer Complaint Rate", before: "2.1%", after: "2.3%", change: "+0.2%" },
-      { metric: "Rainy Day Sales Lift", before: "Baseline", after: "+12%", change: "+12%" },
-      { metric: "Peak Hour Premium Capture", before: "£0", after: "+£0.45/transaction", change: "+£0.45" },
+      { metric: "Model R² (Baseline vs Optimised)", before: "0.7935", after: "0.7899", change: "Stable — ceiling is market noise" },
+      { metric: "Artist Popularity Impact (score 9)", before: "Not quantified", after: "+7.73 percentage points", change: "Quantified" },
+      { metric: "Venue Location Impact (O2 London)", before: "Not quantified", after: "+6.89 percentage points", change: "Quantified" },
+      { metric: "Viral Moment Impact", before: "Not quantified", after: "+4.7% of total price variation", change: "Quantified" },
+      { metric: "Transport Disruption Impact", before: "Not quantified", after: "-3.1pp demand suppression", change: "Quantified" },
+      { metric: "CMA Cap Compliance", before: "No guardrails", after: "100% across all scenarios", change: "Enforced" },
     ],
     keyInsights: [
-      "Backtest simulation across 3,547 transactions shows consistent 8-12% revenue lift without customer churn. At typical shop volume (500 transactions/month), this translates to £1,500 additional monthly revenue or £18,000 annually.",
-      "Weather-aware pricing captures £0.30-£0.40 premium during cold, rainy mornings when customers have higher willingness to pay. This accounts for 40% of total revenue lift while affecting only 18% of transactions.",
-      "Peak hour premiums (12-3 PM) drive £0.45 higher average transaction value during high-demand periods. Customer acceptance rate: 94%—price increases went largely unnoticed when kept under 15%.",
-      "Product category was the strongest predictor (84% of feature importance), validating tiered pricing strategy: specialty drinks command 20% higher premiums than standard coffee, with no impact on customer satisfaction (CSAT maintained at 4.2/5).",
-      "The model's 99.7% accuracy (R² = 0.997, RMSE = £0.26) means price recommendations are within 26p of optimal 95% of the time—building shop owner confidence in accepting AI suggestions.",
+      "Artist popularity and venue location premium together explain 50.4% of all price adjustment decisions. This validates the core product hypothesis: who is performing and where they are performing are the two most important pricing signals in UK live events.",
+      "The model's R² of 0.79 is intentionally honest. The remaining 21% unexplained variance represents genuine market unpredictability — viral moments, human judgment, fan irrationality. My first model achieved R² = 0.997 by learning to look up ticket tier. That was worse, not better.",
+      "Optuna ran 50 hyperparameter trials and found minimal improvement over baseline (R² 0.7935 → 0.7899). This is a valuable insight: the performance ceiling is determined by genuine market noise, not suboptimal model settings. More data and better features would help; more tuning would not.",
+      "SHAP waterfall for a superstar artist (popularity 9) at SSE Hydro Glasgow, 10 days to event: artist_popularity (+7.73%), venue_location_premium (-2.44%), days_to_event (+1.71%), genre (+1.35%). Recommended £95.16 vs £78.00 base — a recommendation any venue manager can read, understand, and defend to an artist's team.",
+      "Average price adjustment baseline across all 5,000 events: +15.26%. The market skews positive — our UK venue profiles and artist distributions reflect a premium events market where demand typically exceeds static pricing assumptions.",
     ],
   },
 
   // Ethics
   ethics: {
+    introduction: "I conducted a comprehensive ethics review aligned to the CMA's dynamic pricing investigation findings (2024) and the ICO AI Auditing Framework. The Oasis/Ticketmaster controversy that triggered CMA scrutiny was a direct input to this framework design — not background reading. Key finding: transparent, capped, explainable dynamic pricing is not only ethical — it is the only defensible approach in the current UK regulatory environment.",
     principles: [
-      { title: "Transparency", description: "Every price recommendation includes SHAP explanation showing exactly which factors influenced the suggestion." },
-      { title: "Fairness", description: "15% maximum price increase cap prevents exploitative surge pricing during peak demand." },
-      { title: "Accountability", description: "Full audit trail of all pricing decisions for regulatory compliance and customer disputes." },
-      { title: "Human Override", description: "Shop owners can reject any recommendation—the AI suggests, humans decide." },
+      { title: "Transparency", description: "Every price recommendation includes a SHAP waterfall chart and plain English explanation. Venue managers, artists, and regulators can see exactly why a price was suggested — in percentage points, not just feature names." },
+      { title: "Fairness", description: "+22% maximum increase cap prevents the kind of extreme surge pricing that triggered the CMA investigation of Ticketmaster in 2024. The Oasis tickets went from £135 to £355 — a 163% increase our system would block." },
+      { title: "Accountability", description: "Full audit trail of every pricing decision with SHAP values logged. If the CMA asks why a ticket cost £152 instead of £125, the answer is documented, explainable, and defensible within 24 hours." },
+      { title: "Human Override", description: "The AI recommends. Venue managers decide. No fully automated price changes — human judgment remains in the loop for every single recommendation, with viral moments flagged for mandatory review." },
     ],
     guardrails: [
-      { rule: "Max Price Increase", threshold: "15%", rationale: "Prevents customer perception of price gouging" },
-      { rule: "Min Price Floor", threshold: "Cost + 20%", rationale: "Ensures profitability on all transactions" },
-      { rule: "Loyalty Protection", threshold: "5% max for regulars", rationale: "Rewards repeat customers with price stability" },
+      { rule: "Maximum Price Increase", threshold: "+22%", rationale: "CMA-aligned cap. Prevents the surge pricing that triggered Ticketmaster investigation." },
+      { rule: "Maximum Price Decrease", threshold: "-28%", rationale: "Prevents below-cost selling and protects revenue floor." },
+      { rule: "Viral Surge Warning", threshold: "Amber flag + human review", rationale: "Viral moments require mandatory human approval before any price change." },
     ],
-    biasAuditDescription: "Analyzed model predictions across customer segments, time periods, and product categories. No statistically significant bias detected in price recommendations by demographic proxy variables. Weather-based pricing affects all customers equally.",
+    biasAuditDescription: "Analysed model predictions across all venue types, genres, ticket tiers, and temporal patterns. No protected characteristics used in model. Pricing signals are demand-based (artist popularity, timing, venue location) — not demographic-based. Transport disruption signal suppresses prices when fans face travel difficulties, protecting rather than exploiting vulnerable demand situations.",
+    deepDive: {
+      methodology: "Following the UK ICO AI Auditing Framework and informed directly by CMA dynamic pricing investigation findings, I conducted a 3-step review: (1) Identify potential protected characteristic proxies in all 16 features, (2) Validate each feature against fairness criteria, (3) Confirm price cap compliance across all prediction scenarios including adversarial edge cases.",
+      protectedCharacteristics: ["Race/Ethnicity", "Gender", "Age", "Disability", "Religion", "Sexual Orientation", "Socioeconomic Status"],
+      featureAudit: [
+        { feature: "artist_popularity", risk: "None", status: "SAFE", action: "Popularity scores are demand-based, not demographic proxies. All fans face same pricing for same artist." },
+        { feature: "venue_location_premium", risk: "Potential socioeconomic proxy", status: "MONITORED", action: "London premium reflects genuine demand differences. Cap at +22% total prevents exploitation of location-based pricing." },
+        { feature: "days_to_event", risk: "None", status: "SAFE", action: "Urgency pricing is standard commercial practice, universal across all fan demographics." },
+        { feature: "genre", risk: "Potential cultural proxy", status: "MONITORED", action: "Genre differentials reflect demand patterns, not cultural discrimination. All genre adjustments within ±22% cap." },
+        { feature: "viral_shock", risk: "None", status: "SAFE", action: "Triggers mandatory human review — no automated price increase on viral events. Human judgment required." },
+        { feature: "transport_disruption", risk: "None", status: "SAFE", action: "Suppresses prices during disruption — protects rather than exploits fans facing travel difficulties." },
+        { feature: "customer_demographics (EXCLUDED)", risk: "Multiple proxies", status: "REMOVED", action: "Age, gender, purchase history excluded entirely. Pricing is event-based, not person-based." },
+      ],
+      fairnessTests: [
+        {
+          test: "Socioeconomic Fairness",
+          hypothesis: "Model should not systematically price out lower-income fans through location-based proxies",
+          method: "Compare predicted adjustments for identical artist/genre/timing across venues with different location premiums",
+          result: "PASS — Location premium capped at +22% maximum total. Cardiff fans (0% premium) see same artist-based adjustments as London fans.",
+          statistic: "Price differential by venue explained entirely by documented location premium, not demographic targeting.",
+        },
+        {
+          test: "CMA Cap Compliance",
+          hypothesis: "No recommendation should exceed +22% above base price under any input combination",
+          method: "Tested all 5,000 training transactions plus 500 adversarial examples (max popularity, min days, all positive flags active)",
+          result: "PASS — np.clip() enforces hard ceiling at inference time. Even theoretical maximum scenario returns exactly +22.0%.",
+          statistic: "Zero out-of-bounds predictions across all test scenarios including adversarial inputs.",
+        },
+        {
+          test: "Viral Surge Fairness",
+          hypothesis: "Viral moments should not automatically trigger price increases without human review",
+          method: "Check ethics panel behaviour when viral_shock=1 across all venue and tier combinations",
+          result: "PASS — viral_shock flag triggers amber warning and human review requirement on every recommendation regardless of other inputs.",
+          statistic: "100% of viral shock scenarios correctly flagged for mandatory human review.",
+        },
+      ],
+      gdprCompliance: [
+        { requirement: "No PII in Model", status: "COMPLIANT", evidence: "No customer names, emails, purchase history, or individual identifiers used in any feature" },
+        { requirement: "Right to Explanation (Article 22)", status: "COMPLIANT", evidence: "SHAP provides itemised explanation of every automated recommendation in plain English" },
+        { requirement: "Human Oversight", status: "COMPLIANT", evidence: "Dashboard requires venue manager approval — no fully automated pricing changes" },
+        { requirement: "Data Minimisation", status: "COMPLIANT", evidence: "Only event-level signals used; no individual fan data required or collected" },
+        { requirement: "Audit Trail", status: "COMPLIANT", evidence: "SHAP values logged per recommendation; full decision trail available for CMA on request" },
+      ],
+      mitigationStrategies: [
+        {
+          level: "Design",
+          mitigation: "Hard Price Cap",
+          implementation: "np.clip(prediction, -28.0, 22.0) enforced at inference time — cannot be bypassed by any input combination",
+          tradeoff: "Leaves theoretical revenue on table for extreme demand scenarios; prevents exploitative pricing and CMA investigation risk",
+        },
+        {
+          level: "Design",
+          mitigation: "Viral Surge Human Review",
+          implementation: "Viral shock flag triggers amber warning requiring manual approval before any price change goes live",
+          tradeoff: "Adds human latency (minutes vs seconds); prevents PR disasters and CMA scrutiny from automated surge pricing",
+        },
+        {
+          level: "Design",
+          mitigation: "Demographic Feature Exclusion",
+          implementation: "Customer age, gender, purchase history, postcode excluded from all feature sets at design stage",
+          tradeoff: "Marginal accuracy reduction; eliminates demographic discrimination risk and GDPR Article 22 exposure",
+        },
+        {
+          level: "Monitoring",
+          mitigation: "Post-Event Bias Audit",
+          implementation: "After each event, compare actual prices charged across venue demographics. Alert if systematic patterns emerge.",
+          tradeoff: "Retrospective only; combine with pre-event SHAP audit for complete coverage",
+        },
+      ],
+    },
   },
 
   // Competitive Analysis
   competitive: {
+    introduction: "I applied Porter's Five Forces framework from Product Management & Strategy to the UK live events ticketing market. Key insight: my biggest competitor is not Ticketmaster — it is the status quo of static pricing set 6 months before the event. As Prediction Machines notes: 'When the cost of prediction falls, the value of judgment rises.' My defensible moat is explainability + CMA compliance — the exact capabilities Ticketmaster lacked when the Oasis controversy hit.",
     competitors: [
-      { feature: "Weather Integration", ours: true, compA: false, compB: true },
       { feature: "SHAP Explainability", ours: true, compA: false, compB: false },
-      { feature: "Ethics Guardrails", ours: true, compA: true, compB: false },
-      { feature: "UK Retail Focus", ours: true, compA: false, compB: false },
-      { feature: "No-Code Dashboard", ours: true, compA: true, compB: true },
+      { feature: "CMA Compliance Framework", ours: true, compA: false, compB: true },
+      { feature: "Real-time Demand Signals", ours: true, compA: true, compB: true },
+      { feature: "Human Override Requirement", ours: true, compA: false, compB: false },
+      { feature: "UK-Specific Design", ours: true, compA: false, compB: true },
     ],
-    competitorAName: "Generic ML Pricing",
-    competitorBName: "Enterprise Solutions",
-    positioningStatement: "Unlike black-box enterprise pricing tools that cost £50K+ annually, this solution is purpose-built for UK high-street retail with transparent, explainable recommendations that shop owners can understand and trust.",
+    competitorAName: "Ticketmaster Dynamic Pricing",
+    competitorBName: "FIXR / Eventbrite Flex",
+    positioningStatement: "Unlike black-box dynamic pricing systems that triggered CMA investigations, this solution is purpose-built for the UK post-Oasis regulatory environment: transparent, explainable, human-in-the-loop pricing that venue managers can defend to artists, fans, and regulators.",
+    deepDive: {
+      portersFiveForces: [
+        {
+          force: "Threat of New Entrants",
+          level: "MEDIUM",
+          analysis: "Low technical barriers (XGBoost is open-source), but high trust barriers. UK CMA knowledge, SHAP explainability, and venue relationship network create meaningful moat against new entrants who lack regulatory context.",
+        },
+        {
+          force: "Bargaining Power of Buyers",
+          level: "MEDIUM",
+          analysis: "Venue contracts typically annual. Switching costs moderate once integrated. Mitigated by audit trail value — switching means losing documented pricing history and CMA compliance records.",
+        },
+        {
+          force: "Bargaining Power of Suppliers",
+          level: "LOW",
+          analysis: "Open-source ML stack (XGBoost, SHAP, Python). Multiple cloud providers. No single supplier has pricing power. Weather APIs free (Open-Meteo). Zero vendor lock-in.",
+        },
+        {
+          force: "Threat of Substitutes",
+          level: "HIGH",
+          analysis: "Static pricing (free, no risk), spreadsheet tools, gut feel. Must prove ROI clearly: 10% uplift on a 5,000-cap sold-out show at £50 average = £25,000 per event. That is the cost of inaction.",
+        },
+        {
+          force: "Competitive Rivalry",
+          level: "HIGH",
+          analysis: "Ticketmaster dominates primary market but CMA scrutiny has damaged their dynamic pricing credibility. Explainability gap creates a genuine opening for a transparent, defensible alternative in mid-tier and SMB venue segment.",
+        },
+      ],
+      marketSizing: [
+        { metric: "Total Addressable Market (TAM)", value: "£180M", calculation: "~1,800 UK venues with 500+ capacity × £100k avg annual ticketing revenue × 1% pricing optimisation fee" },
+        { metric: "Serviceable Addressable Market (SAM)", value: "£36M", calculation: "360 mid-tier venues (1k-20k capacity) with existing digital ticketing infrastructure" },
+        { metric: "Serviceable Obtainable Market (SOM)", value: "£3.6M", calculation: "10% penetration in 3 years — 36 venue contracts at £100k average annual value" },
+      ],
+      competitorDeepDive: [
+        {
+          competitor: "Ticketmaster Dynamic Pricing",
+          strengths: ["Market dominance (60%+ UK primary ticketing)", "Artist relationships", "Scale (millions of events)", "Years of demand data"],
+          weaknesses: ["CMA investigation (Oasis 2024)", "No explainability — complete black box", "Fan trust destroyed by Oasis controversy", "Fully automated (no human override)", "Not defensible in current regulatory climate"],
+          whyWeWin: "We offer what Ticketmaster cannot: CMA-compliant, explainable, human-in-the-loop pricing. Venues want dynamic pricing but cannot afford the reputational risk of Ticketmaster's approach. We are the safe alternative.",
+        },
+        {
+          competitor: "FIXR / Eventbrite Flex Pricing",
+          strengths: ["SMB venue relationships", "Simple interface", "No long-term contracts", "Established brand in independent venue space"],
+          weaknesses: ["No SHAP explainability", "US-designed (limited UK regulatory awareness)", "Basic demand signals only — no artist popularity, viral detection, or UK transport signals", "No audit trail for CMA"],
+          whyWeWin: "Deeper UK market intelligence (CMA compliance, UK venue premiums, rail disruption signals). SHAP explainability enables artist/manager conversations that FIXR users simply cannot have with their black-box recommendations.",
+        },
+        {
+          competitor: "Static Pricing (Status Quo)",
+          strengths: ["Free", "Simple", "No regulatory risk", "Familiar to artists and fans"],
+          weaknesses: ["Leaves 8-15% revenue on table for sold-out shows", "Cannot respond to viral moments", "Resale market captures demand uplift instead of venue and artist"],
+          whyWeWin: "For a 5,000-cap sold-out show at £50 average, 10% uplift = £25,000 per event. At 20 shows per year = £500,000 additional revenue. That is the annual cost of inaction, not including resale revenue lost to secondary market.",
+        },
+        {
+          competitor: "Manual Adjustment by Revenue Manager",
+          strengths: ["Full control", "Human judgment", "No vendor dependency", "Artist relationship sensitivity"],
+          weaknesses: ["Cannot process 16 signals simultaneously", "Slow to react to viral moments (hours vs seconds)", "No historical pattern learning", "4-6 hours per event setup time"],
+          whyWeWin: "Speed (real-time demand response to viral moments), scale (16 signals processed instantly), and learning (model improves with each event) — none achievable manually. We augment human judgment, not replace it.",
+        },
+      ],
+      competitiveMoat: [
+        {
+          moat: "CMA Compliance Documentation",
+          strength: "STRONG",
+          description: "Invested in bias audits, ethics framework, and CMA-aligned price caps before any competitor in the SMB space. Post-Oasis, this is not a nice-to-have — it is the price of entry for any defensible dynamic pricing product in the UK.",
+          example: "Can provide venue manager with printed SHAP audit trail and CMA compliance checklist for any pricing decision within minutes. No competitor offers this today.",
+        },
+        {
+          moat: "Explainability as Artist Relationship Tool",
+          strength: "STRONG",
+          description: "SHAP explanations solve a problem Ticketmaster ignores: artists want to understand why their tickets were priced a certain way. We give managers a data-backed conversation tool, not just a number.",
+          example: "Artist manager asks: 'Why was the Glasgow show cheaper than Manchester?' Answer: 'Venue location premium is 0.03 vs 0.08, and streaming data shows lower per-capita engagement in that market for this genre.'",
+        },
+        {
+          moat: "UK-Specific Demand Intelligence",
+          strength: "MEDIUM",
+          description: "UK rail disruption signals, bank holiday patterns, UK venue premium mapping, and CMA regulatory knowledge built into the model. US competitors entering UK market must rebuild all of this from scratch.",
+          example: "Transport disruption suppresses Glasgow ticket demand by ~3pp average. This is UK-specific knowledge a US-built competitor would miss entirely.",
+        },
+      ],
+      positioning: {
+        target: "UK mid-tier venue revenue managers and independent promoters",
+        needState: "Want to capture dynamic pricing revenue without triggering CMA scrutiny or fan backlash",
+        productCategory: "AI ticket pricing recommendation engine",
+        keyBenefit: "CMA-compliant dynamic pricing with SHAP explainability and mandatory human override",
+        primaryAlternative: "Ticketmaster dynamic pricing (CMA risk), static pricing (revenue loss), manual adjustment (too slow for viral moments)",
+        differentiation: "The only UK live events pricing engine that gives every recommendation a plain English explanation — built specifically for the post-Oasis regulatory environment",
+      },
+    },
   },
 
   // OKRs
   okrs: {
-    objective: "Demonstrate end-to-end AI Product Management capability through a shipped, production-grade pricing optimization system",
+    objective: "Demonstrate end-to-end AI Product Management capability through a shipped, production-grade ticket pricing system that is technically sophisticated, ethically sound, and commercially defensible in the UK regulatory environment",
     keyResults: [
-      { kr: "Achieve R² > 0.95 on price prediction model", progress: 100, target: "R² = 0.95" },
-      { kr: "Integrate external weather data source", progress: 100, target: "388 days" },
-      { kr: "Implement SHAP explainability for all predictions", progress: 100, target: "100% coverage" },
-      { kr: "Ship working Streamlit demo", progress: 100, target: "Live URL" },
+      { kr: "Achieve R² > 0.75 learning genuine demand signals (not ticket tier lookup)", progress: 100, target: "R² = 0.75" },
+      { kr: "Implement SHAP explainability for 100% of predictions with plain English output", progress: 100, target: "100% coverage" },
+      { kr: "Pass CMA compliance check across all test predictions including adversarial scenarios", progress: 100, target: "Zero violations" },
+      { kr: "Deploy live interactive dashboard with public URL accessible to recruiters", progress: 100, target: "Live URL" },
     ],
     successMetrics: [
-      { metric: "Model R² Score", target: "> 0.95", achieved: "0.997", status: "Achieved" as const },
-      { metric: "RMSE", target: "< £0.50", achieved: "£0.26", status: "Achieved" as const },
-      { metric: "Ethics Compliance", target: "100%", achieved: "100%", status: "Achieved" as const },
-      { metric: "Demo Deployment", target: "Live", achieved: "Live on Streamlit", status: "Achieved" as const },
+      { metric: "Model R² Score", target: "> 0.75", achieved: "0.79", status: "Achieved" as const },
+      { metric: "CMA Cap Compliance", target: "100%", achieved: "100% — zero violations", status: "Achieved" as const },
+      { metric: "SHAP Coverage", target: "Every prediction", achieved: "Every prediction + plain English", status: "Achieved" as const },
+      { metric: "Demo Deployment", target: "Live public URL", achieved: "ai-ticket-pricing.streamlit.app", status: "Achieved" as const },
     ],
+  },
+
+  // Risk Register
+  riskRegister: {
+    introduction: "I identified key risks using the ISO 31000 framework, informed directly by the CMA investigation into Ticketmaster's Oasis tour dynamic pricing (2024). This was not a theoretical exercise — it was a direct response to watching a major industry player get it catastrophically wrong in public, and building a system designed to avoid the same outcome.",
+    topRisks: [
+      {
+        id: "RISK-001",
+        category: "REGULATORY / REPUTATIONAL",
+        risk: "CMA Investigation Triggered by Price Surge Event",
+        likelihood: 3,
+        impact: 5,
+        score: 15,
+        level: "CRITICAL",
+        mitigation: "+22% hard cap enforced at inference time (cannot be bypassed), SHAP audit trail for every recommendation, viral shock human review requirement, full documentation available for CMA within 24 hours",
+        residualScore: 6,
+        owner: "Product Manager + Legal Counsel",
+      },
+      {
+        id: "RISK-002",
+        category: "REPUTATIONAL",
+        risk: "Fan Backlash / Social Media Boycott Campaign Against Dynamic Pricing",
+        likelihood: 3,
+        impact: 4,
+        score: 12,
+        level: "HIGH",
+        mitigation: "Price caps prevent extreme surge events, plain English SHAP explanations empower venue managers to communicate pricing rationale publicly, opt-in transparency page showing all active pricing factors",
+        residualScore: 6,
+        owner: "Product Manager + Venue PR Team",
+      },
+      {
+        id: "RISK-003",
+        category: "TECHNICAL",
+        risk: "Model Drift as Artist and Genre Popularity Patterns Shift",
+        likelihood: 4,
+        impact: 3,
+        score: 12,
+        level: "HIGH",
+        mitigation: "Monthly model performance monitoring on new event data, quarterly retraining on latest 12 months, SHAP importance drift detection, rollback plan to previous validated model version",
+        residualScore: 6,
+        owner: "Data Scientist",
+      },
+      {
+        id: "RISK-004",
+        category: "BUSINESS",
+        risk: "Artist Manager Rejection of Dynamic Pricing Concept",
+        likelihood: 4,
+        impact: 3,
+        score: 12,
+        level: "HIGH",
+        mitigation: "SHAP explanation doubles as artist conversation tool showing data-backed rationale, price cap protects artist brand from exploitation narrative, artist portal roadmap showing demand transparency dashboard",
+        residualScore: 5,
+        owner: "Venue Partnerships Team",
+      },
+      {
+        id: "RISK-005",
+        category: "COMPETITIVE",
+        risk: "Ticketmaster Builds Transparent Pricing After CMA Pressure",
+        likelihood: 3,
+        impact: 4,
+        score: 12,
+        level: "HIGH",
+        mitigation: "First-mover advantage in SMB and mid-tier segment Ticketmaster does not serve, UK-specific data moat, speed of iteration vs Ticketmaster enterprise release cycle (12-18 months), partnership option available",
+        residualScore: 7,
+        owner: "CEO + Product Strategy",
+      },
+    ],
+    deepDive: {
+      riskMatrix: `
+IMPACT →
+         1 (Minor) | 2 (Moderate) | 3 (Moderate) | 4 (Major) | 5 (Critical)
+L   ─────┼───────────┼──────────────┼──────────────┼───────────┼─────────────
+I   1    │  1 (LOW)  │   2 (LOW)    │   3 (LOW)    │  4 (MED)  │  5 (MED)
+K   ─────┼───────────┼──────────────┼──────────────┼───────────┼─────────────
+E   2    │  2 (LOW)  │   4 (MED)    │   6 (MED)    │  8 (MED)  │ 10 (HIGH)
+L   ─────┼───────────┼──────────────┼──────────────┼───────────┼─────────────
+I   3    │  3 (LOW)  │   6 (MED)    │   9 (MED)    │ 12 (HIGH) │ 15 (HIGH)
+H   ─────┼───────────┼──────────────┼──────────────┼───────────┼─────────────
+O   4    │  4 (MED)  │   8 (MED)    │  12 (HIGH)   │ 16 (HIGH) │ 20 (CRIT)
+O   ─────┼───────────┼──────────────┼──────────────┼───────────┼─────────────
+D   5    │  5 (MED)  │  10 (HIGH)   │  15 (HIGH)   │ 20 (CRIT) │ 25 (CRIT)
+`,
+      contingencyPlans: [
+        {
+          risk: "CMA Investigation",
+          trigger: "CMA formal notice OR viral coverage linking our system to a specific pricing event",
+          action: "Immediate: Pause all automated recommendations, switch to human-only advisory mode → Week 1: Submit full SHAP audit trail, price cap documentation, ethics framework to CMA → Month 1: Publish transparency report, implement any CMA recommendations, appoint external ethics board reviewer",
+        },
+        {
+          risk: "Fan Boycott Campaign",
+          trigger: "#BoycottTickets trending with our venue tagged OR venue social media complaints exceeding 100 in 24 hours",
+          action: "CEO statement within 4 hours: publish the SHAP explanation for the specific event that triggered backlash → Offer affected fans price explanation and, if warranted, partial refund protocol → Review and potentially reduce cap from 22% to 15% for that venue category going forward",
+        },
+        {
+          risk: "Model Performance Degradation",
+          trigger: "R² drops below 0.65 on monthly validation OR MAE exceeds 6% for 2 consecutive weeks",
+          action: "Immediate rollback to previous validated model version → Root cause analysis (data drift, feature distribution shift, new venue or genre not represented in training data) → Retrain with expanded dataset before redeployment, with A/B test against previous version",
+        },
+      ],
+      monitoringCadence: [
+        { frequency: "Weekly", risks: ["Model R² and MAE on new event data", "CMA and regulatory news scan", "Social media sentiment around dynamic pricing", "Venue manager override rate and feedback"] },
+        { frequency: "Monthly", risks: ["Full bias audit across venue types and genres", "Feature importance drift check via SHAP", "Competitive landscape review", "Customer NPS and churn signals"] },
+        { frequency: "Quarterly", risks: ["Full model retraining decision", "CMA guidance review and framework update", "Stakeholder review with venue partners", "Ethics framework external audit"] },
+      ],
+    },
   },
 
   // Roadmap
@@ -275,28 +647,28 @@ const projectData = {
       {
         phase: "Now",
         items: [
-          { title: "Core ML model with weather integration" },
-          { title: "SHAP explainability dashboard" },
-          { title: "Streamlit web application (deployed)" },
-          { title: "Real-time weather API integration (Open-Meteo)" },
+          { title: "XGBoost model with 16 UK live events demand signals" },
+          { title: "SHAP explainability on every prediction" },
+          { title: "CMA-compliant ethics guardrails (±22% hard cap)" },
+          { title: "Live Streamlit dashboard — ai-ticket-pricing.streamlit.app" },
         ],
         status: "completed" as const,
       },
       {
         phase: "Next",
         items: [
-          { title: "Multi-store comparison features" },
-          { title: "Customer-facing price explanation UI" },
-          { title: "A/B testing framework for price strategies" },
+          { title: "Real Spotify API integration for live artist popularity scores" },
+          { title: "National Rail API for real-time transport disruption signals" },
+          { title: "Multi-event portfolio view for promoters managing 10+ shows" },
         ],
         status: "in-progress" as const,
       },
       {
         phase: "Later",
         items: [
-          { title: "Mobile app for shop owners" },
-          { title: "Integration with POS systems (Square, Shopify)" },
-          { title: "Predictive inventory ordering based on demand forecast" },
+          { title: "Ticketing platform API integration (FIXR, Eventbrite, Skiddle)" },
+          { title: "Artist manager transparency portal with demand data dashboard" },
+          { title: "Predictive sell-out probability modelling with 30/60/90 day horizon" },
         ],
         status: "planned" as const,
       },
@@ -306,26 +678,82 @@ const projectData = {
   // Learnings
   learnings: {
     wentWell: [
-      "Weather data integration significantly improved model accuracy—external data sources are force multipliers",
-      "SHAP visualizations made the model 'sellable' to non-technical stakeholders",
-      "Ethics-first approach differentiated the project from generic ML demos",
+      "The target variable decision was the single most important product decision in the project — changing from absolute price to price adjustment percentage transformed what the model learned and made the whole project defensible",
+      "Designing synthetic data with explicit, documented assumptions proved more defensible than an unexplained Kaggle CSV — every distributional choice had a stated business rationale that I can explain in an interview",
+      "SHAP explainability transformed a data science project into a product — without it, the model is a black box; with it, it is a stakeholder communication tool, an artist management tool, and a CMA compliance tool simultaneously",
     ],
     challenges: [
-      "Initial weather API had rate limits that required caching strategy",
-      "Balancing model complexity with explainability—more features ≠ better understanding",
-      "Defining 'fair' pricing required stakeholder interviews, not just technical optimization",
+      "First model R² = 0.997 looked impressive but was completely useless — it had learned to look up ticket tier, not model demand. High accuracy on the wrong question is worse than honest accuracy on the right one",
+      "Optuna found minimal improvement over baseline (R² 0.7935 → 0.7899) — initially felt like failure, but is actually a valuable insight: the performance ceiling is genuine market noise, not fixable by tuning",
+      "Balancing regulatory constraint with product ambition — the CMA context added real limits but also created a genuine, defensible differentiator that makes the project stronger, not weaker",
     ],
     doDifferently: [
-      "Start with user research before model building—I optimized for accuracy before validating what accuracy level was 'good enough'",
-      "Build the ethics framework first, not as an afterthought",
-      "Create interactive demos earlier to get feedback on UX, not just model performance",
+      "Define the target variable before writing any model code — it is a product decision masquerading as a technical one, and getting it wrong wastes significant time",
+      "Build the ethics framework simultaneously with the model, not after — the CMA caps influenced data generation design, and that integration made both better",
+      "Ship the Streamlit demo earlier — a live URL that recruiters can click is worth more than a perfectly tuned model they cannot see",
     ],
-    keyTakeaway: "The best ML model in the world is worthless if users don't trust it. Explainability isn't a nice-to-have—it's the product.",
+    keyTakeaway: "R² = 0.997 was my worst model. R² = 0.79 was my best. The difference was understanding what I was actually trying to predict — and why a perfect score on the wrong question is worse than an honest score on the right one. That insight is the core of AI product management.",
+  },
+
+  // Product Artifacts
+  productArtifacts: {
+    introduction: "Beyond the model and demo, I created comprehensive product management documentation informed directly by real regulatory events (CMA Oasis investigation) and UK market dynamics. These artifacts demonstrate that I think about the full product — not just the algorithm. They are the difference between 'I trained a model' and 'I shipped an AI product.'",
+    artifacts: [
+      {
+        icon: <FileText className="w-5 h-5" />,
+        title: "Product Requirements Document (PRD)",
+        description: "User stories, acceptance criteria, success metrics, and go-to-market strategy. CMA compliance requirements are first-class product requirements, not afterthoughts.",
+        githubUrl: "https://github.com/aiirveon/ai-event-ticket-pricing/blob/master/docs/PRD.md",
+        highlights: ["3 epics: Pricing Engine, Explainability, Ethics & Compliance", "CMA compliance as acceptance criteria, not nice-to-have", "Go-to-market targeting mid-tier UK venues"],
+      },
+      {
+        icon: <Users className="w-5 h-5" />,
+        title: "User Personas",
+        description: "3 detailed personas — venue revenue manager, festival ticketing PM, independent promoter — with empathy maps, decision criteria, objection handling, and acquisition strategies per persona.",
+        githubUrl: "https://github.com/aiirveon/ai-event-ticket-pricing/blob/master/docs/USER_PERSONAS.md",
+        highlights: ["Jobs-to-be-Done analysis per persona", "CMA risk objection handling scripts", "Revenue impact framing calibrated per persona"],
+      },
+      {
+        icon: <BarChart3 className="w-5 h-5" />,
+        title: "Competitive Analysis",
+        description: "Porter's Five Forces for UK live events market, market sizing (TAM/SAM/SOM), competitive deep-dives on Ticketmaster, FIXR, and status quo pricing.",
+        githubUrl: "https://github.com/aiirveon/ai-event-ticket-pricing/blob/master/docs/COMPETITIVE_ANALYSIS.md",
+        highlights: ["CMA investigation as competitive differentiator, not just risk", "Market sizing: £36M SAM", "Explainability moat analysis vs Ticketmaster"],
+      },
+      {
+        icon: <AlertTriangle className="w-5 h-5" />,
+        title: "Risk Register",
+        description: "ISO 31000 risk framework applied to live events dynamic pricing. Directly informed by Ticketmaster/Oasis controversy — these are real risks, not theoretical ones.",
+        githubUrl: "https://github.com/aiirveon/ai-event-ticket-pricing/blob/master/docs/RISK_REGISTER.md",
+        highlights: ["CMA investigation risk: mitigation = SHAP audit trail", "Fan boycott risk: mitigation = price caps + transparency", "Weekly/monthly/quarterly monitoring cadence"],
+      },
+      {
+        icon: <Shield className="w-5 h-5" />,
+        title: "Ethics Framework",
+        description: "ICO AI Auditing Framework applied to live events pricing. Feature audit, CMA compliance analysis, fairness tests — built before deployment, not as an afterthought.",
+        githubUrl: "https://github.com/aiirveon/ai-event-ticket-pricing/blob/master/docs/ETHICS.md",
+        highlights: ["7 features audited for protected characteristic proxies", "CMA cap compliance: 100% across all test scenarios", "Post-Oasis regulatory context as design input"],
+      },
+      {
+        icon: <TrendingUp className="w-5 h-5" />,
+        title: "Metrics Framework",
+        description: "North Star Metric (Revenue Uplift per Sold-Out Show), primary and counter-metrics, A/B testing methodology for live events context.",
+        githubUrl: "https://github.com/aiirveon/ai-event-ticket-pricing/blob/master/docs/METRICS.md",
+        highlights: ["North Star: Revenue uplift per sold-out show vs static pricing", "Counter-metrics: Fan NPS, artist manager satisfaction, CMA compliance rate", "Resale price delta as proxy for uncaptured demand"],
+      },
+      {
+        icon: <Users className="w-5 h-5" />,
+        title: "Stakeholder Analysis",
+        description: "Power/interest mapping across venue managers, artist managers, fans, and CMA. Engagement strategies calibrated to each stakeholder's primary concern.",
+        githubUrl: "https://github.com/aiirveon/ai-event-ticket-pricing/blob/master/docs/STAKEHOLDER_ANALYSIS.md",
+        highlights: ["CMA as high-power stakeholder requiring proactive engagement", "Artist managers: SHAP as trust-building conversation tool", "Fan transparency as long-term brand protection strategy"],
+      },
+    ],
   },
 
   // Contact
   contact: {
-    pitch: "I'm actively seeking Junior AI PM / Technical PM roles at companies building AI-powered products for retail, e-commerce, or consumer applications. Let's connect if you're hiring or want to discuss AI product strategy.",
+    pitch: "I am actively seeking Junior AI PM / Technical PM roles at companies building AI-powered products in media, events, e-commerce, or consumer applications. Let's connect if you're hiring or want to discuss AI product strategy.",
     email: "osaheniogbebor.c@gmail.com",
     linkedIn: "https://www.linkedin.com/in/osaheni-o-94565421a/",
     github: "https://github.com/aiirveon",
@@ -356,7 +784,11 @@ export default function AIDynamicPricingProject() {
           keyInsight={projectData.problem.keyInsight}
         />
         
-        <PersonasSection personas={projectData.personas} />
+        <PersonasSection 
+          introduction={projectData.personas.introduction}
+          personas={projectData.personas.basic}
+          deepDive={projectData.personas.deepDive}
+        />
         
         <SolutionSection 
           description={projectData.solution.description}
@@ -390,6 +822,12 @@ export default function AIDynamicPricingProject() {
           positioningStatement={projectData.competitive.positioningStatement}
         />
         
+        <RiskRegisterSection 
+          introduction={projectData.riskRegister.introduction}
+          topRisks={projectData.riskRegister.topRisks}
+          deepDive={projectData.riskRegister.deepDive}
+        />
+        
         <OkrsSection 
           objective={projectData.okrs.objective}
           keyResults={projectData.okrs.keyResults}
@@ -403,6 +841,11 @@ export default function AIDynamicPricingProject() {
           challenges={projectData.learnings.challenges}
           doDifferently={projectData.learnings.doDifferently}
           keyTakeaway={projectData.learnings.keyTakeaway}
+        />
+        
+        <ProductArtifactsSection 
+          introduction={projectData.productArtifacts.introduction}
+          artifacts={projectData.productArtifacts.artifacts}
         />
         
         <ContactSection {...projectData.contact} />

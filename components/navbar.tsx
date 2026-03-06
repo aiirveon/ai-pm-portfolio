@@ -16,6 +16,9 @@ export default function Navbar() {
   const isHomePage = pathname === "/"
   const isProjectPage = pathname.startsWith("/projects/")
 
+  // Determine if we should use light text (for dark hero background)
+  const shouldUseLightText = isHomePage && !isScrolled
+
   const navItems = [
     { name: "Home", href: "/" },
     { name: "About", href: "/#about" },
@@ -61,9 +64,21 @@ export default function Navbar() {
             <div className="flex items-center gap-4">
               <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
                 <img src="/images/profile.png" alt="Ogbebor Osaheni" className="h-10 w-10 rounded-md" />
-                <div className="font-bold text-xl text-slate-800 dark:text-white flex items-center">
-                  Ogbebor<span className="text-jungle-500 dark:text-jungle-300">Osaheni</span>
-                  <Leaf className="h-4 w-4 ml-1 text-jungle-500 dark:text-jungle-300" />
+                <div className={`font-bold text-xl flex items-center transition-colors ${
+                  shouldUseLightText 
+                    ? "text-white" 
+                    : "text-slate-800 dark:text-white"
+                }`}>
+                  Ogbebor<span className={`transition-colors ${
+                    shouldUseLightText 
+                      ? "text-jungle-300" 
+                      : "text-jungle-500 dark:text-jungle-300"
+                  }`}>Osaheni</span>
+                  <Leaf className={`h-4 w-4 ml-1 transition-colors ${
+                    shouldUseLightText 
+                      ? "text-jungle-300" 
+                      : "text-jungle-500 dark:text-jungle-300"
+                  }`} />
                 </div>
               </Link>
               
@@ -88,7 +103,11 @@ export default function Navbar() {
                   key={item.name}
                   variant="ghost"
                   asChild
-                  className="text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+                  className={`font-medium transition-colors ${
+                    shouldUseLightText
+                      ? "text-white hover:text-jungle-200"
+                      : "text-slate-800 hover:text-jungle-700 dark:text-slate-100 dark:hover:text-jungle-300"
+                  }`}
                 >
                   <Link href={item.href} onClick={() => handleNavClick(item.href)}>
                     {item.name}
@@ -103,9 +122,9 @@ export default function Navbar() {
               <ThemeToggle />
               <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
                 {isMenuOpen ? (
-                  <X className="h-6 w-6 text-slate-800 dark:text-white" />
+                  <X className={`h-6 w-6 ${shouldUseLightText ? "text-white" : "text-slate-800 dark:text-white"}`} />
                 ) : (
-                  <Menu className="h-6 w-6 text-slate-800 dark:text-white" />
+                  <Menu className={`h-6 w-6 ${shouldUseLightText ? "text-white" : "text-slate-800 dark:text-white"}`} />
                 )}
               </Button>
             </div>
