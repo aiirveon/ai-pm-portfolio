@@ -1,4 +1,4 @@
-import { Film, TrendingUp, Users, Zap, Lightbulb, Code, Shield } from "lucide-react"
+import { Film, TrendingUp, Users, Zap, Lightbulb, Code, Shield, BookOpen, Database, Layers } from "lucide-react"
 import {
   ProgressBar,
   TableOfContents,
