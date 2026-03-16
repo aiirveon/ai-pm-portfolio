@@ -32,28 +32,7 @@ export default function Projects() {
       image: "/placeholder.svg?height=200&width=400",
       featured: true,
     },
-    {
-      title: "AI Credit Scoring with Fairness Auditing",
-      description:
-        "AI-powered credit scoring system with built-in fairness constraints for fintech lending. Uses alternative data signals (rent, utilities, savings) to expand financial inclusion while maintaining demographic parity. Features SHAP explainability for regulatory compliance.",
-      techStack: ["Python", "Scikit-learn", "Fairlearn", "SHAP", "Streamlit"],
-      github: "#",
-      demo: "#",
-      caseStudy: null,
-      image: "/placeholder.svg?height=200&width=400",
-      featured: false,
-    },
-    {
-      title: "Fraud Detection System for Digital Payments",
-      description:
-        "Real-time fraud detection for fintech payments with tiered intervention design. Balances security (90% fraud caught) with user experience (5% false positives) through anomaly detection and precision-recall optimization. Quantifies business impact in fraud prevented vs. UX cost.",
-      techStack: ["Python", "XGBoost", "Scikit-learn", "Streamlit"],
-      github: "#",
-      demo: "#",
-      caseStudy: null,
-      image: "/placeholder.svg?height=200&width=400",
-      featured: false,
-    },
+
     {
       title: "Ojuit - AI Filmmaking Intelligence",
       description:
