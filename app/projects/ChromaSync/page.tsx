@@ -21,8 +21,8 @@ import {
 
 const projectData = {
   hero: {
-    projectName: "ChromaSync",
-    tagline: "A two-product AI platform for indie filmmakers: AI colour intelligence for colour continuity, and an AI story engine that guides writers from raw idea to full beat sheet — built end-to-end with FastAPI, Next.js, Supabase, and Claude.",
+    projectName: "Ojuit",
+    tagline: "A two-product AI platform for indie filmmakers: AI colour intelligence with Delta E measurement, XGBoost correction, and LUT export — plus an AI story engine that guides writers from raw idea to full beat sheet. Built end-to-end with FastAPI, Next.js, Supabase, OpenCV, and Claude.",
     status: "In Progress",
     author: "Ogbebor Osaheni",
     date: "March 2026",
@@ -32,7 +32,7 @@ const projectData = {
   },
 
   summary: {
-    description: "ChromaSync is a two-product AI platform for solo indie filmmakers. The Colour product uses OpenCV, XGBoost, and SHAP to solve colour drift across the full shoot pipeline. The Story product is a full-stack AI story engine — built with FastAPI, Next.js, and Supabase — that guides writers from a raw idea through interrogation, logline, character psychology, and a full beat board using structured prompt chains, real-time state persistence, and Claude as the AI backbone. Both products share a single deployed platform, a unified CSS design system, and one product philosophy: AI that suggests, humans that decide.",
+    description: "Ojuit is a two-product AI platform for solo indie filmmakers. The Colour product uses OpenCV, XGBoost, and CIE Lab Delta E to solve colour drift across the full shoot pipeline — including scene-to-reference LUT generation for DaVinci Resolve and Premiere Pro. The Story product is a full-stack AI story engine that guides writers from a raw idea through interrogation, logline, character psychology, and a full beat board using structured prompt chains, real-time state persistence, and Claude as the AI backbone. Both products share a single deployed platform, a unified CSS design system, and one product philosophy: AI that suggests, humans that decide.",
     metrics: [
       { icon: <Film className="w-5 h-5" />, value: "2", label: "AI Products", description: "Colour intelligence + Story engine" },
       { icon: <TrendingUp className="w-5 h-5" />, value: "6", label: "Story Stages", description: "Idea → Interrogation → Logline → Character → Beats → Bible" },
@@ -45,9 +45,9 @@ const projectData = {
     paragraphs: [
       "Solo indie filmmakers face two distinct but related problems. The first is technical: colour drift. Shooting run-and-gun means ISO rises in low light, white balance shifts between environments, and exposure floats with changing conditions. The result is footage where scene 1 and scene 12 look like they were filmed on different days — costing 5–8 hours of manual correction per project.",
       "The second problem is creative: most filmmakers have story ideas they never develop because the path from raw idea to structured screenplay is opaque and usually requires either expensive development support or years of craft knowledge. Existing writing tools — Final Draft, Celtx, generic AI chat — either assume you already have a fully formed story or generate one wholesale, removing the writer from their own creative process.",
-      "ChromaSync addresses both. The Colour product eliminates the technical barrier. The Story product eliminates the structural barrier — guiding writers through story discovery rather than doing it for them, using AI as a collaborator that asks better questions rather than one that writes the story.",
+      "Ojuit addresses both. The Colour product eliminates the technical barrier with CIE Lab Delta E measurement, XGBoost correction predictions, and downloadable LUT files for DaVinci Resolve and Premiere Pro. The Story product eliminates the structural barrier — guiding writers through story discovery rather than doing it for them, using AI as a collaborator that asks better questions rather than one that writes the story.",
     ],
-    keyInsight: "From Prediction Machines (Agrawal, Gans and Gold): AI reduces the cost of prediction. ChromaSync applies this across two domains — colour correction prediction for filmmakers who can't afford a colorist, and story structure prediction for writers who don't yet know the craft. When prediction is cheap, solo creators can achieve professional outcomes without professional support.",
+    keyInsight: "From Prediction Machines (Agrawal, Gans and Gold): AI reduces the cost of prediction. Ojuit applies this across two domains — colour correction prediction for filmmakers who can't afford a colorist, and story structure prediction for writers who don't yet know the craft. When prediction is cheap, solo creators can achieve professional outcomes without professional support.",
   },
 
   personas: [
@@ -99,7 +99,7 @@ const projectData = {
   ],
 
   solution: {
-    description: "ChromaSync is a two-product AI platform. The Colour product is a three-module pipeline covering pre-shoot, on-shoot, and post correction. The Story product is a six-stage AI story engine: Cold Open → Interrogation → Logline Forge → Character Forge → Beat Board → Story Bible. Both products share a single Next.js frontend, a FastAPI backend on Render, a Supabase database, and a unified CSS design system built entirely on CSS custom properties.",
+    description: "Ojuit is a two-product AI platform. The Colour product is a three-module pipeline covering pre-shoot, on-shoot, and post correction — with CIE Lab Delta E measurement, XGBoost correction predictions, and scene-to-reference LUT generation for DaVinci Resolve and Premiere Pro. The Story product is a six-stage AI story engine: Cold Open → Interrogation → Logline Forge → Character Forge → Beat Board → Story Bible. Both products share a single Next.js frontend, a FastAPI backend on Render, a Supabase database, and a unified CSS design system built entirely on CSS custom properties.",
     features: [
       {
         icon: <Lightbulb className="w-5 h-5" />,
@@ -114,7 +114,7 @@ const projectData = {
       {
         icon: <Shield className="w-5 h-5" />,
         title: "Colour Intelligence Pipeline",
-        description: "OpenCV per-frame colour extraction, XGBoost correction prediction, SHAP explainability on every correction. Pre-shoot camera settings, on-shoot dynamic guidance, post-correction with manual override. AI suggests — filmmaker decides.",
+        description: "OpenCV per-frame colour extraction, XGBoost correction prediction, CIE Lab Delta E measurement, and scene-to-reference LUT generation. Upload two frames and get a downloadable .cube LUT file for DaVinci Resolve or Premiere Pro. Delta E below 5 is the professional continuity threshold. AI suggests — filmmaker decides.",
       },
     ],
   },
@@ -186,7 +186,7 @@ const projectData = {
       { feature: "stage", type: "integer", description: "Current story stage (0–6) — used to route resume to correct component with full state", source: "Derived" },
       { feature: "mean_r/g/b, colour_temperature_k, drift_magnitude", type: "float", description: "Per-frame colour statistics for XGBoost correction model (Colour product)", source: "OpenCV extraction" },
     ],
-    methodology: "Two distinct data strategies for two products. The Colour product uses synthetic training data — reference colour profiles with programmatically applied drift, so ground truth corrections are always known exactly. This mirrors production ML practice of synthetic validation before expensive real-world labelling. The Story product uses a progressive schema: every user input is persisted to Supabase immediately. The schema was designed incrementally — each new story stage added columns, all nullable for backward compatibility with existing rows. Synthetic data is a deliberate professional choice, not a shortcut.",
+    methodology: "Two distinct data strategies for two products. The Colour product uses synthetic training data — 8,000 scenes across four drift types (standard, mixed lighting, LOG profile, harsh clipping) with programmatically applied drift, so ground truth corrections are always known exactly. All colour difference calculations use CIE Lab space, not RGB Euclidean distance. Scene-to-reference LUT generation fits a degree-2 polynomial mapping from scene Lab values to reference Lab values per channel, producing a 33x33x33 .cube file. The Story product uses a progressive schema: every user input is persisted to Supabase immediately. Synthetic data is a deliberate professional choice, not a shortcut.",
     validationMethods: [
       "Story: resume fidelity — every field restored from Supabase matches exact state when user left",
       "Story: suggestion grounding — all AI suggestions verified to use full committed story context, not just raw idea",
@@ -240,11 +240,11 @@ const projectData = {
     ],
     competitorAName: "Sudowrite",
     competitorBName: "Celtx",
-    positioningStatement: "Unlike Sudowrite which generates content for the writer, or Celtx which assumes the story already exists and just needs formatting, ChromaSync guides the writer through structured story discovery using their own committed answers as the foundation for every AI suggestion. The story that emerges belongs entirely to the writer.",
+    positioningStatement: "Unlike Sudowrite which generates content for the writer, or Celtx which assumes the story already exists and just needs formatting, Ojuit guides the writer through structured story discovery using their own committed answers as the foundation for every AI suggestion. The story that emerges belongs entirely to the writer.",
   },
 
   okrs: {
-    objective: "Build and ship a two-product AI platform for solo indie filmmakers that demonstrates full-stack AI product thinking, ethical AI design, and production-grade engineering",
+    objective: "Build and ship Ojuit — a two-product AI platform for solo indie filmmakers demonstrating full-stack AI product thinking, CIE Lab colour science, XGBoost ML, LUT generation, ethical AI design, and production-grade engineering",
     keyResults: [
       { kr: "Story Engine live at chromasync-app.vercel.app with all six stages functional end to end", progress: 100, target: "Live URL" },
       { kr: "Full state persistence: every story action saved to Supabase and resumable from exact last step", progress: 100, target: "100% resumable" },
@@ -314,7 +314,7 @@ const projectData = {
       "Build the Story Library earlier. It's the feature that makes the product feel real — a writer sees saved stories, resumes them, and experiences the value of persistence firsthand. It should have been Day 1, not Phase 4.",
       "Run prompt engineering and UI design in parallel. Several UX decisions were made before AI outputs were stable, which required rework when the suggestions changed shape.",
     ],
-    keyTakeaway: "As Jesse Schell writes in The Art of Game Design, every design decision should be tested against one question: does this serve the experience? For ChromaSync Story, every feature was tested against: does this keep the writer in their creative process, or does it pull them out? The progressive disclosure, commit-before-continuing mechanic, and AVOID_LIST all flow from that single design principle.",
+    keyTakeaway: "As Jesse Schell writes in The Art of Game Design, every design decision should be tested against one question: does this serve the experience? For Ojuit Story, every feature was tested against: does this keep the writer in their creative process, or does it pull them out? The progressive disclosure, commit-before-continuing mechanic, and AVOID_LIST all flow from that single design principle. For Ojuit Colour, the equivalent question is: does this give the filmmaker a decision they can actually make on set, or just a number they cannot interpret? CIE Lab Delta E and plain-English verdicts exist because of that question.",
   },
 
   productArtifacts: {
@@ -456,7 +456,7 @@ const projectData = {
   },
 
   contact: {
-    pitch: "I am actively seeking Junior AI PM and Technical PM roles at companies building AI-powered products — creative tech, media, e-commerce, fintech, or any domain where product thinking and technical depth matter equally. ChromaSync demonstrates full-stack AI product development: prompt engineering, real-time persistence, mobile-first UX, and ethical AI design — built and shipped, not just planned. Let us connect.",
+    pitch: "I am actively seeking Junior AI PM, Technical PM, and AI BA roles at companies building AI-powered products — creative tech, media, e-commerce, fintech, or any domain where product thinking and technical depth matter equally. Ojuit demonstrates full-stack AI product development: prompt engineering, CIE Lab colour science, XGBoost ML pipelines, LUT generation, real-time persistence, mobile-first UX, and ethical AI design — built and shipped, not just planned. Let us connect.",
     email: "osaheniogbebor.c@gmail.com",
     linkedIn: "https://www.linkedin.com/in/osaheni-o-94565421a/",
     github: "https://github.com/aiirveon",
