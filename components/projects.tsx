@@ -55,12 +55,12 @@ export default function Projects() {
       featured: false,
     },
     {
-      title: "ChromaSync - AI Colour Intelligence for Indie Filmmakers",
+      title: "Ojuit - AI Filmmaking Intelligence",
       description:
-        "End-to-end AI colour continuity system for solo indie filmmakers. Recommends camera settings pre-shoot, guides parameter adjustments on-set, and auto-corrects colour drift in post using XGBoost and SHAP explainability. Targets 70% reduction in manual colour correction time. Built for BBC R&D, Foundry, and Sky Studios audiences.",
-      techStack: ["Python", "OpenCV", "XGBoost", "SHAP", "MoviePy", "Streamlit"],
-      github: "https://github.com/aiirveon",
-      demo: null,
+        "Two-product AI platform for solo indie filmmakers. Story Engine guides writers from raw idea to full beat sheet across six stages with AVOID_LIST prompt engineering and full Supabase state persistence. Colour Intelligence pipeline delivers CIE Lab Delta E measurement, XGBoost correction predictions, and scene-to-reference LUT export for DaVinci Resolve and Premiere Pro.",
+      techStack: ["Python", "FastAPI", "Next.js", "OpenCV", "XGBoost", "Claude API", "Supabase"],
+      github: "https://github.com/aiirveon/chromasync-app",
+      demo: "https://chromasync-app.vercel.app",
       caseStudy: "/projects/ChromaSync",
       image: "/placeholder.svg?height=200&width=400",
       featured: false,
