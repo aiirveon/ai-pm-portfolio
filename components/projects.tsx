@@ -34,16 +34,41 @@ export default function Projects() {
     },
 
     {
+      title: "Bias Audit Dashboard",
+      description:
+        "B2B AI tool for trust and safety teams at UK media companies. Detects bias across 6 categories using TF-IDF + XGBoost (F1 0.90) with tiered routing: short inputs go to Claude API for semantic classification, long inputs to the full XGBoost + SHAP pipeline. Includes a live comment moderation simulator, fairness metrics panel, and audit log. Built for Online Safety Act 2023 and Ofcom compliance.",
+      techStack: ["Next.js", "FastAPI", "XGBoost", "SHAP", "Claude API", "Supabase"],
+      github: "https://github.com/aiirveon/bias-audit-dashboard",
+      demo: "https://bias-audit-dashboard.vercel.app",
+      caseStudy: "/projects/bias-audit-dashboard",
+      image: "/placeholder.svg?height=200&width=400",
+      featured: false,
+      status: "Shipped",
+    },
+
+    {
       title: "Ojuit - AI Filmmaking Intelligence",
       description:
         "Two-product AI platform for solo indie filmmakers. Story Engine guides writers from raw idea to full beat sheet across six stages with AVOID_LIST prompt engineering and full Supabase state persistence. Colour Intelligence pipeline delivers CIE Lab Delta E measurement, XGBoost correction predictions, and scene-to-reference LUT export for DaVinci Resolve and Premiere Pro.",
       techStack: ["Python", "FastAPI", "Next.js", "OpenCV", "XGBoost", "Claude API", "Supabase"],
       github: "https://github.com/aiirveon/chromasync-app",
       demo: "https://chromasync-app.vercel.app",
-      caseStudy: "/projects/ChromaSync",
+      caseStudy: "/projects/ojuit",
       image: "/placeholder.svg?height=200&width=400",
       featured: false,
       status: "In Progress",
+    },
+    {
+      title: "Pulse — AI Audience Sentiment Monitor",
+      description:
+        "Real-time AI audience sentiment monitor for live UK broadcast events. TF-IDF + XGBoost emotion classifier (5-class, Macro F1 0.830) and multi-label topic classifier built for live broadcast producers at BBC, Channel 4, ITV, and Sky. Scripted BAFTA simulation with narrative arc, negative sentiment spike alerts, SHAP word-level explainability, and an editorial guardrail built into the architecture. Aligned with Ofcom Broadcasting Code.",
+      techStack: ["Python", "FastAPI", "Next.js", "XGBoost", "SHAP", "Recharts"],
+      github: "https://github.com/aiirveon/pulse",
+      demo: "https://pulse-pi-inky.vercel.app",
+      caseStudy: "/projects/pulse",
+      image: "/placeholder.svg?height=200&width=400",
+      featured: false,
+      status: "Shipped",
     },
   ]
 
@@ -100,6 +125,11 @@ export default function Projects() {
       Featured
     </Badge>
   )}
+                  {project.status === "Shipped" && !project.featured && (
+                    <Badge className="absolute top-4 left-4 bg-jungle-500 text-white font-bold text-xs">
+                      Shipped
+                    </Badge>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-jungle-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 <CardHeader>
