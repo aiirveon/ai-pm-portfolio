@@ -14,7 +14,7 @@ export default function About() {
     },
     {
       name: "Explainable AI",
-      description: "Applied SHAP across every shipped model. Every prediction has a plain-English explanation — not just a score.",
+      description: "Applied SHAP to the pricing and bias detection models. Pricing: 3 chart types (bar, dot, waterfall) with live per-prediction explanations. Bias Audit: per-word SHAP waterfall in every result card — reviewers see exactly which words drove the verdict and by how much.",
       icon: "BarChart2",
     },
     {
