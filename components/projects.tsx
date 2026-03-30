@@ -72,7 +72,7 @@ export default function Projects() {
       status: "In Progress",
     },
     {
-      title: "Pulse — AI Audience Sentiment Monitor",
+      title: "Pulse: AI Audience Sentiment Monitor",
       description:
         "Real-time AI audience sentiment monitor for live UK broadcast events. TF-IDF + XGBoost emotion classifier (5-class, Macro F1 0.830) and multi-label topic classifier built for live broadcast producers at BBC, Channel 4, ITV, and Sky. Scripted BAFTA simulation with narrative arc, negative sentiment spike alerts, SHAP word-level explainability, and an editorial guardrail built into the architecture. Aligned with Ofcom Broadcasting Code.",
       techStack: ["Python", "FastAPI", "Next.js", "XGBoost", "SHAP", "Recharts"],

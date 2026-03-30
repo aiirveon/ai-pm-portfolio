@@ -38,7 +38,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-jungle-gradient">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-jungle-gradient pb-16">
       {/* Jungle background */}
       <div
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-60"
@@ -117,7 +117,7 @@ export default function Hero() {
 </h1>
 
             <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto mb-8 drop-shadow">
-            I help turn ML models into real products people can trust, making sure they’re built with clarity, ethics, and the needs of the people who use them.
+            I build ML products end-to-end, from model to frontend, with explainability and ethics baked in from day one, not bolted on at the end.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -137,9 +137,26 @@ export default function Hero() {
                 View Projects
               </Button>
             </div>
+
+            <div className="flex justify-center mt-10">
+              <motion.a
+                href="#about"
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                className="text-white/60 hover:text-white transition-colors"
+                aria-label="Scroll down"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 5v14M5 12l7 7 7-7"/>
+                </svg>
+              </motion.a>
+            </div>
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Bottom fade to blend into next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-jungle-950 to-transparent pointer-events-none z-10" />
 
       {/* Jungle vines */}
       <div className="absolute left-0 top-0 h-full w-24 opacity-40 pointer-events-none">

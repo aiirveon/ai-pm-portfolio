@@ -88,7 +88,7 @@ export default function Services() {
             <Leaf className="h-6 w-6 text-jungle-500 dark:text-jungle-400" />
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-            End-to-end AI Product Management skills—from strategic roadmaps to ethical deployment.
+            End-to-end AI Product Management skills, from strategic roadmaps to ethical deployment.
           </p>
           <div className="h-1 w-20 bg-jungle-500 mx-auto mt-4"></div>
         </motion.div>

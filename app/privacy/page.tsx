@@ -7,7 +7,7 @@ export default function PrivacyPage() {
         <Card className="border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
           <CardContent className="p-8">
             <h1 className="text-4xl font-bold text-slate-800 dark:text-white mb-4">Privacy Policy</h1>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mb-8">Last Updated: November 26, 2025</p>
+            <p className="text-sm text-slate-500 dark:text-slate-400 mb-8">Last Updated: March 30, 2026</p>
 
             <div className="prose dark:prose-invert max-w-none">
               <h2 className="text-2xl font-semibold text-slate-800 dark:text-white mt-6 mb-4">
@@ -28,7 +28,7 @@ export default function PrivacyPage() {
               </h2>
               <ul className="list-disc pl-6 text-slate-600 dark:text-slate-300 mb-6">
                 <li><strong>Purpose:</strong> To respond to your inquiry only</li>
-                <li><strong>Storage:</strong> Data is stored securely via Formspree</li>
+                <li><strong>Storage:</strong> Data is stored securely via Web3Forms</li>
                 <li><strong>Retention:</strong> Deleted after 90 days or upon request</li>
                 <li><strong>Third Parties:</strong> I do not sell or share your data</li>
               </ul>
@@ -56,7 +56,7 @@ export default function PrivacyPage() {
                 Contact for Privacy Concerns
               </h2>
               <p className="text-slate-600 dark:text-slate-300 mb-6">
-                For any privacy-related questions or data requests, please email me directly through the contact form or at stephen.kihuni@example.com (replace with your actual email).
+                For any privacy-related questions or data requests, please email me directly through the contact form or at osaheniogbebor.c@gmail.com.
               </p>
 
               <div className="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-900 rounded-lg p-4 mt-8">

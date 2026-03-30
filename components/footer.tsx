@@ -25,13 +25,13 @@ export default function Footer() {
               <p className="text-lg font-semibold flex items-center">
                 Ogbebor Osaheni <Leaf className="h-4 w-4 ml-1 text-jungle-400" />
               </p>
-              <p className="text-sm text-jungle-400">Django Jungle Explorer</p>
+              <p className="text-sm text-jungle-400">AI Product Manager</p>
             </div>
           </div>
 
           <div className="flex gap-4 mb-4 md:mb-0">
             <a
-              href="https://www.linkedin.com/in/kihuni/"
+              href="https://www.linkedin.com/in/osaheni-o-94565421a/"
               className="p-2 rounded-full hover:bg-jungle-800 transition-colors"
               aria-label="LinkedIn"
               target="_blank"
@@ -40,7 +40,7 @@ export default function Footer() {
               <Linkedin className="h-5 w-5" />
             </a>
             <a
-              href="https://github.com/kihuni"
+              href="https://github.com/aiirveon"
               className="p-2 rounded-full hover:bg-jungle-800 transition-colors"
               aria-label="GitHub"
               target="_blank"
@@ -49,7 +49,7 @@ export default function Footer() {
               <Github className="h-5 w-5" />
             </a>
             <a
-              href="mailto:ogbeborosaheni.c@gmail.com"
+              href="mailto:osaheniogbebor.c@gmail.com"
               className="p-2 rounded-full hover:bg-jungle-800 transition-colors"
               aria-label="Email"
             >
@@ -62,21 +62,12 @@ export default function Footer() {
               © {currentYear} Ogbebor Osaheni. All rights reserved.
             </div>
             <div className="flex gap-3 text-xs">
-              <Link 
-                href="/privacy" 
+              <Link
+                href="/privacy"
                 className="text-jungle-400 hover:text-jungle-200 transition-colors"
               >
                 Privacy Policy
               </Link>
-              <span className="text-jungle-600">|</span>
-              <a 
-                href="https://github.com/YOUR_USERNAME/portfolio-website" 
-                className="text-jungle-400 hover:text-jungle-200 transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View Source
-              </a>
             </div>
           </div>
         </div>

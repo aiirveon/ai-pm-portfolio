@@ -8,11 +8,10 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
   title: "Ogbebor Osaheni | AI  Product Manager",
-  description: "AI  Product Manager specializing in Building Intelligent, Trusted Products",
+  description: "AI Product Manager building intelligent, trusted ML products. Portfolio of shipped projects in media, bias detection, and creative technology.",
   icons: {
     icon: [{ url: "/images/profile.png" }],
   },
-    generator: 'v0.app'
 }
 
 export default function RootLayout({

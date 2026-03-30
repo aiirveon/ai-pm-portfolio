@@ -1,27 +1,51 @@
 "use client"
 
+import React from "react"
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
-import { Leaf } from "lucide-react"
+import { Leaf, Brain, BarChart2, Target, Shield, Code2, Zap } from "lucide-react"
 
 export default function About() {
   const skills = [
-    { name: "ML/XGBoost", icon: <span className="text-2xl">🤖</span>, color: "bg-blue-100 dark:bg-blue-900" },
-    { name: "SHAP/Explainability", icon: <span className="text-2xl">📊</span>, color: "bg-purple-100 dark:bg-purple-900" },
-    { name: "Product Strategy", icon: <span className="text-2xl">🎯</span>, color: "bg-green-100 dark:bg-green-900" },
-    { name: "Stakeholder Mgmt", icon: <span className="text-2xl">👥</span>, color: "bg-orange-100 dark:bg-orange-900" },
-    { name: "Ethics & Bias", icon: <span className="text-2xl">⚖️</span>, color: "bg-red-100 dark:bg-red-900" },
-    { name: "OKRs/Roadmaps", icon: <span className="text-2xl">🗺️</span>, color: "bg-cyan-100 dark:bg-cyan-900" },
+    {
+      name: "ML & XGBoost",
+      description: "Built and tuned XGBoost pipelines across pricing, sentiment, and bias detection — with Optuna for hyperparameter optimisation.",
+      icon: "Brain",
+    },
+    {
+      name: "Explainable AI",
+      description: "Applied SHAP across every shipped model. Every prediction has a plain-English explanation — not just a score.",
+      icon: "BarChart2",
+    },
+    {
+      name: "Product Strategy",
+      description: "Wrote PRDs, OKRs, and roadmaps before building. Shipped PM artefacts first, code second — on every project.",
+      icon: "Target",
+    },
+    {
+      name: "Responsible AI",
+      description: "Built bias audits, fairness constraints, and ethics frameworks aligned to UK Online Safety Act, Ofcom, and GDPR.",
+      icon: "Shield",
+    },
+    {
+      name: "Full-Stack Shipping",
+      description: "FastAPI backends, Next.js frontends, Supabase — from model to deployed product, end to end.",
+      icon: "Code2",
+    },
+    {
+      name: "AI-Assisted Development",
+      description: "Direct Claude Code and v0 to ship production interfaces, maintaining full ownership of decisions and architecture.",
+      icon: "Zap",
+    },
   ]
 
   return (
     <section id="about" className="py-20 bg-white dark:bg-jungle-950 relative overflow-hidden">
-      {/* Jungle background decoration */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div
           className="absolute inset-0 bg-contain"
           style={{
-            backgroundImage: `url('/images/django-jungle.png')`,
+            backgroundImage: `url(‘/images/django-jungle.png’)`,
             backgroundPosition: "center",
             backgroundSize: "80%",
             backgroundRepeat: "no-repeat",
@@ -30,7 +54,9 @@ export default function About() {
         />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 max-w-5xl">
+
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -46,14 +72,17 @@ export default function About() {
           <div className="h-1 w-20 bg-jungle-500 mx-auto"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        {/* Top: Image + Bio side by side */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-14">
+
+          {/* Image */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <div className="aspect-square max-w-md mx-auto bg-gradient-to-b from-jungle-800/50 to-jungle-950/50 rounded-lg overflow-hidden relative">
+            <div className="max-w-xs mx-auto bg-gradient-to-b from-jungle-800/50 to-jungle-950/50 rounded-xl overflow-hidden relative aspect-square">
               <motion.div
                 className="absolute inset-0 flex items-center justify-center"
                 animate={{ rotate: [0, 5, 0, -5, 0] }}
@@ -65,42 +94,65 @@ export default function About() {
                   className="w-full h-full object-contain p-4"
                 />
               </motion.div>
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-jungle-900/90 to-transparent p-6">
-                <h3 className="text-white text-xl font-bold">Ogbebor Osaheni</h3>
-                <p className="text-jungle-200">AI Product Manager</p>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-jungle-900/90 to-transparent p-4">
+                <h3 className="text-white text-lg font-bold">Ogbebor Osaheni</h3>
+                <p className="text-jungle-200 text-sm">AI Product Manager</p>
               </div>
             </div>
           </motion.div>
 
+          {/* Bio text */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-4"
           >
-            <p className="text-lg text-slate-700 dark:text-slate-300">
-            I’m Ogbebor Osaheni — an AI Product Manager building end-to-end ML products from the ground up: ML pipelines, FastAPI backends, and Next.js frontends shipped to production with full PM artefacts before a single line of code.
+            <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+              I’m Ogbebor Osaheni, an AI Product Manager building end-to-end ML products from the ground up: ML pipelines, FastAPI backends, and Next.js frontends shipped to production with full PM artefacts before a single line of code.
             </p>
-            <p className="text-lg text-slate-700 dark:text-slate-300">
-            I’m drawn to products where AI meets human creativity and editorial judgement — bias detection tools that keep reviewers in control, story engines that guide writers rather than replace them, and pricing systems that explain every recommendation in plain English. The thread across all of it: AI that earns trust by being transparent.
+            <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+              I’m drawn to products where AI meets human creativity and editorial judgement. Bias detection tools that keep reviewers in control, story engines that guide writers rather than replace them, pricing systems that explain every recommendation in plain English. The common thread: AI that earns trust by being transparent.
             </p>
-            <p className="text-lg text-slate-700 dark:text-slate-300">
-            I’m actively looking for junior AI PM and Technical PM roles in the UK — particularly in media, film and creative technology, and any product-led company where responsible AI is a real constraint, not a tagline.
+            <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+              Open to AI PM roles in the UK, particularly in media, film and creative technology. Projects built using AI-assisted development workflows, directing Claude Code and v0 to ship production frontends while maintaining full ownership of product decisions, architecture, and PM artefacts.
             </p>
-
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4">
-              {skills.map((skill, index) => (
-                <Card key={index} className={`border-none ${skill.color}`}>
-                  <CardContent className="p-4 flex flex-col items-center justify-center text-center">
-                    <div className="mb-2">{skill.icon}</div>
-                    <span className="font-medium text-slate-800 dark:text-white">{skill.name}</span>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
           </motion.div>
         </div>
+
+        {/* Bottom: Skills grid full width */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {skills.map((skill, index) => {
+              const icons: Record<string, React.ReactNode> = {
+                Brain: <Brain className="h-4 w-4 text-jungle-500" />,
+                BarChart2: <BarChart2 className="h-4 w-4 text-jungle-500" />,
+                Target: <Target className="h-4 w-4 text-jungle-500" />,
+                Shield: <Shield className="h-4 w-4 text-jungle-500" />,
+                Code2: <Code2 className="h-4 w-4 text-jungle-500" />,
+                Zap: <Zap className="h-4 w-4 text-jungle-500" />,
+              }
+              return (
+                <Card key={index} className="border border-slate-200 dark:border-jungle-800 bg-white dark:bg-jungle-900/40 hover:shadow-sm transition-shadow duration-200">
+                  <CardContent className="p-3 flex items-start gap-2.5">
+                    <div className="mt-0.5 shrink-0">{icons[skill.icon]}</div>
+                    <div>
+                      <p className="font-semibold text-xs text-slate-800 dark:text-white mb-0.5">{skill.name}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{skill.description}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              )
+            })}
+          </div>
+        </motion.div>
+
       </div>
     </section>
   )

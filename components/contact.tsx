@@ -61,7 +61,7 @@ export default function Contact() {
         >
           <h2 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white mb-4">Get In Touch</h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-            Have a project in mind or want to discuss how I can help your business? Let's talk!
+            Open to AI PM roles, freelance work, and interesting conversations about what responsible AI actually looks like in practice. Get in touch.
           </p>
           <div className="h-1 w-20 bg-emerald-500 mx-auto mt-4"></div>
         </motion.div>
@@ -84,7 +84,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-sm text-slate-500 dark:text-slate-400">Email</p>
-                      <p className="text-slate-800 dark:text-white font-medium">ogbeborosaheni.c@gmail.com</p>
+                      <p className="text-slate-800 dark:text-white font-medium">osaheniogbebor.c@gmail.com</p>
                     </div>
                   </div>
 
