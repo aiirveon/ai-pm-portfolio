@@ -34,6 +34,19 @@ export default function Projects() {
     },
 
     {
+      title: "AI Movie Recommender",
+      description:
+        "Explainable movie recommendation engine solving streaming decision fatigue. Uses OpenAI text-embedding-3-small and cosine similarity to suggest personalised films from a YouTube video URL or mood input. Every recommendation includes a GPT-4o-mini generated explanation showing WHY it was suggested. Achieved 87% Precision@10 vs. 34% random baseline across 5,000+ movies and 6 streaming platforms.",
+      techStack: ["Next.js", "TypeScript", "OpenAI API", "TMDB API", "WatchMode API", "Vercel"],
+      github: "https://github.com/aiirveon",
+      demo: "https://v0-youtube-recommender.vercel.app/",
+      caseStudy: "/projects/ai-movie-recommender",
+      image: "/placeholder.svg?height=200&width=400",
+      featured: false,
+      status: "Shipped",
+    },
+
+    {
       title: "Bias Audit Dashboard",
       description:
         "B2B AI tool for trust and safety teams at UK media companies. Detects bias across 6 categories using TF-IDF + XGBoost (F1 0.90) with tiered routing: short inputs go to Claude API for semantic classification, long inputs to the full XGBoost + SHAP pipeline. Includes a live comment moderation simulator, fairness metrics panel, and audit log. Built for Online Safety Act 2023 and Ofcom compliance.",

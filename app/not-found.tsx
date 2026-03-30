@@ -40,18 +40,18 @@ export default function NotFound() {
               <div className="flex justify-center mb-6">
                 <img
                   src="/images/profile.png"
-                  alt="Ogbebor Osaheni - Lost in the Django Jungle"
+                  alt="Ogbebor Osaheni - 404 — Signal Lost"
                   className="w-32 h-32 object-contain"
                 />
               </div>
               <h1 className="text-6xl font-bold text-white mb-2">404</h1>
-              <h2 className="text-2xl font-semibold text-jungle-200 mb-4">Lost in the Django Jungle</h2>
+              <h2 className="text-2xl font-semibold text-jungle-200 mb-4">404 — Signal Lost</h2>
               <p className="text-slate-200 mb-8">
-                Oops! It seems you've wandered off the path. This page doesn't exist in our jungle.
+                This page doesn't exist. But unlike a poorly trained model, I can tell you that with confidence.
               </p>
               <Button asChild className="bg-jungle-600 hover:bg-jungle-700 text-white">
                 <Link href="/">
-                  <Leaf className="mr-2 h-4 w-4" /> Return to Base Camp
+                  <Leaf className="mr-2 h-4 w-4" /> Return to Portfolio
                 </Link>
               </Button>
             </div>
@@ -106,20 +106,20 @@ export default function NotFound() {
             >
               <img
                 src="/images/profile.png"
-                alt="Ogbebor Osaheni - Lost in the Django Jungle"
+                alt="Ogbebor Osaheni - 404 — Signal Lost"
                 className="w-32 h-32 object-contain"
               />
             </motion.div>
 
             <h1 className="text-6xl font-bold text-white mb-2">404</h1>
-            <h2 className="text-2xl font-semibold text-jungle-200 mb-4">Lost in the Django Jungle</h2>
+            <h2 className="text-2xl font-semibold text-jungle-200 mb-4">404 — Signal Lost</h2>
             <p className="text-slate-200 mb-8">
-              Oops! It seems you've wandered off the path. This page doesn't exist in our jungle.
+              This page doesn't exist. But unlike a poorly trained model, I can tell you that with confidence.
             </p>
 
             <Button asChild className="bg-jungle-600 hover:bg-jungle-700 text-white">
               <Link href="/">
-                <Leaf className="mr-2 h-4 w-4" /> Return to Base Camp
+                <Leaf className="mr-2 h-4 w-4" /> Return to Portfolio
               </Link>
             </Button>
           </div>

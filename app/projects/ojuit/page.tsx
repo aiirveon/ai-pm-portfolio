@@ -50,6 +50,9 @@ const projectData = {
     keyInsight: "From Prediction Machines (Agrawal, Gans and Gold): AI reduces the cost of prediction. Ojuit applies this across two domains — colour correction prediction for filmmakers who can't afford a colorist, and story structure prediction for writers who don't yet know the craft. When prediction is cheap, solo creators can achieve professional outcomes without professional support.",
   },
 
+  personasIntroduction:
+    "These personas represent the two faces of solo indie filmmaking Ojuit is designed for: creators who need consistent colour without hiring a colorist, and writers who need structured story development without starting from a blank page. Each persona’s goals and constraints shape how Ojuit’s AI suggestions stay grounded in the user’s committed inputs.",
+
   personas: [
     {
       name: "Kofi",
@@ -324,7 +327,7 @@ const projectData = {
         icon: <FileText className="w-5 h-5" />,
         title: "Product Requirements Document",
         description: "Problem statement, user stories, functional and non-functional requirements, and success metrics. Covers both the Story Engine and the Colour product with clear separation of scope.",
-        githubUrl: "https://github.com/aiirveon/chromasync-app/blob/main/docs/PRD.md",
+        githubUrl: "https://github.com/aiirveon/chromasync-app/blob/main/docs/PRD.md",notionUrl: "https://www.notion.so/Ojuit-Product-Requirements-Document-3255b693bab8800883c7cdfe0baab8a6",
         highlights: [
           "8 functional requirements covering the full six-stage story flow",
           "Cold start handling and mobile-first as explicit non-functional requirements",
@@ -474,7 +477,7 @@ export default function ChromaSyncProject() {
         <HeroSection {...projectData.hero} />
         <ExecutiveSummary description={projectData.summary.description} metrics={projectData.summary.metrics} />
         <ProblemSection paragraphs={projectData.problem.paragraphs} keyInsight={projectData.problem.keyInsight} />
-        <PersonasSection personas={projectData.personas} />
+        <PersonasSection introduction={projectData.personasIntroduction} personas={projectData.personas} />
         <SolutionSection description={projectData.solution.description} features={projectData.solution.features} />
         <ImplementationSection phases={projectData.phases} />
         <DataSection dataDict={projectData.data.dataDict} methodology={projectData.data.methodology} validationMethods={projectData.data.validationMethods} />

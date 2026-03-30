@@ -53,7 +53,7 @@ interface DeepDive {
 }
 
 interface PersonasSectionProps {
-  introduction: string
+  introduction?: string
   personas: PersonaProps[]
   deepDive?: DeepDive
 }
@@ -119,9 +119,11 @@ export function PersonasSection({ introduction, personas, deepDive }: PersonasSe
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               User Personas
             </h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-4xl">
-              {introduction}
-            </p>
+            {introduction && (
+              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-4xl">
+                {introduction}
+              </p>
+            )}
           </div>
 
           {/* Persona Cards */}

@@ -35,17 +35,17 @@ export function OkrsSection({ objective, keyResults, successMetrics, videoUrl }:
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-2xl font-semibold text-slate-800 dark:text-white">Key Results</h3>
+            <h3 className="text-lg font-semibold text-slate-800 dark:text-white">Key Results</h3>
             <div className="space-y-4">
               {keyResults.map((item, i) => (
-                <div key={i} className="space-y-2 p-4 rounded-xl border border-slate-200 dark:border-jungle-700 bg-white dark:bg-jungle-800/30">
+                <div key={i} className="space-y-1 p-3 rounded-lg border border-slate-200 dark:border-jungle-700 bg-white dark:bg-jungle-800/30">
                   <div className="flex justify-between items-center">
                     <p className="font-medium text-slate-800 dark:text-white">{item.kr}</p>
                     <span className="text-sm font-semibold text-jungle-600 dark:text-jungle-400">{item.progress}%</span>
                   </div>
-                  <Progress value={item.progress} className="h-2" />
+                  <Progress value={item.progress} className="h-1.5" />
                   {item.target && (
-                    <p className="text-sm text-slate-500 dark:text-slate-400">Target: {item.target}</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">Target: {item.target}</p>
                   )}
                 </div>
               ))}

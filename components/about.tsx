@@ -80,13 +80,13 @@ export default function About() {
             className="space-y-6"
           >
             <p className="text-lg text-slate-700 dark:text-slate-300">
-            I'm Ogbebor Osaheni — a Product Manager transitioning into AI Product Management by building end-to-end ML products that demonstrate technical depth and strategic product thinking.
+            I’m Ogbebor Osaheni — an AI Product Manager building end-to-end ML products from the ground up: ML pipelines, FastAPI backends, and Next.js frontends shipped to production with full PM artefacts before a single line of code.
             </p>
             <p className="text-lg text-slate-700 dark:text-slate-300">
-            I’m especially interested in explainable AI (using tools like SHAP), responsible ML deployment, and turning complex ideas into stories that make sense to stakeholders. My goal is simple: make AI transparent enough for people to trust and practical enough for teams to adopt.
+            I’m drawn to products where AI meets human creativity and editorial judgement — bias detection tools that keep reviewers in control, story engines that guide writers rather than replace them, and pricing systems that explain every recommendation in plain English. The thread across all of it: AI that earns trust by being transparent.
             </p>
             <p className="text-lg text-slate-700 dark:text-slate-300">
-            Right now, I’m exploring AI PM roles in the UK, especially in product-led, data-driven companies like Spotify, BBC, Monzo, and Deliveroo.
+            I’m actively looking for junior AI PM and Technical PM roles in the UK — particularly in media, film and creative technology, and any product-led company where responsible AI is a real constraint, not a tagline.
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4">

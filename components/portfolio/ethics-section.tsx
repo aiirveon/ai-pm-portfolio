@@ -12,13 +12,20 @@ interface Guardrail {
 }
 
 interface EthicsSectionProps {
+  introduction?: string
   principles: Principle[]
   guardrails: Guardrail[]
   biasAuditDescription?: string
   videoUrl?: string
 }
 
-export function EthicsSection({ principles, guardrails, biasAuditDescription, videoUrl }: EthicsSectionProps) {
+export function EthicsSection({
+  introduction,
+  principles,
+  guardrails,
+  biasAuditDescription,
+  videoUrl,
+}: EthicsSectionProps) {
   return (
     <section id="ethics" className="py-20 px-4 bg-slate-50 dark:bg-jungle-900/30">
       <div className="container mx-auto max-w-6xl">
@@ -29,6 +36,12 @@ export function EthicsSection({ principles, guardrails, biasAuditDescription, vi
             </div>
             <h2 className="text-3xl font-bold text-slate-800 dark:text-white">Ethics & Responsible AI</h2>
           </div>
+
+          {introduction && (
+            <p className="text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
+              {introduction}
+            </p>
+          )}
 
           <div className="grid lg:grid-cols-4 gap-4">
             {principles.map((principle, i) => (
