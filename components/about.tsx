@@ -9,7 +9,7 @@ export default function About() {
   const skills = [
     {
       name: "ML & XGBoost",
-      description: "Built and tuned XGBoost pipelines across pricing, sentiment, and bias detection — with Optuna for hyperparameter optimisation.",
+      description: "Built XGBoost pipelines across pricing, sentiment, and bias detection. Applied Optuna TPE search (50 trials, 3-fold CV) on the pricing system — confirming the baseline was already well-calibrated and the R² ceiling was genuine market noise, not fixable by tuning.",
       icon: "Brain",
     },
     {
