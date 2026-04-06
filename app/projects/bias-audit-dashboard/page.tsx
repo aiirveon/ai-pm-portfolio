@@ -15,8 +15,8 @@ import {
   RoadmapSection,
   LearningsSection,
   ContactSection,
-  ProductArtifactsSection,
 } from "@/components/portfolio"
+import { PmArtefactsSection } from "@/components/portfolio/pm-artefacts-section"
 
 const projectData = {
   hero: {
@@ -251,46 +251,6 @@ const projectData = {
     ],
     keyTakeaway: "The model improved from F1 0.65 to 0.89 on the hardest categories by changing the training data, not the algorithm. Data quality is a product decision. The model learns exactly what the data shows — and if the data conflates two categories, no amount of hyperparameter tuning will teach the model to tell them apart.",
   },
-  productArtifacts: {
-    introduction: "Five PM artefacts written before any code was written. These documents shaped every architectural decision in the project — the PRD's fairness constraint became a hard model requirement, the ethics framework's human-in-the-loop principle became an architectural constraint, and the competitive analysis shaped the positioning of the tiered routing architecture.",
-    artifacts: [
-      {
-        icon: <FileText className="w-5 h-5" />,
-        title: "Opportunity Assessment",
-        description: "Problem definition, user persona (trust and safety analyst), business hypothesis, risk register, and portfolio positioning. Written before any code.",
-        githubUrl: "https://github.com/aiirveon/bias-audit-dashboard/blob/main/docs/OPPORTUNITY_ASSESSMENT.md",
-        highlights: ["User persona: Trust and Safety Analyst at UK media company", "Hypothesis: structured AI detection → faster, more defensible decisions", "Risk: synthetic data may not reflect real distribution — documented"],
-      },
-      {
-        icon: <Users className="w-5 h-5" />,
-        title: "PRD",
-        description: "Six functional requirement areas (FR-01 through FR-06), P0/P1 priorities, API specification, non-functional requirements, and success metrics with explicit thresholds.",
-        githubUrl: "https://github.com/aiirveon/bias-audit-dashboard/blob/main/docs/PRD.md",
-        highlights: ["F1 > 0.78 as acceptance criteria", "Human reviewer action as P0 requirement", "Cold start handling specified as FR-06"],
-      },
-      {
-        icon: <Shield className="w-5 h-5" />,
-        title: "Ethics Framework",
-        description: "Eight sections covering core principles, hard constraints, four bias risk areas, regulatory context (OSA 2023, Ofcom, UK GDPR), fairness metric definitions, and ongoing responsibilities.",
-        githubUrl: "https://github.com/aiirveon/bias-audit-dashboard/blob/main/docs/ETHICS.md",
-        highlights: ["Hard constraint: system never auto-removes content", "Regulatory context: Ofcom Broadcasting Code, Online Safety Act 2023, BBC Editorial Guidelines, UK GDPR", "What good looks like: reviewer can explain every decision to Ofcom"],
-      },
-      {
-        icon: <BarChart3 className="w-5 h-5" />,
-        title: "Competitive Analysis",
-        description: "Five competitors profiled (Perspective API, AWS, Hive Moderation, Fairly AI, manual workflows), 8-capability positioning matrix, and defensible position statement.",
-        githubUrl: "https://github.com/aiirveon/bias-audit-dashboard/blob/main/docs/COMPETITIVE_ANALYSIS.md",
-        highlights: ["Competing with the spreadsheet, not just enterprise tools", "Defensible position: only tool built for trust and safety analyst workflow", "UK regulatory framing as differentiator"],
-      },
-      {
-        icon: <AlertTriangle className="w-5 h-5" />,
-        title: "Model Decisions",
-        description: "Architecture decisions, training data rationale, known limitations with honest documentation, and F1 results. Includes the geographic_bias failure mode and why it exists.",
-        githubUrl: "https://github.com/aiirveon/bias-audit-dashboard/blob/main/docs/MODEL_DECISIONS.md",
-        highlights: ["Why TF-IDF + XGBoost over transformers: SHAP tractability", "Known limitation: geographic_bias misclassifies adjective-carried bias", "Synthetic data as deliberate privacy choice"],
-      },
-    ],
-  },
   contact: {
     pitch: "I am actively seeking Junior AI PM / Technical PM roles at companies building AI-powered products in media, trust and safety, e-commerce, or consumer applications. My background in sociology and anthropology combined with an MSc in Managing AI in Business gives me a perspective on responsible AI that most technical candidates don't have. Let's connect.",
     email: "osaheniogbebor.c@gmail.com",
@@ -356,10 +316,8 @@ export default function BiasAuditDashboardProject() {
           doDifferently={projectData.learnings.doDifferently}
           keyTakeaway={projectData.learnings.keyTakeaway}
         />
-        <ProductArtifactsSection
-          introduction={projectData.productArtifacts.introduction}
-          artifacts={projectData.productArtifacts.artifacts}
-        />
+        <PmArtefactsSection />
+
         <ContactSection {...projectData.contact} />
       </main>
     </div>

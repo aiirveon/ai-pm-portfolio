@@ -34,16 +34,16 @@ export default function Projects() {
     },
 
     {
-      title: "AI Movie Recommender",
+      title: "Frame Intelligence",
       description:
-        "Explainable movie recommendation engine solving streaming decision fatigue. Uses OpenAI text-embedding-3-small and cosine similarity to suggest personalised films from a YouTube video URL or mood input. Every recommendation includes a GPT-4o-mini generated explanation showing WHY it was suggested. Achieved 87% Precision@10 vs. 34% random baseline across 5,000+ movies and 6 streaming platforms.",
-      techStack: ["Next.js", "TypeScript", "OpenAI API", "TMDB API", "WatchMode API", "Vercel"],
+        "AI-powered commercial film intelligence platform for professional filmmakers and creative directors. ATANDA Lens analyses TikTok and Instagram commercials across 6 layers—Brand, Story, Cinematography, Sound, Post, and Performance—using Claude API and computer vision with Bruce Block and SB7 frameworks. ATANDA Forge delivers a 7-stage AI production pipeline from brief to post-production brief, powered by the Meridian Engine.",
+      techStack: ["Next.js", "FastAPI", "Claude API", "Supabase", "Python", "ffmpeg", "Vercel"],
       github: "https://github.com/aiirveon",
-      demo: "https://v0-youtube-recommender.vercel.app/",
-      caseStudy: "/projects/ai-movie-recommender",
+      demo: "https://atanda-studio.vercel.app/",
+      caseStudy: "/projects/frame-intelligence",
       image: "/placeholder.svg?height=200&width=400",
       featured: false,
-      status: "Shipped",
+      status: "In Progress",
     },
 
     {

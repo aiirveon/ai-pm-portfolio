@@ -16,8 +16,8 @@ import {
   RoadmapSection,
   LearningsSection,
   ContactSection,
-  ProductArtifactsSection,
 } from "@/components/portfolio"
+import { PmArtefactsSection } from "@/components/portfolio/pm-artefacts-section"
 
 const projectData = {
   hero: {
@@ -320,144 +320,6 @@ const projectData = {
     keyTakeaway: "As Jesse Schell writes in The Art of Game Design, every design decision should be tested against one question: does this serve the experience? For Ojuit Story, every feature was tested against: does this keep the writer in their creative process, or does it pull them out? The progressive disclosure, commit-before-continuing mechanic, and AVOID_LIST all flow from that single design principle. For Ojuit Colour, the equivalent question is: does this give the filmmaker a decision they can actually make on set, or just a number they cannot interpret? CIE Lab Delta E and plain-English verdicts exist because of that question.",
   },
 
-  productArtifacts: {
-    introduction: "Beyond the shipped product, I produced a full PM artefact suite covering every dimension of the build: what the product is, who it is for, how success is measured, what the risks are, and how the ethical questions were handled. These documents demonstrate that I think about the full product lifecycle, not just the code.",
-    artifacts: [
-      {
-        icon: <FileText className="w-5 h-5" />,
-        title: "Product Requirements Document",
-        description: "Problem statement, user stories, functional and non-functional requirements, and success metrics. Covers both the Story Engine and the Colour product with clear separation of scope.",
-        githubUrl: "https://github.com/aiirveon/chromasync-app/blob/main/docs/PRD.md",notionUrl: "https://www.notion.so/Ojuit-Product-Requirements-Document-3255b693bab8800883c7cdfe0baab8a6",
-        highlights: [
-          "8 functional requirements covering the full six-stage story flow",
-          "Cold start handling and mobile-first as explicit non-functional requirements",
-          "Resume fidelity and suggestion grounding as primary success metrics",
-        ],
-      },
-      {
-        icon: <BarChart3 className="w-5 h-5" />,
-        title: "Metrics Framework",
-        description: "North star metric, primary metrics, secondary metrics, and counter-metrics. Includes measurement approach for V1 given the absence of frontend event tracking.",
-        githubUrl: "https://github.com/aiirveon/chromasync-app/blob/main/docs/METRICS.md",
-        highlights: [
-          "North star: stories that reach the beat board",
-          "Counter-metrics: immediate field edit rate and stage drop-off rate",
-          "Honest about what cannot be measured in V1 without event tracking",
-        ],
-      },
-      {
-        icon: <TrendingUp className="w-5 h-5" />,
-        title: "Competitive Analysis",
-        description: "Analysis of Final Draft, Celtx, ChatGPT, Sudowrite, and StudioBinder. Covers what each competitor does well, where they fall short, and why ChromaSync wins in each case.",
-        githubUrl: "https://github.com/aiirveon/chromasync-app/blob/main/docs/COMPETITIVE_ANALYSIS.md",
-        highlights: [
-          "Clear positioning: guided discovery versus generation versus formatting",
-          "Honest about current weaknesses: no export, no community, no Colour and Story integration",
-          "ChatGPT included as a competitor because that is the real alternative most writers use",
-        ],
-      },
-      {
-        icon: <Shield className="w-5 h-5" />,
-        title: "Ethics Framework",
-        description: "Four ethics risks with mitigations: AI output monoculture, writer over-reliance, sparse input misleading suggestions, and colour product skin tone bias. Written as a design document, not a checkbox exercise.",
-        githubUrl: "https://github.com/aiirveon/chromasync-app/blob/main/docs/ETHICS.md",
-        highlights: [
-          "AVOID_LIST as the primary mitigation for AI monoculture at scale",
-          "Suggest buttons over auto-populate as a deliberate creative autonomy decision",
-          "Honest about what the framework does not cover and when it will be revisited",
-        ],
-      },
-      {
-        icon: <AlertTriangle className="w-5 h-5" />,
-        title: "Risk Register",
-        description: "Six risks with likelihood, impact, score, current mitigations, residual risk, and V2 plans. Covers technical, product quality, and infrastructure risks.",
-        githubUrl: "https://github.com/aiirveon/chromasync-app/blob/main/docs/RISK_REGISTER.md",
-        highlights: [
-          "Cold start silent failure: the most operationally damaging risk in V1",
-          "AI output monoculture: the most strategically damaging risk at scale",
-          "Character forge drop-off: the highest-friction stage in the user journey",
-        ],
-      },
-      {
-        icon: <Network className="w-5 h-5" />,
-        title: "System Architecture",
-        description: "Mermaid system diagram showing two-repo architecture, three cloud services, and data flow through the story pipeline. Includes key architectural decisions and environment variable documentation.",
-        githubUrl: "https://github.com/aiirveon/chromasync-app/blob/main/docs/ARCHITECTURE.md",
-        highlights: [
-          "Two-repo separation: frontend and backend deployed independently",
-          "Full data flow sequence diagram from Cold Open to beat board completion",
-          "State lifted to dashboard as an architectural decision, not an accident",
-        ],
-      },
-      {
-        icon: <GitBranch className="w-5 h-5" />,
-        title: "User Flow Diagram",
-        description: "Mermaid flowchart covering every path through the Story Engine including first-time users, returning users, library resume logic, and all optional branching within each stage.",
-        githubUrl: "https://github.com/aiirveon/chromasync-app/blob/main/docs/USER_FLOW.md",
-        highlights: [
-          "Resume routing logic: how the app decides which stage to land on",
-          "All optional suggest interactions shown as explicit branch points",
-          "Stage summary table mapping what the user does vs what the AI does",
-        ],
-      },
-      {
-        icon: <Users className="w-5 h-5" />,
-        title: "As-Is Process",
-        description: "Documents how solo indie filmmakers develop stories today without ChromaSync. Includes process flow diagram, swimlane diagram, step by step breakdown, and current state summary with time costs.",
-        githubUrl: "https://github.com/aiirveon/chromasync-app/blob/main/docs/AS_IS_PROCESS.md",
-        highlights: [
-          "20 to 40 hours per story development cycle before a single scene is written",
-          "Abandonment rate above 60% at the beat sheet stage",
-          "Swimlane diagram showing which tools are used at each step",
-        ],
-      },
-      {
-        icon: <Zap className="w-5 h-5" />,
-        title: "To-Be Process",
-        description: "Documents the future state workflow with ChromaSync integrated. Includes process flow diagram, swimlane diagram showing system interactions, and step by step breakdown with time comparisons.",
-        githubUrl: "https://github.com/aiirveon/chromasync-app/blob/main/docs/TO_BE_PROCESS.md",
-        highlights: [
-          "90 to 120 minutes from idea to completed beat sheet vs 20 to 40 hours",
-          "Swimlane showing Filmmaker, Frontend, Backend, and Claude API lanes",
-          "Side by side comparison table for every dimension of the process",
-        ],
-      },
-      {
-        icon: <TrendingUp className="w-5 h-5" />,
-        title: "Gap Analysis",
-        description: "Identifies the seven gaps between current and future state, sizes each gap, and maps it to the specific ChromaSync feature that closes it. Includes residual gaps not closed by V1.",
-        githubUrl: "https://github.com/aiirveon/chromasync-app/blob/main/docs/GAP_ANALYSIS.md",
-        highlights: [
-          "Gap 1: 18 to 38 hours saved per story development cycle",
-          "Gap 6: uncontrolled AI monoculture vs actively blocked defaults",
-          "Honest about residual gaps including export, first draft, and real user validation",
-        ],
-      },
-      {
-        icon: <BarChart3 className="w-5 h-5" />,
-        title: "Business Case",
-        description: "Problem sizing, market opportunity, proposed solution, investment required, expected return, and recommendation. Covers V1 cash cost, V2 infrastructure costs, and revenue model.",
-        githubUrl: "https://github.com/aiirveon/chromasync-app/blob/main/docs/BUSINESS_CASE.md",
-        highlights: [
-          "V1 built for under 70 GBP cash and 4 months of developer time",
-          "Freemium model: 12 GBP per month subscription at 1,000 paying users",
-          "Clear recommendation with three V2 priorities in priority order",
-        ],
-      },
-      {
-        icon: <FileText className="w-5 h-5" />,
-        title: "Functional Specification",
-        description: "Exact system behaviour for every feature including edge cases, error states, and API request payloads. Written for engineers and analysts verifying system behaviour.",
-        githubUrl: "https://github.com/aiirveon/chromasync-app/blob/main/docs/FUNCTIONAL_SPEC.md",
-        highlights: [
-          "9 functional specs covering Cold Open through Story Library",
-          "Exact API payloads documented per endpoint including all context fields",
-          "Error handling table covering all failure modes",
-        ],
-      },
-    ],
-  },
-
   contact: {
     pitch: "I am actively seeking Junior AI PM, Technical PM, and AI BA roles at companies building AI-powered products — creative tech, media, e-commerce, fintech, or any domain where product thinking and technical depth matter equally. Ojuit demonstrates full-stack AI product development: prompt engineering, CIE Lab colour science, XGBoost ML pipelines, LUT generation, real-time persistence, mobile-first UX, and ethical AI design — built and shipped, not just planned. Let us connect.",
     email: "osaheniogbebor.c@gmail.com",
@@ -487,7 +349,12 @@ export default function ChromaSyncProject() {
         <OkrsSection objective={projectData.okrs.objective} keyResults={projectData.okrs.keyResults} successMetrics={projectData.okrs.successMetrics} />
         <RoadmapSection milestones={projectData.roadmap.milestones} />
         <LearningsSection wentWell={projectData.learnings.wentWell} challenges={projectData.learnings.challenges} doDifferently={projectData.learnings.doDifferently} keyTakeaway={projectData.learnings.keyTakeaway} />
-        <ProductArtifactsSection introduction={projectData.productArtifacts.introduction} artifacts={projectData.productArtifacts.artifacts} />
+        <PmArtefactsSection projectArtefacts={[
+          { name: "AVOID_LIST Design Document", url: "#" },
+          { name: "Recommendation Diversity Metrics", url: "#" },
+          { name: "Supabase Data Model", url: "#" },
+        ]} />
+
         <ContactSection {...projectData.contact} />
       </main>
     </div>
