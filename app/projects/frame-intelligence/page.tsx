@@ -413,30 +413,13 @@ export default function FrameIntelligenceProject() {
           keyTakeaway={projectData.learnings.keyTakeaway}
         />
 
-        <PmArtefactsSection
-          projectArtefacts={[
-            {
-              name: "Six-Layer Analysis Framework Design Document",
-              url: "https://www.notion.so/3366d4d745128172a0a1fe84746a3b31",
-            },
-            {
-              name: "Meridian Engine Architecture Specification",
-              url: "https://www.notion.so/3366d4d745128172a0a1fe84746a3b31",
-            },
-            {
-              name: "ATANDA Forge — Seven-Stage Pipeline Design",
-              url: "https://www.notion.so/3366d4d74512819bac4ae15f5ed237bb",
-            },
-            {
-              name: "No Auto-Load Principle — Architecture Decision Record (ADR)",
-              url: "https://www.notion.so/3366d4d7451281c3ba9fffd1bf629561",
-            },
-            {
-              name: "Engine JSON Spec — Meridian v1 Module System Prompts",
-              url: "https://www.notion.so/3366d4d7451281c3ba9fffd1bf629561",
-            },
-          ]}
-        />
+        <PmArtefactsSection projectArtefacts={[
+          { name: "Opportunity Assessment — Frame Intelligence", url: "https://www.notion.so/33a6d4d7451281708677fe252c70b55d" },
+          { name: "PRD — Frame Intelligence", url: "https://www.notion.so/33a6d4d7451281cbb59fde066591bf31" },
+          { name: "Ethics Framework — Frame Intelligence", url: "https://www.notion.so/33a6d4d745128152ac29c718ee8e22fa" },
+          { name: "Competitive Analysis — Frame Intelligence", url: "https://www.notion.so/33a6d4d74512813c8397e8ea9b87a92a" },
+          { name: "Model Decisions — Frame Intelligence", url: "https://www.notion.so/33a6d4d745128188a29ce510ef9e1ab0" },
+        ]} />
 
         <ContactSection {...projectData.contact} />
       </main>

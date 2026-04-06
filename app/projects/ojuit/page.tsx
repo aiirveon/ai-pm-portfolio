@@ -350,9 +350,11 @@ export default function ChromaSyncProject() {
         <RoadmapSection milestones={projectData.roadmap.milestones} />
         <LearningsSection wentWell={projectData.learnings.wentWell} challenges={projectData.learnings.challenges} doDifferently={projectData.learnings.doDifferently} keyTakeaway={projectData.learnings.keyTakeaway} />
         <PmArtefactsSection projectArtefacts={[
-          { name: "AVOID_LIST Design Document", url: "#" },
-          { name: "Recommendation Diversity Metrics", url: "#" },
-          { name: "Supabase Data Model", url: "#" },
+          { name: "Opportunity Assessment — Ojuit", url: "https://www.notion.so/3376d4d745128156bee5dbcca545b0c4" },
+          { name: "PRD — Ojuit", url: "https://www.notion.so/3376d4d745128127a492f069dc1e04c0" },
+          { name: "Ethics Framework — Ojuit", url: "https://www.notion.so/3376d4d7451281a786f5f721c559af5b" },
+          { name: "Competitive Analysis — Ojuit", url: "https://www.notion.so/3376d4d7451281abab24e2797c95f821" },
+          { name: "Model Decisions — Ojuit", url: "https://www.notion.so/3376d4d74512811ca62dec35385b7d5a" },
         ]} />
 
         <ContactSection {...projectData.contact} />

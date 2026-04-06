@@ -1,41 +1,8 @@
 "use client"
 
-import { useState } from "react"
 import { ExternalLink } from "lucide-react"
 
-const PRD_URL = "https://www.notion.so/3366d4d745128172a0a1fe84746a3b31"
-
-const universalArtefacts = [
-  "Product Requirements Document (PRD)",
-  "Problem Statement",
-  "User Personas",
-  "Jobs To Be Done (JTBD) Statements",
-  "OKRs (Objectives and Key Results)",
-  "Product Roadmap (Now / Next / Later)",
-  "Prioritisation Rationale",
-  "Success Metrics / KPIs",
-].map((name) => ({ name, url: PRD_URL }))
-
 type Artefact = { name: string; url: string }
-
-const defaultProjectArtefacts: Artefact[] = [
-  {
-    name: "Fairness Framework Document",
-    url: "https://www.notion.so/3366d4d74512819bac4ae15f5ed237bb",
-  },
-  {
-    name: "Regulatory Alignment Map (Online Safety Act + Ofcom)",
-    url: "https://www.notion.so/3366d4d74512819bac4ae15f5ed237bb",
-  },
-  {
-    name: "Human-Override Architecture Decision Record (ADR)",
-    url: "https://www.notion.so/3366d4d7451281c3ba9fffd1bf629561",
-  },
-  {
-    name: "Per-Word SHAP Explanation — UX Rationale",
-    url: "https://www.notion.so/3366d4d7451281c3ba9fffd1bf629561",
-  },
-]
 
 function ArtefactRow({ name, url }: { name: string; url: string }) {
   return (
@@ -55,50 +22,27 @@ function ArtefactRow({ name, url }: { name: string; url: string }) {
 }
 
 export function PmArtefactsSection({
-  projectArtefacts = defaultProjectArtefacts,
+  projectArtefacts = [],
 }: {
   projectArtefacts?: Artefact[]
 }) {
-  const [projectExpanded, setProjectExpanded] = useState(false)
-
   return (
     <section id="pm-artefacts" className="py-16 md:py-24 bg-gray-50 dark:bg-jungle-950">
-      <div className="container-custom">
+      <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          {/* Section Header */}
           <div className="mb-10">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
               PM Artefacts
             </h2>
+            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+              Written before any code. Every project ships with a full PM artefact set.
+            </p>
           </div>
-
-          {/* Universal artefacts — always visible */}
-          <div className="bg-white dark:bg-jungle-900 rounded-xl border border-gray-200 dark:border-jungle-800 px-6 py-2 mb-4">
-            {universalArtefacts.map(({ name, url }) => (
+          <div className="bg-white dark:bg-jungle-900 rounded-xl border border-gray-200 dark:border-jungle-800 px-6 py-2">
+            {projectArtefacts.map(({ name, url }) => (
               <ArtefactRow key={name} name={name} url={url} />
             ))}
           </div>
-
-          {/* Project-specific toggle */}
-          <div className="mb-4">
-            <button
-              onClick={() => setProjectExpanded(!projectExpanded)}
-              className="flex items-center gap-2 text-sm font-semibold text-jungle-600 dark:text-jungle-400 hover:text-jungle-700 dark:hover:text-jungle-300 transition-colors py-2"
-            >
-              {projectExpanded
-                ? "Hide project-specific artefacts ▲"
-                : "View project-specific artefacts ▼"}
-            </button>
-
-            {projectExpanded && (
-              <div className="mt-2 bg-white dark:bg-jungle-900 rounded-xl border border-gray-200 dark:border-jungle-800 px-6 py-2">
-                {projectArtefacts.map(({ name, url }) => (
-                  <ArtefactRow key={name} name={name} url={url} />
-                ))}
-              </div>
-            )}
-          </div>
-
         </div>
       </div>
     </section>
