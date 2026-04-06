@@ -15,8 +15,8 @@ import {
   RoadmapSection,
   LearningsSection,
   ContactSection,
-  ProductArtifactsSection,
 } from "@/components/portfolio"
+import { PmArtefactsSection } from "@/components/portfolio/pm-artefacts-section"
 
 const projectData = {
   hero: {
@@ -255,66 +255,6 @@ const projectData = {
     ],
     keyTakeaway: "The labelling guide is not documentation — it is product design. Every emotion boundary definition is a decision about what the model learns. Every topic decision tree is a specification. Writing it before generating data is the correct order. The model learns exactly what the data shows.",
   },
-  productArtifacts: {
-    introduction: "Five PM artefacts written before any code was written. These documents shaped every architectural decision in the project — the PRD's alert threshold became a hard model requirement, the ethics framework's editorial sovereignty principle became an architectural constraint, and the labelling guide's decision trees determined what the classifier learned.",
-    artifacts: [
-      {
-        icon: <FileText className="w-5 h-5" />,
-        title: "Opportunity Assessment",
-        description: "Problem definition, broadcast producer persona, business hypothesis, risk register, and MediaCityUK positioning. Written before any code.",
-        githubUrl: "https://github.com/aiirveon/pulse/blob/main/docs/OPPORTUNITY_ASSESSMENT.md",
-        highlights: [
-          "User persona: Live broadcast producer at UK broadcaster",
-          "Hypothesis: structured AI sentiment → faster audience-aware editorial decisions",
-          "Risk: synthetic data may not reflect real social media distribution",
-        ],
-      },
-      {
-        icon: <Users className="w-5 h-5" />,
-        title: "PRD",
-        description: "10 functional requirements (FR-01 through FR-10), success metrics with explicit thresholds, non-functional requirements, and phased delivery plan.",
-        githubUrl: "https://github.com/aiirveon/pulse/blob/main/docs/PRD.md",
-        highlights: [
-          "F1 > 0.78 as emotion classifier acceptance criteria",
-          "Alert threshold: negative + angry > 40% of last 30 posts",
-          "Editorial guardrail as P1 requirement",
-        ],
-      },
-      {
-        icon: <Shield className="w-5 h-5" />,
-        title: "Ethics Framework",
-        description: "Editorial sovereignty principle, feedback loop risk documentation, Ofcom Broadcasting Code alignment, BBC Editorial Guidelines mapping, and ongoing monitoring responsibilities.",
-        githubUrl: "https://github.com/aiirveon/pulse/blob/main/docs/ETHICS.md",
-        highlights: [
-          "Hard constraint: system never makes editorial decisions",
-          "Feedback loop risk: documented with specific mitigation requirements",
-          "Social signal demographic caveat built into UI",
-        ],
-      },
-      {
-        icon: <AlertTriangle className="w-5 h-5" />,
-        title: "Labelling Guide",
-        description: "Emotion decision trees, topic definitions with worked examples, boundary cases for negative vs angry, pilot check protocol, and pre-generation checklist.",
-        githubUrl: "https://github.com/aiirveon/pulse/blob/main/docs/LABELLING_GUIDE.md",
-        highlights: [
-          "Decision trees for all 5 emotions and 6 topics",
-          "Sarcasm = angry rule documented explicitly",
-          "Pilot check protocol: 100 examples, manual review, <3 errors before full generation",
-        ],
-      },
-      {
-        icon: <BarChart3 className="w-5 h-5" />,
-        title: "Model Decisions",
-        description: "Architecture decisions, training data rationale, F1 scores per category, known limitations with honest documentation, and v2 roadmap including bootstrapped labelling with DPIA requirements.",
-        githubUrl: "https://github.com/aiirveon/pulse/blob/main/docs/MODEL_DECISIONS.md",
-        highlights: [
-          "Why TF-IDF + XGBoost over transformers: SHAP tractability and inference speed",
-          "Known limitation: negative/angry boundary F1 0.750 — production mitigation documented",
-          "v2 roadmap: bootstrapped labelling requires DPIA under UK GDPR Article 35",
-        ],
-      },
-    ],
-  },
   contact: {
     pitch: "I am actively seeking Junior AI PM and Technical PM roles at UK media companies — BBC, Channel 4, ITV, Sky, and media-adjacent tech. My background in sociology and anthropology combined with an MSc in Managing AI in Business gives me a perspective on responsible AI and editorial ethics that most technical candidates do not have. Let's connect.",
     email: "osaheniogbebor.c@gmail.com",
@@ -380,10 +320,14 @@ export default function PulseProject() {
           doDifferently={projectData.learnings.doDifferently}
           keyTakeaway={projectData.learnings.keyTakeaway}
         />
-        <ProductArtifactsSection
-          introduction={projectData.productArtifacts.introduction}
-          artifacts={projectData.productArtifacts.artifacts}
-        />
+        <PmArtefactsSection projectArtefacts={[
+          { name: "Opportunity Assessment — Pulse", url: "https://www.notion.so/33a6d4d745128178bf08d3385845b32c" },
+          { name: "PRD — Pulse", url: "https://www.notion.so/33a6d4d745128145a128c50fa5c4bb59" },
+          { name: "Ethics Framework — Pulse", url: "https://www.notion.so/33a6d4d7451281a295e8cac94aa6067b" },
+          { name: "Competitive Analysis — Pulse", url: "https://www.notion.so/33a6d4d7451281b5b3cdee3f0d3c260c" },
+          { name: "Model Decisions — Pulse", url: "https://www.notion.so/33a6d4d74512817aae4edda9ba600704" },
+        ]} />
+
         <ContactSection {...projectData.contact} />
       </main>
     </div>

@@ -17,8 +17,8 @@ import {
   LearningsSection,
   ContactSection,
   RiskRegisterSection,
-  ProductArtifactsSection,
 } from "@/components/portfolio"
+import { PmArtefactsSection } from "@/components/portfolio/pm-artefacts-section"
 
 // ============================================================================
 // PROJECT DATA - AI Dynamic Ticket Pricing for UK Live Events
@@ -695,62 +695,6 @@ D   5    │  5 (MED)  │  10 (HIGH)   │  15 (HIGH)   │ 20 (CRIT) │ 25 (C
     keyTakeaway: "R² = 0.997 was my worst model. R² = 0.79 was my best. The difference was understanding what I was actually trying to predict — and why a perfect score on the wrong question is worse than an honest score on the right one. That insight is the core of AI product management.",
   },
 
-  // Product Artifacts
-  productArtifacts: {
-    introduction: "Beyond the model and demo, I created comprehensive product management documentation informed directly by real regulatory events (CMA Oasis investigation) and UK market dynamics. These artifacts demonstrate that I think about the full product — not just the algorithm. They are the difference between 'I trained a model' and 'I shipped an AI product.'",
-    artifacts: [
-      {
-        icon: <FileText className="w-5 h-5" />,
-        title: "Product Requirements Document (PRD)",
-        description: "User stories, acceptance criteria, success metrics, and go-to-market strategy. CMA compliance requirements are first-class product requirements, not afterthoughts.",
-        githubUrl: "https://github.com/aiirveon/ai-event-ticket-pricing/blob/master/docs/PRD.md",
-        highlights: ["3 epics: Pricing Engine, Explainability, Ethics & Compliance", "CMA compliance as acceptance criteria, not nice-to-have", "Go-to-market targeting mid-tier UK venues"],
-      },
-      {
-        icon: <Users className="w-5 h-5" />,
-        title: "User Personas",
-        description: "3 detailed personas — venue revenue manager, festival ticketing PM, independent promoter — with empathy maps, decision criteria, objection handling, and acquisition strategies per persona.",
-        githubUrl: "https://github.com/aiirveon/ai-event-ticket-pricing/blob/master/docs/USER_PERSONAS.md",
-        highlights: ["Jobs-to-be-Done analysis per persona", "CMA risk objection handling scripts", "Revenue impact framing calibrated per persona"],
-      },
-      {
-        icon: <BarChart3 className="w-5 h-5" />,
-        title: "Competitive Analysis",
-        description: "Porter's Five Forces for UK live events market, market sizing (TAM/SAM/SOM), competitive deep-dives on Ticketmaster, FIXR, and status quo pricing.",
-        githubUrl: "https://github.com/aiirveon/ai-event-ticket-pricing/blob/master/docs/COMPETITIVE_ANALYSIS.md",
-        highlights: ["CMA investigation as competitive differentiator, not just risk", "Market sizing: £36M SAM", "Explainability moat analysis vs Ticketmaster"],
-      },
-      {
-        icon: <AlertTriangle className="w-5 h-5" />,
-        title: "Risk Register",
-        description: "ISO 31000 risk framework applied to live events dynamic pricing. Directly informed by Ticketmaster/Oasis controversy — these are real risks, not theoretical ones.",
-        githubUrl: "https://github.com/aiirveon/ai-event-ticket-pricing/blob/master/docs/RISK_REGISTER.md",
-        highlights: ["CMA investigation risk: mitigation = SHAP audit trail", "Fan boycott risk: mitigation = price caps + transparency", "Weekly/monthly/quarterly monitoring cadence"],
-      },
-      {
-        icon: <Shield className="w-5 h-5" />,
-        title: "Ethics Framework",
-        description: "ICO AI Auditing Framework applied to live events pricing. Feature audit, CMA compliance analysis, fairness tests — built before deployment, not as an afterthought.",
-        githubUrl: "https://github.com/aiirveon/ai-event-ticket-pricing/blob/master/docs/ETHICS.md",
-        highlights: ["7 features audited for protected characteristic proxies", "CMA cap compliance: 100% across all test scenarios", "Post-Oasis regulatory context as design input"],
-      },
-      {
-        icon: <TrendingUp className="w-5 h-5" />,
-        title: "Metrics Framework",
-        description: "North Star Metric (Revenue Uplift per Sold-Out Show), primary and counter-metrics, A/B testing methodology for live events context.",
-        githubUrl: "https://github.com/aiirveon/ai-event-ticket-pricing/blob/master/docs/METRICS.md",
-        highlights: ["North Star: Revenue uplift per sold-out show vs static pricing", "Counter-metrics: Fan NPS, artist manager satisfaction, CMA compliance rate", "Resale price delta as proxy for uncaptured demand"],
-      },
-      {
-        icon: <Users className="w-5 h-5" />,
-        title: "Stakeholder Analysis",
-        description: "Power/interest mapping across venue managers, artist managers, fans, and CMA. Engagement strategies calibrated to each stakeholder's primary concern.",
-        githubUrl: "https://github.com/aiirveon/ai-event-ticket-pricing/blob/master/docs/STAKEHOLDER_ANALYSIS.md",
-        highlights: ["CMA as high-power stakeholder requiring proactive engagement", "Artist managers: SHAP as trust-building conversation tool", "Fan transparency as long-term brand protection strategy"],
-      },
-    ],
-  },
-
   // Contact
   contact: {
     pitch: "I am actively seeking Junior AI PM / Technical PM roles at companies building AI-powered products in media, events, e-commerce, or consumer applications. Let's connect if you're hiring or want to discuss AI product strategy.",
@@ -843,11 +787,14 @@ export default function AIDynamicPricingProject() {
           keyTakeaway={projectData.learnings.keyTakeaway}
         />
         
-        <ProductArtifactsSection 
-          introduction={projectData.productArtifacts.introduction}
-          artifacts={projectData.productArtifacts.artifacts}
-        />
-        
+        <PmArtefactsSection projectArtefacts={[
+          { name: "Opportunity Assessment — AI Dynamic Pricing", url: "https://www.notion.so/33a6d4d745128164a365c0dfd91084d1" },
+          { name: "PRD — AI Dynamic Pricing", url: "https://www.notion.so/33a6d4d74512812fbeafc732ff129e36" },
+          { name: "Ethics Framework — AI Dynamic Pricing", url: "https://www.notion.so/33a6d4d7451281c3a953ff90a96d4514" },
+          { name: "Competitive Analysis — AI Dynamic Pricing", url: "https://www.notion.so/33a6d4d7451281878f1ef6ebfbe5885d" },
+          { name: "Model Decisions — AI Dynamic Pricing", url: "https://www.notion.so/33a6d4d7451281fcb2d9de9a7378cf42" },
+        ]} />
+
         <ContactSection {...projectData.contact} />
       </main>
     </div>
