@@ -164,7 +164,7 @@ export default function Hero() {
           className="absolute top-0 left-4 w-4 h-full bg-contain bg-no-repeat bg-top"
           style={{
             backgroundImage:
-              'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 300"><path d="M12,0 Q16,50 8,100 Q0,150 12,200 Q24,250 12,300" stroke="%239ab354" fill="none" strokeWidth="2" /></svg>\')',
+              'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 300"><path d="M12,0 Q16,50 8,100 Q0,150 12,200 Q24,250 12,300" stroke="%237d9538" fill="none" strokeWidth="2" /></svg>\')',
           }}
           animate={{ y: [0, -50, 0] }}
           transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
@@ -176,7 +176,7 @@ export default function Hero() {
           className="absolute top-0 right-4 w-4 h-full bg-contain bg-no-repeat bg-top"
           style={{
             backgroundImage:
-              'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 300"><path d="M12,0 Q8,50 16,100 Q24,150 12,200 Q0,250 12,300" stroke="%239ab354" fill="none" strokeWidth="2" /></svg>\')',
+              'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 300"><path d="M12,0 Q8,50 16,100 Q24,150 12,200 Q0,250 12,300" stroke="%237d9538" fill="none" strokeWidth="2" /></svg>\')',
           }}
           animate={{ y: [0, -30, 0] }}
           transition={{ duration: 15, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
