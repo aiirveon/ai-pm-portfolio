@@ -22,7 +22,7 @@ import { PmArtefactsSection } from "@/components/portfolio/pm-artefacts-section"
 const projectData = {
   hero: {
     projectName: "Ojuit",
-    tagline: "A two-product AI platform for indie filmmakers: AI colour intelligence with Delta E measurement, XGBoost correction, and LUT export — plus an AI story engine that guides writers from raw idea to full beat sheet. Built end-to-end with FastAPI, Next.js, Supabase, OpenCV, and Claude.",
+    tagline: "A two-product AI platform for indie filmmakers: AI colour intelligence with Delta E measurement, XGBoost correction, and LUT export — plus an AI story engine that guides writers from raw idea to full beat sheet. Built end-to-end with FastAPI, Next.js, Supabase, OpenCV, and Claude Opus 4.5 with extended thinking.",
     status: "In Progress",
     author: "Ogbebor Osaheni",
     date: "March 2026",
@@ -35,7 +35,7 @@ const projectData = {
     description: "Ojuit is a two-product AI platform for solo indie filmmakers. The Colour product uses OpenCV, XGBoost, and CIE Lab Delta E to solve colour drift across the full shoot pipeline — including scene-to-reference LUT generation for DaVinci Resolve and Premiere Pro. The Story product is a full-stack AI story engine that guides writers from a raw idea through interrogation, logline, character psychology, and a full beat board using structured prompt chains, real-time state persistence, and Claude as the AI backbone. Both products share a single deployed platform, a unified CSS design system, and one product philosophy: AI that suggests, humans that decide.",
     metrics: [
       { icon: <Film className="w-5 h-5" />, value: "2", label: "AI Products", description: "Colour intelligence + Story engine" },
-      { icon: <TrendingUp className="w-5 h-5" />, value: "6", label: "Story Stages", description: "Idea → Interrogation → Logline → Character → Beats → Bible" },
+      { icon: <TrendingUp className="w-5 h-5" />, value: "5", label: "Story Stages", description: "Idea → Interrogation → Logline → Character → Beats" },
       { icon: <Users className="w-5 h-5" />, value: "Full Stack", label: "Built End-to-End", description: "FastAPI · Next.js · Supabase · Render · Vercel" },
       { icon: <Zap className="w-5 h-5" />, value: "100%", label: "State Persisted", description: "Every action saved — resume from exact last step" },
     ],
@@ -50,59 +50,58 @@ const projectData = {
     keyInsight: "From Prediction Machines (Agrawal, Gans and Gold): AI reduces the cost of prediction. Ojuit applies this across two domains — colour correction prediction for filmmakers who can't afford a colorist, and story structure prediction for writers who don't yet know the craft. When prediction is cheap, solo creators can achieve professional outcomes without professional support.",
   },
 
-  personasIntroduction:
-    "These personas represent the two faces of solo indie filmmaking Ojuit is designed for: creators who need consistent colour without hiring a colorist, and writers who need structured story development without starting from a blank page. Each persona’s goals and constraints shape how Ojuit’s AI suggestions stay grounded in the user’s committed inputs.",
+  personasIntroduction: "Ojuit serves three distinct solo filmmaking profiles: a documentary filmmaker who needs colour consistency without crew, a content creator making the leap to narrative film without technical training, and a micro-budget producer who needs to catch problems on set before post begins. Each persona maps directly to a specific stage of the colour pipeline — pre-shoot reference analysis, on-shoot drift detection, and post correction.",
 
   personas: [
     {
       name: "Kofi",
       role: "Solo Documentary Filmmaker, Manchester",
       goals: [
-        "Shoot and grade entire films alone without hiring crew",
-        "Achieve consistent professional colour across all scenes",
-        "Spend creative time storytelling, not fixing technical problems",
+        "Achieve consistent professional colour across all scenes without hiring a colorist",
+        "Spend creative time on storytelling rather than technical correction",
+        "Deliver a final grade that looks intentional, not repaired",
       ],
       painPoints: [
-        "Spends 5-8 hours per project manually fixing colour continuity in DaVinci",
+        "Spends 5–8 hours per project manually fixing colour continuity caused by camera drift between locations",
         "Cannot afford a colorist or DIT on a solo budget",
-        "Camera parameters drift constantly during run-and-gun shoots",
+        "Has no reliable way to measure drift before it becomes a post-production problem",
       ],
-      quote: "I know exactly the look I want. I just need my footage to actually look like it all belongs to the same film when I get home.",
+      quote: "I finish a multi-location shoot, run my footage through the tool, and get a precise measurement of how far each scene has drifted from my reference. I apply corrections in an hour instead of a day.",
     },
     {
       name: "Priya",
       role: "Content Creator Transitioning to Narrative Film, London",
       goals: [
-        "Graduate from YouTube content to short narrative films",
-        "Achieve a cinematic consistent look without deep technical expertise",
-        "Understand what camera settings to use for a specific visual style",
+        "Achieve a cinematic, consistent look without deep technical expertise",
+        "Understand which camera settings to adjust for a specific visual style",
+        "Graduate from content that looks competent to content that looks intentional",
       ],
       painPoints: [
-        "Footage looks inconsistent between scenes but does not know why",
-        "Does not know which camera settings to adjust for a target look",
+        "Footage looks inconsistent between scenes but she cannot identify the cause",
         "Colour grading tutorials assume professional knowledge she does not have",
+        "No clear path from a reference look she admires to camera settings she can actually use",
       ],
-      quote: "I saw this beautiful warm tone in a reference film. I have no idea how to make my footage look like that or how to keep it consistent across my whole shoot.",
+      quote: "I find a reference film with the look I want. The tool tells me the colour profile of that look and the camera settings I need to replicate it. My whole film looks like it came from the same world.",
     },
     {
       name: "Marcus",
       role: "Micro-Budget Producer, Birmingham",
       goals: [
-        "Produce 2-3 short films per year with a 2-person crew",
-        "Reduce post production hours without sacrificing quality",
+        "Reduce post-production hours without sacrificing output quality",
         "Deliver consistent colour across multi-day shoots",
+        "Catch drift on set rather than discovering it in post",
       ],
       painPoints: [
         "Cannot afford a colorist for every project",
-        "Colour consistency across Day 1 and Day 3 of a shoot is a constant problem",
-        "Current tools require manual work that slows down delivery",
+        "Colour consistency between Day 1 and Day 3 of a shoot is unreliable",
+        "Current tools require manual work that consumes the post schedule",
       ],
-      quote: "On a two-day shoot we can easily end up with footage that looks like it came from two different films. Fixing that eats our entire post schedule.",
+      quote: "I check colour drift between days while we are still on location. If something is off, I fix it before we wrap. Post-production becomes grading, not rescue.",
     },
   ],
 
   solution: {
-    description: "Ojuit is a two-product AI platform. The Colour product is a three-module pipeline covering pre-shoot, on-shoot, and post correction — with CIE Lab Delta E measurement, XGBoost correction predictions, and scene-to-reference LUT generation for DaVinci Resolve and Premiere Pro. The Story product is a six-stage AI story engine: Cold Open → Interrogation → Logline Forge → Character Forge → Beat Board → Story Bible. Both products share a single Next.js frontend, a FastAPI backend on Render, a Supabase database, and a unified CSS design system built entirely on CSS custom properties.",
+    description: "Ojuit is a two-product AI platform. The Colour product is a three-module pipeline covering pre-shoot, on-shoot, and post correction — with CIE Lab Delta E measurement, XGBoost correction predictions, and scene-to-reference LUT generation for DaVinci Resolve and Premiere Pro. The Story product is a five-stage AI story engine: Cold Open → Interrogation → Logline Forge → Character Forge → Beat Board. Theme development is embedded within Logline Forge. The Story Bible is a persistent panel available from Logline Forge onward — not a stage. Both products share a single Next.js frontend, a FastAPI backend on Render, a Supabase database, and a unified CSS design system built entirely on CSS custom properties.",
     features: [
       {
         icon: <Lightbulb className="w-5 h-5" />,
@@ -143,20 +142,20 @@ const projectData = {
         "Logline Forge: 3 AI-generated loglines (edit/refresh/lock), editable Theme field with suggestion chips",
         "Character Forge: wound input → Lie/Want/Need generation → Save the Cat scenes — all state lifted to dashboard to persist across navigation",
         "Beat Board: Save the Cat (15) / Truby (18) / Story Circle (8) / Short Story (5) — AI question per beat, suggestion cards, incremental Supabase save after every beat",
-        "Resume from exact last action — interrogation answers, wound, character fields, completed beats all restored from Supabase on resume",
+        "Story saved to Supabase at Cold Open on Save and Begin confirmation — before interrogation starts. Resume from exact last action: interrogation answers, wound, character fields, completed beats all restored atomically from Supabase on resume",
       ],
       techStack: ["Claude API", "FastAPI", "Supabase", "Next.js", "TypeScript"],
       metrics: [
         { name: "State persistence", baseline: "Lost on page refresh", optimized: "Every action saved to Supabase immediately", improvement: "100% resumable" },
         { name: "Suggestion context", baseline: "Raw idea only", optimized: "Full state: idea + interrogation + theme + logline + character", improvement: "Fully grounded" },
-        { name: "Framework support", baseline: "Save the Cat only", optimized: "Save the Cat, Truby, Story Circle, Short Story", improvement: "4 frameworks" },
+        { name: "Framework support", baseline: "Save the Cat only", optimized: "Save the Cat, Truby, Story Circle (frameworks) + Short Story (format)", improvement: "3 frameworks + 1 format" },
       ],
     },
     {
       title: "Phase 3: Prompt Engineering and Ethics",
       description: "Context-aware prompts, negative constraint injection, Story Bible, creative autonomy design.",
       deliverables: [
-        "AVOID_LIST: negative constraints injected into every prompt — explicitly blocks overused AI defaults (absent parent wounds, chosen one structures, speech-at-the-end resolutions)",
+        "AVOID_LIST: negative constraints injected into every prompt via central call_claude() function — explicitly blocks overused AI defaults (absent parent wounds, chosen one structures, speech-at-the-end resolutions). Known deviation: /theme-suggestions endpoint calls the Anthropic API directly and includes AVOID_LIST manually but prompt caching is not applied — refactor target for V1.1.",
         "Title-awareness: prompts treat sparse input as a seed, not a literal brief — generates divergent suggestions from minimal input",
         "Story Bible: persistent panel showing logline, theme (primal question), character profile (name, wound, lie, want, need), all completed beats",
         "Theme as editable field: AI-generated primal question surfaced, editable, and affects all downstream character and beat suggestions",
@@ -189,7 +188,7 @@ const projectData = {
       { feature: "stage", type: "integer", description: "Current story stage (0–6) — used to route resume to correct component with full state", source: "Derived" },
       { feature: "mean_r/g/b, colour_temperature_k, drift_magnitude", type: "float", description: "Per-frame colour statistics for XGBoost correction model (Colour product)", source: "OpenCV extraction" },
     ],
-    methodology: "Two distinct data strategies for two products. The Colour product uses synthetic training data — 8,000 scenes across four drift types (standard, mixed lighting, LOG profile, harsh clipping) with programmatically applied drift, so ground truth corrections are always known exactly. All colour difference calculations use CIE Lab space, not RGB Euclidean distance. Scene-to-reference LUT generation fits a degree-2 polynomial mapping from scene Lab values to reference Lab values per channel, producing a 33x33x33 .cube file. The Story product uses a progressive schema: every user input is persisted to Supabase immediately. Synthetic data is a deliberate professional choice, not a shortcut.",
+    methodology: "Two distinct data strategies for two products. The Colour product uses synthetic training data — 8,000 scenes across four drift types (standard, mixed lighting, LOG profile, harsh clipping) with programmatically applied drift, so ground truth corrections are always known exactly. All colour difference calculations use CIE Lab space, not RGB Euclidean distance. Scene-to-reference LUT generation fits a degree-2 polynomial mapping from scene Lab values to reference Lab values per channel, producing a 33x33x33 .cube file. The Story product uses a progressive schema: the story record is created in Supabase at Cold Open when the user confirms Save and Begin — before interrogation starts. Every subsequent committed answer is saved immediately on commit. Synthetic data is a deliberate professional choice, not a shortcut. The XGBoost model was trained with a 3% noise factor, confirmed in model_metadata.json, to simulate real camera sensor variation.",
     validationMethods: [
       "Story: resume fidelity — every field restored from Supabase matches exact state when user left",
       "Story: suggestion grounding — all AI suggestions verified to use full committed story context, not just raw idea",
@@ -199,11 +198,11 @@ const projectData = {
   },
 
   results: {
-    heroMetric: { value: "6", label: "Story stages from raw idea to full beat sheet, every action saved in real time" },
+    heroMetric: { value: "5", label: "Story stages from raw idea to full beat sheet, every action saved in real time" },
     comparisons: [
       { metric: "Story state on page close", before: "Lost entirely", after: "Every field saved to Supabase on commit", change: "100% persistent" },
       { metric: "Suggestion context at interrogation", before: "Raw idea only", after: "Full story state passed to every endpoint", change: "Grounded suggestions" },
-      { metric: "Story frameworks supported", before: "None", after: "Save the Cat, Truby, Story Circle, Short Story", change: "4 frameworks" },
+      { metric: "Story frameworks supported", before: "None", after: "Save the Cat, Truby, Story Circle (frameworks) + Short Story (format)", change: "3 frameworks + 1 format" },
       { metric: "AI output monoculture risk", before: "No mitigation", after: "AVOID_LIST injected into every prompt", change: "Actively blocked" },
       { metric: "Cold start silent failures", before: "Common on first action", after: "Silent health ping on mount", change: "Prevented" },
       { metric: "Colour correction time per project", before: "5 to 8 hours manual", after: "Target under 1 hour with ChromaSync", change: "85% reduction target" },
@@ -220,13 +219,13 @@ const projectData = {
     principles: [
       { title: "Creative Autonomy", description: "The writer commits every answer — the AI never locks a field. Every suggestion is optional. This is enforced at UX level: no AI output is applied without explicit user action. The story belongs to the writer, not the model." },
       { title: "Avoiding AI Monoculture", description: "Every prompt injects an AVOID_LIST — negative constraints explicitly blocking overused AI defaults: absent parent wounds, chosen one structures, speech-at-the-end resolutions. Forces the model to find the specific human truth in each writer's idea rather than pattern-matching to familiar tropes." },
-      { title: "Transparency in AI Assistance", description: "The Story Bible shows exactly what the AI has built with the writer at every stage. The Theme field surfaces the AI's primal question so the writer can interrogate, edit, or reject it. Nothing is hidden. The Colour product shows SHAP values on every correction — no black-box outputs." },
+      { title: "Transparency in AI Assistance", description: "The Story Bible is a persistent panel available from Logline Forge onward — it populates progressively as the writer commits answers and is always accessible via a side tab on desktop or a FAB on mobile. The Theme field surfaces the AI's primal question so the writer can interrogate, edit, or reject it. Nothing is hidden." },
       { title: "Honest Scope", description: "ChromaSync Story guides — it does not write. ChromaSync Colour corrects continuity drift — it does not replace creative grading. UI language consistently says 'suggest' not 'fix'. Scope is clearly communicated to prevent over-reliance." },
     ],
     guardrails: [
       { rule: "AVOID_LIST injection", threshold: "Applied to every AI prompt in the story pipeline", rationale: "Prevents the model defaulting to overused patterns regardless of how sparse the input is" },
       { rule: "Suggestions always optional", threshold: "No AI output applied without explicit user click", rationale: "Writer creative autonomy is non-negotiable — the AI cannot write the story for them" },
-      { rule: "Large Colour Correction Flag", threshold: "Delta E above 15 triggers manual review", rationale: "Large corrections may indicate intentional creative choice, not accidental drift" },
+      { rule: "Large Colour Correction Flag", threshold: "Delta E above 10 (Critical) triggers manual review warning", rationale: "Large corrections may indicate intentional creative choice, not accidental drift" },
       { rule: "Override Rate Monitor", threshold: "Alert if colour override rate exceeds 40%", rationale: "High override rate signals model misalignment with creative intent requiring retraining" },
     ],
     biasAuditDescription: "Story product: primary risk is AI output monoculture — the model converging on the same archetypes regardless of the writer's input. Mitigation: AVOID_LIST negative constraints in every prompt block overused wounds, structures, and resolutions. Secondary risk: sparse input producing generic suggestions. Mitigation: title-awareness prompts treat minimal input as a seed for divergent possibilities. Colour product: primary risk is inconsistent correction across diverse skin tones. Mitigation: synthetic training data across full 2700K–8000K spectrum. Full bias validation deferred to V2 with real diverse footage. Ethical framework: Brian Christian, The Alignment Problem — building AI that serves human creative intent, not just the training objective.",
@@ -249,15 +248,14 @@ const projectData = {
   okrs: {
     objective: "Build and ship Ojuit — a two-product AI platform for solo indie filmmakers demonstrating full-stack AI product thinking, CIE Lab colour science, XGBoost ML, LUT generation, ethical AI design, and production-grade engineering",
     keyResults: [
-      { kr: "Story Engine live at chromasync-app.vercel.app with all six stages functional end to end", progress: 100, target: "Live URL" },
-      { kr: "Full state persistence: every story action saved to Supabase and resumable from exact last step", progress: 100, target: "100% resumable" },
-      { kr: "Four story frameworks supported: Save the Cat, Truby, Story Circle, Short Story", progress: 100, target: "4 frameworks" },
+      { kr: "Story Engine live at chromasync-app.vercel.app with all five stages functional end to end", progress: 100, target: "Live URL" },      { kr: "Full state persistence: every story action saved to Supabase and resumable from exact last step", progress: 100, target: "100% resumable" },
+      { kr: "Three story frameworks supported: Save the Cat, Truby, Story Circle — Short Story is a format not a framework", progress: 100, target: "3 frameworks" },
       { kr: "AVOID_LIST negative constraints injected into every AI prompt to prevent output monoculture", progress: 100, target: "All prompts" },
       { kr: "Full PM artefact suite published: PRD, metrics, competitive analysis, ethics, risk register", progress: 100, target: "5 artefacts" },
       { kr: "Colour pipeline: Delta E below 5 on 10 diverse test clips", progress: 30, target: "<5 Delta E units" },
     ],
     successMetrics: [
-      { metric: "Story Engine live and functional", target: "All 6 stages", achieved: "Shipped", status: "Achieved" as const },
+      { metric: "Story Engine live and functional", target: "All 5 stages", achieved: "Shipped", status: "Achieved" as const },
       { metric: "State persistence", target: "Every action saved", achieved: "100% via Supabase", status: "Achieved" as const },
       { metric: "PM artefact suite", target: "5 documents", achieved: "PRD, Metrics, Competitive, Ethics, Risk Register", status: "Achieved" as const },
       { metric: "Colour pipeline Delta E", target: "<5 units", achieved: "In progress", status: "In Progress" as const },
@@ -350,11 +348,10 @@ export default function ChromaSyncProject() {
         <RoadmapSection milestones={projectData.roadmap.milestones} />
         <LearningsSection wentWell={projectData.learnings.wentWell} challenges={projectData.learnings.challenges} doDifferently={projectData.learnings.doDifferently} keyTakeaway={projectData.learnings.keyTakeaway} />
         <PmArtefactsSection projectArtefacts={[
-          { name: "Opportunity Assessment — Ojuit", url: "https://www.notion.so/3376d4d745128156bee5dbcca545b0c4" },
-          { name: "PRD — Ojuit", url: "https://www.notion.so/3376d4d745128127a492f069dc1e04c0" },
-          { name: "Ethics Framework — Ojuit", url: "https://www.notion.so/3376d4d7451281a786f5f721c559af5b" },
-          { name: "Competitive Analysis — Ojuit", url: "https://www.notion.so/3376d4d7451281abab24e2797c95f821" },
-          { name: "Model Decisions — Ojuit", url: "https://www.notion.so/3376d4d74512811ca62dec35385b7d5a" },
+          { name: "PRD — Ojuit", artefactId: "ojuit-prd", project: "ojuit" },
+          { name: "Model Decisions — Ojuit", artefactId: "ojuit-model-decisions", project: "ojuit" },
+          { name: "Ethics Framework — Ojuit", artefactId: "ojuit-ethics", project: "ojuit" },
+          { name: "User Personas — Ojuit", artefactId: "ojuit-personas", project: "ojuit" },
         ]} />
 
         <ContactSection {...projectData.contact} />

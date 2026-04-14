@@ -2,7 +2,7 @@ import { AlertCircle } from "lucide-react"
 
 interface ProblemSectionProps {
   paragraphs: string[]
-  keyInsight: string
+  keyInsight?: string
   videoUrl?: string
 }
 
@@ -26,11 +26,13 @@ export function ProblemSection({ paragraphs, keyInsight, videoUrl }: ProblemSect
             ))}
           </div>
 
-          <div className="p-6 rounded-xl border-l-4 border-jungle-500 bg-jungle-50 dark:bg-jungle-800/30">
-            <p className="text-lg font-semibold text-slate-800 dark:text-white italic">
-              "{keyInsight}"
-            </p>
-          </div>
+          {keyInsight && (
+            <div className="p-6 rounded-xl border-l-4 border-jungle-500 bg-jungle-50 dark:bg-jungle-800/30">
+              <p className="text-lg font-semibold text-slate-800 dark:text-white italic">
+                "{keyInsight}"
+              </p>
+            </div>
+          )}
 
           {videoUrl && (
             <div className="relative h-80 rounded-xl bg-slate-100 dark:bg-jungle-800 border border-slate-200 dark:border-jungle-700 flex items-center justify-center">

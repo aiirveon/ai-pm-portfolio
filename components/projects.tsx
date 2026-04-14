@@ -22,14 +22,14 @@ interface Project {
 export default function Projects() {
   const projects: Project[] = [
     {
-      title: "AI Dynamic Pricing System",
+      title: "AI Dynamic Ticket Pricing",
       description:
-        "ML-powered pricing optimization for UK e-commerce and retail. Achieved R² = 0.997 accuracy with weather integration, SHAP explainability, and ethics guardrails. Proves 16% margin lift (£17,959 annual revenue) through historical backtest validation.",
+        "An end-to-end AI pricing system for UK live events that integrates artist popularity, venue location premiums, demand urgency signals, and market conditions to generate explainable, ethical price recommendations",
       techStack: ["Python", "XGBoost", "SHAP", "Optuna", "Streamlit"],
-      github: "https://github.com/aiirveon/ai-dynamic-pricing",
-      demo: "https://ai-dynamic-pricing-fym9pp9mnhtwwpo5zpzud5.streamlit.app/",
-      caseStudy: "/projects/ai-dynamic-pricing",
-      image: "/placeholder.svg?height=200&width=400",
+      github: "https://github.com/aiirveon/ai-ticket-pricing",
+      demo: "https://ai-ticket-pricing.streamlit.app/",
+      caseStudy: "/projects/ai-ticket-pricing",
+      image: "/gifs/ai-ticket-pricing-gif.gif",
       featured: true,
     },
 
@@ -41,7 +41,7 @@ export default function Projects() {
       github: "https://github.com/aiirveon",
       demo: "https://atanda-studio.vercel.app/",
       caseStudy: "/projects/frame-intelligence",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "/gifs/frame-intelligence-gif.gif",
       featured: false,
       status: "In Progress",
     },
@@ -54,22 +54,34 @@ export default function Projects() {
       github: "https://github.com/aiirveon/bias-audit-dashboard",
       demo: "https://bias-audit-dashboard.vercel.app",
       caseStudy: "/projects/bias-audit-dashboard",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "/gifs/bias-audit-dashboard-gif.gif",
       featured: false,
       status: "Shipped",
     },
 
     {
-      title: "Ojuit - AI Filmmaking Intelligence",
+      title: "Ojuit",
       description:
         "Two-product AI platform for solo indie filmmakers. Story Engine guides writers from raw idea to full beat sheet across six stages with AVOID_LIST prompt engineering and full Supabase state persistence. Colour Intelligence pipeline delivers CIE Lab Delta E measurement, XGBoost correction predictions, and scene-to-reference LUT export for DaVinci Resolve and Premiere Pro.",
       techStack: ["Python", "FastAPI", "Next.js", "OpenCV", "XGBoost", "Claude API", "Supabase"],
       github: "https://github.com/aiirveon/chromasync-app",
       demo: "https://chromasync-app.vercel.app",
       caseStudy: "/projects/ojuit",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "/gifs/ojuit-gif.gif",
       featured: false,
       status: "In Progress",
+    },
+    {
+      title: "TrueCase",
+      description:
+        "AI-powered business case builder for AI investments. Generates governance-adjusted ROI projections with a reliability score (0–100%) based on six KB-backed governance elements. Claude Sonnet 4 produces a three-section business case narrative constrained entirely to a verified knowledge base — not training data. Zero data retained. Exports board-ready PDF and HTML.",
+      techStack: ["Next.js", "Claude API", "TypeScript", "Tailwind CSS", "@react-pdf/renderer", "Vercel"],
+      github: "https://github.com/aiirveon",
+      demo: "https://truecase-seven.vercel.app/",
+      caseStudy: "/projects/truecase",
+      image: "/gifs/truecase-gif.gif",
+      featured: false,
+      status: "Shipped",
     },
     {
       title: "Pulse: AI Audience Sentiment Monitor",
@@ -79,7 +91,7 @@ export default function Projects() {
       github: "https://github.com/aiirveon/pulse",
       demo: "https://pulse-pi-inky.vercel.app",
       caseStudy: "/projects/pulse",
-      image: "/placeholder.svg?height=200&width=400",
+      image: "/gifs/pulse-gif.gif",
       featured: false,
       status: "Shipped",
     },
@@ -133,16 +145,6 @@ export default function Projects() {
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  {project.featured && (
-    <Badge className="absolute top-4 left-4 bg-white text-jungle-700 font-bold text-xs">
-      Featured
-    </Badge>
-  )}
-                  {project.status === "Shipped" && !project.featured && (
-                    <Badge className="absolute top-4 left-4 bg-jungle-500 text-white font-bold text-xs">
-                      Shipped
-                    </Badge>
-                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-jungle-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 <CardHeader>

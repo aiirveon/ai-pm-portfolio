@@ -54,7 +54,6 @@ const projectData = {
       "On the production side, the process from brief to shooting script involves dozens of discrete creative decisions—audience insight, proposition, concept routes, shot-by-shot visual direction, AI generation prompts, and post-production briefs. Each decision currently requires a different specialist: brand consultant, scriptwriter, director of photography, producer. For independent filmmakers and small agencies, that chain is inaccessible.",
       "Existing AI tools for video either describe what is on screen (generic captions) or analyse sentiment at a surface level. None apply the professional frameworks used in the commercial film industry—Bruce Block's visual components, SB7 story structure, Cialdini persuasion principles, Byron Sharp brand distinctiveness—to give structured, actionable intelligence that a working director can actually use.",
     ],
-    keyInsight: "From Prediction Machines: 'AI reduces the cost of prediction, but product managers must decide which predictions matter.' For commercial filmmakers, the predictions that matter are the ones tied to professional craft frameworks—not generic sentiment scores.",
   },
 
   // User Personas
@@ -63,46 +62,46 @@ const projectData = {
       name: "Kolade",
       role: "Junior Commercial Director",
       goals: [
-        "Understand why award-winning commercials work technically and emotionally",
-        "Build a repeatable system for planning shots and visual direction",
-        "Pitch concepts to brands with structured, credible creative rationale",
+        "Build a repeatable, defensible system for visual direction he can present to clients with confidence",
+        "Reduce the gap between what he feels intuitively about a reference and what he can explain technically",
+        "Diagnose why pitches fail using structured framework analysis",
       ],
       painPoints: [
-        "No access to senior creatives who can break down a reference film",
-        "Subjective feedback from clients—no framework to defend creative decisions",
-        "Manual process to build shot lists, visual briefs, and production packs",
+        "Client feedback is subjective with no framework to push back",
+        "Shot lists built from memory and instinct rather than structured analysis",
+        "Research takes 3–4 hours per project with no reusable output",
       ],
-      quote: "I can watch a Nike commercial 20 times and feel it—but I can't explain to a client why it works. I need a framework, not just a feeling.",
+      quote: "I upload a Nike reference, get a structured breakdown of why it works — technically and emotionally — and walk into my client pitch with a visual rationale I can actually defend.",
     },
     {
       name: "Amara",
       role: "Brand Strategist at a Creative Agency",
       goals: [
-        "Audit competitor commercials to inform brand positioning decisions",
-        "Brief directors with precise creative direction rather than vague mood boards",
-        "Move from brief to first-draft script in days, not weeks",
+        "Close the translation gap between a brand brief and a shooting script",
+        "Audit competitor brand films systematically",
+        "Move from brief to first-draft creative direction in days",
       ],
       painPoints: [
-        "Creative briefing is a bottleneck—directors interpret briefs differently",
-        "No structured way to analyse what competitor brands are doing in film",
-        "Production timelines are too long for agile campaign cycles",
+        "Directors interpret briefs differently every time — no shared visual language between strategy and production",
+        "Campaign timelines are shrinking but the briefing process has not",
+        "Alignment meetings frequently require multiple rounds of revision",
       ],
-      quote: "I can write a brand brief but I can't translate it into a shooting script. That translation is where weeks get lost and money gets wasted.",
+      quote: "I write the brief once. The tool translates it into a shooting script structure the director can work from immediately. We go into pre-production aligned.",
     },
     {
       name: "Ola",
-      role: "Independent Filmmaker / Content Creator",
+      role: "Independent Filmmaker and Content Creator",
       goals: [
-        "Create commercial-quality content without a full agency or crew",
-        "Use AI generation tools (Midjourney, Higgsfield) effectively for branded content",
-        "Deliver a full production pack—script, shot list, visual brief—for client sign-off",
+        "Build a full production pack — concept, shot list, and AI-generated visuals — that clients can sign off on without an agency",
+        "Use Midjourney and Higgsfield effectively without hours of trial and error",
+        "Deliver 2–3 commercial projects per month solo",
       ],
       painPoints: [
-        "AI generation tools require precise prompts that take hours to craft well",
-        "No end-to-end system from concept to deliverable for solo operators",
-        "Clients expect agency-grade output but budget for freelance rates",
+        "AI generation tools require precise technical prompts she has to reverse-engineer each time",
+        "No end-to-end workflow from concept to client deliverable for solo operators",
+        "Clients expect agency-grade output at freelance rates",
       ],
-      quote: "I use Midjourney and Higgsfield but it's trial and error. I need a system that tells me exactly what to type and why, not just hope for a good output.",
+      quote: "I describe the look I want and get back the exact prompts, the shot breakdown, and a client-ready pack. In hours, not days.",
     },
   ],
 
@@ -113,7 +112,7 @@ const projectData = {
       {
         icon: <Eye className="w-5 h-5" />,
         title: "Six-Layer Lens Analysis",
-        description: "Brand Strategy (Cialdini + Byron Sharp), Story Structure (SB7 full 7-field), Cinematography (Bruce Block ×7 visual components), Sound, Post Production, and Performance Prediction—each triggered individually by the user, never auto-loaded.",
+        description: "Brand Strategy (Cialdini ×7 including Unity + Byron Sharp + Ries & Trout positioning), Story Structure (SB7 full 7-field + McKee dramatic structure + Save the Cat beats), Cinematography (Bruce Block ×7 visual components + Blain Brown lens theory + John Alton lighting language), Sound, Post Production (Walter Murch ×6 criteria + Karen Pearlman rhythm theory), and Performance Prediction — each triggered individually by the user, never auto-loaded.",
       },
       {
         icon: <Clapperboard className="w-5 h-5" />,
@@ -162,7 +161,7 @@ const projectData = {
     },
     {
       title: "Phase 3: Forge — Wiring to Claude API",
-      description: "All seven Forge stages connected to the Meridian Engine and Claude API. Currently in development.",
+      description: "All seven Forge stages connected to the Meridian Engine and Claude API. Complete — engines/meridian-v1.json, backend/forge_pipeline.py, and POST /forge/stage endpoint all shipped.",
       deliverables: [
         "engines/meridian-v1.json — all 7 module system prompts + knowledge base",
         "backend/engine_loader.py — reads engine JSON, returns module system prompts",
@@ -194,7 +193,7 @@ const projectData = {
       { feature: "SequenceReport", type: "JSON (Pydantic)", description: "6-layer structured analysis with scores and framework fields", source: "Claude API (forced tool_choice)" },
       { feature: "BruceBlockComponents", type: "object ×7", description: "Space, Line, Shape, Tone, Colour, Movement, Rhythm — per cinematography layer", source: "Claude API" },
       { feature: "SB7Fields", type: "object ×7", description: "Full SB7 story structure (Hero, Problem, Guide, Plan, CTA, Failure, Success)", source: "Claude API" },
-      { feature: "CialdiniPrinciples", type: "enum[]", description: "Reciprocity, Commitment, Social Proof, Authority, Liking, Scarcity", source: "Claude API" },
+      { feature: "CialdiniPrinciples", type: "enum[]", description: "Reciprocity, Commitment & Consistency, Social Proof, Authority, Liking, Scarcity, Unity — all 7 principles enforced via enum", source: "Claude API" },
       { feature: "forge_projects row", type: "JSONB ×9", description: "Per-stage output stored in Supabase: brief_output, concepts_output, script_output, visual_output, etc.", source: "Supabase" },
     ],
     methodology: "Frame extraction at 1fps via ffmpeg. Uniform frame sampling with first and last frame always included, capped at 60 frames (≈90K input tokens—within Claude's 200K context window). All Claude API calls use forced tool_choice to guarantee structured JSON output matching Pydantic schemas. Each Forge stage sends the engine module's system prompt plus cumulative stage context from Supabase.",
@@ -216,6 +215,7 @@ const projectData = {
       { metric: "Frame sampling accuracy", before: "Manual screenshots", after: "60 frames/video automated", change: "Fully automated" },
       { metric: "Output format consistency", before: "Free-form text", after: "Forced tool_choice JSON", change: "100% structured" },
       { metric: "Cross-stage context", before: "Separate prompts", after: "Cumulative Supabase state", change: "Full pipeline memory" },
+      { metric: "Analysis export", before: "No export", after: "PDF + HTML export on every completed analysis", change: "Shipped in V1" },
     ],
     keyInsights: [
       "Forced tool_choice on all Claude API calls was the single most important technical decision—guaranteeing structured JSON output eliminated all downstream parsing failures and made every layer's output immediately renderable in the UI.",
@@ -268,7 +268,7 @@ const projectData = {
     successMetrics: [
       { metric: "Lens layers shipped", target: "6", achieved: "6", status: "Achieved" as const },
       { metric: "Auth system", target: "Magic link + RLS", achieved: "Complete", status: "Achieved" as const },
-      { metric: "Forge stages wired", target: "7", achieved: "7 of 7 — complete", status: "Achieved" as const },
+      { metric: "Forge stages wired", target: "7", achieved: "7 of 7 — complete and deployed", status: "Achieved" as const },
       { metric: "Engine JSON architecture", target: "Extensible", achieved: "Meridian v1 — all 7 modules live", status: "Achieved" as const },
     ],
   },
@@ -283,18 +283,21 @@ const projectData = {
           { title: "Magic link auth + Supabase library with session persistence" },
           { title: "Forge dashboard + all 7 stage route shells" },
           { title: "Vault UI with Meridian Engine card" },
+          { title: "Meridian Engine JSON — all 7 module system prompts" },
+          { title: "backend/forge_pipeline.py + engine_loader.py + POST /forge/stage" },
+          { title: "All 7 Forge stages wired to Claude API" },
+          { title: "Lens → Forge pipeline (analysis as Stage 1 context)" },
+          { title: "Forge project save per stage + resume from Supabase" },
+          { title: "Production pack PDF export" },
         ],
         status: "completed" as const,
       },
       {
         phase: "Next",
         items: [
-          { title: "Forge Stages 1–5 wired to Claude API (Brief, Concepts, Script, Visual, Generate)" },
-          { title: "Meridian Engine JSON + backend/forge_pipeline.py + POST /forge/stage" },
-          { title: "Stage 6 Production Guide — wired to Claude API" },
-          { title: "Stage 7 Post — wired to Claude API" },
-          { title: "Lens → Forge pipeline (analysis as Stage 1 context)" },
-          { title: "Export production pack as PDF" },
+          { title: "Phase 2 audio analysis via Whisper (Sound layer fully populated)" },
+          { title: "Vault engine upload for private engines" },
+          { title: "Usage analytics — layer click-through rate, export rate" },
         ],
         status: "in-progress" as const,
       },
@@ -361,7 +364,6 @@ export default function FrameIntelligenceProject() {
 
         <ProblemSection
           paragraphs={projectData.problem.paragraphs}
-          keyInsight={projectData.problem.keyInsight}
         />
 
         <PersonasSection personas={projectData.personas} />
@@ -414,11 +416,9 @@ export default function FrameIntelligenceProject() {
         />
 
         <PmArtefactsSection projectArtefacts={[
-          { name: "Opportunity Assessment — Frame Intelligence", url: "https://www.notion.so/33a6d4d7451281708677fe252c70b55d" },
-          { name: "PRD — Frame Intelligence", url: "https://www.notion.so/33a6d4d7451281cbb59fde066591bf31" },
-          { name: "Ethics Framework — Frame Intelligence", url: "https://www.notion.so/33a6d4d745128152ac29c718ee8e22fa" },
-          { name: "Competitive Analysis — Frame Intelligence", url: "https://www.notion.so/33a6d4d74512813c8397e8ea9b87a92a" },
-          { name: "Model Decisions — Frame Intelligence", url: "https://www.notion.so/33a6d4d745128188a29ce510ef9e1ab0" },
+          { name: "PRD — Atanda Studio", artefactId: "atanda-prd", project: "atanda" },
+          { name: "Model Decisions — Atanda Studio", artefactId: "atanda-model-decisions", project: "atanda" },
+          { name: "Ethics Framework — Atanda Studio", artefactId: "atanda-ethics", project: "atanda" },
         ]} />
 
         <ContactSection {...projectData.contact} />

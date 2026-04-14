@@ -1,22 +1,28 @@
 "use client"
 
-import { ExternalLink } from "lucide-react"
+import { useState } from "react"
+import { Download } from "lucide-react"
+import DownloadModal from "@/components/DownloadModal"
 
-type Artefact = { name: string; url: string }
+type Artefact = { name: string; artefactId: string; project: string }
 
-function ArtefactRow({ name, url }: { name: string; url: string }) {
+function ArtefactRow({
+  name,
+  onDownload,
+}: {
+  name: string
+  onDownload: () => void
+}) {
   return (
     <div className="flex items-center justify-between py-3 border-b border-gray-100 dark:border-jungle-800 last:border-0">
       <span className="text-sm text-gray-700 dark:text-gray-300 font-medium">{name}</span>
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        onClick={onDownload}
         className="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg border border-gray-300 dark:border-jungle-700 text-gray-600 dark:text-gray-400 hover:border-jungle-500 dark:hover:border-jungle-400 hover:text-jungle-600 dark:hover:text-jungle-300 transition-colors whitespace-nowrap ml-4 shrink-0"
       >
-        <ExternalLink className="w-3 h-3" />
-        Open in Notion
-      </a>
+        <Download className="w-3 h-3" />
+        Download
+      </button>
     </div>
   )
 }
@@ -26,6 +32,8 @@ export function PmArtefactsSection({
 }: {
   projectArtefacts?: Artefact[]
 }) {
+  const [selected, setSelected] = useState<Artefact | null>(null)
+
   return (
     <section id="pm-artefacts" className="py-16 md:py-24 bg-gray-50 dark:bg-jungle-950">
       <div className="container mx-auto px-4">
@@ -39,12 +47,26 @@ export function PmArtefactsSection({
             </p>
           </div>
           <div className="bg-white dark:bg-jungle-900 rounded-xl border border-gray-200 dark:border-jungle-800 px-6 py-2">
-            {projectArtefacts.map(({ name, url }) => (
-              <ArtefactRow key={name} name={name} url={url} />
+            {projectArtefacts.map((artefact) => (
+              <ArtefactRow
+                key={artefact.artefactId}
+                name={artefact.name}
+                onDownload={() => setSelected(artefact)}
+              />
             ))}
           </div>
         </div>
       </div>
+
+      {selected && (
+        <DownloadModal
+          isOpen={true}
+          onClose={() => setSelected(null)}
+          artefactId={selected.artefactId}
+          project={selected.project}
+          artefactName={selected.name}
+        />
+      )}
     </section>
   )
 }

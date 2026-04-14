@@ -44,7 +44,7 @@ const projectData = {
       "The challenge is not technical. The barrier is product thinking: how do you surface real-time audience sentiment in a form that a live broadcast producer can read in under 5 seconds and act on immediately? How do you build a tool that is fast enough for a gallery, honest enough about its uncertainty, and safe enough for an Ofcom-regulated broadcaster to use?",
       "This project addresses the full product lifecycle: from ML model design and labelling guide to tiered routing architecture to SHAP explainability to editorial ethics to a shipped, interactive demo — demonstrating how AI Product Managers bridge technical capability with editorial integrity and regulatory awareness.",
     ],
-    keyInsight: "During the 2026 BAFTAs, audience sentiment on social media shifts in seconds — a controversial winner announcement, a presenter joke that lands wrong, a diversity snub. A broadcast producer in the gallery who can see these shifts in real time has better information than one flying blind. Pulse is the structured intelligence layer between the audience and the editorial team.",
+
   },
   solution: {
     description: "A real-time AI sentiment classification system that gives broadcast producers structured, explainable, auditable audience intelligence — so they can make faster, more audience-aware editorial decisions during live events. The system never makes editorial decisions. The producer always decides.",
@@ -278,7 +278,6 @@ export default function PulseProject() {
         />
         <ProblemSection
           paragraphs={projectData.problem.paragraphs}
-          keyInsight={projectData.problem.keyInsight}
         />
         <SolutionSection
           description={projectData.solution.description}
@@ -321,11 +320,9 @@ export default function PulseProject() {
           keyTakeaway={projectData.learnings.keyTakeaway}
         />
         <PmArtefactsSection projectArtefacts={[
-          { name: "Opportunity Assessment — Pulse", url: "https://www.notion.so/33a6d4d745128178bf08d3385845b32c" },
-          { name: "PRD — Pulse", url: "https://www.notion.so/33a6d4d745128145a128c50fa5c4bb59" },
-          { name: "Ethics Framework — Pulse", url: "https://www.notion.so/33a6d4d7451281a295e8cac94aa6067b" },
-          { name: "Competitive Analysis — Pulse", url: "https://www.notion.so/33a6d4d7451281b5b3cdee3f0d3c260c" },
-          { name: "Model Decisions — Pulse", url: "https://www.notion.so/33a6d4d74512817aae4edda9ba600704" },
+          { name: "PRD — Pulse", artefactId: "pulse-prd", project: "pulse" },
+          { name: "Model Decisions — Pulse", artefactId: "pulse-model-decisions", project: "pulse" },
+          { name: "Ethics Framework — Pulse", artefactId: "pulse-ethics", project: "pulse" },
         ]} />
 
         <ContactSection {...projectData.contact} />

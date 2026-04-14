@@ -317,11 +317,9 @@ export default function BiasAuditDashboardProject() {
           keyTakeaway={projectData.learnings.keyTakeaway}
         />
         <PmArtefactsSection projectArtefacts={[
-          { name: "Opportunity Assessment — Bias Audit Dashboard", url: "https://www.notion.so/3366d4d7451281859997fcbcd671df77" },
-          { name: "PRD — Bias Audit Dashboard", url: "https://www.notion.so/3366d4d745128172a0a1fe84746a3b31" },
-          { name: "Ethics Framework — Bias Audit Dashboard", url: "https://www.notion.so/3366d4d74512819bac4ae15f5ed237bb" },
-          { name: "Competitive Analysis — Bias Audit Dashboard", url: "https://www.notion.so/3366d4d745128122a609f7cb024cb474" },
-          { name: "Model Decisions — Bias Audit Dashboard", url: "https://www.notion.so/3366d4d7451281c3ba9fffd1bf629561" },
+          { name: "PRD — Bias Audit Dashboard", artefactId: "bias-audit-prd", project: "bias-audit" },
+          { name: "Model Decisions — Bias Audit Dashboard", artefactId: "bias-audit-model-decisions", project: "bias-audit" },
+          { name: "Ethics Framework — Bias Audit Dashboard", artefactId: "bias-audit-ethics", project: "bias-audit" },
         ]} />
 
         <ContactSection {...projectData.contact} />
