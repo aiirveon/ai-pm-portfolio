@@ -34,6 +34,11 @@ const projectData = {
     githubUrl: "https://github.com/aiirveon/ai-event-ticket-pricing",
     heroImage: undefined,
     youtubeUrl: "https://www.youtube.com/watch?v=Jvhj-QlmWvM",
+    screenshotImages: [
+      "/switcher/ai-ticket-pricing/a.PNG",
+      "/switcher/ai-ticket-pricing/b.PNG",
+      "/switcher/ai-ticket-pricing/c.PNG",
+    ],
   },
 
   // Executive Summary

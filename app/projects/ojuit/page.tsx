@@ -26,6 +26,11 @@ const projectData = {
     githubUrl: "https://github.com/aiirveon",
     heroImage: undefined,
     youtubeUrl: "https://www.youtube.com/watch?v=izTjEm56-so",
+    screenshotImages: [
+      "/switcher/ojuit/a.PNG",
+      "/switcher/ojuit/b.PNG",
+      "/switcher/ojuit/c.PNG",
+    ],
   },
 
   summary: {

@@ -32,6 +32,12 @@ const projectData = {
     githubUrl: undefined,
     heroImage: undefined,
     youtubeUrl: "https://www.youtube.com/watch?v=cXCDUK5WyUw",
+    screenshotImages: [
+      "/switcher/truecase/a.PNG",
+      "/switcher/truecase/b.PNG",
+      "/switcher/truecase/c.PNG",
+      "/switcher/truecase/d.PNG",
+    ],
   },
 
   // Executive Summary

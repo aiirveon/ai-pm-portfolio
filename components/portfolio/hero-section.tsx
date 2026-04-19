@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Github } from "lucide-react"
+import { MediaSwitcher } from "./media-switcher"
 
 interface HeroSectionProps {
   projectName: string
@@ -11,6 +12,7 @@ interface HeroSectionProps {
   githubUrl?: string
   heroImage?: string
   youtubeUrl?: string
+  screenshotImages?: string[]
 }
 
 function getYouTubeEmbedUrl(url: string): string {
@@ -28,6 +30,7 @@ export function HeroSection({
   githubUrl,
   heroImage,
   youtubeUrl,
+  screenshotImages,
 }: HeroSectionProps) {
   return (
     <section id="hero" className="pt-8 pb-20 px-4">
@@ -72,28 +75,36 @@ export function HeroSection({
             </div>
           </div>
 
-          <div className={`relative rounded-2xl bg-gradient-to-br from-jungle-100 via-jungle-50 to-jungle-100 dark:from-jungle-800 dark:via-jungle-900 dark:to-jungle-800 border border-jungle-200 dark:border-jungle-700 overflow-hidden ${youtubeUrl ? "aspect-video" : "h-96 flex items-center justify-center"}`}>
-            {youtubeUrl ? (
-              <iframe
-                className="absolute inset-0 w-full h-full"
-                src={getYouTubeEmbedUrl(youtubeUrl)}
-                title={projectName}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            ) : (
-              <>
-                <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-jungle-950 via-transparent to-transparent" />
-                {heroImage ? (
-                  <img src={heroImage} alt={projectName} className="w-full h-full object-cover" />
-                ) : (
-                  <div className="text-center text-slate-500 dark:text-slate-400 z-10">
-                    <p className="text-sm">[Hero Image/Visual]</p>
-                  </div>
-                )}
-              </>
-            )}
-          </div>
+          {youtubeUrl && screenshotImages ? (
+            <MediaSwitcher
+              youtubeUrl={youtubeUrl}
+              images={screenshotImages}
+              projectName={projectName}
+            />
+          ) : (
+            <div className={`relative rounded-2xl bg-gradient-to-br from-jungle-100 via-jungle-50 to-jungle-100 dark:from-jungle-800 dark:via-jungle-900 dark:to-jungle-800 border border-jungle-200 dark:border-jungle-700 overflow-hidden ${youtubeUrl ? "aspect-video" : "h-96 flex items-center justify-center"}`}>
+              {youtubeUrl ? (
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src={getYouTubeEmbedUrl(youtubeUrl)}
+                  title={projectName}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <>
+                  <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-jungle-950 via-transparent to-transparent" />
+                  {heroImage ? (
+                    <img src={heroImage} alt={projectName} className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="text-center text-slate-500 dark:text-slate-400 z-10">
+                      <p className="text-sm">[Hero Image/Visual]</p>
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </section>

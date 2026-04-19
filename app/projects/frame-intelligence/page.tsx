@@ -31,6 +31,12 @@ const projectData = {
     githubUrl: "https://github.com/aiirveon",
     heroImage: undefined,
     youtubeUrl: "https://www.youtube.com/watch?v=mxqiEq4jXng",
+    screenshotImages: [
+      "/switcher/frame-intelligence/a.PNG",
+      "/switcher/frame-intelligence/b.PNG",
+      "/switcher/frame-intelligence/c.PNG",
+      "/switcher/frame-intelligence/d.PNG",
+    ],
   },
 
   // Executive Summary

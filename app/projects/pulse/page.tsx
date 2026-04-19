@@ -27,6 +27,12 @@ const projectData = {
     githubUrl: "https://github.com/aiirveon/pulse",
     heroImage: undefined,
     youtubeUrl: "https://www.youtube.com/watch?v=2P7k6InUiBI",
+    screenshotImages: [
+      "/switcher/pulse/01P.PNG",
+      "/switcher/pulse/01AP.PNG",
+      "/switcher/pulse/01BP.PNG",
+      "/switcher/pulse/02P.PNG",
+    ],
   },
   summary: {
     description: "A real-time AI sentiment classification system that gives broadcast producers structured, explainable, auditable audience intelligence — so they can make faster, more audience-aware editorial decisions during live events. The system never makes editorial decisions. The producer always decides.",

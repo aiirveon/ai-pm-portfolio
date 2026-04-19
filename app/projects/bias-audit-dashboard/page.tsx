@@ -28,6 +28,10 @@ const projectData = {
     githubUrl: "https://github.com/aiirveon/bias-audit-dashboard",
     heroImage: undefined,
     youtubeUrl: "https://www.youtube.com/watch?v=q2m1QcoEpWI",
+    screenshotImages: [
+      "/switcher/bias-audit-dashboard/a.PNG",
+      "/switcher/bias-audit-dashboard/b.PNG",
+    ],
   },
   summary: {
     description: "Built an end-to-end AI bias detection system for UK media trust and safety teams. The hybrid architecture routes content through a tiered pipeline: inputs of 2 words or fewer are auto-approved at zero cost, 4–15 word inputs go to Claude API for semantic classification, and longer inputs run through a TF-IDF + XGBoost classifier with SHAP word-level highlights. The system achieves F1 0.90 across 6 bias categories and includes a live comment moderation simulator that demonstrates the full human-in-the-loop workflow.",
