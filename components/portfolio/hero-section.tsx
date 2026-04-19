@@ -35,15 +35,15 @@ export function HeroSection({
   return (
     <section id="hero" className="pt-8 pb-20 px-4">
       <div className="container mx-auto max-w-6xl">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           <div className="space-y-8">
             <div className="space-y-4">
-              <h1 className="text-4xl lg:text-5xl font-bold tracking-tight">
+              <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold tracking-tight">
                 <span className="bg-gradient-to-r from-jungle-500 via-jungle-400 to-jungle-600 bg-clip-text text-transparent">
                   {projectName}
                 </span>
               </h1>
-              <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
                 {tagline}
               </p>
             </div>

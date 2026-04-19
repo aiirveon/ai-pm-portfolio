@@ -166,7 +166,7 @@ export default function Projects() {
                     {project.description}
                   </CardDescription>
                 </CardContent>
-                <CardFooter className="flex gap-2 pt-2">
+                <CardFooter className="flex flex-wrap gap-2 pt-2">
                   {project.caseStudy && (
                     <Button asChild size="sm" className="bg-jungle-500 hover:bg-jungle-600">
                       <Link href={project.caseStudy}>

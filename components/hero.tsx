@@ -78,7 +78,7 @@ export default function Hero() {
           </motion.div>
         ))}
 
-      <div className="container mx-auto px-4 z-10 relative">
+      <div className="container mx-auto px-4 z-10 relative pt-16 sm:pt-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -87,7 +87,7 @@ export default function Hero() {
         >
           <div className="flex justify-center mb-6">
             <motion.div
-              className="relative h-40 w-40 md:h-48 md:w-48 lg:h-56 lg:w-56"
+              className="relative h-28 w-28 sm:h-36 sm:w-36 md:h-48 md:w-48 lg:h-56 lg:w-56"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >

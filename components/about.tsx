@@ -128,7 +128,7 @@ export default function About() {
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {skills.map((skill, index) => {
               const icons: Record<string, React.ReactNode> = {
                 Brain: <Brain className="h-4 w-4 text-jungle-500" />,

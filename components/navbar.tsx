@@ -62,7 +62,7 @@ export default function Navbar() {
             <div className="flex items-center gap-4">
               <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
                 <img src="/images/profile.png" alt="Ogbebor Osaheni" className="h-10 w-10 rounded-md" />
-                <div className={`font-bold text-xl flex items-center transition-colors ${
+                <div className={`font-bold text-base md:text-xl flex items-center min-w-0 truncate transition-colors ${
                   shouldUseLightText 
                     ? "text-white" 
                     : "text-slate-800 dark:text-white"
@@ -82,9 +82,9 @@ export default function Navbar() {
               
               {/* Back to Projects - Only show on project pages */}
               {isProjectPage && (
-                <Link 
-                  href="/#projects" 
-                  className="hidden md:inline-flex items-center text-sm text-jungle-600 dark:text-jungle-400 hover:underline"
+                <Link
+                  href="/#projects"
+                  className="inline-flex items-center text-xs text-jungle-600 dark:text-jungle-400 hover:underline"
                 >
                   <ArrowLeft className="h-4 w-4 mr-1" />
                   Back to Projects
@@ -116,11 +116,11 @@ export default function Navbar() {
             </nav>
 
             {/* Mobile Navigation Toggle */}
-            <div className="flex items-center md:hidden gap-2">
+            <div className="flex items-center md:hidden gap-2 [&>button]:h-8 [&>button]:w-8 md:[&>button]:h-10 md:[&>button]:w-10">
               <ThemeToggle />
               <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
                 {isMenuOpen ? (
-                  <X className={`h-6 w-6 ${shouldUseLightText ? "text-white" : "text-slate-800 dark:text-white"}`} />
+                  <X className="h-6 w-6 text-slate-800 dark:text-white" />
                 ) : (
                   <Menu className={`h-6 w-6 ${shouldUseLightText ? "text-white" : "text-slate-800 dark:text-white"}`} />
                 )}
@@ -132,14 +132,14 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMenuOpen && isMobile && (
-        <div className="fixed inset-0 z-40 bg-white dark:bg-jungle-900/95 pt-16">
+        <div className="fixed inset-0 z-40 bg-white dark:bg-jungle-950 pt-16">
           <nav className="container mx-auto px-4 py-8 flex flex-col gap-4">
             {navItems.map((item) => (
               <Button
                 key={item.name}
                 variant="ghost"
                 asChild
-                className="w-full justify-start text-lg py-4 text-slate-800 dark:text-white"
+                className="w-full justify-start text-lg py-4 text-slate-800 dark:text-white font-medium"
               >
                 <Link href={item.href} onClick={() => handleNavClick(item.href)}>
                   {item.name}
