@@ -1,7 +1,8 @@
 "use client"
 
-import { useState } from "react"
-import { ChevronDown } from "lucide-react"
+import { useState, useEffect, useCallback } from "react"
+import Image from "next/image"
+import { ChevronDown, X, ChevronLeft, ChevronRight } from "lucide-react"
 
 interface Metric {
   name: string
@@ -10,16 +11,110 @@ interface Metric {
   improvement: string
 }
 
+interface PhaseImage {
+  src: string
+  alt: string
+}
+
 interface PhaseProps {
   title: string
   description: string
   deliverables: string[]
   techStack: string[]
   metrics?: Metric[]
+  images?: PhaseImage[]
 }
 
-function PhaseCard({ title, deliverables, techStack, metrics, description }: PhaseProps) {
+// ============================================================================
+// ImageLightbox
+// ============================================================================
+
+interface ImageLightboxProps {
+  images: PhaseImage[]
+  startIndex: number
+  onClose: () => void
+}
+
+function ImageLightbox({ images, startIndex, onClose }: ImageLightboxProps) {
+  const [current, setCurrent] = useState(startIndex)
+
+  const prev = useCallback(() => setCurrent((c) => (c - 1 + images.length) % images.length), [images.length])
+  const next = useCallback(() => setCurrent((c) => (c + 1) % images.length), [images.length])
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose()
+      if (e.key === "ArrowLeft") prev()
+      if (e.key === "ArrowRight") next()
+    }
+    window.addEventListener("keydown", handler)
+    return () => window.removeEventListener("keydown", handler)
+  }, [onClose, prev, next])
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
+      onClick={onClose}
+    >
+      {/* X button */}
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+        aria-label="Close"
+      >
+        <X className="w-5 h-5" />
+      </button>
+
+      {/* Counter */}
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 text-white text-sm font-medium bg-black/40 px-3 py-1 rounded-full">
+        {current + 1} / {images.length}
+      </div>
+
+      {/* Left arrow */}
+      {images.length > 1 && (
+        <button
+          onClick={(e) => { e.stopPropagation(); prev() }}
+          className="absolute left-3 md:left-6 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+          aria-label="Previous image"
+        >
+          <ChevronLeft className="w-7 h-7" />
+        </button>
+      )}
+
+      {/* Image */}
+      <div
+        className="relative max-h-screen max-w-screen-lg w-full px-16 md:px-24 flex items-center justify-center"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={images[current].src}
+          alt={images[current].alt}
+          className="max-h-[85vh] max-w-full object-contain rounded-lg shadow-2xl"
+        />
+      </div>
+
+      {/* Right arrow */}
+      {images.length > 1 && (
+        <button
+          onClick={(e) => { e.stopPropagation(); next() }}
+          className="absolute right-3 md:right-6 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+          aria-label="Next image"
+        >
+          <ChevronRight className="w-7 h-7" />
+        </button>
+      )}
+    </div>
+  )
+}
+
+// ============================================================================
+// PhaseCard
+// ============================================================================
+
+function PhaseCard({ title, deliverables, techStack, metrics, description, images }: PhaseProps) {
   const [isOpen, setIsOpen] = useState(false)
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
   return (
     <div className="border border-slate-200 dark:border-jungle-700 rounded-xl overflow-hidden bg-white dark:bg-jungle-800/30 hover:border-jungle-500 transition-colors">
@@ -88,10 +183,37 @@ function PhaseCard({ title, deliverables, techStack, metrics, description }: Pha
             </div>
           )}
 
-          <div className="relative h-60 rounded-lg bg-slate-100 dark:bg-jungle-900/50 border border-slate-200 dark:border-jungle-700 flex items-center justify-center">
-            <p className="text-slate-500 dark:text-slate-400 text-sm">[Video: Phase Demo]</p>
-          </div>
+          {images && images.length > 0 && (
+            <div>
+              <h4 className="font-semibold text-slate-800 dark:text-white mb-3">Phase Outputs:</h4>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {images.map((img, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setLightboxIndex(i)}
+                    className="relative aspect-video rounded-lg overflow-hidden border border-slate-200 dark:border-jungle-700 hover:border-jungle-500 hover:shadow-md transition-all focus:outline-none focus:ring-2 focus:ring-jungle-500"
+                  >
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 50vw, 33vw"
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
+      )}
+
+      {lightboxIndex !== null && images && (
+        <ImageLightbox
+          images={images}
+          startIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+        />
       )}
     </div>
   )

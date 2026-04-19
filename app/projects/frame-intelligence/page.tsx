@@ -7,11 +7,7 @@ import {
   ProblemSection,
   PersonasSection,
   SolutionSection,
-  ImplementationSection,
-  DataSection,
-  ResultsSection,
   EthicsSection,
-  CompetitiveSection,
   OkrsSection,
   RoadmapSection,
   LearningsSection,
@@ -34,6 +30,7 @@ const projectData = {
     demoUrl: "https://atanda-studio.vercel.app/",
     githubUrl: "https://github.com/aiirveon",
     heroImage: undefined,
+    youtubeUrl: "https://www.youtube.com/watch?v=mxqiEq4jXng",
   },
 
   // Executive Summary
@@ -373,31 +370,10 @@ export default function FrameIntelligenceProject() {
           features={projectData.solution.features}
         />
 
-        <ImplementationSection phases={projectData.phases} />
-
-        <DataSection
-          dataDict={projectData.data.dataDict}
-          methodology={projectData.data.methodology}
-          validationMethods={projectData.data.validationMethods}
-        />
-
-        <ResultsSection
-          heroMetric={projectData.results.heroMetric}
-          comparisons={projectData.results.comparisons}
-          keyInsights={projectData.results.keyInsights}
-        />
-
         <EthicsSection
           principles={projectData.ethics.principles}
           guardrails={projectData.ethics.guardrails}
           biasAuditDescription={projectData.ethics.biasAuditDescription}
-        />
-
-        <CompetitiveSection
-          competitors={projectData.competitive.competitors}
-          competitorAName={projectData.competitive.competitorAName}
-          competitorBName={projectData.competitive.competitorBName}
-          positioningStatement={projectData.competitive.positioningStatement}
         />
 
         <OkrsSection

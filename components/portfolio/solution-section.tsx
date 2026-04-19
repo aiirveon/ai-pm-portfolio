@@ -25,10 +25,11 @@ interface SolutionSectionProps {
   description: string
   features: Feature[]
   architectureImage?: string
+  architectureDiagram?: string
   videoUrl?: string
 }
 
-export function SolutionSection({ description, features, architectureImage, videoUrl }: SolutionSectionProps) {
+export function SolutionSection({ description, features, architectureImage, architectureDiagram, videoUrl }: SolutionSectionProps) {
   return (
     <section id="solution" className="py-20 px-4 bg-slate-50 dark:bg-jungle-900/30">
       <div className="container mx-auto max-w-6xl">
@@ -46,16 +47,18 @@ export function SolutionSection({ description, features, architectureImage, vide
             ))}
           </div>
 
-          <div className="space-y-4">
-            <h3 className="text-2xl font-semibold text-slate-800 dark:text-white">Architecture Diagram</h3>
-            <div className="relative h-96 rounded-xl bg-slate-100 dark:bg-jungle-800 border border-slate-200 dark:border-jungle-700 flex items-center justify-center overflow-hidden">
-              {architectureImage ? (
-                <img src={architectureImage} alt="Architecture Diagram" className="w-full h-full object-contain" />
-              ) : (
-                <p className="text-slate-500 dark:text-slate-400">[Image: Architecture Diagram]</p>
-              )}
+          {(architectureImage || architectureDiagram) && (
+            <div className="space-y-4">
+              <h3 className="text-2xl font-semibold text-slate-800 dark:text-white">Architecture Diagram</h3>
+              <div className="relative rounded-xl overflow-hidden border border-slate-200 dark:border-jungle-700">
+                {architectureImage ? (
+                  <img src={architectureImage} alt="Architecture Diagram" className="w-full h-full object-contain" />
+                ) : (
+                  <div dangerouslySetInnerHTML={{ __html: architectureDiagram! }} />
+                )}
+              </div>
             </div>
-          </div>
+          )}
 
           {videoUrl && (
             <div className="relative h-80 rounded-xl bg-slate-100 dark:bg-jungle-800 border border-slate-200 dark:border-jungle-700 flex items-center justify-center">

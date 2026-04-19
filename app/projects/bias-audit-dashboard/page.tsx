@@ -10,7 +10,6 @@ import {
   DataSection,
   ResultsSection,
   EthicsSection,
-  CompetitiveSection,
   OkrsSection,
   RoadmapSection,
   LearningsSection,
@@ -28,9 +27,10 @@ const projectData = {
     demoUrl: "https://bias-audit-dashboard.vercel.app",
     githubUrl: "https://github.com/aiirveon/bias-audit-dashboard",
     heroImage: undefined,
+    youtubeUrl: "https://www.youtube.com/watch?v=q2m1QcoEpWI",
   },
   summary: {
-    description: "Built an end-to-end AI bias detection system for UK media trust and safety teams. The hybrid architecture routes content through a tiered pipeline: inputs under 4 words are auto-approved at zero cost, 4–15 word inputs go to Claude API for semantic classification, and longer inputs run through a TF-IDF + XGBoost classifier with SHAP word-level highlights. The system achieves F1 0.90 across 6 bias categories and includes a live comment moderation simulator that demonstrates the full human-in-the-loop workflow.",
+    description: "Built an end-to-end AI bias detection system for UK media trust and safety teams. The hybrid architecture routes content through a tiered pipeline: inputs of 2 words or fewer are auto-approved at zero cost, 4–15 word inputs go to Claude API for semantic classification, and longer inputs run through a TF-IDF + XGBoost classifier with SHAP word-level highlights. The system achieves F1 0.90 across 6 bias categories and includes a live comment moderation simulator that demonstrates the full human-in-the-loop workflow.",
     metrics: [
       { icon: <BarChart3 className="w-5 h-5" />, value: "0.90", label: "F1 Score", description: "Across all 6 bias categories" },
       { icon: <Shield className="w-5 h-5" />, value: "3-Tier", label: "Routing Architecture", description: "Cost-optimised classification pipeline" },
@@ -48,11 +48,12 @@ const projectData = {
   },
   solution: {
     description: "A hybrid AI system that gives trust and safety analysts a structured, explainable, auditable bias detection layer — so they can make faster, more consistent, and more defensible content moderation decisions at scale. The human always decides. The system never acts autonomously.",
+    architectureDiagram: `<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="450" src="https://embed.figma.com/design/Il9EtBpMuGYk4MA0K7LSjS/System-Architecture-%E2%80%94-Bias-Audit-Dashboard?node-id=0-1&embed-host=share" allowfullscreen></iframe>`,
     features: [
       {
         icon: <Code className="w-5 h-5" />,
         title: "Tiered Routing Architecture",
-        description: "Three-tier classification pipeline: Tier 1 (≤3 words) auto-approves at zero cost. Tier 2 (4–15 words) routes to Claude API for semantic classification — handles short text that TF-IDF cannot reliably classify. Tier 3 (>15 words) runs the full XGBoost + SHAP pipeline. Cost and accuracy matched to input complexity.",
+        description: "Three-tier classification pipeline: Tier 1 (≤2 words) auto-approves at zero cost. Tier 2 (4–15 words) routes to Claude API for semantic classification — handles short text that TF-IDF cannot reliably classify. Tier 3 (>15 words) runs the full XGBoost + SHAP pipeline. Cost and accuracy matched to input complexity.",
       },
       {
         icon: <Lightbulb className="w-5 h-5" />,
@@ -169,7 +170,7 @@ const projectData = {
       { rule: "Short text routes to Claude, not XGBoost", threshold: "4–15 words via Tier 2", rationale: "False high-confidence verdicts destroy reviewer trust and create compliance risk" },
       { rule: "No real user content stored in v1", threshold: "Synthetic data only", rationale: "Privacy by design — no DPIA required for v1" },
     ],
-    biasAuditDescription: "Fairness metrics computed using Fairlearn (Microsoft): demographic parity, equal opportunity, predictive parity, and individual fairness. All four metrics pass. Disparity ratio: 1.00× — no category is flagged at a disproportionate rate. Known limitation: geographic_bias is misclassified when bias is carried by adjectives rather than location nouns. Documented in MODEL_DECISIONS.md.",
+    biasAuditDescription: "Fairness metric computed using the dataset directly: disparity ratio (max flag rate / min flag rate across categories) = 1.00× — no category is flagged at a disproportionate rate. Computed in audit.py using pandas. Fairlearn integration (demographic parity, equal opportunity, predictive parity, individual fairness) is planned for v2. Known limitation: geographic_bias is misclassified when bias is carried by adjectives rather than location nouns. Documented in MODEL_DECISIONS.md.",
   },
   competitive: {
     introduction: "The bias detection and content moderation market has enterprise tools (Hive, Jigsaw Perspective API) and AI governance platforms (Fairly AI). None are designed for the trust and safety analyst workflow at UK media companies. The defensible position is the intersection of text-level bias detection, word-level explainability, human-in-the-loop reviewer workflow, and UK regulatory framing.",
@@ -279,6 +280,7 @@ export default function BiasAuditDashboardProject() {
         <SolutionSection
           description={projectData.solution.description}
           features={projectData.solution.features}
+          architectureDiagram={projectData.solution.architectureDiagram}
         />
         <ImplementationSection phases={projectData.phases} />
         <DataSection
@@ -296,13 +298,6 @@ export default function BiasAuditDashboardProject() {
           principles={projectData.ethics.principles}
           guardrails={projectData.ethics.guardrails}
           biasAuditDescription={projectData.ethics.biasAuditDescription}
-        />
-        <CompetitiveSection
-          introduction={projectData.competitive.introduction}
-          competitors={projectData.competitive.competitors}
-          competitorAName={projectData.competitive.competitorAName}
-          competitorBName={projectData.competitive.competitorBName}
-          positioningStatement={projectData.competitive.positioningStatement}
         />
         <OkrsSection
           objective={projectData.okrs.objective}

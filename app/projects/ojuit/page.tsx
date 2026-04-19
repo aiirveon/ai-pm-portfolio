@@ -7,13 +7,9 @@ import {
   ProblemSection,
   PersonasSection,
   SolutionSection,
-  ImplementationSection,
   DataSection,
-  ResultsSection,
   EthicsSection,
-  CompetitiveSection,
   OkrsSection,
-  RoadmapSection,
   LearningsSection,
   ContactSection,
 } from "@/components/portfolio"
@@ -29,6 +25,7 @@ const projectData = {
     demoUrl: "https://chromasync-app.vercel.app",
     githubUrl: "https://github.com/aiirveon",
     heroImage: undefined,
+    youtubeUrl: "https://www.youtube.com/watch?v=izTjEm56-so",
   },
 
   summary: {
@@ -339,13 +336,9 @@ export default function ChromaSyncProject() {
         <ProblemSection paragraphs={projectData.problem.paragraphs} keyInsight={projectData.problem.keyInsight} />
         <PersonasSection introduction={projectData.personasIntroduction} personas={projectData.personas} />
         <SolutionSection description={projectData.solution.description} features={projectData.solution.features} />
-        <ImplementationSection phases={projectData.phases} />
         <DataSection dataDict={projectData.data.dataDict} methodology={projectData.data.methodology} validationMethods={projectData.data.validationMethods} />
-        <ResultsSection heroMetric={projectData.results.heroMetric} comparisons={projectData.results.comparisons} keyInsights={projectData.results.keyInsights} />
         <EthicsSection principles={projectData.ethics.principles} guardrails={projectData.ethics.guardrails} biasAuditDescription={projectData.ethics.biasAuditDescription} />
-        <CompetitiveSection competitors={projectData.competitive.competitors} competitorAName={projectData.competitive.competitorAName} competitorBName={projectData.competitive.competitorBName} positioningStatement={projectData.competitive.positioningStatement} />
         <OkrsSection objective={projectData.okrs.objective} keyResults={projectData.okrs.keyResults} successMetrics={projectData.okrs.successMetrics} />
-        <RoadmapSection milestones={projectData.roadmap.milestones} />
         <LearningsSection wentWell={projectData.learnings.wentWell} challenges={projectData.learnings.challenges} doDifferently={projectData.learnings.doDifferently} keyTakeaway={projectData.learnings.keyTakeaway} />
         <PmArtefactsSection projectArtefacts={[
           { name: "PRD — Ojuit", artefactId: "ojuit-prd", project: "ojuit" },

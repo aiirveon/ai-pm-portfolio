@@ -10,9 +10,7 @@ import {
   DataSection,
   ResultsSection,
   EthicsSection,
-  CompetitiveSection,
   OkrsSection,
-  RoadmapSection,
   LearningsSection,
   ContactSection,
 } from "@/components/portfolio"
@@ -28,6 +26,7 @@ const projectData = {
     demoUrl: "https://pulse-pi-inky.vercel.app",
     githubUrl: "https://github.com/aiirveon/pulse",
     heroImage: undefined,
+    youtubeUrl: "https://www.youtube.com/watch?v=2P7k6InUiBI",
   },
   summary: {
     description: "A real-time AI sentiment classification system that gives broadcast producers structured, explainable, auditable audience intelligence — so they can make faster, more audience-aware editorial decisions during live events. The system never makes editorial decisions. The producer always decides.",
@@ -300,19 +299,11 @@ export default function PulseProject() {
           guardrails={projectData.ethics.guardrails}
           biasAuditDescription={projectData.ethics.biasAuditDescription}
         />
-        <CompetitiveSection
-          introduction={projectData.competitive.introduction}
-          competitors={projectData.competitive.competitors}
-          competitorAName={projectData.competitive.competitorAName}
-          competitorBName={projectData.competitive.competitorBName}
-          positioningStatement={projectData.competitive.positioningStatement}
-        />
         <OkrsSection
           objective={projectData.okrs.objective}
           keyResults={projectData.okrs.keyResults}
           successMetrics={projectData.okrs.successMetrics}
         />
-        <RoadmapSection milestones={projectData.roadmap.milestones} />
         <LearningsSection
           wentWell={projectData.learnings.wentWell}
           challenges={projectData.learnings.challenges}

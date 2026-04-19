@@ -82,10 +82,7 @@ export function EthicsSection({
           {biasAuditDescription && (
             <div className="p-6 rounded-xl border border-slate-200 dark:border-jungle-700 bg-white dark:bg-jungle-800/30">
               <h4 className="font-semibold text-slate-800 dark:text-white mb-3">Bias Audit & Fairness Assessment</h4>
-              <p className="text-slate-600 dark:text-slate-300 mb-4">{biasAuditDescription}</p>
-              <div className="relative h-64 rounded-lg bg-slate-100 dark:bg-jungle-900/50 border border-slate-200 dark:border-jungle-700 flex items-center justify-center">
-                <p className="text-slate-500 dark:text-slate-400 text-sm">[Image: Bias Audit Results]</p>
-              </div>
+              <p className="text-slate-600 dark:text-slate-300">{biasAuditDescription}</p>
             </div>
           )}
 

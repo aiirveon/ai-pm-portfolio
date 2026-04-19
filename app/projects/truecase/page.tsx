@@ -7,13 +7,9 @@ import {
   ProblemSection,
   PersonasSection,
   SolutionSection,
-  ImplementationSection,
   DataSection,
-  ResultsSection,
   EthicsSection,
-  CompetitiveSection,
   OkrsSection,
-  RoadmapSection,
   LearningsSection,
   ContactSection,
   RiskRegisterSection,
@@ -35,6 +31,7 @@ const projectData = {
     demoUrl: "https://truecase-seven.vercel.app/",
     githubUrl: undefined,
     heroImage: undefined,
+    youtubeUrl: "https://www.youtube.com/watch?v=cXCDUK5WyUw",
   },
 
   // Executive Summary
@@ -141,6 +138,7 @@ const projectData = {
         description: "Claude Sonnet 4 generates three sections (Business Case Summary, Governance Assessment, Social Return Signal) grounded in governance-kb.json, benchmarks.json, and sdg-kb.json. Exported as a 3-page PDF or standalone HTML file. All inputs discarded immediately after generation.",
       },
     ],
+    architectureDiagram: `<iframe src="https://truecase-seven.vercel.app/truecase-diagram.html" width="100%" height="450" style="border: 1px solid rgba(0, 0, 0, 0.1);" allowfullscreen></iframe>`,
   },
 
   // Technical Implementation Phases
@@ -491,9 +489,8 @@ export default function TrueCaseProject() {
         <SolutionSection
           description={projectData.solution.description}
           features={projectData.solution.features}
+          architectureDiagram={projectData.solution.architectureDiagram}
         />
-
-        <ImplementationSection phases={projectData.phases} />
 
         <DataSection
           dataDict={projectData.data.dataDict}
@@ -501,25 +498,11 @@ export default function TrueCaseProject() {
           validationMethods={projectData.data.validationMethods}
         />
 
-        <ResultsSection
-          heroMetric={projectData.results.heroMetric}
-          comparisons={projectData.results.comparisons}
-          keyInsights={projectData.results.keyInsights}
-        />
-
         <EthicsSection
           introduction={projectData.ethics.introduction}
           principles={projectData.ethics.principles}
           guardrails={projectData.ethics.guardrails}
           biasAuditDescription={projectData.ethics.biasAuditDescription}
-        />
-
-        <CompetitiveSection
-          introduction={projectData.competitive.introduction}
-          competitors={projectData.competitive.competitors}
-          competitorAName={projectData.competitive.competitorAName}
-          competitorBName={projectData.competitive.competitorBName}
-          positioningStatement={projectData.competitive.positioningStatement}
         />
 
         <RiskRegisterSection
@@ -533,8 +516,6 @@ export default function TrueCaseProject() {
           keyResults={projectData.okrs.keyResults}
           successMetrics={projectData.okrs.successMetrics}
         />
-
-        <RoadmapSection milestones={projectData.roadmap.milestones} />
 
         <LearningsSection
           wentWell={projectData.learnings.wentWell}

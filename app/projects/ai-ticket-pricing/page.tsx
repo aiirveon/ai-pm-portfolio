@@ -7,11 +7,9 @@ import {
   ProblemSection,
   PersonasSection,
   SolutionSection,
-  ImplementationSection,
   DataSection,
   ResultsSection,
   EthicsSection,
-  CompetitiveSection,
   OkrsSection,
   RoadmapSection,
   LearningsSection,
@@ -35,6 +33,7 @@ const projectData = {
     demoUrl: "https://ai-ticket-pricing.streamlit.app/",
     githubUrl: "https://github.com/aiirveon/ai-event-ticket-pricing",
     heroImage: undefined,
+    youtubeUrl: "https://www.youtube.com/watch?v=Jvhj-QlmWvM",
   },
 
   // Executive Summary
@@ -42,7 +41,7 @@ const projectData = {
     description: "An end-to-end AI pricing system for UK live events that integrates artist popularity, venue location premiums, demand urgency signals, and market conditions to generate explainable, ethical price recommendations. The model achieves R² = 0.79 on real demand signals — deliberately capturing genuine market unpredictability rather than overfitting — and is deployed as a production Streamlit dashboard.",
     metrics: [
       { icon: <BarChart3 className="w-5 h-5" />, value: "0.79", label: "R² Score", description: "Genuine demand signal learning" },
-      { icon: <TrendingUp className="w-5 h-5" />, value: "3.11%", label: "Mean Abs Error", description: "Baseline model error (Phase 1)" },
+      { icon: <TrendingUp className="w-5 h-5" />, value: "3.11 pp", label: "Mean Abs Error", description: "Baseline Phase 1 (percentage points)" },
       { icon: <Users className="w-5 h-5" />, value: "50", label: "Optuna Trials", description: "Hyperparameter optimisation" },
       { icon: <Zap className="w-5 h-5" />, value: "+22% / -28%", label: "CMA Price Cap", description: "Ethical pricing boundary" },
     ],
@@ -223,6 +222,7 @@ const projectData = {
         description: "Hard-coded +22% maximum increase cap and -28% minimum floor, surge pricing detection with human review flag, and full audit trail for regulatory compliance — built for the post-Oasis regulatory environment.",
       },
     ],
+    architectureDiagram: `<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="450" src="https://embed.figma.com/design/q7hDXJzCNT2kSGaw5JQGDb/ML-Pipeline-Architecture-%E2%80%94-AI-Ticket-Pricing?node-id=0-1&embed-host=share" allowfullscreen></iframe>`,
   },
 
   // Technical Implementation Phases
@@ -237,20 +237,29 @@ const projectData = {
         "Baseline XGBoost model: R² = 0.7935, MAE = 3.11% on price adjustment percentage",
       ],
       techStack: ["Python", "Pandas", "XGBoost", "Scikit-learn", "NumPy"],
+      images: [
+        { src: "/projects/ai-ticket-pricing/Phase 01/02  AI Dynamic Ticket Pricing — Model Training.PNG", alt: "Phase 1 Model Training Output" },
+        { src: "/projects/ai-ticket-pricing/Phase 01/01 Feature Importance (which signals matter most).PNG", alt: "Phase 1 Feature Importance" },
+      ],
     },
     {
       title: "Phase 2: Production ML",
       description: "Enhanced model with Optuna hyperparameter optimisation and full SHAP explainability layer. Key finding: baseline was already well-calibrated — the performance ceiling is genuine market noise, not model weakness.",
       deliverables: [
         "Optuna TPE hyperparameter search: 50 trials, 3-fold cross-validation per trial",
-        "SHAP analysis: artist_popularity (26.2%) and venue_location_premium (24.2%) explain 50.4% of all price variation",
+        "SHAP analysis: artist_popularity (25.8%) and venue_location_premium (24.0%) explain 49.8% of all price variation",
         "3 production SHAP charts: global feature importance, dot plot (direction + magnitude), single-prediction waterfall",
+      ],
+      images: [
+        { src: "/projects/ai-ticket-pricing/Phase 02/shap_feature_importance.png", alt: "SHAP Feature Importance" },
+        { src: "/projects/ai-ticket-pricing/Phase 02/shap_waterfall_example.png", alt: "SHAP Waterfall Example" },
+        { src: "/projects/ai-ticket-pricing/Phase 02/04 Phase 2a ( SHAP Global Insights).PNG", alt: "SHAP Global Insights" },
       ],
       techStack: ["Optuna", "SHAP", "Matplotlib", "Joblib", "Pickle"],
       metrics: [
-        { name: "R² Score", baseline: "0.7935", optimized: "0.7962", improvement: "Marginal improvement (+0.3%)" },
-        { name: "MAE", baseline: "3.11%", optimized: "3.15%", improvement: "Marginal" },
-        { name: "RMSE", baseline: "4.38%", optimized: "4.35%", improvement: "Marginal improvement" },
+        { name: "R² Score", baseline: "0.7935", optimized: "0.7962", improvement: "Marginal improvement (+0.34%)" },
+        { name: "MAE", baseline: "3.11 pp", optimized: "3.15 pp", improvement: "Marginal increase (slightly worse)" },
+        { name: "RMSE", baseline: "4.38 pp", optimized: "4.35 pp", improvement: "Marginal improvement" },
       ],
     },
     {
@@ -263,7 +272,7 @@ const projectData = {
         "Plain English explanation generator — every recommendation explained in one sentence",
         "Market overview: venue benchmarks and artist popularity vs price adjustment curve",
       ],
-      techStack: ["Streamlit", "Matplotlib", "Custom CSS", "Google Fonts (Playfair Display + DM Mono)"],
+      techStack: ["Streamlit", "Matplotlib", "Custom CSS", "Google Fonts (Playfair Display + DM Sans + DM Mono)"],
     },
     {
       title: "Phase 4: Launch & Distribution",
@@ -284,9 +293,10 @@ const projectData = {
       { feature: "artist_popularity", type: "integer (1-10)", description: "Artist popularity score — single biggest driver of price adjustment at 26.2% of total variance", source: "Synthetic (Spotify popularity distribution)" },
       { feature: "venue_location_premium", type: "float (0.00-0.35)", description: "Venue location premium factor. O2 London: 0.22, Glastonbury: 0.35, Cardiff: 0.00", source: "UK venue research" },
       { feature: "days_to_event", type: "integer (1-180)", description: "Days remaining until event — urgency signal. Lower = higher price pressure", source: "Feature Engineering" },
+      { feature: "venue", type: "categorical (8 values)", description: "Venue name — encoded to integer for model input. Location premium is extracted separately as venue_location_premium. 8 UK venues: O2 Arena London, Manchester Arena, First Direct Arena Leeds, Utilita Arena Birmingham, SSE Hydro Glasgow, Motorpoint Arena Cardiff, Glastonbury Festival Somerset, Boardmasters Newquay.", source: "UK venue research" },
       { feature: "genre", type: "categorical (8 values)", description: "Music genre — demand multiplier varies. Musical Theatre: 1.20x, Classical: 0.90x", source: "Synthetic with realistic demand distributions" },
       { feature: "viral_shock", type: "binary", description: "1 if viral moment active (TikTok/press spike) — 8.2% occurrence rate in training data", source: "Synthetic demand shock" },
-      { feature: "transport_disruption", type: "binary", description: "1 if transport disruption — suppresses demand. 6% occurrence, -3.1pp average impact", source: "Synthetic demand shock" },
+      { feature: "transport_disruption", type: "binary", description: "1 if transport disruption — suppresses demand. 6% occurrence rate in training data (confirmed from data generation code). Mean SHAP impact: -0.593pp (3.6% of total price variation)", source: "Synthetic demand shock" },
       { feature: "has_competing_event", type: "binary", description: "1 if competing event same night — demand split signal", source: "Feature Engineering" },
       { feature: "is_peak_season", type: "binary", description: "1 for Feb, Jul, Aug, Dec — peak live events months in UK", source: "Feature Engineering" },
       { feature: "is_saturday", type: "binary", description: "Saturday premium — highest demand day of week", source: "Feature Engineering" },
@@ -309,21 +319,21 @@ const projectData = {
 
   // Results
   results: {
-    heroMetric: { value: "50.4%", label: "of all price variation explained by 2 features: artist popularity + venue location premium" },
+    heroMetric: { value: "49.8%", label: "of all price variation explained by 2 features: artist popularity + venue location premium" },
     comparisons: [
       { metric: "Model R² (Baseline vs Optimised)", before: "0.7935", after: "0.7962", change: "Marginal improvement (+0.3%)" },
       { metric: "Artist Popularity Impact (score 9)", before: "Not quantified", after: "+7.73 percentage points", change: "Quantified" },
       { metric: "Venue Location Impact (O2 London)", before: "Not quantified", after: "+6.89 percentage points", change: "Quantified" },
-      { metric: "Viral Moment Impact", before: "Not quantified", after: "+4.7% of total price variation", change: "Quantified" },
-      { metric: "Transport Disruption Impact", before: "Not quantified", after: "-3.1pp demand suppression", change: "Quantified" },
+      { metric: "Viral Moment Impact", before: "Not quantified", after: "+4.7% of total price variation (0.777pp mean SHAP)", change: "Quantified" },
+      { metric: "Transport Disruption Impact", before: "Not quantified", after: "-3.6% of total variation (0.593pp mean SHAP)", change: "Quantified" },
       { metric: "CMA Cap Compliance", before: "No guardrails", after: "100% across all scenarios", change: "Enforced" },
     ],
     keyInsights: [
-      "Artist popularity and venue location premium together explain 50.4% of all price adjustment decisions. This validates the core product hypothesis: who is performing and where they are performing are the two most important pricing signals in UK live events.",
+      "Artist popularity and venue location premium together explain 49.8% of all price adjustment decisions. This validates the core product hypothesis: who is performing and where they are performing are the two most important pricing signals in UK live events.",
       "The model's R² of 0.79 is intentionally honest. The remaining 21% unexplained variance represents genuine market unpredictability — viral moments, human judgment, fan irrationality. My first model achieved R² = 0.997 by learning to look up ticket tier. That was worse, not better.",
       "Optuna ran 50 hyperparameter trials and found minimal improvement over baseline (R² 0.7935 → 0.7962). This is a valuable insight: the performance ceiling is close to genuine market noise — the optimised model improved by 0.3% but the gain was marginal.",
       "SHAP waterfall for a superstar artist (popularity 9) at SSE Hydro Glasgow, 10 days to event: artist_popularity (+7.73%), venue_location_premium (-2.44%), days_to_event (+1.71%), genre (+1.35%). Recommended £95.16 vs £78.00 base — a recommendation any venue manager can read, understand, and defend to an artist's team.",
-      "Average price adjustment baseline across all 5,000 events: +15.26%. The market skews positive — our UK venue profiles and artist distributions reflect a premium events market where demand typically exceeds static pricing assumptions.",
+      "Average price adjustment baseline across all 5,000 events: +15.27%. The market skews positive — our UK venue profiles and artist distributions reflect a premium events market where demand typically exceeds static pricing assumptions.",
     ],
   },
 
@@ -724,20 +734,19 @@ export default function AIDynamicPricingProject() {
           paragraphs={projectData.problem.paragraphs}
         />
         
-        <PersonasSection 
+        {/* <PersonasSection
           introduction={projectData.personas.introduction}
           personas={projectData.personas.basic}
           deepDive={projectData.personas.deepDive}
-        />
+        /> */}
         
-        <SolutionSection 
+        <SolutionSection
           description={projectData.solution.description}
           features={projectData.solution.features}
+          architectureDiagram={projectData.solution.architectureDiagram}
         />
         
-        <ImplementationSection phases={projectData.phases} />
-        
-        <DataSection 
+        <DataSection
           dataDict={projectData.data.dataDict}
           methodology={projectData.data.methodology}
           validationMethods={projectData.data.validationMethods}
@@ -755,18 +764,11 @@ export default function AIDynamicPricingProject() {
           biasAuditDescription={projectData.ethics.biasAuditDescription}
         />
         
-        <CompetitiveSection 
-          competitors={projectData.competitive.competitors}
-          competitorAName={projectData.competitive.competitorAName}
-          competitorBName={projectData.competitive.competitorBName}
-          positioningStatement={projectData.competitive.positioningStatement}
-        />
-        
-        <RiskRegisterSection 
+        {/* <RiskRegisterSection
           introduction={projectData.riskRegister.introduction}
           topRisks={projectData.riskRegister.topRisks}
           deepDive={projectData.riskRegister.deepDive}
-        />
+        /> */}
         
         <OkrsSection 
           objective={projectData.okrs.objective}
