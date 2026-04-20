@@ -34,6 +34,7 @@ export default function DownloadModal({
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [status, setStatus] = useState<Status>("idle")
+  const [confirmedEmail, setConfirmedEmail] = useState("")
 
   const isValid = name.trim().length > 0 && EMAIL_RE.test(email)
 
@@ -48,7 +49,23 @@ export default function DownloadModal({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: name.trim(), email, artefactId, project }),
       })
-      if (!res.ok) throw new Error("Request failed")
+      if (!res.ok) {
+        await res.json().catch(() => null)
+        throw new Error("Request failed")
+      }
+      const blob = await res.blob()
+      const disposition = res.headers.get("Content-Disposition") ?? ""
+      const match = disposition.match(/filename="([^"]+)"/)
+      const filename = match ? match[1] : `${artefactId}.pdf`
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement("a")
+      a.href = url
+      a.download = filename
+      document.body.appendChild(a)
+      a.click()
+      a.remove()
+      URL.revokeObjectURL(url)
+      setConfirmedEmail(res.headers.get("X-Downloader-Email") ?? email)
       setStatus("success")
     } catch {
       setStatus("error")
@@ -63,16 +80,17 @@ export default function DownloadModal({
         setName("")
         setEmail("")
         setStatus("idle")
+        setConfirmedEmail("")
       }, 200)
     }
   }
 
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
-      <DialogContent className="sm:max-w-md bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
+      <DialogContent className="sm:max-w-md bg-white dark:bg-jungle-950 border-slate-200 dark:border-jungle-800">
         <DialogHeader>
           <DialogTitle className="text-slate-800 dark:text-white">{artefactName}</DialogTitle>
-          <DialogDescription className="text-slate-600 dark:text-slate-300">
+          <DialogDescription className="text-slate-600 dark:text-jungle-200">
             Enter your details and we&apos;ll send the document straight to your
             inbox.
           </DialogDescription>
@@ -81,7 +99,7 @@ export default function DownloadModal({
         {status === "success" ? (
           <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-900 rounded-lg p-6 text-center">
             <p className="text-green-800 dark:text-green-400 font-medium">
-              Check your inbox. Your document is on its way.
+              Your download is starting. We&apos;ve also sent a copy to {confirmedEmail}.
             </p>
           </div>
         ) : (
@@ -89,7 +107,7 @@ export default function DownloadModal({
             <div>
               <Label
                 htmlFor="download-name"
-                className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
+                className="block text-sm font-medium text-slate-700 dark:text-jungle-200 mb-1"
               >
                 Name
               </Label>
@@ -101,14 +119,14 @@ export default function DownloadModal({
                 onChange={(e) => setName(e.target.value)}
                 required
                 disabled={status === "loading"}
-                className="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700"
+                className="bg-slate-50 dark:bg-jungle-900 border-slate-200 dark:border-jungle-700 dark:text-white dark:placeholder-jungle-500"
               />
             </div>
 
             <div>
               <Label
                 htmlFor="download-email"
-                className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1"
+                className="block text-sm font-medium text-slate-700 dark:text-jungle-200 mb-1"
               >
                 Email
               </Label>
@@ -120,7 +138,7 @@ export default function DownloadModal({
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 disabled={status === "loading"}
-                className="bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700"
+                className="bg-slate-50 dark:bg-jungle-900 border-slate-200 dark:border-jungle-700 dark:text-white dark:placeholder-jungle-500"
               />
             </div>
 
@@ -137,7 +155,7 @@ export default function DownloadModal({
               className="w-full bg-emerald-600 hover:bg-emerald-700 text-white"
               disabled={!isValid || status === "loading"}
             >
-              {status === "loading" ? "Sending…" : "Send me the document"}
+              {status === "loading" ? "Preparing your download…" : "Send me the document"}
             </Button>
           </form>
         )}

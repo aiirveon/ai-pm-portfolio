@@ -1,4 +1,22 @@
 import { Film, Layers, Eye, Zap, Lightbulb, Code, Shield, BarChart, Video, Clapperboard } from "lucide-react"
+
+export const metadata = {
+  title: "Frame Intelligence | Ogbebor Osaheni",
+  description: "AI-powered shot analysis and cinematography intelligence tool.",
+  openGraph: {
+    title: "Frame Intelligence | Ogbebor Osaheni",
+    description: "AI-powered shot analysis and cinematography intelligence tool.",
+    url: "https://osaheniogbebor.com/projects/frame-intelligence",
+    images: [{ url: "https://osaheniogbebor.com/og-image.jpg", width: 1200, height: 630, alt: "Frame Intelligence — Ogbebor Osaheni" }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Frame Intelligence | Ogbebor Osaheni",
+    description: "AI-powered shot analysis and cinematography intelligence tool.",
+    images: ["https://osaheniogbebor.com/og-image.jpg"],
+  },
+}
 import {
   ProgressBar,
   TableOfContents,
@@ -398,9 +416,9 @@ export default function FrameIntelligenceProject() {
         />
 
         <PmArtefactsSection projectArtefacts={[
-          { name: "PRD — Atanda Studio", artefactId: "atanda-prd", project: "atanda" },
-          { name: "Model Decisions — Atanda Studio", artefactId: "atanda-model-decisions", project: "atanda" },
-          { name: "Ethics Framework — Atanda Studio", artefactId: "atanda-ethics", project: "atanda" },
+          { name: "PRD — Atanda Studio", artefactId: "atanda-prd", project: "atanda", unavailable: true },
+          { name: "Model Decisions — Atanda Studio", artefactId: "atanda-model-decisions", project: "atanda", unavailable: true },
+          { name: "Ethics Framework — Atanda Studio", artefactId: "atanda-ethics", project: "atanda", unavailable: true },
         ]} />
 
         <ContactSection {...projectData.contact} />

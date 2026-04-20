@@ -1,4 +1,22 @@
 import { BarChart3, Shield, Users, Zap, FileText, AlertTriangle, Code, Lightbulb } from "lucide-react"
+
+export const metadata = {
+  title: "Pulse | Ogbebor Osaheni",
+  description: "Real-time AI audience sentiment monitor for live UK broadcast events. Macro F1 0.830.",
+  openGraph: {
+    title: "Pulse | Ogbebor Osaheni",
+    description: "Real-time AI audience sentiment monitor for live UK broadcast events. Macro F1 0.830.",
+    url: "https://osaheniogbebor.com/projects/pulse",
+    images: [{ url: "https://osaheniogbebor.com/og-image.jpg", width: 1200, height: 630, alt: "Pulse — Ogbebor Osaheni" }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pulse | Ogbebor Osaheni",
+    description: "Real-time AI audience sentiment monitor for live UK broadcast events. Macro F1 0.830.",
+    images: ["https://osaheniogbebor.com/og-image.jpg"],
+  },
+}
 import {
   ProgressBar,
   TableOfContents,

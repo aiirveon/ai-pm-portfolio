@@ -1,4 +1,22 @@
 import { Shield, FileText, TrendingUp, Zap, Lock, BookOpen, BarChart3, AlertTriangle, CheckCircle, Users } from "lucide-react"
+
+export const metadata = {
+  title: "TrueCase | Ogbebor Osaheni",
+  description: "Governance-grounded AI business case builder. Reliability-adjusted ROI with verified regulatory knowledge base.",
+  openGraph: {
+    title: "TrueCase | Ogbebor Osaheni",
+    description: "Governance-grounded AI business case builder. Reliability-adjusted ROI with verified regulatory knowledge base.",
+    url: "https://osaheniogbebor.com/projects/truecase",
+    images: [{ url: "https://osaheniogbebor.com/og-image.jpg", width: 1200, height: 630, alt: "TrueCase — Ogbebor Osaheni" }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "TrueCase | Ogbebor Osaheni",
+    description: "Governance-grounded AI business case builder. Reliability-adjusted ROI with verified regulatory knowledge base.",
+    images: ["https://osaheniogbebor.com/og-image.jpg"],
+  },
+}
 import {
   ProgressBar,
   TableOfContents,

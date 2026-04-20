@@ -7,10 +7,32 @@ import Navbar from "@/components/navbar"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "Ogbebor Osaheni | AI  Product Manager",
+  title: "Ogbebor Osaheni | AI Product Manager",
   description: "AI Product Manager building intelligent, trusted ML products. Portfolio of shipped projects in media, bias detection, and creative technology.",
   icons: {
     icon: [{ url: "/images/profile.png" }],
+  },
+  openGraph: {
+    title: "Ogbebor Osaheni | AI Product Manager",
+    description: "AI Product Manager building intelligent, trusted ML products. Portfolio of shipped projects in media, bias detection, and creative technology.",
+    url: "https://osaheniogbebor.com",
+    siteName: "Ogbebor Osaheni",
+    images: [
+      {
+        url: "https://osaheniogbebor.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Ogbebor Osaheni — AI Product Manager",
+      },
+    ],
+    locale: "en_GB",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ogbebor Osaheni | AI Product Manager",
+    description: "AI Product Manager building intelligent, trusted ML products.",
+    images: ["https://osaheniogbebor.com/og-image.jpg"],
   },
 }
 

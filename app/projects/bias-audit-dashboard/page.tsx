@@ -1,4 +1,22 @@
 import { BarChart3, Shield, Users, Zap, FileText, AlertTriangle, Code, Lightbulb } from "lucide-react"
+
+export const metadata = {
+  title: "Bias Audit Dashboard | Ogbebor Osaheni",
+  description: "AI bias detection tool for UK media trust and safety teams. TF-IDF + XGBoost, F1 0.90, Ofcom-aligned.",
+  openGraph: {
+    title: "Bias Audit Dashboard | Ogbebor Osaheni",
+    description: "AI bias detection tool for UK media trust and safety teams. TF-IDF + XGBoost, F1 0.90, Ofcom-aligned.",
+    url: "https://osaheniogbebor.com/projects/bias-audit-dashboard",
+    images: [{ url: "https://osaheniogbebor.com/og-image.jpg", width: 1200, height: 630, alt: "Bias Audit Dashboard — Ogbebor Osaheni" }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bias Audit Dashboard | Ogbebor Osaheni",
+    description: "AI bias detection tool for UK media trust and safety teams. TF-IDF + XGBoost, F1 0.90, Ofcom-aligned.",
+    images: ["https://osaheniogbebor.com/og-image.jpg"],
+  },
+}
 import {
   ProgressBar,
   TableOfContents,

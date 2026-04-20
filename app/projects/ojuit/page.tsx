@@ -1,4 +1,22 @@
 import { Film, TrendingUp, Users, Zap, Lightbulb, Code, Shield, FileText, AlertTriangle, BarChart3, GitBranch, Network } from "lucide-react"
+
+export const metadata = {
+  title: "Ojuit | Ogbebor Osaheni",
+  description: "AI platform for solo indie filmmakers. CIE Lab colour drift detection + XGBoost story engine.",
+  openGraph: {
+    title: "Ojuit | Ogbebor Osaheni",
+    description: "AI platform for solo indie filmmakers. CIE Lab colour drift detection + XGBoost story engine.",
+    url: "https://osaheniogbebor.com/projects/ojuit",
+    images: [{ url: "https://osaheniogbebor.com/og-image.jpg", width: 1200, height: 630, alt: "Ojuit — Ogbebor Osaheni" }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ojuit | Ogbebor Osaheni",
+    description: "AI platform for solo indie filmmakers. CIE Lab colour drift detection + XGBoost story engine.",
+    images: ["https://osaheniogbebor.com/og-image.jpg"],
+  },
+}
 import {
   ProgressBar,
   TableOfContents,
@@ -349,8 +367,7 @@ export default function ChromaSyncProject() {
           { name: "PRD — Ojuit", artefactId: "ojuit-prd", project: "ojuit" },
           { name: "Model Decisions — Ojuit", artefactId: "ojuit-model-decisions", project: "ojuit" },
           { name: "Ethics Framework — Ojuit", artefactId: "ojuit-ethics", project: "ojuit" },
-          { name: "User Personas — Ojuit", artefactId: "ojuit-personas", project: "ojuit" },
-        ]} />
+              ]} />
 
         <ContactSection {...projectData.contact} />
       </main>
