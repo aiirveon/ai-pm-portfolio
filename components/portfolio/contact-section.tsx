@@ -1,16 +1,13 @@
-import { Button } from "@/components/ui/button"
-import { Github, Linkedin, Mail, Calendar } from "lucide-react"
+import { Github, Linkedin, Mail } from "lucide-react"
 
 interface ContactSectionProps {
   pitch: string
   email: string
   linkedIn: string
-  github: string
-  calendlyUrl?: string
   authorName: string
 }
 
-export function ContactSection({ pitch, email, linkedIn, github, calendlyUrl, authorName }: ContactSectionProps) {
+export function ContactSection({ pitch, email, linkedIn, authorName }: ContactSectionProps) {
   return (
     <section id="contact" className="py-20 px-4">
       <div className="container mx-auto max-w-6xl">
@@ -22,7 +19,7 @@ export function ContactSection({ pitch, email, linkedIn, github, calendlyUrl, au
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+          <div className="grid md:grid-cols-1 gap-8 max-w-md mx-auto">
             <div className="space-y-4">
               <h3 className="font-semibold text-lg text-slate-800 dark:text-white">Contact Info</h3>
               <div className="space-y-3">
@@ -48,35 +45,13 @@ export function ContactSection({ pitch, email, linkedIn, github, calendlyUrl, au
                     <p className="text-xs text-slate-500 dark:text-slate-400">Connect with me</p>
                   </div>
                 </a>
-                <a
-                  href={github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-3 rounded-lg border border-slate-200 dark:border-jungle-700 hover:border-jungle-500 hover:bg-jungle-50 dark:hover:bg-jungle-800/50 transition-all"
-                >
+                <div className="flex items-center gap-3 p-3 rounded-lg border border-slate-200 dark:border-jungle-700 opacity-60 cursor-not-allowed">
                   <Github className="w-5 h-5 text-jungle-500" />
                   <div>
                     <p className="text-sm font-medium text-slate-800 dark:text-white">GitHub</p>
-                    <p className="text-xs text-slate-500 dark:text-slate-400">View my code</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">Available on request</p>
                   </div>
-                </a>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="font-semibold text-lg text-slate-800 dark:text-white">Quick Links</h3>
-              <div className="space-y-2">
-                <Button variant="outline" className="w-full justify-start border-slate-200 dark:border-jungle-700">
-                  Download PDF Version
-                </Button>
-                {calendlyUrl && (
-                  <Button asChild variant="outline" className="w-full justify-start border-slate-200 dark:border-jungle-700">
-                    <a href={calendlyUrl} target="_blank" rel="noopener noreferrer">
-                      <Calendar className="w-4 h-4 mr-2" />
-                      Schedule a Meeting
-                    </a>
-                  </Button>
-                )}
+                </div>
               </div>
             </div>
           </div>

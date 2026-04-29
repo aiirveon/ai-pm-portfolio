@@ -140,6 +140,12 @@ export default function DownloadModal({
                 disabled={status === "loading"}
                 className="bg-slate-50 dark:bg-jungle-900 border-slate-200 dark:border-jungle-700 dark:text-white dark:placeholder-jungle-500"
               />
+              <p className="text-xs text-slate-500 dark:text-jungle-400 mt-1.5">
+                Your name and email are used only to send you this document and to notify me of downloads. I will not add you to any mailing list or share your details with anyone.{" "}
+                <a href="/privacy" className="underline hover:text-slate-700 dark:hover:text-jungle-200">
+                  Privacy notice
+                </a>
+              </p>
             </div>
 
             {status === "error" && (

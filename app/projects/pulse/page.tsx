@@ -43,6 +43,7 @@ const projectData = {
     date: "March 2026",
     demoUrl: "https://pulse-pi-inky.vercel.app",
     githubUrl: "https://github.com/aiirveon/pulse",
+    githubPrivate: true,
     heroImage: undefined,
     youtubeUrl: "https://www.youtube.com/watch?v=2P7k6InUiBI",
     screenshotImages: [

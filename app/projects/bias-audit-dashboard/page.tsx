@@ -44,6 +44,7 @@ const projectData = {
     date: "March 2026",
     demoUrl: "https://bias-audit-dashboard.vercel.app",
     githubUrl: "https://github.com/aiirveon/bias-audit-dashboard",
+    githubPrivate: true,
     heroImage: undefined,
     youtubeUrl: "https://www.youtube.com/watch?v=q2m1QcoEpWI",
     screenshotImages: [

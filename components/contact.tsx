@@ -100,15 +100,13 @@ export default function Contact() {
                       >
                         <Linkedin className="h-5 w-5 text-slate-700 dark:text-slate-300" />
                       </a>
-                      <a
-                        href="https://github.com/aiirveon"
-                        className="bg-slate-100 dark:bg-slate-800 p-3 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
-                        aria-label="GitHub"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <div
+                        className="bg-slate-100 dark:bg-slate-800 p-3 rounded-full opacity-60 cursor-not-allowed"
+                        title="GitHub — Available on request"
+                        aria-label="GitHub — Available on request"
                       >
                         <Github className="h-5 w-5 text-slate-700 dark:text-slate-300" />
-                      </a>
+                      </div>
                       <a
                         href="mailto:osaheniogbebor.c@gmail.com"
                         className="bg-slate-100 dark:bg-slate-800 p-3 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
@@ -151,7 +149,7 @@ export default function Contact() {
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
                     {/* Web3Forms Access Key - REPLACE WITH YOUR KEY */}
-                    <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+                    <input type="hidden" name="access_key" value="7af2953e-cd53-42af-b4cb-831a7091f63a" />
                     <input type="hidden" name="subject" value="New Contact Form Submission from Portfolio" />
                     <input type="hidden" name="from_name" value="Portfolio Contact Form" />
 

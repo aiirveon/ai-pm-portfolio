@@ -70,15 +70,10 @@ export function ProductArtifactsSection({ introduction, artifacts }: ProductArti
 
                 {/* Links */}
                 <div className="mt-4 pt-4 border-t border-gray-200 dark:border-jungle-800 flex items-center gap-3 flex-wrap">
-                  <a
-                    href={artifact.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-xs font-medium text-gray-500 dark:text-gray-400 hover:text-accent-600 dark:hover:text-accent-400 transition-colors"
-                  >
+                  <span className="flex items-center gap-1.5 text-xs font-medium text-gray-400 dark:text-gray-600 opacity-60 cursor-not-allowed">
                     <ExternalLink className="w-3 h-3" />
-                    GitHub
-                  </a>
+                    GitHub — Available on request
+                  </span>
                   {artifact.notionUrl && (
                     <a
                       href={artifact.notionUrl}
@@ -97,20 +92,6 @@ export function ProductArtifactsSection({ introduction, artifacts }: ProductArti
             ))}
           </div>
 
-          {/* Call to Action */}
-          <div className="mt-12 p-6 bg-accent-50 dark:bg-accent-900/10 rounded-xl border-2 border-accent-200 dark:border-accent-800">
-            <p className="text-center text-gray-700 dark:text-gray-300">
-              <span className="font-semibold">Want the full details?</span> All artifacts are available on{" "}
-              <a
-                href="https://github.com/aiirveon/chromasync-app/tree/main/docs"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-accent-600 dark:text-accent-400 hover:underline font-semibold"
-              >
-                GitHub /docs folder
-              </a>
-            </p>
-          </div>
         </div>
       </div>
     </section>

@@ -11,6 +11,24 @@ export default function PrivacyPage() {
 
             <div className="prose dark:prose-invert max-w-none">
               <h2 className="text-2xl font-semibold text-slate-800 dark:text-white mt-6 mb-4">
+                Artefact Downloads
+              </h2>
+              <p className="text-slate-600 dark:text-slate-300 mb-4">
+                When you download a portfolio artefact, I collect:
+              </p>
+              <ul className="list-disc pl-6 text-slate-600 dark:text-slate-300 mb-4">
+                <li>Name</li>
+                <li>Email address</li>
+                <li>Document downloaded and timestamp</li>
+              </ul>
+              <p className="text-slate-600 dark:text-slate-300 mb-4">
+                This information is used solely to send you the requested document and to notify me that a download has occurred. I will not add you to any mailing list, send you unsolicited emails, or share your details with any third party. The document is sent via Resend. Your email address is retained only in the notification email I receive — it is not stored in any database.
+              </p>
+              <p className="text-slate-600 dark:text-slate-300 mb-6">
+                The legal basis for this processing is legitimate interests — I have a genuine interest in knowing who is engaging with my portfolio work, and that interest is not outweighed by your privacy rights given the limited and specific nature of the data collected.
+              </p>
+
+              <h2 className="text-2xl font-semibold text-slate-800 dark:text-white mt-6 mb-4">
                 Contact Form Data Collection
               </h2>
               <p className="text-slate-600 dark:text-slate-300 mb-4">

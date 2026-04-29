@@ -10,6 +10,7 @@ interface HeroSectionProps {
   date: string
   demoUrl?: string
   githubUrl?: string
+  githubPrivate?: boolean
   heroImage?: string
   youtubeUrl?: string
   screenshotImages?: string[]
@@ -28,6 +29,7 @@ export function HeroSection({
   date,
   demoUrl,
   githubUrl,
+  githubPrivate,
   heroImage,
   youtubeUrl,
   screenshotImages,
@@ -64,14 +66,25 @@ export function HeroSection({
                   </a>
                 </Button>
               )}
-              {githubUrl && (
+              {githubPrivate ? (
+                <Button
+                  size="lg"
+                  variant="outline"
+                  disabled
+                  className="group gap-2 border-jungle-200 dark:border-jungle-700 opacity-60 cursor-not-allowed min-w-[140px]"
+                >
+                  <Github className="w-4 h-4 flex-shrink-0" />
+                  <span className="group-hover:hidden">View GitHub</span>
+                  <span className="hidden group-hover:inline whitespace-nowrap">Available on Request</span>
+                </Button>
+              ) : githubUrl ? (
                 <Button asChild size="lg" variant="outline" className="gap-2 border-jungle-200 dark:border-jungle-700">
                   <a href={githubUrl} target="_blank" rel="noopener noreferrer">
                     View GitHub
                     <Github className="w-4 h-4" />
                   </a>
                 </Button>
-              )}
+              ) : null}
             </div>
           </div>
 

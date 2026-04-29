@@ -47,6 +47,7 @@ const projectData = {
     date: "March 2025",
     demoUrl: "https://atanda-studio.vercel.app/",
     githubUrl: "https://github.com/aiirveon",
+    githubPrivate: true,
     heroImage: undefined,
     youtubeUrl: "https://www.youtube.com/watch?v=mxqiEq4jXng",
     screenshotImages: [

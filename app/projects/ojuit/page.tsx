@@ -42,6 +42,7 @@ const projectData = {
     date: "March 2026",
     demoUrl: "https://chromasync-app.vercel.app",
     githubUrl: "https://github.com/aiirveon",
+    githubPrivate: true,
     heroImage: undefined,
     youtubeUrl: "https://www.youtube.com/watch?v=izTjEm56-so",
     screenshotImages: [

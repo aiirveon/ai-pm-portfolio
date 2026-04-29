@@ -296,10 +296,205 @@ function DynamicPricingEthics({ date }: { date: string }) {
         <Text style={s.h1}>Ethics Framework</Text>
         <Text style={s.sub}>AI Dynamic Ticket Pricing — UK Live Events</Text>
         <Ctrl title={name} project="AI Dynamic Ticket Pricing" type="Ethics Framework" date={date} />
-        <View style={s.phBox}>
-          <Text style={s.phTi}>Full ethics framework in development</Text>
-          <Text style={s.phBd}>Content will be published here shortly. Available on request via the contact form at osaheniogbebor.com.</Text>
+
+        <SL t="Governing Principle" />
+        <Body t="Transparent, capped, explainable dynamic pricing is not only ethical — it is the only defensible approach in the current UK regulatory environment. The Oasis/Ticketmaster controversy was a direct input to this framework design. Oasis tickets moved from £135 to £355 — a 163% increase. The CMA opened an investigation. Every guardrail in this system exists because a major industry player got it catastrophically wrong in public, and the regulatory and reputational consequences were immediate." />
+        <Body t="This system is designed to be the opposite of that failure: capped at +22%, explainable by SHAP on every recommendation, human-approved on every decision, and CMA-compliant by architecture — not by policy statement." />
+
+        <SL t="Core Principles" />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>1 — Transparency</Text>
+        <Body t="Every price recommendation includes a SHAP waterfall chart and a plain English explanation showing exactly which factors drove the suggestion and by how much — in percentage points, not just feature names. Venue managers, artists, and regulators can see exactly why a price was suggested." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>2 — Fairness</Text>
+        <Body t="The +22% maximum increase cap prevents the kind of extreme surge pricing that triggered the CMA investigation of Ticketmaster in 2024. The cap is enforced via np.clip() at inference time — it cannot be bypassed by any input combination, configuration change, or UI state." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>3 — Accountability</Text>
+        <Body t="Every pricing decision includes a full audit trail with SHAP values logged. If the CMA asks why a ticket cost £152 instead of £125, the answer is documented, explainable, and available within 24 hours." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>4 — Human Override</Text>
+        <Body t="The AI recommends. Venue managers decide. No fully automated price changes. Human judgement remains in the loop for every single recommendation. Viral moment events — where viral_shock equals 1 — trigger an amber flag requiring mandatory human approval before any price change." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>5 — No Demographic Targeting</Text>
+        <Body t="Pricing is event-based, not person-based. Customer age, gender, purchase history, and postcode are excluded entirely from all feature sets. The model knows about the event, not the buyer. customer_demographics was removed at design stage — before training began." />
+
+        <SL t="Hard Constraints" />
+        <Body t="These constraints cannot be overridden by a product decision, user request, or feature request." />
+
+        <View style={s.tbl}>
+          <View style={s.tblHdr}>
+            <Text style={[s.thC, { flex: 1 }]}>Constraint</Text>
+            <Text style={[s.thC, { width: 80 }]}>Threshold</Text>
+            <Text style={[s.thC, { flex: 1 }]}>Implementation</Text>
+            <Text style={[s.thC, { flex: 1 }]}>Rationale</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>Maximum price increase</Text>
+            <Text style={[s.tdC, { width: 80 }]}>+22%</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>np.clip() at inference time — cannot be bypassed by any input or configuration.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>CMA-aligned. Prevents 163% Oasis-style surge. Ticketmaster investigation targeted exactly this failure mode.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>Maximum price decrease</Text>
+            <Text style={[s.tdC, { width: 80 }]}>-28%</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>np.clip() at inference time.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Prevents below-cost selling and revenue floor collapse.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>Viral surge human review</Text>
+            <Text style={[s.tdC, { width: 80 }]}>Amber flag</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>viral_shock=1 triggers mandatory approval flag on all inputs.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Prevents automated pricing decisions during high-visibility moments that carry maximum reputational risk.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>Human override requirement</Text>
+            <Text style={[s.tdC, { width: 80 }]}>Every recommendation</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Dashboard requires venue manager approval before any price change takes effect.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>No fully automated pricing. Human judgement in the loop on every decision.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>No demographic features</Text>
+            <Text style={[s.tdC, { width: 80 }]}>Always</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>customer_demographics excluded at design stage — not in training data, not in inference pipeline.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Pricing must not target individuals based on personal characteristics.</Text>
+          </View>
         </View>
+
+        <SL t="CMA Compliance Review" />
+        <Body t="Informed directly by the CMA's dynamic pricing investigation findings (2024) and the ICO AI Auditing Framework. The Ticketmaster investigation targeted opaque, uncapped, automated surge pricing. This system is designed to be none of those things." />
+
+        <View style={s.tbl}>
+          <View style={s.tblHdr}>
+            <Text style={[s.thC, { flex: 1 }]}>CMA Requirement</Text>
+            <Text style={[s.thC, { flex: 1 }]}>Our Response</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>Transparency about pricing methodology</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>SHAP waterfall chart on every recommendation. Plain English explanation of which factors drove the suggestion and by how much.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>Prohibition on drip pricing — hidden charges</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Fixed price recommendations only. No staged reveals. No hidden uplift applied after the headline price is shown.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>Consumer protection from exploitative surges</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Hard +22% cap enforced at inference time via np.clip(). Zero violations across 5,000 training scenarios and 500 adversarial edge cases.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>Audit trail for regulatory investigation</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>SHAP values logged per recommendation. Full pricing decision history available within 24 hours of any regulatory request.</Text>
+          </View>
+        </View>
+
+        <SL t="Bias Audit" />
+        <Body t="Following the ICO AI Auditing Framework, a three-step review was conducted: identify potential protected characteristic proxies in all 16 features; validate each feature against fairness criteria; confirm price cap compliance across all scenarios including adversarial edge cases." />
+
+        <View style={s.tbl}>
+          <View style={s.tblHdr}>
+            <Text style={[s.thC, { flex: 1 }]}>Feature</Text>
+            <Text style={[s.thC, { width: 100 }]}>Risk</Text>
+            <Text style={[s.thC, { width: 70 }]}>Status</Text>
+            <Text style={[s.thC, { flex: 1 }]}>Action</Text>
+          </View>
+          {[
+            ["artist_popularity", "None", "Safe", "Demand-based, not demographic."],
+            ["venue_location_premium", "Potential socioeconomic proxy", "Monitored", "Cap at +22% prevents exploitation. London premium reflects genuine demand differences but could disproportionately price out lower-income fans — monitored in post-event audits."],
+            ["days_to_event", "None", "Safe", "Universal urgency signal — applies equally regardless of buyer characteristics."],
+            ["genre", "Potential cultural proxy", "Monitored", "Demand-based. All predictions within cap. Monitored for systematic patterns."],
+            ["viral_shock", "None", "Safe", "Triggers mandatory human review — no auto-increase possible."],
+            ["transport_disruption", "None", "Safe", "Suppresses prices during disruption — protects fans from surge during adverse conditions."],
+            ["customer_demographics", "Multiple proxies", "Removed", "Excluded entirely at design stage — not present in training data or inference pipeline."],
+          ].map(([feat, risk, status, action]) => (
+            <View key={feat} style={s.tblRow}>
+              <Text style={[s.tdC, { flex: 1 }]}>{feat}</Text>
+              <Text style={[s.tdC, { width: 100 }]}>{risk}</Text>
+              <Text style={[s.tdC, { width: 70 }]}>{status}</Text>
+              <Text style={[s.tdC, { flex: 1 }]}>{action}</Text>
+            </View>
+          ))}
+        </View>
+
+        <Body t="CMA cap compliance test: 5,000 training transactions plus 500 adversarial examples with maximum popularity, minimum days to event, and all positive flags active simultaneously. Result: zero out-of-bounds predictions. np.clip() enforces the hard ceiling at inference time regardless of input combination." />
+
+        <SL t="GDPR Compliance" />
+
+        <View style={s.tbl}>
+          <View style={s.tblHdr}>
+            <Text style={[s.thC, { flex: 1 }]}>Requirement</Text>
+            <Text style={[s.thC, { width: 80 }]}>Status</Text>
+            <Text style={[s.thC, { flex: 1 }]}>Evidence</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>No PII in model</Text>
+            <Text style={[s.tdC, { width: 80, color: "#16A34A", fontFamily: "Helvetica-Bold" }]}>Compliant</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>No customer names, emails, or individual identifiers in any feature. All 16 features are event-level signals.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>Right to explanation — Article 22</Text>
+            <Text style={[s.tdC, { width: 80, color: "#16A34A", fontFamily: "Helvetica-Bold" }]}>Compliant</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>SHAP provides itemised explanation of every automated recommendation. Plain English explanation generated alongside every output.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>Human oversight</Text>
+            <Text style={[s.tdC, { width: 80, color: "#16A34A", fontFamily: "Helvetica-Bold" }]}>Compliant</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Dashboard requires venue manager approval on every recommendation. No automated pricing.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>Data minimisation</Text>
+            <Text style={[s.tdC, { width: 80, color: "#16A34A", fontFamily: "Helvetica-Bold" }]}>Compliant</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Event-level signals only. No individual fan data collected or processed at any stage.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>Audit trail</Text>
+            <Text style={[s.tdC, { width: 80, color: "#16A34A", fontFamily: "Helvetica-Bold" }]}>Compliant</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>SHAP values logged per recommendation. Full decision history available for regulatory review.</Text>
+          </View>
+        </View>
+
+        <SL t="Known Limitations" />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>Limitation 1 — Venue location premium as socioeconomic proxy</Text>
+        <Body t="The London venue premium reflects genuine demand differences but could disproportionately price out lower-income fans at London venues. The +22% cap limits the scale of this effect. The feature is monitored in post-event audits. A more granular venue segmentation approach — separating genuine capacity and demand signals from geographic premium — is a v2 consideration." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>Limitation 2 — Synthetic training data</Text>
+        <Body t="The model was trained on synthetic data with stated distributional assumptions. Real-world performance requires validation against actual venue transaction data before any commercial deployment. The R² of 0.79 reflects genuine demand signal learning on synthetic data — it should not be presented as a guarantee of equivalent performance on live transaction data." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>Limitation 3 — Social listening gap</Text>
+        <Body t="The viral_shock signal is manually flagged in the demo. A production system would require real-time social API integration with rate limiting and content moderation to automate this signal. Manual flagging introduces latency and human error risk that automated integration would reduce." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>Limitation 4 — Optuna optimisation produced marginal improvement only</Text>
+        <Body t="50 Optuna trials with 3-fold cross-validation moved R² from 0.7935 to 0.7962 — a 0.34% improvement. This confirms the baseline was already near the performance ceiling for this feature set and synthetic dataset. The remaining unexplained variance represents genuine market unpredictability, not model weakness. This is documented honestly rather than hidden." />
+
+        <SL t="Ongoing Responsibilities" />
+
+        <View style={s.tbl}>
+          <View style={s.tblHdr}>
+            <Text style={[s.thC, { flex: 2 }]}>Responsibility</Text>
+            <Text style={[s.thC, { width: 80 }]}>Frequency</Text>
+            <Text style={[s.thC, { flex: 1 }]}>Out-of-cycle trigger</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 2 }]}>Verify np.clip() bounds remain unchanged in inference pipeline</Text>
+            <Text style={[s.tdC, { width: 80 }]}>Every release</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Any change to the inference pipeline or model serving code</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 2 }]}>Run adversarial cap compliance test before redeployment</Text>
+            <Text style={[s.tdC, { width: 80 }]}>Every retrain</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Any change to model or feature set</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 2 }]}>Review venue_location_premium and genre features for emerging bias patterns</Text>
+            <Text style={[s.tdC, { width: 80 }]}>Quarterly</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Any CMA guidance update on dynamic pricing or socioeconomic targeting</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 2 }]}>Review this document for continued accuracy</Text>
+            <Text style={[s.tdC, { width: 80 }]}>Every major version</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>CMA enforcement action, ICO AI guidance updates, Consumer Rights Act amendments</Text>
+          </View>
+        </View>
+
         <Ftr name={name} />
       </Page>
     </Document>
@@ -459,10 +654,174 @@ function BiasAuditEthics({ date }: { date: string }) {
         <Text style={s.h1}>Ethics Framework</Text>
         <Text style={s.sub}>Bias Audit Dashboard — UK Media Trust and Safety</Text>
         <Ctrl title={name} project="Bias Audit Dashboard" type="Ethics Framework" date={date} />
-        <View style={s.phBox}>
-          <Text style={s.phTi}>Full ethics framework in development</Text>
-          <Text style={s.phBd}>Content will be published here shortly. Available on request via the contact form at osaheniogbebor.com.</Text>
+
+        <SL t="Governing Principle" />
+        <Body t="A bias detection tool that misclassifies systematically, or whose explanations mislead reviewers, causes the same harm it was built to prevent. The Bias Audit Dashboard operates in a regulated context — UK media companies subject to the Online Safety Act 2023, Ofcom Broadcasting Code, and UK GDPR. Analysts who use this tool make decisions that affect what content reaches audiences. The system provides a signal. The reviewer makes the decision. Always." />
+
+        <SL t="Core Principles" />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>1 — Human Agency is Non-Negotiable</Text>
+        <Body t="Every result requires an explicit reviewer action — Approve, Flag, or Escalate. There is no auto-approve and no auto-remove. The system cannot suppress or publish content autonomously. This is an architectural constraint enforced in the codebase, not a UX preference." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>2 — Explainability is a Right</Text>
+        <Body t="A reviewer who cannot understand why content was flagged cannot make a defensible decision. Every Tier 3 result includes three layers: SHAP word-level highlights showing which words in the original content triggered the verdict, a plain English Claude API explanation grounded directly in the submitted content, and a confidence score. A reviewer must be able to read all three and either agree with the verdict or override it with full understanding." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>3 — The Model Must Not Discriminate in Its Detections</Text>
+        <Body t="A bias detection tool that flags content about certain groups at systematically higher rates is itself producing biased outcomes. The fairness constraint is: no bias category may be flagged at more than 2x the rate of any other across the training dataset. Current disparity ratio: 1.00x — computed via pandas in the audit endpoint before every deployment." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>4 — Uncertainty Must Be Communicated Honestly</Text>
+        <Body t="The model is not certain. Confidence scores reflect probabilistic estimates, not factual correctness. A model can be 95% confident and wrong. The system never presents a score as a verdict. Low-confidence results are visually distinct. The tiered routing architecture exists specifically because false high-confidence verdicts on short text are more harmful than acknowledged uncertain ones." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>5 — Synthetic Data is a Deliberate Privacy Choice</Text>
+        <Body t="No real user content is stored or processed during training. The 3,000-item dataset was generated synthetically using Claude API and reviewed manually. The accepted trade-off: synthetic data may not capture the full distribution of real-world bias patterns. The constraint accepted in return: no personal data processed without consent. This is a product decision documented here, not a technical default." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>6 — No Claim of Neutrality</Text>
+        <Body t="The model is not neutral. No model is. This system claims to be transparent about its reasoning, honest about its uncertainty, and subordinate to human judgement. That is the achievable standard." />
+
+        <SL t="Hard Constraints" />
+        <Body t="These constraints cannot be overridden by a product decision, user request, or feature request." />
+
+        <View style={s.tbl}>
+          <View style={s.tblHdr}>
+            <Text style={[s.thC, { flex: 1 }]}>Constraint</Text>
+            <Text style={[s.thC, { flex: 1 }]}>Implementation</Text>
+            <Text style={[s.thC, { flex: 1 }]}>Rationale</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>No auto-approve or auto-remove</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>analyse.py returns score and category only. No autonomous content action anywhere in the codebase.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Automated content removal without human review is censorship without accountability.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>Explanation grounded in original content</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>explain.py system prompt: "Always refer directly to the actual content provided. Never invent context."</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>An explanation that hallucinates context is more harmful than no explanation — it gives reviewers false confidence in wrong reasons.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>Confidence always visible</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>predict_proba score returned on every result. No result displayed without it.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Reviewers must know certainty level before making a decision.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>No real content stored</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>No database writes in analyse.py or explain.py. audit/history writes reviewer actions only, not content.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Privacy by design — submitted content is not retained beyond the session.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>Score is a signal, not a verdict</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>UI presents score alongside content and explanation. Reviewer action is always required.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>The reviewer's action is the decision. The interface must never obscure this distinction.</Text>
+          </View>
         </View>
+
+        <SL t="Tiered Routing Architecture" />
+        <Body t="Three classification tiers matched to input length. Tier 1: inputs of 2 words or fewer are auto-approved at zero cost — too short for reliable analysis. Tier 2: inputs of 3 to 15 words route to Claude API for semantic classification — TF-IDF produces wrong high-confidence results on short text. Tier 3: inputs over 15 words run the full XGBoost + SHAP pipeline. The tiered architecture solves a technical accuracy problem and an ethical transparency problem with the same decision." />
+
+        <SL t="Bias Risks in This System" />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>Training Data Bias</Text>
+        <Body t="The dataset was generated using prompts designed by a single author. If those prompts over-represent certain writing styles or cultural references, the model learns spurious associations. Mitigation: prompts diversified across UK media formats, content registers, and cultural contexts. Approximately 500 examples per category. Category boundaries redesigned after the first run produced overlapping demographic and racial bias categories — the fix was prompt redesign, not model tuning." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>SHAP Explanation Bias</Text>
+        <Body t="SHAP highlights words that influenced the prediction. If the model learned spurious correlations, SHAP points reviewers toward the wrong words. Mitigation: SHAP outputs validated manually on 50 test cases before deployment. Short inputs route to Claude API specifically because SHAP on short text produces low-signal highlights." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>Automation Bias</Text>
+        <Body t="Reviewers who see a high-confidence verdict may stop reading the content critically and defer to the model. Mitigation: content is shown before the verdict score in the UI. The reviewer reads the content before seeing the model's opinion. Reviewer action is always required and there is no passive approval path." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>Confidence Miscalibration</Text>
+        <Body t="XGBoost can be 95% confident in an incorrect classification. This is particularly consequential in trust and safety contexts. Mitigation: confidence displayed prominently on every result. Tier 2 routing handles short inputs where XGBoost produces high-confidence false positives." />
+
+        <SL t="Fairness" />
+        <Body t="The fairness constraint is: no bias category may be flagged at more than 2x the rate of any other. This is computed via pandas against the training dataset in the audit endpoint. Current disparity ratio: 1.00x." />
+        <Body t="Formal Fairlearn evaluation — demographic parity, equal opportunity, predictive parity, and individual fairness — is deferred to v2. This is a known and accepted v1 limitation. Fairlearn evaluation is a requirement before any production deployment processing real content at scale." />
+
+        <SL t="Regulatory Alignment" />
+
+        <View style={s.tbl}>
+          <View style={s.tblHdr}>
+            <Text style={[s.thC, { width: 130 }]}>Regulation</Text>
+            <Text style={[s.thC, { flex: 1 }]}>Requirement</Text>
+            <Text style={[s.thC, { flex: 1 }]}>How this product addresses it</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { width: 130 }]}>Online Safety Act 2023</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Statutory duty of care. Ofcom fines up to £18m or 10% global revenue.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Structured, auditable review process with exportable audit log. Does not constitute OSA compliance alone — supports a human compliance process.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { width: 130 }]}>Ofcom Broadcasting Code</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Due accuracy, impartiality, harm and offence standards.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Six bias categories surface content patterns that may engage Code standards on harm, discrimination, and accuracy.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { width: 130 }]}>UK GDPR Article 22</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Right not to be subject to solely automated decisions.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Human-in-the-loop architecture. No decision is solely automated. SHAP + Claude explanation satisfies meaningful explanation requirement.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { width: 130 }]}>UK GDPR Article 35</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>DPIA required before processing personal data at scale.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>v1 processes no real personal data. DPIA required before any v2 deployment processing real content.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { width: 130 }]}>ICO AI Auditing Framework</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Bias and fairness assessment, transparency and accountability documentation.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Disparity ratio computed before every deployment. This document is the accountability record the ICO framework recommends.</Text>
+          </View>
+        </View>
+
+        <SL t="Known Limitations" />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>Limitation 1 — Geographic bias on adjective-carried content</Text>
+        <Body t="'People from the north of England lack ambition' classifies as neutral because the bias is carried by the adjective phrase, not by geographic tokens. TF-IDF cannot capture this semantic relationship. The Claude explanation layer identifies and flags these cases for manual review. A transformer model would likely catch this — deferred to v2." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>Limitation 2 — Fairlearn evaluation not completed in v1</Text>
+        <Body t="Formal Fairlearn fairness metrics have not been computed for v1. The disparity ratio is measured via pandas against the training dataset. This is a known and accepted limitation. Fairlearn evaluation covering demographic parity, equal opportunity, predictive parity, and individual fairness is a v2 requirement before production deployment at scale." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>Limitation 3 — Synthetic training data distribution</Text>
+        <Body t="The model was trained on synthetically generated content. Real-world bias patterns — particularly coded, subtle, or culturally specific bias — may not be fully represented. The model should be validated against real held-out examples before any production deployment." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>Limitation 4 — Single-word inputs</Text>
+        <Body t="Inputs of 2 words or fewer are auto-approved at Tier 1. This is the correct behaviour for reliability, but it means very short content receives no bias analysis. The UI notes this on short-input results." />
+
+        <SL t="Ongoing Responsibilities" />
+
+        <View style={s.tbl}>
+          <View style={s.tblHdr}>
+            <Text style={[s.thC, { flex: 2 }]}>Responsibility</Text>
+            <Text style={[s.thC, { width: 80 }]}>Frequency</Text>
+            <Text style={[s.thC, { flex: 1 }]}>Out-of-cycle trigger</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 2 }]}>Re-evaluate disparity ratio against training dataset</Text>
+            <Text style={[s.tdC, { width: 80 }]}>Every retrain</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Any change to training data or model architecture</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 2 }]}>Manual review of 50 test cases for explanation accuracy</Text>
+            <Text style={[s.tdC, { width: 80 }]}>Every release</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Significant changes to explain endpoint prompt</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 2 }]}>Run Fairlearn evaluation before v2 deployment</Text>
+            <Text style={[s.tdC, { width: 80 }]}>Before v2</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Any plan to process real user content</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 2 }]}>Complete DPIA before processing real content</Text>
+            <Text style={[s.tdC, { width: 80 }]}>Before v2</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Any plan to use real content in training or inference</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 2 }]}>Review this document for continued accuracy</Text>
+            <Text style={[s.tdC, { width: 80 }]}>Every major version</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Regulatory changes — OSA, UK GDPR, Ofcom Code updates</Text>
+          </View>
+        </View>
+
+        <SL t="What Good Looks Like" />
+        <Body t="A trust and safety analyst using this product should be able to say: 'I reviewed the content. I saw the bias risk score and category. I read the specific words the model flagged and the plain English explanation of why. I applied my own judgement and made a decision — approve, flag, or escalate. That decision is logged with my action, the AI verdict, the confidence score, and a timestamp. If Ofcom asks me to demonstrate a systematic bias review process, I can show them every step of every decision I made today. The AI helped me work faster and more consistently. I made every call.'" />
+
         <Ftr name={name} />
       </Page>
     </Document>
@@ -620,12 +979,156 @@ function PulseEthics({ date }: { date: string }) {
       <Page size="A4" style={s.page}>
         <Hdr title={name} />
         <Text style={s.h1}>Ethics Framework</Text>
-        <Text style={s.sub}>Pulse — AI Audience Sentiment Monitor</Text>
+        <Text style={s.sub}>Pulse — AI Audience Sentiment Monitor for Live Broadcast</Text>
         <Ctrl title={name} project="Pulse" type="Ethics Framework" date={date} />
-        <View style={s.phBox}>
-          <Text style={s.phTi}>Full ethics framework in development</Text>
-          <Text style={s.phBd}>Content will be published here shortly. Available on request via the contact form at osaheniogbebor.com.</Text>
+
+        <SL t="Governing Principle" />
+        <Body t="The central risk in Pulse is not a technical one. If a live broadcast producer consistently responds to sentiment signals, the algorithm gradually shapes editorial decisions — and the broadcast stops reflecting editorial judgement and starts reflecting what generates audience reaction. Every architectural decision in this system was made to prevent that outcome. Editorial sovereignty is an ethical constraint embedded in the architecture, not a disclaimer in the documentation." />
+
+        <SL t="Core Principles" />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>1 — Editorial Sovereignty</Text>
+        <Body t="The system never makes a content decision. Every result requires an explicit producer response. The editorial guardrail — 'Pulse surfaces audience signals. Editorial decisions remain with the producer.' — is persistent and non-dismissible on every screen. It is rendered as a static component with no dismiss mechanism and cannot be removed by any user action or configuration." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>2 — Transparency Over False Confidence</Text>
+        <Body t="Every classification includes a confidence score. Low-confidence results are visually distinct. The tiered routing architecture exists specifically to prevent TF-IDF + XGBoost from producing wrong high-confidence results on short text. A wrong answer at 95% confidence is more harmful than an acknowledged uncertain one." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>3 — The Audience Is Not the Editorial Compass</Text>
+        <Body t="A sentiment spike is a data point, not an editorial directive. High audience engagement with a topic is not evidence that the topic deserves more coverage. Pulse never frames its outputs as recommendations — alert language names the signal only. 'Negative spike: Winner Reaction' not 'Consider addressing Winner Reaction'." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>4 — Social Signal Demographic Caveat</Text>
+        <Body t="Social media audiences skew younger and more urban than linear broadcast audiences. A negative spike on social media may not represent the full broadcast audience. This caveat is surfaced in the dashboard as a persistent note, not buried in documentation." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>5 — Privacy by Design</Text>
+        <Body t="No real user data is stored or processed in v1. All classifications are held in memory for the duration of the session only and cleared on reset. The training dataset comprises 2,699 synthetic BAFTA social posts with no real personal data. This is a product decision, not a technical default." />
+
+        <SL t="Hard Constraints" />
+        <Body t="These constraints cannot be overridden by a product decision, user request, or feature request." />
+
+        <View style={s.tbl}>
+          <View style={s.tblHdr}>
+            <Text style={[s.thC, { flex: 1 }]}>Constraint</Text>
+            <Text style={[s.thC, { flex: 1 }]}>Implementation</Text>
+            <Text style={[s.thC, { flex: 1 }]}>Rationale</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>No editorial recommendations</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Output is classification only. No recommendation language in any component.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>The system must inform, not direct.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>Confidence always visible</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>predict_proba score on every result via EmotionBadge in feed-post.tsx.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Producers must know certainty level before acting.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>Editorial guardrail persistent</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Static component, non-dismissible, rendered on every screen.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Producer must never forget the signal is advisory.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>Alert names signal not action</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Alert format: {'Negative sentiment spike: {topic}'}. No action language.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Prevents the system from directing editorial decisions.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>No real data stored</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>session_results is an in-memory list. No database writes anywhere in the codebase.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Privacy by architecture.</Text>
+          </View>
         </View>
+
+        <SL t="Tiered Routing Architecture" />
+        <Body t="Three classification tiers matched to input length. Tier 1: inputs of 3 words or fewer are auto-classified as neutral with a fixed confidence of 0.4 — too short to classify reliably. Tier 2: inputs of 4 to 20 words route to Claude API (claude-haiku) for semantic classification — TF-IDF produces unreliable results on short casual text. Tier 3: inputs over 20 words run the full XGBoost + SHAP pipeline." />
+
+        <SL t="The Feedback Loop Risk" />
+        <Body t="If Pulse is used consistently across multiple broadcasts and producers consistently respond to sentiment spikes by pivoting coverage, the signal degrades. Audiences learn that emotional reaction drives what gets covered. Engagement-maximising behaviour increases. The model begins measuring strategic audience behaviour rather than genuine sentiment. Editorial decisions shift toward the most vocal fraction of the audience rather than the full broadcast audience." />
+        <Body t="Mitigations in v1: the tool is scoped to a single producer screen with no broadcast-wide integration; there is no historical comparison feature so producers cannot see what drove engagement in previous broadcasts; no engagement optimisation framing appears anywhere in the UI." />
+
+        <SL t="Regulatory Alignment" />
+
+        <View style={s.tbl}>
+          <View style={s.tblHdr}>
+            <Text style={[s.thC, { width: 140 }]}>Regulation</Text>
+            <Text style={[s.thC, { flex: 1 }]}>Requirement</Text>
+            <Text style={[s.thC, { flex: 1 }]}>How Pulse addresses it</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { width: 140 }]}>Ofcom Broadcasting Code — Section 5</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Due impartiality on matters of public policy</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Classification without recommendation. Editorial guardrail enforces producer sovereignty architecturally.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { width: 140 }]}>Ofcom Broadcasting Code — Section 2</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Harm and offence standards</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Alert system gives earlier warning of negative sentiment spikes — supports Section 2 compliance.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { width: 140 }]}>BBC Editorial Guidelines</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Coverage must not be driven by audience pressure</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Pulse informs producers. It does not direct them. Alert language is descriptive only.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { width: 140 }]}>UK GDPR Article 22</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Right not to be subject to solely automated decisions</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Human-in-the-loop architecture. No decision is solely automated.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { width: 140 }]}>UK GDPR Article 35</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>DPIA required before processing personal data at scale</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>v1 processes synthetic data only. DPIA is a v2 requirement before real data ingestion.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { width: 140 }]}>Online Safety Act 2023</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Statutory duty of care</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Not directly applicable in v1 — no real UGC processed. Relevant in v2 if real social data is ingested.</Text>
+          </View>
+        </View>
+
+        <SL t="Known Limitations" />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>Limitation 1 — Negative emotion F1 0.750</Text>
+        <Body t="The model correctly classifies negative posts 75% of the time on the test set. The primary failure mode is confusion with angry — posts near the boundary between calm disappointment and cold sarcasm sometimes misclassify. Two targeted augmentation runs moved the score from 0.742 to 0.750. The remaining gap is likely irreducible with synthetic data. In production the alert system uses combined negative + angry score, not either emotion alone." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>Limitation 2 — general_audience_reaction topic F1 0.304</Text>
+        <Body t="The model correctly classifies general_audience_reaction posts 30% of the time. The category is defined by exclusion — it applies when no other topic fits — which makes it structurally harder to learn than categories with distinctive vocabulary. It is the least actionable signal for a live producer. Low-confidence topic tags are shown with a distinct visual indicator in the dashboard." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>Limitation 3 — Fairlearn evaluation not completed in v1</Text>
+        <Body t="No formal Fairlearn fairness metrics have been computed for v1. The stated constraint — no emotion category flagged at more than 2x the rate of any other — has not been formally measured. The training data is balanced at approximately 480 rows per emotion class. Formal Fairlearn evaluation is a v2 requirement before any production deployment processing real broadcast data." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>Limitation 4 — Demographic caveat UI implementation</Text>
+        <Body t="The requirement for a persistent demographic caveat in the dashboard is documented in the PRD and this framework. The caveat reads: 'Social signal audiences skew younger and more urban than linear broadcast audiences.' If not present in the current build, it is an outstanding v1.1 item." />
+
+        <SL t="Ongoing Responsibilities" />
+
+        <View style={s.tbl}>
+          <View style={s.tblHdr}>
+            <Text style={[s.thC, { flex: 2 }]}>Responsibility</Text>
+            <Text style={[s.thC, { width: 80 }]}>Frequency</Text>
+            <Text style={[s.thC, { flex: 1 }]}>Out-of-cycle trigger</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 2 }]}>Re-evaluate F1 scores against updated vocabulary</Text>
+            <Text style={[s.tdC, { width: 80 }]}>Every retrain</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Sentiment language shifts over time</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 2 }]}>Verify demographic caveat remains accurate</Text>
+            <Text style={[s.tdC, { width: 80 }]}>Every 6 months</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>New Ofcom audience demographic data published</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 2 }]}>Run Fairlearn evaluation before v2 deployment</Text>
+            <Text style={[s.tdC, { width: 80 }]}>Before v2</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Any plan to process real social media data</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 2 }]}>Review this document for continued accuracy</Text>
+            <Text style={[s.tdC, { width: 80 }]}>Every major version</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Regulatory changes — OSA, UK GDPR, Ofcom Code updates</Text>
+          </View>
+        </View>
+
         <Ftr name={name} />
       </Page>
     </Document>
@@ -907,10 +1410,176 @@ function TruecaseEthics({ date }: { date: string }) {
         <Text style={s.h1}>Ethics Framework</Text>
         <Text style={s.sub}>TrueCase — AI-Powered Business Case Builder</Text>
         <Ctrl title={name} project="TrueCase" type="Ethics Framework" date={date} />
-        <View style={s.phBox}>
-          <Text style={s.phTi}>Full ethics framework in development</Text>
-          <Text style={s.phBd}>Content will be published here shortly. Available on request via the contact form at osaheniogbebor.com.</Text>
+
+        <SL t="The Meta-Ethics Problem" />
+        <Body t="TrueCase is a tool that assesses the governance of other AI systems. This creates a recursive obligation: a governance tool must itself be governed. TrueCase cannot argue that AI ROI projections are untrustworthy without governance while having no documented constraints on its own outputs, no stated limitations on what it claims, and no honest accounting of where it could mislead users." />
+        <Body t="Every principle in this document exists to resolve that obligation. TrueCase must be the most honest tool in the market, not the most impressive one. If it produces a governance assessment that gives a user false confidence, it has done exactly the harm it was built to prevent." />
+
+        <SL t="Core Principles" />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>1 — TrueCase Never Claims More Than It Can Substantiate</Text>
+        <Body t="Every output TrueCase produces has a stated basis. Financial projections come from user-supplied inputs and stated assumptions. Governance assessments come from user self-assessment against documented decision criteria. Claude-generated narrative is based on the inputs and knowledge base entries provided — nothing else. TrueCase produces structured assessments with visible assumptions, not authoritative verdicts." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>2 — Honest Uncertainty Over False Confidence</Text>
+        <Body t="The reliability-adjusted projection is shown at equal visual weight to the headline projection. A user cannot see the impressive number without also seeing the honest number. Low reliability scores are shown with red visual treatment — there is no styling that makes a poor governance assessment look acceptable. The SROI layer is labelled as directional signal throughout the UI, not only in documentation." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>3 — The Self-Assessment Limitation is Always Disclosed</Text>
+        <Body t="TrueCase's governance gate is a self-assessment tool. Users confirm or deny the presence of governance elements based on their own knowledge of their system. TrueCase cannot verify these assessments. A user who confirms all six elements without genuine compliance receives a 100% reliability score that is not warranted. This limitation is stated in the UI alongside the governance gate, in the PDF footer, and in this document." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>4 — No Data Stored, No Exceptions</Text>
+        <Body t="TrueCase stores nothing. Not inputs, not outputs, not governance assessments, not Claude-generated narratives. The generate-pdf API route processes inputs server-side and immediately discards them after the buffer is returned — there are no database writes anywhere in the codebase. This is a trust decision, not only a compliance one. Users input commercially sensitive financial projections and governance gap disclosures. They should have no doubt that their inputs leave no trace." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>5 — Claude Is Constrained to the Knowledge Base</Text>
+        <Body t="The generate-narrative system prompt contains five strict rules: all regulatory claims must come from the governance-kb.json provided, not from Claude's training data; financial figures must come from the user's inputs and must not be recalculated; no market context or industry benchmarks may be added beyond what is in the knowledge base; if uncertain about a claim, Claude must omit it rather than substitute inference; each governance element status must be stated exactly as provided. These rules are enforced in the system prompt and are not configurable." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>6 — The SROI Layer is Directional Signal Only</Text>
+        <Body t="TrueCase's SDG mapping is not a Social Return on Investment assessment. The UK Cabinet Office SROI methodology requires stakeholder identification, outcome mapping, evidence collection, monetisation of outcomes, and sensitivity analysis. TrueCase does none of these. The PDF footer states the caveat in full and it cannot be abbreviated or removed: 'TrueCase SDG mapping is directional signal only. It is not an investment-grade SROI assessment.'" />
+
+        <SL t="Hard Constraints" />
+        <Body t="These constraints cannot be changed by user request, product iteration, or commercial pressure." />
+
+        <View style={s.tbl}>
+          <View style={s.tblHdr}>
+            <Text style={[s.thC, { flex: 1 }]}>Constraint</Text>
+            <Text style={[s.thC, { flex: 1 }]}>Implementation</Text>
+            <Text style={[s.thC, { flex: 1 }]}>Rationale</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>No data stored</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>No database, no localStorage, no cookies. generate-pdf route discards inputs immediately after buffer is returned.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Users input governance gap disclosures and pre-funding financials. Retention would be a betrayal of the trust that makes honest disclosure possible.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>Reliability-adjusted projection always shown</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Both figures shown at equal visual weight in the UI and the PDF. Neither can be hidden or removed.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>A tool that buried the adjusted projection or made it visually subordinate to the headline figure would be misleading by design.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>Claude constrained to KB sources</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>System prompt in generate-narrative/route.ts contains five strict rules. Not configurable by users or developers without a documented ethics review.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>TrueCase documents travel to board rooms and investor data rooms. An inaccurate regulatory claim can influence decisions affecting legal exposure.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>Self-assessment limitation always disclosed</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Persistent UI note alongside governance gate. Reproduced in PDF footer and this document.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Users aware of the limitation are less likely to game the assessment and more likely to use it honestly.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>SROI caveat printed in full</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Hardcoded in PDF page 3. Cannot be abbreviated or removed.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Prevents greenwashing — organisations presenting directional SDG signal as certified SROI in investor materials.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 1 }]}>AI-generated label on narrative</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Grounding disclosure shown above the narrative in the UI and on PDF page 1. States model used and KB version.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Users must never present a TrueCase narrative to a stakeholder without that stakeholder knowing it was AI-generated.</Text>
+          </View>
         </View>
+
+        <SL t="Governance Gate Design" />
+        <Body t="The governance gate uses a soft warning rather than a hard gate. A hard gate — one that blocks the ROI output until all governance elements are confirmed — would pressure users to confirm elements they have not genuinely assessed, purely to unlock the number. That produces dishonest self-assessment." />
+        <Body t="A soft warning — the ROI runs regardless, missing elements annotate and reduce the reliability score — produces honest behaviour. A user who sees their reliability score drop from 100% to 55% because three elements are missing has received a more useful signal than one who was blocked until they clicked through all the checkboxes. The soft warning respects user agency and produces honest self-assessment." />
+        <Body t="The six governance elements have decision criteria written to minimise ambiguous interpretation. Each criterion asks about specific architectural facts, not general intentions. This is documented in the governance-kb.json alongside each element and is reproduced in the UI alongside each toggle." />
+
+        <SL t="Reliability Score Weighting" />
+        <Body t="The six governance elements and their reliability deductions are sourced from governance-kb.json — not hardcoded in application logic. A full-Missing assessment cannot be engineered to produce a misleading score. The weighting reflects relative regulatory risk as assessed against UK enforcement records and guidance as of April 2026." />
+
+        <View style={s.tbl}>
+          <View style={s.tblHdr}>
+            <Text style={[s.thC, { flex: 2 }]}>Element</Text>
+            <Text style={[s.thC, { width: 70 }]}>Missing</Text>
+            <Text style={[s.thC, { width: 70 }]}>Partial</Text>
+          </View>
+          {[
+            ["Output Limit Control", "-25", "-12"],
+            ["Human Review Requirement", "-20", "-10"],
+            ["Decision Audit Trail", "-15", "-7"],
+            ["Regulatory Compliance Map", "-20", "-10"],
+            ["AI System Performance Documentation", "-10", "-5"],
+            ["Data Use Boundary", "-10", "-5"],
+          ].map(([el, miss, part]) => (
+            <View key={el} style={s.tblRow}>
+              <Text style={[s.tdC, { flex: 2 }]}>{el}</Text>
+              <Text style={[s.tdC, { width: 70 }]}>{miss}</Text>
+              <Text style={[s.tdC, { width: 70 }]}>{part}</Text>
+            </View>
+          ))}
+        </View>
+
+        <SL t="Known Limitations" />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>Limitation 1 — Self-assessment is gameable</Text>
+        <Body t="A user who confirms all six elements without genuine compliance receives a 100% reliability score. TrueCase cannot prevent this. The mitigations are: the self-assessment disclosure in the UI, decision criteria specific enough that a false confirmation is an explicit false statement rather than an ambiguous click, and the grounding in governance-kb.json which makes the criteria transparent and auditable." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>Limitation 2 — Financial projections use a deterministic formula</Text>
+        <Body t="The financial formula is: projectedGain = currentCost × (efficiencyGain / 100) + fineExposure × (errorReduction / 100) × 0.3. It does not model risk, discount cash flows, account for implementation costs beyond aiSystemCost, or incorporate sector-specific variables. TrueCase is not a financial modelling tool. The PDF footer states this explicitly." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>Limitation 3 — Knowledge base is current as of April 2026</Text>
+        <Body t="The regulatory landscape for AI in the UK is changing. The knowledge base was verified in April 2026. Claims that were accurate at verification may become outdated. The knowledge base version and verification date are disclosed in the PDF footer of every output. Users relying on TrueCase for regulatory decisions should verify the currency of the knowledge base before proceeding." />
+
+        <Text style={[s.body, { fontFamily: "Helvetica-Bold", marginTop: 8, marginBottom: 2 }]}>Limitation 4 — Claude model limitations</Text>
+        <Body t="Despite the constraints imposed by the system prompt, Claude may produce outputs that are grammatically plausible but factually inaccurate in edge cases. The knowledge base constraint reduces but does not eliminate this risk. Every output carries an AI-generated label identifying the model used (claude-sonnet-4-20250514) and the knowledge base version." />
+
+        <SL t="Regulatory Alignment" />
+
+        <View style={s.tbl}>
+          <View style={s.tblHdr}>
+            <Text style={[s.thC, { width: 130 }]}>Regulation</Text>
+            <Text style={[s.thC, { flex: 1 }]}>Requirement</Text>
+            <Text style={[s.thC, { flex: 1 }]}>How TrueCase addresses it</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { width: 130 }]}>UK GDPR Article 35</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>DPIA required before processing personal data at scale.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>TrueCase processes no personal data. Users input financial figures and governance assessments — not personal data as defined by GDPR Article 4(1).</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { width: 130 }]}>UK GDPR — Right to Erasure</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Individuals have the right to request deletion of their data.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Trivially satisfied — TrueCase stores nothing. There is nothing to erase.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { width: 130 }]}>Anthropic API Policy</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Inputs to the Claude API are not used for training by default on the API tier.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Disclosed in the UI at the point of narrative generation. TrueCase does not make stronger claims than Anthropic's published policy.</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { width: 130 }]}>CMA — Consumer Protection</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Financial projections must not mislead consumers.</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Reliability-adjusted projection shown at equal visual weight. PDF footer states TrueCase is not a financial modelling tool. Directional framing throughout.</Text>
+          </View>
+        </View>
+
+        <SL t="Ongoing Responsibilities" />
+
+        <View style={s.tbl}>
+          <View style={s.tblHdr}>
+            <Text style={[s.thC, { flex: 2 }]}>Responsibility</Text>
+            <Text style={[s.thC, { width: 80 }]}>Frequency</Text>
+            <Text style={[s.thC, { flex: 1 }]}>Out-of-cycle trigger</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 2 }]}>Review knowledge base for regulatory currency</Text>
+            <Text style={[s.tdC, { width: 80 }]}>Every major version</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>New ICO guidance, CMA enforcement action, Online Safety Act implementation milestones, EU AI Act compliance deadlines</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 2 }]}>Verify system prompt constraints remain intact</Text>
+            <Text style={[s.tdC, { width: 80 }]}>Every release</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Any change to generate-narrative/route.ts</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 2 }]}>Update AI-generated label if Claude model changes</Text>
+            <Text style={[s.tdC, { width: 80 }]}>Every model update</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Any change to the model string in generate-narrative/route.ts</Text>
+          </View>
+          <View style={s.tblRow}>
+            <Text style={[s.tdC, { flex: 2 }]}>Review this document for continued accuracy</Text>
+            <Text style={[s.tdC, { width: 80 }]}>Every major version</Text>
+            <Text style={[s.tdC, { flex: 1 }]}>Regulatory changes affecting the six governance elements</Text>
+          </View>
+        </View>
+
         <Ftr name={name} />
       </Page>
     </Document>

@@ -50,6 +50,7 @@ const projectData = {
     date: "March 2026",
     demoUrl: "https://ai-ticket-pricing.streamlit.app/",
     githubUrl: "https://github.com/aiirveon/ai-event-ticket-pricing",
+    githubPrivate: true,
     heroImage: undefined,
     youtubeUrl: "https://www.youtube.com/watch?v=Jvhj-QlmWvM",
     screenshotImages: [

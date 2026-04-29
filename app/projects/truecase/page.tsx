@@ -48,6 +48,7 @@ const projectData = {
     date: "April 2026",
     demoUrl: "https://truecase-seven.vercel.app/",
     githubUrl: undefined,
+    githubPrivate: true,
     heroImage: undefined,
     youtubeUrl: "https://www.youtube.com/watch?v=cXCDUK5WyUw",
     screenshotImages: [

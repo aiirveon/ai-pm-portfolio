@@ -174,10 +174,15 @@ export default function Projects() {
                       </Link>
                     </Button>
                   )}
-                  <Button variant="outline" size="sm" asChild className="border-jungle-200 dark:border-jungle-700">
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">
-                      <Github className="h-4 w-4 mr-1" /> GitHub
-                    </a>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    disabled
+                    className="group border-jungle-200 dark:border-jungle-700 opacity-60 cursor-not-allowed min-w-[90px]"
+                  >
+                    <Github className="h-4 w-4 mr-1 flex-shrink-0" />
+                    <span className="group-hover:hidden">GitHub</span>
+                    <span className="hidden group-hover:inline whitespace-nowrap">Available on Request</span>
                   </Button>
                   {project.demo && (
                     <Button variant="outline" size="sm" asChild className="border-jungle-200 dark:border-jungle-700">
