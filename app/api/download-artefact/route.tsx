@@ -1586,6 +1586,82 @@ function TruecaseEthics({ date }: { date: string }) {
   )
 }
 
+// ─── FILMMAKER PROMPT GUIDE ──────────────────────────────────────────────────
+
+function CtrlAiir({ title, project, type, date }: { title: string; project: string; type: string; date: string }) {
+  return (
+    <View style={s.ctrl}>
+      {([["Document", title], ["Project", project], ["Type", type], ["Author", "Aiir"], ["Date", date], ["Version", "1.0"], ["Status", "Final"]] as [string, string][]).map(([l, v]) => (
+        <View key={l} style={s.ctrlRow}>
+          <Text style={s.ctrlLbl}>{l}</Text>
+          <Text style={s.ctrlVal}>{v}</Text>
+        </View>
+      ))}
+    </View>
+  )
+}
+
+function FilmmakerPromptGuide({ date }: { date: string }) {
+  const name = "AI Commercial Production — Prompt Guide"
+  return (
+    <Document>
+      <Page size="A4" style={s.page}>
+        <Hdr title="AIIR — FILMMAKER" />
+        <Text style={s.h1}>AI Commercial Production Guide</Text>
+        <Text style={s.sub}>Prompts, Images &amp; Process — Noah&apos;s Ark × Amazon Prime Spec Ad</Text>
+        <CtrlAiir title={name} project="Noah's Ark × Amazon Prime" type="Prompt Guide & Production Breakdown" date={date} />
+
+        <SL t="Introduction" />
+        <Body t="This guide documents the complete prompt framework, production decisions, and generation workflow from a 15-second AI-built spec commercial. Everything in here was built, tested, and iterated in a real production context — not theorised. The prompts are production-ready. The failure modes are real. The fixes are what actually worked." />
+
+        <SL t="The 13 Prompt Categories" />
+        <Body t="Every shot in the spot was built using a consistent 13-category framework. Using all categories every time prevents the generator from filling in blanks with defaults that break your established look." />
+        <Li t="Shot Type/Framing" />
+        <Li t="Subject" />
+        <Li t="Environment/Setting" />
+        <Li t="Time of Day/Lighting Condition" />
+        <Li t="Lighting Direction and Quality" />
+        <Li t="Weather/Atmosphere" />
+        <Li t="Texture and Material Specificity" />
+        <Li t="Colour Grade and Palette" />
+        <Li t="Motion/Movement" />
+        <Li t="Camera Move/Lens" />
+        <Li t="Style/Genre/Reference" />
+        <Li t="Mood/Emotional Tone" />
+        <Li t="Negative Prompts" />
+
+        <SL t="Character Sheet Methodology" />
+        <Body t="Before generating any shots, lock your characters as reference assets. Every character needs: an identity block (paste-ready paragraph), face lock details, wardrobe head to toe, lighting notes, and 4 reference images (front, three-quarter, profile, in-costume). The AI generates based on what you describe first and references second." />
+
+        <SL t="Location Sheet Methodology" />
+        <Body t="Locations need anchor descriptions (what never changes) and per-shot variable states (weather, lighting, time of day). Lock the geography map — which direction is the doorway, where does the railing sit — before any shot generation." />
+
+        <SL t="Common Failure Modes and Fixes" />
+        <Li t="Generator shows close-up when you asked for wide: Remove specific architectural details. At true aerial height you can't see iron bands or doorframe carvings. Replace with silhouette and scale language." />
+        <Li t="Character face drifts between shots: Feed your locked reference image as an image reference in every prompt. Same seed + identity paragraph = consistency." />
+        <Li t="Interior looks like a storage room: Add 'space extending beyond view in every direction' and 'no visible ceiling, no visible far walls'. AI defaults to bounded rooms without explicit instruction." />
+        <Li t="Performance action ignored (shrug becomes shush): Strip everything except the action. Include the action, negative prompts ruling out the wrong action, and nothing else. The image already carries everything visual." />
+        <Li t="Seedance prompt too long: Cut adjectives first, then redundant descriptions, then implied technical specs. Never cut: subject, position, lighting direction, colour palette, camera move, lens type, iconographic specifics." />
+
+        <SL t="The Seedance Character Limit Workflow" />
+        <Body t="Seedance has a 2500 character limit. Build a master version with all 13 categories covered, then a production version compressed to fit. Trimming priority: (1) adjectives, (2) redundant descriptions, (3) implied technical specs. Never trim the core: subject, lighting, colour palette, camera move." />
+
+        <SL t="Colour Grade Approach" />
+        <Body t="The spot uses a two-palette system. Exterior/storm: cold slate-blue (#64748b range) and bruised charcoal. Interior/sanctuary: warm amber-gold (#D97706 range) and honey-brown. Every shot belongs to one palette. The only exception is Shot 4 (the ordering device) — a third palette, pure luminous gold-white, belonging to neither world. That distinctiveness is the point." />
+
+        <SL t="Tools Used" />
+        <Li t="Higgsfield Cinema Studio — video generation with start/end frame control and dialogue direction" />
+        <Li t="Higgsfield Soul Cinema — character and location reference image generation" />
+        <Li t="DaVinci Resolve — editing, colour grading, and sound design" />
+        <Li t="Seedance — additional image and video generation" />
+        <Li t="ElevenLabs — voice generation for dialogue" />
+
+        <Ftr name="AI Commercial Production Guide — Aiir" />
+      </Page>
+    </Document>
+  )
+}
+
 // ─── REGISTRY & HANDLER ───────────────────────────────────────────────────────
 
 type ArtefactDef = { name: string; gen: (date: string) => React.ReactElement }
@@ -1606,6 +1682,7 @@ const ARTEFACTS: Record<string, ArtefactDef> = {
   "truecase-prd": { name: "PRD — TrueCase", gen: (d) => <TruecasePrd date={d} /> },
   "truecase-model-decisions": { name: "Model Decisions — TrueCase", gen: (d) => <TruecaseModelDecisions date={d} /> },
   "truecase-ethics": { name: "Ethics Framework — TrueCase", gen: (d) => <TruecaseEthics date={d} /> },
+  "filmmaker-prompt-guide": { name: "AI Commercial Production — Prompt Guide", gen: (d) => <FilmmakerPromptGuide date={d} /> },
 }
 
 export async function POST(req: NextRequest) {

@@ -15,6 +15,7 @@ export default function Navbar() {
   const pathname = usePathname()
   const isHomePage = pathname === "/"
   const isProjectPage = pathname.startsWith("/projects/")
+  const isFilmmakerPage = pathname.startsWith("/filmmaker")
 
   // Determine if we should use light text (for dark hero background)
   const shouldUseLightText = isHomePage && !isScrolled
@@ -34,6 +35,9 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  // All hooks above — safe to conditionally return after this point
+  if (isFilmmakerPage) return null
 
   const handleNavClick = (href: string) => {
     setIsMenuOpen(false)
@@ -112,6 +116,12 @@ export default function Navbar() {
                   </Link>
                 </Button>
               ))}
+              <Link
+                href="/filmmaker"
+                className="text-sm text-jungle-500 dark:text-jungle-400 hover:text-jungle-700 dark:hover:text-jungle-300 transition-colors ml-1"
+              >
+                Filmmaker →
+              </Link>
               <ThemeToggle />
             </nav>
 
