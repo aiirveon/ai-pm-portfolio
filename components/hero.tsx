@@ -94,7 +94,7 @@ export default function Hero() {
               <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-jungle-400 shadow-2xl bg-white">
                 <img
                   src="/images/profile.png"
-                  alt="Ogbebor Osaheni - AI Product Manager"
+                  alt="Ogbebor Osaheni - AI Product Manager and Filmmaker"
                   className="w-full h-full object-cover"
                   style={{ objectPosition: 'center' }}
                 />
@@ -109,34 +109,40 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
-  AI Product Manager
-  <span className="text-jungle-300 block">
-    Building Intelligent, Trusted Products
-  </span>
-</h1>
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg leading-tight">
+              AI Product Manager.{" "}
+              <span className="text-amber-400">Filmmaker.</span>
+              <span className="text-jungle-300 block text-3xl md:text-5xl mt-2">
+                Both, on purpose.
+              </span>
+            </h1>
 
-            <p className="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto mb-8 drop-shadow">
-            I build ML products end-to-end, from model to frontend, with explainability and ethics baked in from day one, not bolted on at the end.
+            <p className="text-lg md:text-xl text-slate-200 max-w-3xl mx-auto mb-8 drop-shadow leading-relaxed">
+              I build AI products end-to-end — from model to frontend, with explainability
+              and ethics baked in. I also direct AI commercials and short films using the
+              same systems. Same craft. Different output.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                onClick={scrollToContact}
+                onClick={scrollToProjects}
                 className="bg-jungle-600 hover:bg-jungle-700 text-white border-2 border-jungle-500"
               >
-                Hire Me
+                See the AI PM Work →
               </Button>
               <Button
                 size="lg"
-                variant="outline"
-                onClick={scrollToProjects}
-                className="border-2 border-jungle-600 dark:border-jungle-300 text-jungle-900 dark:text-white bg-white/90 dark:bg-transparent hover:bg-jungle-100 dark:hover:bg-jungle-800/50 font-semibold"
+                onClick={() => (window.location.href = "/filmmaker")}
+                className="bg-amber-600 hover:bg-amber-700 text-white border-2 border-amber-500"
               >
-                View Projects
+                See the Filmmaker Work →
               </Button>
             </div>
+
+            <p className="text-sm text-slate-300/80 mt-6 drop-shadow">
+              Two paths. One person. Pick the one you came for.
+            </p>
 
             <div className="flex justify-center mt-10">
               <motion.a

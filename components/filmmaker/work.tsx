@@ -67,12 +67,27 @@ function ProjectCard({ project }: { project: Project }) {
         opacity: isDimmed ? 0.4 : 1,
       }}
     >
+      {/* Type badge strip — sits above the thumbnail */}
+      <div
+        className="px-4 py-2 border-b"
+        style={{
+          backgroundColor: "#0a0a0a",
+          borderColor: "#1f1f1f",
+        }}
+      >
+        <span
+          className="text-[10px] font-bold tracking-widest uppercase"
+          style={{ color: "#D97706" }}
+        >
+          {project.type}
+        </span>
+      </div>
+
       {/* Thumbnail area */}
       <div
         className={`relative aspect-video w-full transition-all duration-300 ${!isDimmed ? "group-hover:border-amber-600" : ""}`}
         style={{
           backgroundColor: "#111111",
-          border: "1px solid #1f1f1f",
         }}
       >
         {project.youtube ? (
@@ -92,14 +107,6 @@ function ProjectCard({ project }: { project: Project }) {
             TBA
           </span>
         )}
-
-        {/* Type badge */}
-        <span
-          className="absolute top-3 left-3 text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 z-10"
-          style={{ color: "#D97706", backgroundColor: "rgba(217,119,6,0.1)" }}
-        >
-          {project.type}
-        </span>
       </div>
 
       {/* Card body */}
