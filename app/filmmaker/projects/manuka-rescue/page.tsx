@@ -154,7 +154,7 @@ export default function ManukaRescueCaseStudy() {
             >
               <iframe
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/PLACEHOLDER?rel=0&modestbranding=1"
+                src="https://www.youtube.com/embed/zBxeybQ0KIs?rel=0&modestbranding=1"
                 title="Dr. Organic Manuka Honey Rescue Cream | AI Commercial Spec Ad"
                 allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen

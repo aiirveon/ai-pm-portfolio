@@ -1,10 +1,11 @@
 import Link from "next/link"
 
 function getYouTubeEmbedUrl(url: string): string {
-  // Handles both https://youtu.be/ID and https://www.youtube.com/watch?v=ID formats
+  // Handles youtu.be/ID, ?v=ID, and youtube.com/shorts/ID formats
   const shortMatch = url.match(/youtu\.be\/([^?&]+)/)
   const longMatch = url.match(/[?&]v=([^?&]+)/)
-  const id = shortMatch?.[1] || longMatch?.[1] || ""
+  const shortsMatch = url.match(/shorts\/([^?&]+)/)
+  const id = shortMatch?.[1] || longMatch?.[1] || shortsMatch?.[1] || ""
   return `https://www.youtube.com/embed/${id}?autoplay=0&rel=0&modestbranding=1`
 }
 
@@ -32,7 +33,7 @@ const PROJECTS: Project[] = [
     description: "A skincare film for all skin. Three women. One ritual. No words.",
     caseStudy: "/filmmaker/projects/manuka-rescue",
     status: "complete",
-    youtube: "https://youtu.be/PLACEHOLDER",
+    youtube: "https://youtube.com/shorts/zBxeybQ0KIs",
   },
   {
     title: "Coming Soon",

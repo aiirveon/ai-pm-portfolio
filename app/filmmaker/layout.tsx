@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Menu, X } from "lucide-react"
 
 const NAV_LINKS = [
-  { name: "Work", href: "#work" },
+  { name: "Home", href: "/filmmaker" },
   { name: "Process", href: "#process" },
   { name: "Resources", href: "#resources" },
   { name: "Services", href: "#services" },
