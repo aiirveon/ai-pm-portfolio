@@ -399,8 +399,8 @@ export default function NoahArkCaseStudy() {
               {DIRECTOR_NOTES.map((note) => (
                 <div
                   key={note.n}
-                  className="border-l-2 p-6 md:p-8 mb-6"
-                  style={{ borderColor: "#D97706", backgroundColor: "#111111" }}
+                  className="border p-6 md:p-8 mb-6"
+                  style={{ borderColor: "#1f1f1f", backgroundColor: "#111111" }}
                 >
                   <div className="flex items-baseline gap-4">
                     <span className="text-base font-bold" style={{ color: "#D97706" }}>{note.n}</span>
@@ -472,11 +472,11 @@ export default function NoahArkCaseStudy() {
                 >
                   EXTERIOR
                 </p>
-                <div className="flex gap-6">
+                <div className="flex flex-wrap gap-4">
                   {[{ hex: "#64748b" }, { hex: "#374151" }].map(({ hex }) => (
-                    <div key={hex}>
-                      <div className="w-16 h-16 mb-2" style={{ backgroundColor: hex }} />
-                      <span className="text-xs" style={{ color: "#6b7280" }}>{hex}</span>
+                    <div key={hex} className="flex items-center gap-3">
+                      <div className="w-6 h-6 rounded-sm flex-shrink-0" style={{ backgroundColor: hex, border: "1px solid #2a2a2a" }} />
+                      <span className="text-[10px]" style={{ color: "#6b7280" }}>{hex}</span>
                     </div>
                   ))}
                 </div>
@@ -488,11 +488,11 @@ export default function NoahArkCaseStudy() {
                 >
                   INTERIOR
                 </p>
-                <div className="flex gap-6">
+                <div className="flex flex-wrap gap-4">
                   {[{ hex: "#D97706" }, { hex: "#92400e" }].map(({ hex }) => (
-                    <div key={hex}>
-                      <div className="w-16 h-16 mb-2" style={{ backgroundColor: hex }} />
-                      <span className="text-xs" style={{ color: "#6b7280" }}>{hex}</span>
+                    <div key={hex} className="flex items-center gap-3">
+                      <div className="w-6 h-6 rounded-sm flex-shrink-0" style={{ backgroundColor: hex, border: "1px solid #2a2a2a" }} />
+                      <span className="text-[10px]" style={{ color: "#6b7280" }}>{hex}</span>
                     </div>
                   ))}
                 </div>

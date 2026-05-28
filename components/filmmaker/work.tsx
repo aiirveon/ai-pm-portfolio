@@ -1,5 +1,13 @@
 import Link from "next/link"
 
+function getYouTubeEmbedUrl(url: string): string {
+  // Handles both https://youtu.be/ID and https://www.youtube.com/watch?v=ID formats
+  const shortMatch = url.match(/youtu\.be\/([^?&]+)/)
+  const longMatch = url.match(/[?&]v=([^?&]+)/)
+  const id = shortMatch?.[1] || longMatch?.[1] || ""
+  return `https://www.youtube.com/embed/${id}?autoplay=0&rel=0&modestbranding=1`
+}
+
 interface Project {
   title: string
   type: string
@@ -17,6 +25,14 @@ const PROJECTS: Project[] = [
     caseStudy: "/filmmaker/projects/noah-ark",
     status: "complete",
     youtube: "https://youtu.be/4LEwiHJ30xY",
+  },
+  {
+    title: "Dr. Organic Manuka Honey Rescue Cream",
+    type: "SPEC COMMERCIAL",
+    description: "A skincare film for all skin. Three women. One ritual. No words.",
+    caseStudy: "/filmmaker/projects/manuka-rescue",
+    status: "complete",
+    youtube: "https://youtu.be/PLACEHOLDER",
   },
   {
     title: "Coming Soon",
@@ -93,8 +109,8 @@ function ProjectCard({ project }: { project: Project }) {
         {project.youtube ? (
           <iframe
             className="absolute inset-0 w-full h-full"
-            src="https://www.youtube.com/embed/4LEwiHJ30xY?autoplay=0&rel=0&modestbranding=1"
-            title="Noah's Ark × Amazon Prime"
+            src={getYouTubeEmbedUrl(project.youtube)}
+            title={project.title}
             allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             style={{ border: "none" }}
