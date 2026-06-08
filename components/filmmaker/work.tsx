@@ -36,11 +36,12 @@ const PROJECTS: Project[] = [
     youtube: "https://youtube.com/shorts/zBxeybQ0KIs",
   },
   {
-    title: "Coming Soon",
-    type: "SHORT FILM",
-    description: "Next project in development.",
-    caseStudy: null,
-    status: "coming-soon",
+    title: "Nuzest Clean Lean Protein",
+    type: "SPEC COMMERCIAL",
+    description: "A protein shake made in a real kitchen. No gym. No hype. Just breakfast.",
+    caseStudy: "/filmmaker/projects/nuzest-clean-lean-protein",
+    status: "complete",
+    youtube: "https://youtu.be/ZDqq5bmvl3M",
   },
   {
     title: "Coming Soon",

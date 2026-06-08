@@ -1,11 +1,15 @@
 "use client"
 
+import { useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import ReelModal from "./ReelModal"
 
 const GRAIN_SVG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E"
 
 export default function FilmmakerHero() {
+  const [reelOpen, setReelOpen] = useState(false)
+
   return (
     <section
       className="relative flex flex-col items-center justify-center overflow-hidden"
@@ -54,13 +58,14 @@ export default function FilmmakerHero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-10">
-            <a
-              href="#work"
+            <button
+              type="button"
+              onClick={() => setReelOpen(true)}
               className="inline-flex items-center justify-center px-6 py-3 rounded-sm font-semibold text-sm transition-opacity hover:opacity-80"
               style={{ backgroundColor: "#D97706", color: "#0a0a0a" }}
             >
               Watch the Reel
-            </a>
+            </button>
             <a
               href="#contact"
               className="inline-flex items-center justify-center px-6 py-3 rounded-sm font-semibold text-sm border-2 transition-opacity hover:opacity-80"
@@ -72,6 +77,8 @@ export default function FilmmakerHero() {
 
         </motion.div>
       </div>
+
+      <ReelModal isOpen={reelOpen} onClose={() => setReelOpen(false)} />
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
