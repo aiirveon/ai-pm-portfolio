@@ -88,6 +88,11 @@ const projectData = {
         title: "Editorial Guardrail Built In",
         description: "A non-dismissible persistent label on every screen: 'Pulse surfaces audience signals. Editorial decisions remain with the producer.' This is not a UX flourish — it is an ethical constraint embedded in the architecture, documented in the Ethics Framework.",
       },
+      {
+        icon: <AlertTriangle className="w-5 h-5" />,
+        title: "Fails Loud, Not Silent",
+        description: "A deliberate responsible-AI design decision: when the Tier 2 Claude API call fails, the classifier returns an explicit degraded state — emotion 'unavailable', a degraded flag, and an error string — rather than silently defaulting to 'neutral'. A silent failure during a negative-sentiment spike would suppress the very alert the product exists to surface, so degraded results are shown as unavailable and excluded from alert scoring.",
+      },
     ],
   },
   phases: [
@@ -171,6 +176,7 @@ const projectData = {
       { metric: "fashion_red_carpet F1", before: "0.696 (15 test)", after: "0.776 (30 test)", change: "Split rebalance" },
       { metric: "Tier 2 short text accuracy", before: "Wrong (TF-IDF out of distribution)", after: "Correct (Claude API semantic)", change: "Tiered routing" },
       { metric: "general_audience_reaction F1", before: "N/A", after: "0.304 (accepted)", change: "Documented limitation" },
+      { metric: "Tier 2 API failure handling", before: "Silent neutral (hides negative spikes)", after: "Explicit degraded state, excluded from alerts", change: "Fail-loud design" },
     ],
     keyInsights: [
       "The negative/angry F1 improvement came from redesigning the generation prompts using the labelling guide decision trees — not from tuning the model. The labelling guide is a product decision. The model learns exactly what the data shows.",
@@ -183,7 +189,7 @@ const projectData = {
     introduction: "This project applies responsible AI principles from the ground up. The central ethical tension: if a live broadcast producer consistently responds to sentiment signals, the algorithm gradually shapes editorial decisions — and the broadcast stops reflecting editorial judgement and starts reflecting algorithmic optimisation. Every decision in this system was made to prevent that failure mode.",
     principles: [
       { title: "Editorial Sovereignty is Non-Negotiable", description: "The system never makes a content decision. Every result requires an explicit producer response. The editorial guardrail is persistent and non-dismissible on every screen. This is an ethical constraint embedded in the architecture." },
-      { title: "Transparency Over False Confidence", description: "Every classification includes a confidence score. Low-confidence results are visually distinct. The tiered routing architecture exists specifically because showing wrong high-confidence results violates this principle — false certainty is more dangerous than acknowledged uncertainty." },
+      { title: "Transparency Over False Confidence", description: "Every classification includes a confidence score, and every score is labelled by type: 'calibrated' for Tier 3 (a real XGBoost predict_proba probability) versus 'estimated' for Tier 1 and Tier 2 (not calibrated). An LLM-estimated number is never presented as if it were a calibrated probability. Low-confidence results are visually distinct. The tiered routing architecture exists specifically because showing wrong high-confidence results violates this principle — false certainty is more dangerous than acknowledged uncertainty." },
       { title: "The Feedback Loop Risk is Documented", description: "If producers consistently respond to sentiment spikes, audience behaviour adapts, and the model begins learning the consequences of its own influence rather than genuine sentiment. This risk is documented in the Ethics Framework and the v2 roadmap requires training data from multiple diverse events to mitigate it." },
       { title: "Social Signal Caveat Built Into the UI", description: "Social media audiences skew younger and more urban than linear broadcast audiences. This demographic gap is surfaced in the dashboard as a persistent caveat — not buried in documentation." },
     ],
@@ -193,7 +199,7 @@ const projectData = {
       { rule: "Short text routes to Claude not XGBoost", threshold: "4–20 words via Tier 2", rationale: "Wrong high-confidence verdicts destroy trust and could cause editorial errors" },
       { rule: "Alert names signal not action", threshold: "Descriptive only", rationale: "Alert says 'Negative spike: Winner Reaction' never 'Consider changing coverage'" },
     ],
-    biasAuditDescription: "Fairness constraint: no emotion category flagged at more than 2× the rate of any other. Known limitation: general_audience_reaction F1 0.304 — structural catch-all limitation, low-confidence results shown with distinct visual indicator. Negative/angry boundary F1 0.750 — in production, alert system uses combined negative + angry score, not either emotion alone.",
+    biasAuditDescription: "Pulse does not compute model-level fairness in v1. The fairness work in v1 is a dataset-level design constraint: the synthetic training set was balanced so that no emotion category dominates, keeping per-class F1 above 0.75 for every emotion. Prediction-level fairness auditing across demographic segments (Fairlearn) is a roadmap item, not an implemented v1 check — see the Later roadmap. Known limitation: general_audience_reaction F1 0.304 — structural catch-all limitation, low-confidence results shown with distinct visual indicator. Negative/angry boundary F1 0.750 — in production, alert system uses combined negative + angry score, not either emotion alone.",
   },
   competitive: {
     introduction: "Social listening is a crowded market. But every existing tool is built for marketing teams, not broadcast producers. The gap: a tool that classifies audience sentiment in real time at gallery speed — in a format a producer can read in 5 seconds and act on in a live broadcast context.",
