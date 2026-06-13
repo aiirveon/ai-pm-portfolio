@@ -59,18 +59,19 @@ export default function Projects() {
       status: "Shipped",
     },
 
-    {
-      title: "Ojuit",
-      description:
-        "Two-product AI platform for solo indie filmmakers. Story Engine guides writers from raw idea to full beat sheet across six stages with AVOID_LIST prompt engineering and full Supabase state persistence. Colour Intelligence pipeline delivers CIE Lab Delta E measurement, XGBoost correction predictions, and scene-to-reference LUT export for DaVinci Resolve and Premiere Pro.",
-      techStack: ["Python", "FastAPI", "Next.js", "OpenCV", "XGBoost", "Claude API", "Supabase"],
-      github: "https://github.com/aiirveon/chromasync-app",
-      demo: "https://chromasync-app.vercel.app",
-      caseStudy: "/projects/ojuit",
-      image: "/gifs/ojuit-gif.gif",
-      featured: false,
-      status: "In Progress",
-    },
+    // Ojuit — hidden from homepage, work in progress, re-enable when ready
+    // {
+    //   title: "Ojuit",
+    //   description:
+    //     "Two-product AI platform for solo indie filmmakers. Story Engine guides writers from raw idea to full beat sheet across six stages with AVOID_LIST prompt engineering and full Supabase state persistence. Colour Intelligence pipeline delivers CIE Lab Delta E measurement, XGBoost correction predictions, and scene-to-reference LUT export for DaVinci Resolve and Premiere Pro.",
+    //   techStack: ["Python", "FastAPI", "Next.js", "OpenCV", "XGBoost", "Claude API", "Supabase"],
+    //   github: "https://github.com/aiirveon/chromasync-app",
+    //   demo: "https://chromasync-app.vercel.app",
+    //   caseStudy: "/projects/ojuit",
+    //   image: "/gifs/ojuit-gif.gif",
+    //   featured: false,
+    //   status: "In Progress",
+    // },
     {
       title: "TrueCase",
       description:

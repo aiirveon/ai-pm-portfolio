@@ -1,4 +1,5 @@
 import { Film, TrendingUp, Users, Zap, Lightbulb, Code, Shield, FileText, AlertTriangle, BarChart3, GitBranch, Network } from "lucide-react"
+import { redirect } from "next/navigation"
 
 export const metadata = {
   title: "Ojuit | Ogbebor Osaheni",
@@ -349,7 +350,15 @@ const projectData = {
   },
 }
 
-export default function ChromaSyncProject() {
+// Ojuit hidden — redirect to home until ready; restore original export to re-enable
+// To re-enable: delete the redirecting default export below and change
+// `function ChromaSyncProject()` back to `export default function ChromaSyncProject()`.
+export default function OjuitHidden() {
+  redirect("/")
+}
+
+// Original case-study page — preserved but unreached while Ojuit is hidden.
+function ChromaSyncProject() {
   return (
     <div className="min-h-screen bg-white dark:bg-jungle-950">
       <ProgressBar />
