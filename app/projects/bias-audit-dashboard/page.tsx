@@ -2,10 +2,10 @@ import { BarChart3, Shield, Users, Zap, FileText, AlertTriangle, Code, Lightbulb
 
 export const metadata = {
   title: "Bias Audit Dashboard | Ogbebor Osaheni",
-  description: "AI bias detection tool for UK media trust and safety teams. TF-IDF + XGBoost, F1 0.90, Ofcom-aligned.",
+  description: "AI bias detection tool for UK media trust and safety teams. TF-IDF + XGBoost, Tier 3 F1 0.90, Ofcom-aligned.",
   openGraph: {
     title: "Bias Audit Dashboard | Ogbebor Osaheni",
-    description: "AI bias detection tool for UK media trust and safety teams. TF-IDF + XGBoost, F1 0.90, Ofcom-aligned.",
+    description: "AI bias detection tool for UK media trust and safety teams. TF-IDF + XGBoost, Tier 3 F1 0.90, Ofcom-aligned.",
     url: "https://osaheniogbebor.com/projects/bias-audit-dashboard",
     images: [{ url: "https://osaheniogbebor.com/og-image.jpg", width: 1200, height: 630, alt: "Bias Audit Dashboard — Ogbebor Osaheni" }],
     type: "website",
@@ -13,7 +13,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Bias Audit Dashboard | Ogbebor Osaheni",
-    description: "AI bias detection tool for UK media trust and safety teams. TF-IDF + XGBoost, F1 0.90, Ofcom-aligned.",
+    description: "AI bias detection tool for UK media trust and safety teams. TF-IDF + XGBoost, Tier 3 F1 0.90, Ofcom-aligned.",
     images: ["https://osaheniogbebor.com/og-image.jpg"],
   },
 }
@@ -53,7 +53,7 @@ const projectData = {
     ],
   },
   summary: {
-    description: "Built an end-to-end AI bias detection system for UK media trust and safety teams. The hybrid architecture routes content through a tiered pipeline: inputs of 2 words or fewer are auto-approved at zero cost, 4–15 word inputs go to Claude API for semantic classification, and longer inputs run through a TF-IDF + XGBoost classifier with SHAP word-level highlights. The system achieves F1 0.90 across 6 bias categories and includes a live comment moderation simulator that demonstrates the full human-in-the-loop workflow.",
+    description: "Built an end-to-end AI bias detection system for UK media trust and safety teams. The hybrid architecture routes content through a tiered pipeline: inputs of 2 words or fewer are auto-approved at zero cost, 3–15 word inputs go to Claude API for semantic classification, and longer inputs (16+ words) run through a TF-IDF + XGBoost classifier with SHAP word-level highlights. The Tier 3 XGBoost classifier achieves F1 0.90 across 6 bias categories on the held-out test set (Tier 2 is not separately benchmarked), and the system includes a live comment moderation simulator that demonstrates the full human-in-the-loop workflow.",
     metrics: [
       { icon: <BarChart3 className="w-5 h-5" />, value: "0.90", label: "F1 Score", description: "Across all 6 bias categories" },
       { icon: <Shield className="w-5 h-5" />, value: "3-Tier", label: "Routing Architecture", description: "Cost-optimised classification pipeline" },
@@ -76,7 +76,7 @@ const projectData = {
       {
         icon: <Code className="w-5 h-5" />,
         title: "Tiered Routing Architecture",
-        description: "Three-tier classification pipeline: Tier 1 (≤2 words) auto-approves at zero cost. Tier 2 (4–15 words) routes to Claude API for semantic classification — handles short text that TF-IDF cannot reliably classify. Tier 3 (>15 words) runs the full XGBoost + SHAP pipeline. Cost and accuracy matched to input complexity.",
+        description: "Three-tier classification pipeline: Tier 1 (≤2 words) auto-approves at zero cost. Tier 2 (3–15 words) routes to Claude API for semantic classification — handles short text that TF-IDF cannot reliably classify. Tier 3 (>15 words) runs the full XGBoost + SHAP pipeline. Cost and accuracy matched to input complexity.",
       },
       {
         icon: <Lightbulb className="w-5 h-5" />,
@@ -163,12 +163,12 @@ const projectData = {
     ],
   },
   results: {
-    heroMetric: { value: "0.90", label: "Overall F1 score across all 6 bias categories — all above the 0.78 PRD threshold" },
+    heroMetric: { value: "0.90", label: "Tier 3 XGBoost classifier F1 across all 6 bias categories on the held-out test set — all above the 0.78 PRD threshold (Tier 2 not separately benchmarked)" },
     comparisons: [
       { metric: "demographic_bias F1", before: "0.65 (first attempt)", after: "0.89", change: "Prompt redesign" },
       { metric: "racial_bias F1", before: "0.65 (first attempt)", after: "0.87", change: "Journalism framing" },
       { metric: "geographic_bias F1", before: "N/A", after: "0.92", change: "Within threshold" },
-      { metric: "Fairness disparity ratio", before: "Unknown", after: "1.00× (perfect)", change: "Constraint satisfied" },
+      { metric: "Dataset balance ratio", before: "Not measured", after: "1.00× dataset balance ratio (equal examples per category)", change: "Dataset-level only — not model fairness" },
       { metric: "Explanation accuracy", before: "Hallucinated context", after: "Content-grounded", change: "Fixed by passing original content" },
       { metric: "Short text accuracy", before: "99% false positives", after: "Semantic via Claude API", change: "Tiered routing" },
     ],
@@ -176,7 +176,7 @@ const projectData = {
       "The model improvement from F1 0.65 to 0.89 on demographic_bias came from redesigning the training prompts, not tuning the model. This is the core PM insight: data quality is a product decision. The model learns what the data shows — if the data conflates two categories, no amount of hyperparameter tuning will fix it.",
       "The tiered routing architecture was driven by a business and ethics decision, not a technical one. TF-IDF + XGBoost produces high-confidence false positives on short text — 'you are a christian' scoring 99% HIGH RISK religious bias. The cost of a wrong high-confidence verdict (regulatory risk, reviewer trust collapse) is orders of magnitude higher than the cost of a Claude API call (£0.0003).",
       "Geographic bias misclassifies when the bias is carried by adjectives rather than location nouns. 'People from the north of England lack ambition' scores as NEUTRAL because the model sees no geographic trigger words — the bias is in 'lack ambition', not 'north of England'. The Claude explanation layer correctly identifies this as a model failure and tells the reviewer to flag it manually. This is the hybrid architecture working as designed.",
-      "The fairness disparity ratio of 1.00× means every category is flagged at exactly the same rate. This is a product outcome, not a coincidence — the dataset was deliberately balanced at 500 items per category, and the PRD specified a 2× maximum disparity as a hard constraint.",
+      "The 1.00× disparity ratio measures dataset balance, not model fairness. It reflects a deliberately balanced training set — 500 examples per category, so max/min count is 1.00× — and the PRD's 2× maximum disparity applied to that dataset-construction check. It does NOT mean the trained model treats groups fairly on real predictions: a perfectly balanced dataset can still produce systematically different false-positive rates across categories. Prediction-level fairness (per-category false-positive and true-positive rates via Fairlearn) is not computed in v1 — it is a v2 action item.",
     ],
   },
   ethics: {
@@ -190,7 +190,7 @@ const projectData = {
     guardrails: [
       { rule: "Human reviewer always required", threshold: "No auto-approve, no auto-remove", rationale: "Removal without human review is censorship without accountability" },
       { rule: "Confidence shown on every verdict", threshold: "Always visible in UI", rationale: "Reviewers must know how certain the model is before acting on it" },
-      { rule: "Short text routes to Claude, not XGBoost", threshold: "4–15 words via Tier 2", rationale: "False high-confidence verdicts destroy reviewer trust and create compliance risk" },
+      { rule: "Short text routes to Claude, not XGBoost", threshold: "3–15 words via Tier 2", rationale: "False high-confidence verdicts destroy reviewer trust and create compliance risk" },
       { rule: "No real user content stored in v1", threshold: "Synthetic data only", rationale: "Privacy by design — no DPIA required for v1" },
     ],
     biasAuditDescription: "Fairness metric computed using the dataset directly: disparity ratio (max flag rate / min flag rate across categories) = 1.00× — no category is flagged at a disproportionate rate. Computed in audit.py using pandas. Fairlearn integration (demographic parity, equal opportunity, predictive parity, individual fairness) is planned for v2. Known limitation: geographic_bias is misclassified when bias is carried by adjectives rather than location nouns. Documented in MODEL_DECISIONS.md.",
@@ -217,7 +217,7 @@ const projectData = {
     ],
     successMetrics: [
       { metric: "Overall F1 Score", target: "> 0.78 all categories", achieved: "0.90 — all 6 above threshold", status: "Achieved" as const },
-      { metric: "Fairness disparity ratio", target: "< 2×", achieved: "1.00× — constraint satisfied", status: "Achieved" as const },
+      { metric: "Dataset balance ratio", target: "< 2×", achieved: "1.00× — dataset balanced, model fairness is v2", status: "Achieved" as const },
       { metric: "Live demo", target: "Public URL", achieved: "bias-audit-dashboard.vercel.app", status: "Achieved" as const },
       { metric: "PM artefacts", target: "5 documents", achieved: "5 shipped before build started", status: "Achieved" as const },
     ],
