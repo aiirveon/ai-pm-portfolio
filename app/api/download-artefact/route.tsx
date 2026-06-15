@@ -246,7 +246,7 @@ function DynamicPricingModelDecisions({ date }: { date: string }) {
           id="ADR-004"
           title="Optuna TPE hyperparameter search: 50 trials, 3-fold CV — baseline already well-calibrated"
           decision="Optuna TPE sampler with 50 trials and 3-fold cross-validation. Key finding: tuning produced no meaningful improvement — R² remained approximately 0.79 — confirming the baseline was already at the performance ceiling (genuine market noise)."
-          context="Hyperparameter tuning was conducted to validate whether the baseline had a significant performance ceiling. The marginal improvement confirms the performance ceiling is genuine market noise, not model weakness. The synthetic data was designed with 9.7% noise — representing real market unpredictability."
+          context="Hyperparameter tuning was conducted to validate whether the baseline had a significant performance ceiling. The lack of meaningful improvement confirms the performance ceiling is genuine market noise, not model weakness. The synthetic data was designed with 9.7% noise — representing real market unpredictability."
           rationale="The insight that optimisation produced minimal improvement is itself a product finding: the model is not underfitting, and the remaining 21% unexplained variance represents genuine unpredictability that no tuning will resolve. This is documented honestly in all public-facing materials rather than being hidden."
           alternatives="Grid search (rejected — computationally expensive without Bayesian guidance), random search (rejected — less efficient than TPE for this search space), no tuning (rejected — needed to validate baseline performance)."
           status="Accepted — Final"
@@ -262,17 +262,17 @@ function DynamicPricingModelDecisions({ date }: { date: string }) {
           <View style={s.tblRow}>
             <Text style={[s.tdC, { flex: 1 }]}>R² Score</Text>
             <Text style={[s.tdC, { width: 100 }]}>0.7935</Text>
-            <Text style={[s.tdC, { width: 100 }]}>≈0.79</Text>
+            <Text style={[s.tdC, { width: 100 }]}>approx. 0.79</Text>
           </View>
           <View style={s.tblRow}>
             <Text style={[s.tdC, { flex: 1 }]}>MAE (percentage points)</Text>
             <Text style={[s.tdC, { width: 100 }]}>3.11 pp</Text>
-            <Text style={[s.tdC, { width: 100 }]}>≈3.1 pp</Text>
+            <Text style={[s.tdC, { width: 100 }]}>approx. 3.1 pp</Text>
           </View>
           <View style={s.tblRow}>
             <Text style={[s.tdC, { flex: 1 }]}>RMSE (percentage points)</Text>
             <Text style={[s.tdC, { width: 100 }]}>4.38 pp</Text>
-            <Text style={[s.tdC, { width: 100 }]}>≈4.4 pp</Text>
+            <Text style={[s.tdC, { width: 100 }]}>approx. 4.4 pp</Text>
           </View>
           <View style={s.tblRow}>
             <Text style={[s.tdC, { flex: 1 }]}>CMA cap violations (all scenarios)</Text>
