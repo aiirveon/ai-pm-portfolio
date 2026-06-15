@@ -281,9 +281,9 @@ const projectData = {
       ],
       techStack: ["Optuna", "SHAP", "Matplotlib", "Joblib", "Pickle"],
       metrics: [
-        { name: "R² Score", baseline: "0.7935", optimized: "0.7962", improvement: "Marginal improvement (+0.34%)" },
-        { name: "MAE", baseline: "3.11 pp", optimized: "3.15 pp", improvement: "Marginal increase (slightly worse)" },
-        { name: "RMSE", baseline: "4.38 pp", optimized: "4.35 pp", improvement: "Marginal improvement" },
+        { name: "R² Score", baseline: "0.7935", optimized: "≈0.79", improvement: "No meaningful improvement — baseline at noise ceiling" },
+        { name: "MAE", baseline: "3.11 pp", optimized: "≈3.1 pp", improvement: "Approximately unchanged" },
+        { name: "RMSE", baseline: "4.38 pp", optimized: "≈4.4 pp", improvement: "Approximately unchanged" },
       ],
     },
     {
@@ -345,7 +345,7 @@ const projectData = {
   results: {
     heroMetric: { value: "49.8%", label: "of all price variation explained by 2 features: artist popularity + venue location premium" },
     comparisons: [
-      { metric: "Model R² (Baseline vs Optimised)", before: "0.7935", after: "0.7962", change: "Marginal improvement (+0.3%)" },
+      { metric: "Model R² (Baseline vs Optimised)", before: "0.7935", after: "≈0.79 (no meaningful change)", change: "Tuning did not beat baseline" },
       { metric: "Artist Popularity Impact (score 9)", before: "Not quantified", after: "+7.73 percentage points", change: "Quantified" },
       { metric: "Venue Location Impact (O2 London)", before: "Not quantified", after: "+6.89 percentage points", change: "Quantified" },
       { metric: "Viral Moment Impact", before: "Not quantified", after: "+4.7% of total price variation (0.777pp mean SHAP)", change: "Quantified" },
@@ -355,7 +355,7 @@ const projectData = {
     keyInsights: [
       "Artist popularity and venue location premium together explain 49.8% of all price adjustment decisions. This validates the core product hypothesis: who is performing and where they are performing are the two most important pricing signals in UK live events.",
       "The model's R² of 0.79 is intentionally honest. The remaining 21% unexplained variance represents genuine market unpredictability — viral moments, human judgment, fan irrationality. My first model achieved R² = 0.997 by learning to look up ticket tier. That was worse, not better.",
-      "Optuna ran 50 hyperparameter trials and found minimal improvement over baseline (R² 0.7935 → 0.7962). This is a valuable insight: the performance ceiling is close to genuine market noise — the optimised model improved by 0.3% but the gain was marginal.",
+      "Optuna ran 50 hyperparameter trials (3-fold cross-validation) and produced no meaningful improvement over the baseline — R² stayed at approximately 0.79. This is a deliberate finding, not a failure: the baseline was already at the performance ceiling, which is genuine market noise rather than a tuning weakness, so the robust baseline-class model was kept.",
       "SHAP waterfall for a superstar artist (popularity 9) at SSE Hydro Glasgow, 10 days to event: artist_popularity (+7.73%), venue_location_premium (-2.44%), days_to_event (+1.71%), genre (+1.35%). Recommended £95.16 vs £78.00 base — a recommendation any venue manager can read, understand, and defend to an artist's team.",
       "Average price adjustment baseline across all 5,000 events: +15.27%. The market skews positive — our UK venue profiles and artist distributions reflect a premium events market where demand typically exceeds static pricing assumptions.",
     ],
@@ -715,7 +715,7 @@ D   5    │  5 (MED)  │  10 (HIGH)   │  15 (HIGH)   │ 20 (CRIT) │ 25 (C
     ],
     challenges: [
       "First model R² = 0.997 looked impressive but was completely useless — it had learned to look up ticket tier, not model demand. High accuracy on the wrong question is worse than honest accuracy on the right one",
-      "Optuna found minimal improvement over baseline (R² 0.7935 → 0.7899) — initially felt like failure, but is actually a valuable insight: the performance ceiling is genuine market noise, not fixable by tuning",
+      "Optuna tuning (50 trials, 3-fold CV) produced no meaningful improvement over the baseline — R² stayed at approximately 0.79 — which initially felt like failure but is actually a valuable, deliberate finding: the baseline was already at the performance ceiling, and that ceiling is genuine market noise, not fixable by tuning",
       "Balancing regulatory constraint with product ambition — the CMA context added real limits but also created a genuine, defensible differentiator that makes the project stronger, not weaker",
     ],
     doDifferently: [
