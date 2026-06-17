@@ -514,7 +514,7 @@ function BiasAuditPrd({ date }: { date: string }) {
         <Ctrl title={name} project="Bias Audit Dashboard" type="PRD" date={date} />
 
         <SL t="Executive Overview" />
-        <Body t="A B2B AI tool for trust and safety teams at UK media companies. Detects bias across 6 categories using a hybrid tiered routing architecture — inputs of 2 words or fewer are auto-approved at zero cost, 4–15 word inputs go to Claude API for semantic classification, and longer inputs run through a TF-IDF + XGBoost classifier with SHAP word-level highlights. The system achieves F1 0.90 across all 6 bias categories and includes a live comment moderation simulator demonstrating the full human-in-the-loop workflow." />
+        <Body t="A B2B AI tool for trust and safety teams at UK media companies. Detects bias across 6 categories using a hybrid tiered routing architecture — inputs of 2 words or fewer are auto-approved at zero cost, 3–15 word inputs go to Claude API for semantic classification, and longer inputs run through a TF-IDF + XGBoost classifier with SHAP word-level highlights. The system achieves F1 0.90 across all 6 bias categories and includes a live comment moderation simulator demonstrating the full human-in-the-loop workflow." />
         <Body t="Built for Online Safety Act 2023, Ofcom Broadcasting Code, and BBC Editorial Guidelines compliance. Ofcom can fine companies up to £18 million or 10% of global annual turnover for failures. A trust and safety team that cannot demonstrate structured, auditable bias review is exposed regardless of how good their intentions are." />
 
         <SL t="Problem Statement" />
@@ -533,7 +533,7 @@ function BiasAuditPrd({ date }: { date: string }) {
             <Text style={[s.thC, { width: 36 }]}>Pri</Text>
           </View>
           <TblPriRow id="FR-01" req="6-category bias classification: demographic_bias, gender_stereotyping, racial_bias, religious_bias, geographic_bias, neutral. All 6 categories must achieve F1 > 0.78 on the test set." pri="P0" />
-          <TblPriRow id="FR-02" req="Tiered routing architecture: Tier 1 (≤2 words) auto-approves at zero cost. Tier 2 (4–15 words) routes to Claude API for semantic classification. Tier 3 (>15 words) runs TF-IDF + XGBoost + SHAP pipeline." pri="P0" />
+          <TblPriRow id="FR-02" req="Tiered routing architecture: Tier 1 (≤2 words) auto-approves at zero cost. Tier 2 (3–15 words) routes to Claude API for semantic classification. Tier 3 (>15 words) runs TF-IDF + XGBoost + SHAP pipeline." pri="P0" />
           <TblPriRow id="FR-03" req="Human reviewer action workflow: every classification requires explicit analyst action (Approve / Flag / Escalate). No auto-remove capability. The system never acts on content autonomously." pri="P0" />
           <TblPriRow id="FR-04" req="SHAP word-level highlights: every Tier 3 classification includes the specific words that triggered the verdict. Analyst must be able to read and agree or override with full understanding." pri="P0" />
           <TblPriRow id="FR-05" req="Plain English explanation endpoint: Claude API generates a one-paragraph human-readable explanation grounded in the original content (not hallucinated context)." pri="P1" />
@@ -549,14 +549,14 @@ function BiasAuditPrd({ date }: { date: string }) {
             <Text style={[s.thC, { width: 65 }]}>Status</Text>
           </View>
           <KRRow kr="F1 score on all 6 bias categories" target="F1 > 0.78" result="0.90 overall, all above 0.78" status="Achieved" />
-          <KRRow kr="Fairness disparity ratio across categories" target="< 2x" result="1.00x — perfect balance" status="Achieved" />
+          <KRRow kr="Dataset balance ratio across categories" target="< 2x" result="1.00x — dataset balanced (not model fairness)" status="Achieved" />
           <KRRow kr="Human-in-the-loop with no auto-remove" target="Human always decides" result="Approve/Flag/Escalate only" status="Achieved" />
           <KRRow kr="Live demo at public URL" target="Public URL" result="bias-audit-dashboard.vercel.app" status="Achieved" />
         </View>
 
         <SL t="Key Risks" />
         <Li t="Geographic bias misclassification: 'People from the north of England lack ambition' scores NEUTRAL because bias is carried by adjectives, not location nouns. Documented in MODEL_DECISIONS.md. Claude explanation layer identifies this and flags for manual review." />
-        <Li t="Short text false positives: TF-IDF + XGBoost produces wrong high-confidence verdicts on short text (e.g. 'you are a christian' scored 99% HIGH RISK). Mitigated by Tier 2 routing to Claude API for all 4–15 word inputs." />
+        <Li t="Short text false positives: TF-IDF + XGBoost produces wrong high-confidence verdicts on short text (e.g. 'you are a christian' scored as high-confidence religious bias). Mitigated by Tier 2 routing to Claude API for all 3–15 word inputs." />
         <Li t="Reviewer trust collapse from wrong high-confidence verdicts: mitigated by confidence scores visible on every result and visually distinct low-confidence indicators." />
 
         <Ftr name={name} />
@@ -581,8 +581,8 @@ function BiasAuditModelDecisions({ date }: { date: string }) {
         <Adr
           id="ADR-001"
           title="Hybrid tiered routing: Tier 1 (auto), Tier 2 (Claude API), Tier 3 (XGBoost)"
-          decision="Three-tier routing: inputs ≤2 words are auto-approved at zero cost; 4–15 words route to Claude API; >15 words run TF-IDF + XGBoost + SHAP pipeline."
-          context="TF-IDF + XGBoost produced high-confidence false positives on short text — 'you are a christian' scoring 99% HIGH RISK religious bias. Showing a wrong answer with 99% confidence destroys reviewer trust and creates compliance risk. A Claude API call costs £0.0003. The cost of a wrong high-confidence verdict is orders of magnitude higher."
+          decision="Three-tier routing: inputs ≤2 words are auto-approved at zero cost; 3–15 words route to Claude API; >15 words run TF-IDF + XGBoost + SHAP pipeline."
+          context="TF-IDF + XGBoost produced high-confidence false positives on short text — 'you are a christian' scoring as high-confidence religious bias. Showing a wrong answer with high confidence destroys reviewer trust and creates compliance risk. A Claude API call costs £0.0003. The cost of a wrong high-confidence verdict is orders of magnitude higher."
           rationale="Cost and accuracy must be matched to input complexity. Short text is out-of-distribution for TF-IDF (which relies on term frequency across longer documents). The tiered architecture solves both a technical accuracy problem and an ethical transparency problem with the same decision."
           alternatives="Single XGBoost model for all inputs (rejected — false positive rate unacceptable on short text), Claude API for all inputs (rejected — cost and latency at scale), keyword blocklist for short text (rejected — brittle, no semantic understanding)."
           status="Accepted — Final"

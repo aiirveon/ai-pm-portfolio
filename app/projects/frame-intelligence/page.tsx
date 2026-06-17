@@ -42,7 +42,7 @@ const projectData = {
   hero: {
     projectName: "Frame Intelligence",
     tagline: "AI-powered commercial film intelligence platform—six-layer video analysis and a seven-stage production pipeline for professional filmmakers and creative directors.",
-    status: "Shipped",
+    status: "V1 Live",
     author: "Ogbebor Osaheni",
     date: "March 2025",
     demoUrl: "https://atanda-studio.vercel.app/",
@@ -193,17 +193,6 @@ const projectData = {
         "All 7 stage components wired to Claude API with save-per-stage to Supabase",
       ],
       techStack: ["Claude API", "FastAPI", "Next.js", "Supabase", "JSON engine files"],
-    },
-    {
-      title: "Phase 4: Vault + Monetisation",
-      description: "Stripe subscriptions, engine marketplace live, revenue share for engine creators.",
-      deliverables: [
-        "Stripe subscriptions (Free / Creator £29/mo / Studio £99/mo / Agency £299/mo)",
-        "Engine publishing workflow for third-party engine creators",
-        "70% revenue share via Stripe Connect",
-        "Team collaboration (Agency tier)",
-      ],
-      techStack: ["Stripe", "Stripe Connect", "Supabase", "Next.js"],
     },
   ],
 
