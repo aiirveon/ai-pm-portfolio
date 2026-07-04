@@ -71,7 +71,7 @@ export default function Navbar() {
                     ? "text-white" 
                     : "text-slate-800 dark:text-white"
                 }`}>
-                  Ogbebor<span className={`transition-colors ${
+                  Ogbebor <span className={`transition-colors ${
                     shouldUseLightText 
                       ? "text-jungle-300" 
                       : "text-jungle-500 dark:text-jungle-300"

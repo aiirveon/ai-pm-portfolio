@@ -34,10 +34,12 @@ export function HeroSection({
   youtubeUrl,
   screenshotImages,
 }: HeroSectionProps) {
+  const hasMedia = !!(youtubeUrl || screenshotImages?.length || heroImage)
+
   return (
     <section id="hero" className="pt-8 pb-20 px-4">
       <div className="container mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div className={`grid grid-cols-1 gap-8 lg:gap-16 items-center ${hasMedia ? "lg:grid-cols-2" : ""}`}>
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold tracking-tight">
@@ -88,13 +90,13 @@ export function HeroSection({
             </div>
           </div>
 
-          {youtubeUrl && screenshotImages ? (
+          {hasMedia && youtubeUrl && screenshotImages ? (
             <MediaSwitcher
               youtubeUrl={youtubeUrl}
               images={screenshotImages}
               projectName={projectName}
             />
-          ) : (
+          ) : hasMedia ? (
             <div className={`relative rounded-2xl bg-gradient-to-br from-jungle-100 via-jungle-50 to-jungle-100 dark:from-jungle-800 dark:via-jungle-900 dark:to-jungle-800 border border-jungle-200 dark:border-jungle-700 overflow-hidden ${youtubeUrl ? "aspect-video" : "h-96 flex items-center justify-center"}`}>
               {youtubeUrl ? (
                 <iframe
@@ -107,17 +109,13 @@ export function HeroSection({
               ) : (
                 <>
                   <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-jungle-950 via-transparent to-transparent" />
-                  {heroImage ? (
+                  {heroImage && (
                     <img src={heroImage} alt={projectName} className="w-full h-full object-cover" />
-                  ) : (
-                    <div className="text-center text-slate-500 dark:text-slate-400 z-10">
-                      <p className="text-sm">[Hero Image/Visual]</p>
-                    </div>
                   )}
                 </>
               )}
             </div>
-          )}
+          ) : null}
         </div>
       </div>
     </section>

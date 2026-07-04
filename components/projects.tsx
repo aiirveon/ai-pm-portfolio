@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ExternalLink, Github, Leaf, ArrowRight } from "lucide-react"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import Link from "next/link"
 
 interface Project {
@@ -98,10 +99,6 @@ export default function Projects() {
     },
   ]
 
-  // Separate featured project
-  const featuredProject = projects.find(p => p.featured)
-  const otherProjects = projects.filter(p => !p.featured)
-
   return (
     <section id="projects" className="py-20 bg-slate-50 dark:bg-jungle-900/30">
       <div className="container mx-auto px-4">
@@ -125,83 +122,82 @@ export default function Projects() {
 
 
 
-        {/* Other Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-        {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Card className={`h-full flex flex-col overflow-hidden transition-all dark:bg-jungle-800/30
-  ${project.featured 
-    ? "border-2 border-jungle-500 shadow-xl ring-2 ring-jungle-500/20" 
+        <Carousel opts={{ align: "start", loop: false }} className="w-full">
+          <CarouselContent className="-ml-4">
+            {projects.map((project, index) => (
+              <CarouselItem
+                key={index}
+                className="pl-4 basis-[85%] sm:basis-[60%] md:basis-[45%] lg:basis-[33%]"
+              >
+                <Card className={`h-full flex flex-col overflow-hidden transition-all dark:bg-jungle-800/30
+  ${project.featured
+    ? "border-2 border-jungle-500 shadow-xl ring-2 ring-jungle-500/20"
     : "border-slate-200 dark:border-jungle-800 hover:border-jungle-500 hover:shadow-lg"
   }`}>
-                <div className="h-36 w-full overflow-hidden bg-slate-100 dark:bg-jungle-800 relative group">
-                  <img
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-jungle-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-lg text-slate-800 dark:text-white">{project.title}</CardTitle>
-                  <div className="flex flex-wrap gap-2 mt-2">
-                    {project.techStack.slice(0, 3).map((tech, i) => (
-                      <Badge
-                        key={i}
-                        variant="secondary"
-                        className="bg-jungle-100 dark:bg-jungle-700/50 text-jungle-800 dark:text-jungle-200"
-                      >
-                        {tech}
-                      </Badge>
-                    ))}
-                    {project.techStack.length > 3 && (
-                      <Badge variant="secondary" className="bg-slate-100 dark:bg-slate-700/40 text-slate-500 dark:text-slate-400">
-                        +{project.techStack.length - 3}
-                      </Badge>
-                    )}
+                  <div className="h-36 w-full overflow-hidden bg-slate-100 dark:bg-jungle-800 relative group">
+                    <img
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-jungle-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <CardDescription className="text-slate-600 dark:text-slate-300 text-sm line-clamp-6">
-                    {project.description}
-                  </CardDescription>
-                </CardContent>
-                <CardFooter className="flex flex-wrap gap-2 pt-2">
-                  {project.caseStudy && (
-                    <Button asChild size="sm" className="bg-jungle-500 hover:bg-jungle-600">
-                      <Link href={project.caseStudy}>
-                        Case Study <ArrowRight className="h-3 w-3 ml-1" />
-                      </Link>
+                  <CardHeader>
+                    <CardTitle className="text-lg text-slate-800 dark:text-white">{project.title}</CardTitle>
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {project.techStack.slice(0, 3).map((tech, i) => (
+                        <Badge key={i} variant="secondary" className="bg-jungle-100 dark:bg-jungle-700/50 text-jungle-800 dark:text-jungle-200">
+                          {tech}
+                        </Badge>
+                      ))}
+                      {project.techStack.length > 3 && (
+                        <Badge variant="secondary" className="bg-slate-100 dark:bg-slate-700/40 text-slate-500 dark:text-slate-400">
+                          +{project.techStack.length - 3}
+                        </Badge>
+                      )}
+                    </div>
+                  </CardHeader>
+                  <CardContent className="flex-grow">
+                    <CardDescription className="text-slate-600 dark:text-slate-300 text-sm line-clamp-6">
+                      {project.description}
+                    </CardDescription>
+                  </CardContent>
+                  <CardFooter className="flex flex-wrap gap-2 pt-2">
+                    {project.caseStudy && (
+                      <Button asChild size="sm" className="bg-jungle-500 hover:bg-jungle-600">
+                        <Link href={project.caseStudy}>
+                          Case Study <ArrowRight className="h-3 w-3 ml-1" />
+                        </Link>
+                      </Button>
+                    )}
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      disabled
+                      className="group border-jungle-200 dark:border-jungle-700 opacity-60 cursor-not-allowed min-w-[90px]"
+                    >
+                      <Github className="h-4 w-4 mr-1 flex-shrink-0" />
+                      <span className="group-hover:hidden">GitHub</span>
+                      <span className="hidden group-hover:inline whitespace-nowrap">Available on Request</span>
                     </Button>
-                  )}
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    disabled
-                    className="group border-jungle-200 dark:border-jungle-700 opacity-60 cursor-not-allowed min-w-[90px]"
-                  >
-                    <Github className="h-4 w-4 mr-1 flex-shrink-0" />
-                    <span className="group-hover:hidden">GitHub</span>
-                    <span className="hidden group-hover:inline whitespace-nowrap">Available on Request</span>
-                  </Button>
-                  {project.demo && (
-                    <Button variant="outline" size="sm" asChild className="border-jungle-200 dark:border-jungle-700">
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="h-4 w-4 mr-1" /> Demo
-                      </a>
-                    </Button>
-                  )}
-                </CardFooter>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
+                    {project.demo && (
+                      <Button variant="outline" size="sm" asChild className="border-jungle-200 dark:border-jungle-700">
+                        <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="h-4 w-4 mr-1" /> Demo
+                        </a>
+                      </Button>
+                    )}
+                  </CardFooter>
+                </Card>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+
+          <div className="flex justify-end gap-2 mt-4">
+            <CarouselPrevious className="static translate-y-0 border-jungle-200 dark:border-jungle-700 hover:bg-jungle-50 dark:hover:bg-jungle-800" />
+            <CarouselNext className="static translate-y-0 border-jungle-200 dark:border-jungle-700 hover:bg-jungle-50 dark:hover:bg-jungle-800" />
+          </div>
+        </Carousel>
       </div>
     </section>
   )
