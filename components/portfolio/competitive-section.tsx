@@ -61,7 +61,7 @@ export function CompetitiveSection({
             </table>
           </div>
 
-          <div className="p-6 rounded-xl border-l-4 border-jungle-500 bg-jungle-50 dark:bg-jungle-800/30">
+          <div className="p-6 rounded-xl border border-slate-200 dark:border-jungle-700 bg-jungle-50 dark:bg-jungle-800/30">
             <h3 className="font-semibold text-slate-800 dark:text-white mb-2">Positioning Statement</h3>
             <p className="text-slate-700 dark:text-slate-200">
               {positioningStatement}

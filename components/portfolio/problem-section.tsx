@@ -27,7 +27,7 @@ export function ProblemSection({ paragraphs, keyInsight, videoUrl }: ProblemSect
           </div>
 
           {keyInsight && (
-            <div className="p-6 rounded-xl border-l-4 border-jungle-500 bg-jungle-50 dark:bg-jungle-800/30">
+            <div className="p-6 rounded-xl border border-slate-200 dark:border-jungle-700 bg-jungle-50 dark:bg-jungle-800/30">
               <p className="text-lg font-semibold text-slate-800 dark:text-white italic">
                 "{keyInsight}"
               </p>

@@ -2,7 +2,12 @@
 
 import { useEffect, useState } from "react"
 
-const sections = [
+interface SectionEntry {
+  id: string
+  label: string
+}
+
+const defaultSections: SectionEntry[] = [
   { id: "hero", label: "Home" },
   { id: "executive-summary", label: "Executive Summary" },
   { id: "problem", label: "Problem Statement" },
@@ -19,8 +24,13 @@ const sections = [
   { id: "contact", label: "Contact" },
 ]
 
-export function TableOfContents() {
-  const [activeSection, setActiveSection] = useState("hero")
+interface TableOfContentsProps {
+  sections?: SectionEntry[]
+}
+
+export function TableOfContents({ sections }: TableOfContentsProps) {
+  const resolvedSections = sections ?? defaultSections
+  const [activeSection, setActiveSection] = useState(resolvedSections[0]?.id ?? "hero")
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -31,7 +41,7 @@ export function TableOfContents() {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 100
 
-      for (const section of sections) {
+      for (const section of resolvedSections) {
         const element = document.getElementById(section.id)
         if (element) {
           const { offsetTop, offsetHeight } = element
@@ -45,7 +55,7 @@ export function TableOfContents() {
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, [resolvedSections])
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
@@ -61,7 +71,7 @@ export function TableOfContents() {
       {/* Desktop sidebar */}
       <div className="hidden lg:fixed lg:left-0 lg:top-0 lg:h-screen lg:w-48 lg:border-r lg:border-slate-200 lg:dark:border-jungle-800 lg:bg-white lg:dark:bg-jungle-900 lg:p-8 lg:overflow-y-auto lg:flex lg:flex-col">
         <div className="space-y-2">
-          {sections.map((section) => (
+          {resolvedSections.map((section) => (
             <button
               key={section.id}
               onClick={() => scrollToSection(section.id)}

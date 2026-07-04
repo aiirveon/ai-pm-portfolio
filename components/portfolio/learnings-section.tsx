@@ -68,7 +68,7 @@ export function LearningsSection({ wentWell, challenges, doDifferently, keyTakea
             </div>
           </div>
 
-          <div className="p-6 rounded-xl border-l-4 border-jungle-500 bg-jungle-50 dark:bg-jungle-800/30">
+          <div className="p-6 rounded-xl border border-slate-200 dark:border-jungle-700 bg-jungle-50 dark:bg-jungle-800/30">
             <p className="text-lg font-semibold text-slate-800 dark:text-white italic">
               "{keyTakeaway}"
             </p>
