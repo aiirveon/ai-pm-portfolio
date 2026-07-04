@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Leaf, ArrowRight, TrendingUp } from "lucide-react"
+import { Leaf, ArrowRight, TrendingUp, ShieldCheck, BarChart2, Scale } from "lucide-react"
 import Link from "next/link"
 
 export default function TechnicalFundamentals() {
@@ -29,14 +29,17 @@ export default function TechnicalFundamentals() {
           <div className="h-1 w-16 bg-jungle-500 mx-auto mt-4"></div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <Card className="h-full flex flex-col border-slate-200 dark:border-jungle-800 hover:border-jungle-500 hover:shadow-lg transition-all dark:bg-jungle-800/30">
+            <Card className="h-full flex flex-col border-slate-200 dark:border-jungle-800 hover:border-jungle-500 hover:shadow-lg transition-all dark:bg-jungle-800/30 overflow-hidden">
+              <div className="h-36 w-full bg-gradient-to-br from-jungle-100 via-jungle-50 to-slate-100 dark:from-jungle-800 dark:via-jungle-900 dark:to-jungle-800 flex items-center justify-center flex-shrink-0">
+                <BarChart2 className="h-12 w-12 text-jungle-400 dark:text-jungle-500 opacity-70" />
+              </div>
               <CardHeader>
                 <div className="flex flex-wrap items-center gap-2 mb-2">
                   <Badge
@@ -75,7 +78,10 @@ export default function TechnicalFundamentals() {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <Card className="h-full flex flex-col border-slate-200 dark:border-jungle-800 hover:border-jungle-500 hover:shadow-lg transition-all dark:bg-jungle-800/30">
+            <Card className="h-full flex flex-col border-slate-200 dark:border-jungle-800 hover:border-jungle-500 hover:shadow-lg transition-all dark:bg-jungle-800/30 overflow-hidden">
+              <div className="h-36 w-full bg-gradient-to-br from-slate-100 via-jungle-50 to-jungle-100 dark:from-jungle-900 dark:via-jungle-800 dark:to-jungle-700 flex items-center justify-center flex-shrink-0">
+                <Scale className="h-12 w-12 text-jungle-400 dark:text-jungle-500 opacity-70" />
+              </div>
               <CardHeader>
                 <div className="flex flex-wrap items-center gap-2 mb-2">
                   <Badge
@@ -100,6 +106,46 @@ export default function TechnicalFundamentals() {
               <CardFooter className="pt-2">
                 <Button asChild size="sm" className="bg-jungle-500 hover:bg-jungle-600">
                   <Link href="/projects/loan-approval-bias-compliance">
+                    Read the Case Study <ArrowRight className="h-3 w-3 ml-1" />
+                  </Link>
+                </Button>
+              </CardFooter>
+            </Card>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <Card className="h-full flex flex-col border-slate-200 dark:border-jungle-800 hover:border-jungle-500 hover:shadow-lg transition-all dark:bg-jungle-800/30 overflow-hidden">
+              <div className="h-36 w-full bg-gradient-to-br from-jungle-50 via-slate-100 to-jungle-100 dark:from-jungle-800 dark:via-jungle-900 dark:to-slate-800 flex items-center justify-center flex-shrink-0">
+                <ShieldCheck className="h-12 w-12 text-jungle-400 dark:text-jungle-500 opacity-70" />
+              </div>
+              <CardHeader>
+                <div className="flex flex-wrap items-center gap-2 mb-2">
+                  <Badge
+                    variant="secondary"
+                    className="bg-slate-100 dark:bg-slate-700/40 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600"
+                  >
+                    Learning Project — Not Shipped
+                  </Badge>
+                </div>
+                <CardTitle className="text-lg text-slate-800 dark:text-white">Loan Policy Assistant</CardTitle>
+              </CardHeader>
+              <CardContent className="flex-grow space-y-4">
+                <CardDescription className="text-slate-600 dark:text-slate-300 text-sm">
+                  An agentic RAG assistant for loan officers — retrieval, tool use, guardrails, and evals, built to
+                  pair with the Loan Approval bias audit project and demonstrate governed AI product design.
+                </CardDescription>
+                <div className="flex items-center gap-2 text-sm font-medium text-jungle-600 dark:text-jungle-400">
+                  <ShieldCheck className="h-4 w-4 flex-shrink-0" />
+                  <span>0 guardrail failures — 14/15 eval pass rate across policy, prediction, and refusal questions</span>
+                </div>
+              </CardContent>
+              <CardFooter className="pt-2">
+                <Button asChild size="sm" className="bg-jungle-500 hover:bg-jungle-600">
+                  <Link href="/projects/loan-policy-assistant">
                     Read the Case Study <ArrowRight className="h-3 w-3 ml-1" />
                   </Link>
                 </Button>

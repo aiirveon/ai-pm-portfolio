@@ -36,7 +36,7 @@ export default function Projects() {
     {
       title: "Frame Intelligence",
       description:
-        "AI-powered commercial film intelligence platform for professional filmmakers and creative directors. ATANDA Lens analyses TikTok and Instagram commercials across 6 layers—Brand, Story, Cinematography, Sound, Post, and Performance—using Claude API and computer vision with Bruce Block and SB7 frameworks. ATANDA Forge delivers a 7-stage AI production pipeline from brief to post-production brief, powered by the Meridian Engine.",
+        "AI-powered commercial film intelligence platform for professional filmmakers and creative directors. ATANDA Lens analyses TikTok and Instagram commercials across 6 layers (Brand, Story, Cinematography, Sound, Post, and Performance) using Claude API and computer vision with Bruce Block and SB7 frameworks. ATANDA Forge delivers a 7-stage AI production pipeline from brief to post-production brief, powered by the Meridian Engine.",
       techStack: ["Next.js", "FastAPI", "Claude API", "Supabase", "Python", "ffmpeg", "Vercel"],
       github: "https://github.com/aiirveon",
       demo: "https://atanda-studio.vercel.app/",
@@ -75,7 +75,7 @@ export default function Projects() {
     {
       title: "TrueCase",
       description:
-        "AI-powered business case builder for AI investments. Generates governance-adjusted ROI projections with a reliability score (0–100%) based on six KB-backed governance elements. Claude Sonnet 4 produces a three-section business case narrative constrained entirely to a verified knowledge base — not training data. Zero data retained. Exports board-ready PDF and HTML.",
+        "AI-powered business case builder for AI investments. Generates governance-adjusted ROI projections with a reliability score (0–100%) based on six KB-backed governance elements. Claude Sonnet 4 produces a three-section business case narrative constrained entirely to a verified knowledge base, not training data. Zero data retained. Exports board-ready PDF and HTML.",
       techStack: ["Next.js", "Claude API", "TypeScript", "Tailwind CSS", "@react-pdf/renderer", "Vercel"],
       github: "https://github.com/aiirveon",
       demo: "https://truecase-seven.vercel.app/",
@@ -118,7 +118,7 @@ export default function Projects() {
             <Leaf className="h-6 w-6 text-jungle-500 dark:text-jungle-400" />
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-            A showcase of my AI Product Management and backend development work.
+            A selection of my AI product management and backend development work.
           </p>
           <div className="h-1 w-20 bg-jungle-500 mx-auto mt-4"></div>
         </motion.div>
@@ -126,7 +126,7 @@ export default function Projects() {
 
 
         {/* Other Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -140,7 +140,7 @@ export default function Projects() {
     ? "border-2 border-jungle-500 shadow-xl ring-2 ring-jungle-500/20" 
     : "border-slate-200 dark:border-jungle-800 hover:border-jungle-500 hover:shadow-lg"
   }`}>
-                <div className="aspect-video w-full overflow-hidden bg-slate-100 dark:bg-jungle-800 relative group">
+                <div className="h-36 w-full overflow-hidden bg-slate-100 dark:bg-jungle-800 relative group">
                   <img
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}
@@ -149,9 +149,9 @@ export default function Projects() {
                   <div className="absolute inset-0 bg-gradient-to-t from-jungle-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 <CardHeader>
-                  <CardTitle className="text-xl text-slate-800 dark:text-white">{project.title}</CardTitle>
+                  <CardTitle className="text-lg text-slate-800 dark:text-white">{project.title}</CardTitle>
                   <div className="flex flex-wrap gap-2 mt-2">
-                    {project.techStack.map((tech, i) => (
+                    {project.techStack.slice(0, 3).map((tech, i) => (
                       <Badge
                         key={i}
                         variant="secondary"
@@ -160,10 +160,15 @@ export default function Projects() {
                         {tech}
                       </Badge>
                     ))}
+                    {project.techStack.length > 3 && (
+                      <Badge variant="secondary" className="bg-slate-100 dark:bg-slate-700/40 text-slate-500 dark:text-slate-400">
+                        +{project.techStack.length - 3}
+                      </Badge>
+                    )}
                   </div>
                 </CardHeader>
                 <CardContent className="flex-grow">
-                  <CardDescription className="text-slate-600 dark:text-slate-300 text-base">
+                  <CardDescription className="text-slate-600 dark:text-slate-300 text-sm line-clamp-6">
                     {project.description}
                   </CardDescription>
                 </CardContent>
