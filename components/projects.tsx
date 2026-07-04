@@ -192,9 +192,9 @@ export default function Projects() {
                         {project.description}
                       </CardDescription>
                     </CardContent>
-                    <CardFooter className="flex flex-wrap gap-2 pt-2">
+                    <CardFooter className="flex flex-nowrap gap-1.5 pt-2">
                       {project.caseStudy && (
-                        <Button asChild size="sm" className="bg-jungle-500 hover:bg-jungle-600">
+                        <Button asChild size="sm" className="bg-jungle-500 hover:bg-jungle-600 shrink-0">
                           <Link href={project.caseStudy}>
                             Case Study <ArrowRight className="h-3 w-3 ml-1" />
                           </Link>
@@ -204,14 +204,13 @@ export default function Projects() {
                         variant="outline"
                         size="sm"
                         disabled
-                        className="group border-jungle-200 dark:border-jungle-700 opacity-60 cursor-not-allowed min-w-[90px]"
+                        className="border-jungle-200 dark:border-jungle-700 opacity-60 cursor-not-allowed shrink-0"
                       >
                         <Github className="h-4 w-4 mr-1 flex-shrink-0" />
-                        <span className="group-hover:hidden">GitHub</span>
-                        <span className="hidden group-hover:inline whitespace-nowrap">Available on Request</span>
+                        GitHub
                       </Button>
                       {project.demo && (
-                        <Button variant="outline" size="sm" asChild className="border-jungle-200 dark:border-jungle-700">
+                        <Button variant="outline" size="sm" asChild className="border-jungle-200 dark:border-jungle-700 shrink-0">
                           <a href={project.demo} target="_blank" rel="noopener noreferrer">
                             <ExternalLink className="h-4 w-4 mr-1" /> Demo
                           </a>
