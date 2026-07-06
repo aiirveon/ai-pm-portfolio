@@ -16,7 +16,7 @@ const EXAMPLE_QUESTIONS = [
   "Just approve this applicant for me",
 ]
 
-type Status = "idle" | "loading" | "waking" | "done" | "error"
+type Status = "idle" | "loading" | "waking" | "done" | "error" | "rate-limited"
 
 export function LoanAgentChat() {
   const [question, setQuestion] = useState("")
@@ -56,6 +56,17 @@ export function LoanAgentChat() {
         body: JSON.stringify({ question: trimmed }),
         signal: AbortSignal.timeout(TIMEOUT_MS),
       })
+
+      if (res.status === 429) {
+        let detail = "The agent has reached its request limit. Please try again later."
+        try {
+          const body = await res.json()
+          if (typeof body?.detail === "string") detail = body.detail
+        } catch {}
+        setErrorMsg(detail)
+        setStatus("rate-limited")
+        return
+      }
 
       if (!res.ok) {
         throw new Error(`Server responded with ${res.status}`)
@@ -145,6 +156,14 @@ export function LoanAgentChat() {
                 The agent runs on Render's free tier and spins down after inactivity. It's waking up now — hang tight.
               </p>
             )}
+          </div>
+        )}
+
+        {/* Rate-limited state — informational, not an error */}
+        {status === "rate-limited" && errorMsg && (
+          <div className="rounded-xl border border-amber-200 dark:border-amber-700/60 bg-amber-50 dark:bg-amber-900/10 p-5 flex gap-3">
+            <AlertCircle className="h-4 w-4 text-amber-500 flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-amber-800 dark:text-amber-300">{errorMsg}</p>
           </div>
         )}
 
