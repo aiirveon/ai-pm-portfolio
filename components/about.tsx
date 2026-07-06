@@ -45,7 +45,7 @@ export default function About() {
         <div
           className="absolute inset-0 bg-contain"
           style={{
-            backgroundImage: `url(‘/images/django-jungle.png’)`,
+            backgroundImage: `url('/images/django-jungle.png')`,
             backgroundPosition: "center",
             backgroundSize: "80%",
             backgroundRepeat: "no-repeat",
@@ -113,7 +113,7 @@ export default function About() {
               I’m Ogbebor Osaheni, an AI Product Manager building end-to-end ML products from the ground up: ML pipelines, FastAPI backends, and Next.js frontends shipped to production with full PM artefacts before a single line of code.
             </p>
             <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
-              I’m drawn to products where AI meets human creativity and editorial judgement. Bias detection tools that keep reviewers in control, story engines that guide writers rather than replace them, pricing systems that explain every recommendation in plain English. The common thread: AI that earns trust by being transparent.
+              I’m drawn to products where AI meets human creativity and editorial judgement. Bias detection tools that keep reviewers in control, story engines that guide writers rather than replace them, pricing systems that explain every recommendation in plain English. In each one, the AI shows its reasoning instead of asking to be trusted on faith.
             </p>
             <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
               Open to AI PM roles in the UK, particularly in media, film and creative technology. Projects built using AI-assisted development workflows, directing Claude Code and v0 to ship production frontends while maintaining full ownership of product decisions, architecture, and PM artefacts.

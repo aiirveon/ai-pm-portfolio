@@ -83,7 +83,7 @@ export default function Contact() {
                     linkedin.com/in/osaheniogbebor
                   </p>
                   <p className="text-xs text-jungle-600 dark:text-jungle-400 mt-1.5">
-                    Opens in new tab →
+                    Opens in new tab
                   </p>
                 </div>
               </CardContent>

@@ -75,9 +75,9 @@ const projectData = {
     paragraphs: [
       "Business cases for AI investments tend to be optimistic. Governance gaps — missing human oversight, undocumented training data, no audit trail — are treated as implementation details rather than financial risks. The result is a board deck that shows £2.4M annual gain while quietly ignoring that the system has no regulatory compliance map and may trigger a GDPR enforcement action that erases that gain entirely.",
       "Finance teams want ROI projections. Compliance teams want governance verification. These conversations happen in separate rooms, in different languages, with different tooling. There is no shared instrument that lets both teams look at the same number and ask: 'How confident should we be in this?'",
-      "The challenge is not technical — ROI calculators exist, and compliance checklists exist. The barrier is product thinking: how do you build a tool that makes governance maturity visible as a financial variable, not a post-hoc audit finding? How do you ground AI-generated narrative in verified regulatory sources rather than confident-sounding hallucination? How do you do this without storing any of the sensitive business data the user just typed in?",
+      "This isn't really a technical problem; ROI calculators and compliance checklists both already exist. The barrier is product thinking: how do you build a tool that makes governance maturity visible as a financial variable, not a post-hoc audit finding? How do you ground AI-generated narrative in verified regulatory sources rather than confident-sounding hallucination? How do you do this without storing any of the sensitive business data the user just typed in?",
     ],
-    keyInsight: "The governance gap between headline ROI and governance-adjusted ROI is not a failure state — it is the most valuable thing TrueCase shows. When a user's reliability score is 45% because three governance elements are missing, their real ROI projection is 45% of what they thought it was. That is not a discouragement. That is a roadmap.",
+    keyInsight: "The governance gap between headline ROI and governance-adjusted ROI is not a failure state — it is the most valuable thing TrueCase shows. When a user's reliability score is 45% because three governance elements are missing, their real ROI projection is 45% of what they thought it was. Far from a discouragement, that figure is really a roadmap.",
   },
 
   // User Personas
@@ -155,7 +155,7 @@ const projectData = {
       {
         icon: <BarChart3 className="w-5 h-5" />,
         title: "Reliability-Adjusted Projections",
-        description: "Six financial output cards, always rendered with headline and reliability-adjusted gain at identical size. The governance gap — the difference between the two — is always visible. Not a warning. A number.",
+        description: "Six financial output cards, always rendered with headline and reliability-adjusted gain at identical size. The governance gap, the difference between the two, stays visible throughout as a number rather than a warning.",
       },
       {
         icon: <FileText className="w-5 h-5" />,
@@ -470,7 +470,7 @@ D   5    │  5 (MED)  │  10 (HIGH)   │  15 (HIGH)   │ 20 (CRIT) │ 25 (C
       "Ship the HTML export before the PDF export. HTML is simpler, gets the product live-demonstrable faster, and validates the narrative structure before investing in PDF layout. PDF can follow once the content model is proven.",
       "Draft the /about page as part of Phase 1, not a roadmap item. The methodology explanation is part of the product's trust architecture — enterprise buyers and founders need to understand what TrueCase does and does not claim before they input sensitive financial data.",
     ],
-    keyTakeaway: "The governance gap between headline ROI and reliability-adjusted ROI is not a failure state. It is the product. Every design decision — the co-equal card sizes, the self-assessment disclaimer, the KB-constrained Claude prompt, the stateless architecture — exists to make that gap credible enough to act on. A business case tool that always shows optimistic numbers is worse than no tool at all.",
+    keyTakeaway: "The governance gap between headline ROI and reliability-adjusted ROI isn't a failure state; surfacing it honestly is the entire point of the tool. Every design decision — the co-equal card sizes, the self-assessment disclaimer, the KB-constrained Claude prompt, the stateless architecture — exists to make that gap credible enough to act on. A business case tool that always shows optimistic numbers is worse than no tool at all.",
   },
 
   // Contact

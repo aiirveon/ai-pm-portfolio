@@ -75,7 +75,7 @@ const projectData = {
   problem: {
     paragraphs: [
       "UK live events venues lose significant revenue through static ticket pricing that ignores real-time demand signals. The same seat at the O2 Arena sells for the same price whether the artist has just gone viral on TikTok, whether there are 180 days or 3 days until the show, and whether a competing event is drawing fans away that same evening.",
-      "The challenge is not technical — XGBoost exists. The barrier is product thinking: How do you build dynamic pricing for live events without triggering the kind of fan backlash that Ticketmaster faced with Oasis tour pricing in 2024? How do you make recommendations transparent enough that venue managers trust and act on them? How do you operate within CMA guidelines while still capturing genuine demand uplift?",
+      "The hard part here isn't technical; XGBoost already exists. The barrier is product thinking: How do you build dynamic pricing for live events without triggering the kind of fan backlash that Ticketmaster faced with Oasis tour pricing in 2024? How do you make recommendations transparent enough that venue managers trust and act on them? How do you operate within CMA guidelines while still capturing genuine demand uplift?",
       "This project addresses the full product lifecycle: from ML model design decisions to SHAP explainability to ethics guardrails to a shipped, interactive demo — demonstrating how AI Product Managers bridge technical capability with business value and regulatory awareness.",
     ],
   },

@@ -118,8 +118,8 @@ export default function Hero() {
             </h1>
 
             <p className="text-lg md:text-xl text-slate-200 max-w-3xl mx-auto mb-8 drop-shadow leading-relaxed">
-              I build AI products end-to-end — from model to frontend, with explainability
-              and ethics baked in. I also direct AI commercials and short films using the
+              I build AI products from the model to the frontend, with explainability
+              and ethics built in. I also direct AI commercials and short films using the
               same systems. Same craft. Different output.
             </p>
 
@@ -129,14 +129,14 @@ export default function Hero() {
                 onClick={scrollToProjects}
                 className="bg-jungle-600 hover:bg-jungle-700 text-white border-2 border-jungle-500"
               >
-                See the AI PM Work →
+                See the AI PM Work
               </Button>
               <Button
                 size="lg"
                 onClick={() => (window.location.href = "/filmmaker")}
                 className="bg-amber-600 hover:bg-amber-700 text-white border-2 border-amber-500"
               >
-                See the Filmmaker Work →
+                See the Filmmaker Work
               </Button>
             </div>
 

@@ -318,9 +318,35 @@ function ArchitectureSection() {
         <SectionHeader icon={<ArrowRight className="w-6 h-6" />} title="System Architecture" />
 
         <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
-          The agent follows a five-step flow on every query. Steps 1–2 always run. Step 3 only runs when a prediction
-          is explicitly warranted and all required inputs are present. Steps 4–5 always run.
+          Before any query is handled, a one-time Model Load Gate confirms the prediction model passed CI validation —
+          if it hasn't, the agent refuses to start. From there, every query follows a 5-step flow: Retrieve and Decide
+          always run; the Tool Call step only runs if a prediction is warranted and all required data is present;
+          Synthesise and Log always run last.
         </p>
+
+        <div className="p-6 rounded-xl border border-amber-200 dark:border-amber-700/60 bg-amber-50 dark:bg-amber-900/10 space-y-3">
+          <div className="flex items-center gap-3">
+            <div className="text-xl font-bold text-amber-600 dark:text-amber-400 flex-shrink-0 w-10 text-center">00</div>
+            <h3 className="font-semibold text-slate-800 dark:text-white">Model Load Gate — runs before any query is processed</h3>
+          </div>
+          <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed pl-[3.25rem]">
+            Before the agent loads the prediction model, it checks a validation record produced by a separate MLOps
+            monitoring and CI/CD pipeline project and confirms the model passed validation before being trusted here.
+            If the record is absent or the validation check fails, the agent refuses to load the model entirely — it
+            fails loudly rather than silently serving predictions from something unvalidated. The current validation
+            record shows the model passed, with{" "}
+            <span className="font-medium text-slate-800 dark:text-white">81.3% accuracy at promotion</span> and a{" "}
+            <span className="font-medium text-slate-800 dark:text-white">53.8% false positive rate at promotion</span>{" "}
+            (within the accepted baseline range set by that project).
+          </p>
+          <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed pl-[3.25rem]">
+            This gate extends the "never trust automation blindly" principle from the agent's own guardrail rules down
+            into the model-loading layer — and it is the first concrete integration between this project and the
+            separate MLOps monitoring project in this portfolio. It does not resolve the underlying fairness finding
+            from the bias audit; that Go/No-Go status is unchanged. What it guarantees is that if a model ever failed
+            or skipped CI validation, this agent will not load it.
+          </p>
+        </div>
 
         <div className="space-y-4">
           {steps.map((step) => (
@@ -509,6 +535,7 @@ function NextStepsSection() {
             </div>
             <ul className="space-y-2 text-slate-600 dark:text-slate-300 text-sm">
               {[
+                "CI/CD gate is live: the agent now checks a validation record from the MLOps monitoring project and refuses to load the model if it didn't pass — concrete progress, though the underlying fairness finding from the bias audit is unchanged",
                 "Move logging to a persistent store — in-memory logging disappears between sessions and can't detect drift",
                 "Add drift detection to flag when retrieval quality or refusal rates change over time",
                 "Handle multi-turn conversation history — questions that assume prior context currently fail",
