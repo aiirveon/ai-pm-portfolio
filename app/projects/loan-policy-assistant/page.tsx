@@ -9,6 +9,7 @@ import {
   LearningsSection,
   ContactSection,
 } from "@/components/portfolio"
+import { LoanAgentChat } from "@/components/portfolio/loan-agent-chat"
 import { ShieldCheck, Database, Wrench, FileCheck, BookOpen, FlaskConical, ArrowRight, Zap, AlertCircle, Lightbulb } from "lucide-react"
 
 export const metadata = {
@@ -37,6 +38,7 @@ const tocSections = [
   { id: "architecture", label: "Architecture" },
   { id: "data", label: "Knowledge Base" },
   { id: "evals", label: "Evals" },
+  { id: "try-the-agent", label: "Try the Agent" },
   { id: "results", label: "Results" },
   { id: "next-steps", label: "What's Next" },
   { id: "reflection", label: "Reflection" },
@@ -606,6 +608,23 @@ export default function LoanPolicyAssistantPage() {
         <ArchitectureSection />
         <DataSection {...knowledgeBaseData} />
         <EvalsSection />
+
+        <section id="try-the-agent" className="py-20 px-4 bg-slate-50 dark:bg-jungle-900/30">
+          <div className="container mx-auto max-w-6xl">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <h2 className="text-3xl font-bold text-slate-800 dark:text-white">Try the Agent Yourself</h2>
+                <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
+                  This is a live version of the agent described above — not a mockup. Try asking it a policy
+                  question, a model interpretation question, or try to get it to approve an application directly.
+                  The third example question is there deliberately: watch how it handles a direct decision request.
+                </p>
+              </div>
+              <LoanAgentChat />
+            </div>
+          </div>
+        </section>
+
         <ResultsSection {...resultsData} />
         <NextStepsSection />
         <ReflectionSection />
