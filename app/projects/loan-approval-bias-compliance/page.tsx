@@ -8,10 +8,10 @@ import { AlertTriangle, Scale, BarChart2, FlaskConical, CheckSquare, BookOpen, L
 
 export const metadata = {
   title: "Loan Approval: Bias & Compliance Audit | Ogbebor Osaheni",
-  description: "A hands-on exercise in building a loan approval model for a regulated domain — where ECOA compliance and fairness questions shape every decision from the first line of code.",
+  description: "A hands-on exercise in building a loan approval model for a regulated domain — where Equality Act 2010 compliance and fairness questions shape every decision from the first line of code.",
   openGraph: {
     title: "Loan Approval: Bias & Compliance Audit | Ogbebor Osaheni",
-    description: "A hands-on exercise in building a loan approval model for a regulated domain — where ECOA compliance and fairness questions shape every decision from the first line of code.",
+    description: "A hands-on exercise in building a loan approval model for a regulated domain — where Equality Act 2010 compliance and fairness questions shape every decision from the first line of code.",
     url: "https://osaheniogbebor.com/projects/loan-approval-bias-compliance",
     images: [{ url: "https://osaheniogbebor.com/og-image.jpg", width: 1200, height: 630, alt: "Loan Approval Bias & Compliance Audit — Ogbebor Osaheni" }],
     type: "website",
@@ -60,7 +60,7 @@ function BusinessProblemSection() {
             that automates the first-pass decision solves the speed problem — but introduces three others simultaneously:
             financial risk (the model might approve loans that default), applicant harm (the model might deny loans
             to creditworthy applicants unfairly), and legal exposure (if the model's decisions correlate with
-            protected characteristics, the lender is in ECOA territory regardless of whether bias was "intended").
+            protected characteristics, the lender is in Equality Act 2010 territory regardless of whether bias was "intended").
           </p>
           <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
             This project was a deliberate exercise in treating those three concerns as constraints from the first line
@@ -75,7 +75,7 @@ function BusinessProblemSection() {
           {[
             { label: "Financial Risk", detail: "Approving loans that default harms the lender. The model needs to be genuinely predictive, not just high-accuracy on a skewed dataset." },
             { label: "Applicant Harm", detail: "Denying creditworthy applicants — especially along demographic lines — is both ethically wrong and legally actionable." },
-            { label: "Legal Exposure", detail: "ECOA prohibits credit decisions that discriminate on protected bases. Intent doesn't matter; disparate impact does." },
+            { label: "Legal Exposure", detail: "The Equality Act 2010 makes it unlawful to discriminate on the basis of protected characteristics in the provision of financial services. Intent doesn't matter; disparate impact does." },
           ].map(({ label, detail }) => (
             <div key={label} className="p-5 rounded-xl border border-slate-200 dark:border-jungle-700 bg-white dark:bg-jungle-800/30 space-y-2">
               <p className="font-semibold text-slate-800 dark:text-white">{label}</p>
@@ -100,17 +100,39 @@ function ComplianceFramingSection() {
           a worse outcome both ethically and practically.
         </p>
 
+        <p className="text-sm text-slate-500 dark:text-slate-400 italic max-w-3xl">
+          Note: this project's compliance framing was originally built around US law (ECOA/FCRA), then revised to
+          UK law (Equality Act 2010, Data Protection Act 2018) to better match this portfolio's target market —
+          an example of catching and correcting a real assumption partway through a project, not getting it right
+          on the first pass.
+        </p>
+
         <div className="p-6 md:p-8 rounded-xl border border-slate-200 dark:border-jungle-700 bg-white dark:bg-jungle-800/30 space-y-4">
           <div className="flex items-start gap-3">
             <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 mt-0.5 flex-shrink-0" />
             <div className="space-y-3">
-              <p className="font-semibold text-slate-800 dark:text-white text-lg">ECOA: Equal Credit Opportunity Act</p>
+              <p className="font-semibold text-slate-800 dark:text-white text-lg">Equality Act 2010</p>
               <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                ECOA prohibits credit discrimination on the basis of race, color, religion, national origin, sex,
-                marital status, age, or receipt of public assistance. For an ML-based loan model, this means
-                protected attributes cannot be used as direct model inputs — but it also means proxy variables
-                that correlate strongly with protected attributes must be treated with care even if they are not
-                prohibited outright.
+                In the UK, the Equality Act 2010 makes it unlawful to discriminate based on nine protected
+                characteristics, including sex and marriage/civil partnership — both directly relevant here.
+                Official UK government guidance on the Act gives an example almost identical to this project's
+                scenario: a credit union refusing a woman a loan because "a woman is less likely to have a job
+                and be able to repay the loan" — explicitly named as direct sex discrimination.
+              </p>
+              <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                A UK-specific nuance worth noting: indirect discrimination — a neutral-looking feature that
+                disadvantages a protected group without directly using it (the exact pattern found with Dependents
+                and CoapplicantIncome) — is genuinely allowed under UK law if the company can show it's "a
+                proportionate means of achieving a legitimate aim." This means retaining these features isn't
+                automatically a compliance violation the way using Gender directly would be — but it requires a
+                real, defensible business justification for each one, not just improved accuracy.
+              </p>
+              <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                Enforcement is split across different bodies: the Financial Conduct Authority (FCA) regulates
+                lending conduct but does not directly enforce the Equality Act — that's the Equality and Human
+                Rights Commission's (EHRC) role. The Financial Ombudsman Service (FOS) handles individual
+                complaints on a "fair and reasonable" basis but can't make a formal legal finding of a breach —
+                that's reserved for the courts.
               </p>
             </div>
           </div>
@@ -121,10 +143,11 @@ function ComplianceFramingSection() {
             <p className="font-semibold text-slate-800 dark:text-white">Gender & Married: Excluded Before Modeling</p>
             <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
               Both <code className="bg-amber-100 dark:bg-amber-900/40 px-1 rounded text-xs">Gender</code> and{" "}
-              <code className="bg-amber-100 dark:bg-amber-900/40 px-1 rounded text-xs">Married</code> are ECOA-protected
-              attributes (sex and marital status). Both were dropped from the feature set before any model training.
-              This was a non-negotiable constraint, not a modeling choice — documenting it explicitly is part of
-              the compliance trail a regulated lender would need.
+              <code className="bg-amber-100 dark:bg-amber-900/40 px-1 rounded text-xs">Married</code> correspond
+              to the protected characteristics of sex and marriage/civil partnership under the Equality Act 2010.
+              Both were dropped from the feature set before any model training. This was a non-negotiable
+              constraint, not a modeling choice — documenting it explicitly is part of the compliance trail a
+              regulated lender would need.
             </p>
           </div>
           <div className="p-6 rounded-xl border border-slate-200 dark:border-jungle-700 bg-white dark:bg-jungle-800/30 space-y-3">
@@ -133,14 +156,15 @@ function ComplianceFramingSection() {
               <code className="bg-amber-100 dark:bg-amber-900/40 px-1 rounded text-xs">Dependents</code> and{" "}
               <code className="bg-amber-100 dark:bg-amber-900/40 px-1 rounded text-xs">Property_Area</code> were
               flagged as potential proxies for protected attributes at this stage — before data exploration, not
-              during it. Both were kept in the feature set conditionally, pending a proper proxy audit against
-              Gender and Married. If the audit found strong correlation, exclusion would be the next step.
+              during it. Both were kept conditionally, pending a proper proxy audit. Under the Equality Act's
+              indirect discrimination provisions, retaining them would require a documented, proportionate
+              business justification — not just a marginal accuracy gain.
             </p>
           </div>
         </div>
 
         <p className="text-base text-slate-500 dark:text-slate-400 italic max-w-3xl">
-          Note: In a real production setting, these decisions would involve legal counsel and a documented model card,
+          In a real production setting, these decisions would involve legal counsel and a documented model card,
           not just a notebook comment. The framing here is intentionally simplified to practice the reasoning, not
           to simulate a complete compliance process.
         </p>
@@ -272,7 +296,7 @@ function DataAndBiasAuditSection() {
             Third pass: I excluded it, model performance dropped noticeably, so I reconsidered. Fourth pass
             (the right move): ran a chi-square test. The test gave p=0.21 against Gender — not a statistically
             significant proxy for the gender axis specifically, which is the axis that matters most given
-            the ECOA constraint.
+            the Equality Act constraint.
           </p>
           <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
             The flip-flop happened because I was making the decision by intuition ("this feels like it might
@@ -380,9 +404,19 @@ function ModelChoiceSection() {
         <div className="space-y-6 max-w-3xl">
           <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
             In a regulated domain, interpretability isn't a nice-to-have — it's close to a legal requirement.
-            The FCRA (Fair Credit Reporting Act) requires that applicants who are denied credit receive a
-            specific, intelligible reason for the denial. A Random Forest with hundreds of trees can't
-            provide that reason in a human-readable form. Logistic Regression can: each feature has a
+            The UK doesn't have a direct equivalent to the US's adverse-action-notice requirement. The closer
+            match is the Data Protection Act 2018 / UK GDPR's provisions on automated decision-making: a right
+            not to be subject to a solely-automated decision with a significant effect, and a right to
+            "meaningful information about the logic involved." This is genuinely weaker and less specific than
+            the US requirement; recent academic review concludes the UK lacks a clear statutory right to
+            explanation for credit decisions.
+          </p>
+          <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+            This actually strengthens the case for an interpretable model rather than weakening it: since the
+            legal bar ("meaningful information") is loosely defined, building on a model with real, named,
+            explainable coefficients makes it easier to satisfy in good faith than relying on a black-box model
+            and a post-hoc explanation technique of uncertain adequacy. A Random Forest with hundreds of trees
+            can't provide that in a human-readable form. Logistic Regression can: each feature has a
             coefficient, and a denial reason can be traced to the top contributing features.
           </p>
           <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
