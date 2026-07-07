@@ -78,7 +78,7 @@ export default function Hero() {
           </motion.div>
         ))}
 
-      <div className="container mx-auto px-4 z-10 relative pt-16 sm:pt-20">
+      <div className="container mx-auto px-4 z-10 relative pt-28 sm:pt-24 md:pt-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
