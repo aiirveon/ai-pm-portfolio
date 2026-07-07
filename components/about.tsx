@@ -2,6 +2,7 @@
 
 import React from "react"
 import { motion } from "framer-motion"
+import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import { Leaf, Brain, BarChart2, Target, Shield, Code2, Zap } from "lucide-react"
 
@@ -88,10 +89,12 @@ export default function About() {
                 animate={{ rotate: [0, 5, 0, -5, 0] }}
                 transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
               >
-                <img
+                <Image
                   src="/images/profile.png"
                   alt="Ogbebor Osaheni - AI Product Manager"
-                  className="w-full h-full object-contain p-4"
+                  fill
+                  className="object-contain p-4"
+                  sizes="320px"
                 />
               </motion.div>
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-jungle-900/90 to-transparent p-4">

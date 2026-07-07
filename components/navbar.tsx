@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import ThemeToggle from "@/components/theme-toggle"
 import { Menu, X, Leaf, ArrowLeft } from "lucide-react"
@@ -65,7 +66,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 md:h-20">
             <div className="flex items-center gap-4">
               <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                <img src="/images/profile.png" alt="Ogbebor Osaheni" className="h-10 w-10 rounded-md" />
+                <Image src="/images/profile.png" alt="Ogbebor Osaheni" width={40} height={40} className="rounded-md" />
                 <div className={`font-bold text-base md:text-xl flex items-center min-w-0 truncate transition-colors ${
                   shouldUseLightText 
                     ? "text-white" 

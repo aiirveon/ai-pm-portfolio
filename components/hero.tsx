@@ -92,11 +92,14 @@ export default function Hero() {
               transition={{ duration: 0.3 }}
             >
               <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-jungle-400 shadow-2xl bg-white">
-                <img
+                <Image
                   src="/images/profile.png"
                   alt="Ogbebor Osaheni - AI Product Manager and Filmmaker"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                   style={{ objectPosition: 'center' }}
+                  priority
+                  sizes="(max-width: 640px) 112px, (max-width: 768px) 144px, (max-width: 1024px) 192px, 224px"
                 />
               </div>
               {/* Glow effect */}
