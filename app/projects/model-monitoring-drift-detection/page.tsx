@@ -212,9 +212,9 @@ function PipelineDiagramSection() {
         {/* SVG Pipeline Diagram */}
         <div className="flex justify-center overflow-x-auto">
           <svg
-            viewBox="0 0 520 620"
+            viewBox="0 0 615 620"
             xmlns="http://www.w3.org/2000/svg"
-            className="w-full max-w-md"
+            className="w-full max-w-xl"
             aria-label="MLOps pipeline flowchart"
           >
             {/* ── Box styles ── */}
@@ -311,29 +311,22 @@ function PipelineDiagramSection() {
               transform="rotate(-90, 75, 340)"
             >retrain loop</text>
 
-            {/* Side box: Project 3 Agent (connected from CD box right side) */}
-            {/* Box is 80px tall (302–382); arrow points to vertical centre at y=342 */}
-            <line x1="360" y1="342" x2="395" y2="342"
+            {/* Side box: Loan Policy Assistant — same size as main boxes (200×64) */}
+            <line x1="360" y1="334" x2="395" y2="334"
               className="stroke-violet-400 dark:stroke-violet-500"
               strokeWidth="1.5"
               strokeDasharray="4 3"
               markerEnd="url(#arrowheadViolet)"
             />
-            <rect x="395" y="302" width="110" height="80" rx="8"
+            <rect x="395" y="302" width="200" height="64" rx="10"
               className="fill-violet-50 dark:fill-violet-900/30 stroke-violet-400 dark:stroke-violet-500"
               strokeWidth="1.5" />
-            <text x="450" y="322" textAnchor="middle"
+            <text x="495" y="329" textAnchor="middle"
               className="fill-violet-700 dark:fill-violet-300"
-              fontSize="11" fontWeight="600">Project 3</text>
-            <text x="450" y="337" textAnchor="middle"
-              className="fill-violet-700 dark:fill-violet-300"
-              fontSize="11" fontWeight="600">Agent</text>
-            <text x="450" y="355" textAnchor="middle"
+              fontSize="13" fontWeight="600">Loan Policy</text>
+            <text x="495" y="349" textAnchor="middle"
               className="fill-violet-500 dark:fill-violet-400"
-              fontSize="10">Loan Policy</text>
-            <text x="450" y="370" textAnchor="middle"
-              className="fill-violet-500 dark:fill-violet-400"
-              fontSize="10">Assistant</text>
+              fontSize="11">Assistant (Project 3)</text>
 
             {/* Arrow marker definitions */}
             <defs>
