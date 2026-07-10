@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Leaf, ArrowRight, TrendingUp, ShieldCheck, BarChart2, Scale } from "lucide-react"
+import { Leaf, ArrowRight, TrendingUp, ShieldCheck, BarChart2, Scale, Activity } from "lucide-react"
 import Link from "next/link"
 
 export default function TechnicalFundamentals() {
@@ -160,6 +160,39 @@ export default function TechnicalFundamentals() {
                   <CardFooter className="pt-2">
                     <Button asChild size="sm" className="bg-jungle-500 hover:bg-jungle-600">
                       <Link href="/projects/loan-policy-assistant">
+                        Read the Case Study <ArrowRight className="h-3 w-3 ml-1" />
+                      </Link>
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </CarouselItem>
+              {/* Card 4 — Model Monitoring */}
+              <CarouselItem className="pl-4 basis-[80%] sm:basis-[52%] md:basis-[38%] lg:basis-[28%]">
+                <Card className="h-full flex flex-col border-slate-200 dark:border-jungle-800 hover:border-jungle-500 hover:shadow-lg transition-all dark:bg-jungle-800/30 overflow-hidden">
+                  <div className="h-36 w-full bg-gradient-to-br from-violet-100 via-slate-50 to-jungle-50 dark:from-violet-900/40 dark:via-jungle-900 dark:to-slate-800 flex items-center justify-center flex-shrink-0">
+                    <Activity className="h-12 w-12 text-violet-400 dark:text-violet-500 opacity-70" />
+                  </div>
+                  <CardHeader>
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <Badge variant="secondary" className="bg-slate-100 dark:bg-slate-700/40 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600">
+                        Learning Project — Not Shipped
+                      </Badge>
+                    </div>
+                    <CardTitle className="text-lg text-slate-800 dark:text-white">Model Maintenance: Continuous Monitoring</CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-grow space-y-4">
+                    <CardDescription className="text-slate-600 dark:text-slate-300 text-sm">
+                      What happens after a model ships — drift detection, retraining triggers, and a CI/CD pipeline
+                      designed to keep a production model healthy over time.
+                    </CardDescription>
+                    <div className="flex items-center gap-2 text-sm font-medium text-violet-600 dark:text-violet-400">
+                      <Activity className="h-4 w-4 flex-shrink-0" />
+                      <span>KS test drift gate, three-tier decision framework, real cross-project pipeline dependency</span>
+                    </div>
+                  </CardContent>
+                  <CardFooter className="pt-2">
+                    <Button asChild size="sm" className="bg-jungle-500 hover:bg-jungle-600">
+                      <Link href="/projects/model-monitoring-drift-detection">
                         Read the Case Study <ArrowRight className="h-3 w-3 ml-1" />
                       </Link>
                     </Button>
