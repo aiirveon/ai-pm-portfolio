@@ -305,10 +305,9 @@ function PipelineDiagramSection() {
               strokeDasharray="5 4"
               markerEnd="url(#arrowheadAmber)"
             />
-            <text x="75" y="340" textAnchor="middle"
+            <text x="75" y="337" textAnchor="middle"
               className="fill-amber-600 dark:fill-amber-400"
               fontSize="10"
-              transform="rotate(-90, 75, 340)"
             >retrain loop</text>
 
             {/* Side box: Loan Policy Assistant — same size as main boxes (200×64) */}
