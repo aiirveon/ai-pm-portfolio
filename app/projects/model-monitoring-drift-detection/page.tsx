@@ -312,25 +312,26 @@ function PipelineDiagramSection() {
             >retrain loop</text>
 
             {/* Side box: Project 3 Agent (connected from CD box right side) */}
-            <line x1="360" y1="334" x2="395" y2="334"
+            {/* Box is 80px tall (302–382); arrow points to vertical centre at y=342 */}
+            <line x1="360" y1="342" x2="395" y2="342"
               className="stroke-violet-400 dark:stroke-violet-500"
               strokeWidth="1.5"
               strokeDasharray="4 3"
               markerEnd="url(#arrowheadViolet)"
             />
-            <rect x="395" y="302" width="110" height="64" rx="8"
+            <rect x="395" y="302" width="110" height="80" rx="8"
               className="fill-violet-50 dark:fill-violet-900/30 stroke-violet-400 dark:stroke-violet-500"
               strokeWidth="1.5" />
-            <text x="450" y="327" textAnchor="middle"
+            <text x="450" y="322" textAnchor="middle"
               className="fill-violet-700 dark:fill-violet-300"
               fontSize="11" fontWeight="600">Project 3</text>
-            <text x="450" y="343" textAnchor="middle"
+            <text x="450" y="337" textAnchor="middle"
               className="fill-violet-700 dark:fill-violet-300"
               fontSize="11" fontWeight="600">Agent</text>
-            <text x="450" y="358" textAnchor="middle"
+            <text x="450" y="355" textAnchor="middle"
               className="fill-violet-500 dark:fill-violet-400"
               fontSize="10">Loan Policy</text>
-            <text x="450" y="371" textAnchor="middle"
+            <text x="450" y="370" textAnchor="middle"
               className="fill-violet-500 dark:fill-violet-400"
               fontSize="10">Assistant</text>
 
