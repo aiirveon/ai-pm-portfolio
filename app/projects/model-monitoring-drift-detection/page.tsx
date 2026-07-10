@@ -212,118 +212,119 @@ function PipelineDiagramSection() {
         {/* SVG Pipeline Diagram */}
         <div className="flex justify-center overflow-x-auto">
           <svg
-            viewBox="0 0 615 620"
+            viewBox="0 0 675 620"
             xmlns="http://www.w3.org/2000/svg"
-            className="w-full max-w-xl"
+            className="w-full max-w-2xl"
             aria-label="MLOps pipeline flowchart"
           >
-            {/* ── Box styles ── */}
-            {/* Main pipeline boxes: x=160, width=200 */}
-            {/* Side box: x=360, width=140 */}
+            {/* Layout: 200px left feedback area | 200px main boxes | 200px right side box */}
+            {/* Main pipeline boxes: x=220, width=200, centre x=320                       */}
+            {/* Left feedback path extends to x=20 (200px gap matching right side)        */}
+            {/* Right side box: x=455 (35px arrow gap from main box edge at 420)          */}
 
             {/* Box 1: Loaded Data */}
-            <rect x="160" y="20" width="200" height="64" rx="10"
+            <rect x="220" y="20" width="200" height="64" rx="10"
               className="fill-slate-100 dark:fill-slate-700 stroke-slate-400 dark:stroke-slate-500"
               strokeWidth="1.5" />
-            <text x="260" y="47" textAnchor="middle"
+            <text x="320" y="47" textAnchor="middle"
               className="fill-slate-700 dark:fill-slate-200"
               fontSize="13" fontWeight="600">Loaded Data</text>
-            <text x="260" y="67" textAnchor="middle"
+            <text x="320" y="67" textAnchor="middle"
               className="fill-slate-500 dark:fill-slate-400"
               fontSize="11">new applicant batch</text>
 
             {/* Arrow 1→2 */}
-            <line x1="260" y1="84" x2="260" y2="114"
+            <line x1="320" y1="84" x2="320" y2="114"
               className="stroke-slate-400 dark:stroke-slate-500"
               strokeWidth="1.5" markerEnd="url(#arrowhead)" />
 
             {/* Box 2: CM Drift Check */}
-            <rect x="160" y="114" width="200" height="64" rx="10"
+            <rect x="220" y="114" width="200" height="64" rx="10"
               className="fill-jungle-100 dark:fill-jungle-700/50 stroke-jungle-400 dark:stroke-jungle-500"
               strokeWidth="1.5" />
-            <text x="260" y="141" textAnchor="middle"
+            <text x="320" y="141" textAnchor="middle"
               className="fill-jungle-700 dark:fill-jungle-300"
               fontSize="13" fontWeight="600">CM: Drift Check</text>
-            <text x="260" y="161" textAnchor="middle"
+            <text x="320" y="161" textAnchor="middle"
               className="fill-jungle-600 dark:fill-jungle-400"
               fontSize="11">KS test — p-value gate</text>
 
             {/* Arrow 2→3 */}
-            <line x1="260" y1="178" x2="260" y2="208"
+            <line x1="320" y1="178" x2="320" y2="208"
               className="stroke-slate-400 dark:stroke-slate-500"
               strokeWidth="1.5" markerEnd="url(#arrowhead)" />
 
             {/* Box 3: CI Validation Gate */}
-            <rect x="160" y="208" width="200" height="64" rx="10"
+            <rect x="220" y="208" width="200" height="64" rx="10"
               className="fill-jungle-100 dark:fill-jungle-700/50 stroke-jungle-400 dark:stroke-jungle-500"
               strokeWidth="1.5" />
-            <text x="260" y="235" textAnchor="middle"
+            <text x="320" y="235" textAnchor="middle"
               className="fill-jungle-700 dark:fill-jungle-300"
               fontSize="13" fontWeight="600">CI: Validation Gate</text>
-            <text x="260" y="255" textAnchor="middle"
+            <text x="320" y="255" textAnchor="middle"
               className="fill-jungle-600 dark:fill-jungle-400"
               fontSize="11">accuracy + fairness check</text>
 
             {/* Arrow 3→4 */}
-            <line x1="260" y1="272" x2="260" y2="302"
+            <line x1="320" y1="272" x2="320" y2="302"
               className="stroke-slate-400 dark:stroke-slate-500"
               strokeWidth="1.5" markerEnd="url(#arrowhead)" />
 
             {/* Box 4: CD Promote Model */}
-            <rect x="160" y="302" width="200" height="64" rx="10"
+            <rect x="220" y="302" width="200" height="64" rx="10"
               className="fill-jungle-100 dark:fill-jungle-700/50 stroke-jungle-400 dark:stroke-jungle-500"
               strokeWidth="1.5" />
-            <text x="260" y="329" textAnchor="middle"
+            <text x="320" y="329" textAnchor="middle"
               className="fill-jungle-700 dark:fill-jungle-300"
               fontSize="13" fontWeight="600">CD: Promote Model</text>
-            <text x="260" y="349" textAnchor="middle"
+            <text x="320" y="349" textAnchor="middle"
               className="fill-jungle-600 dark:fill-jungle-400"
               fontSize="11">deploy or rollback</text>
 
             {/* Arrow 4→5 */}
-            <line x1="260" y1="366" x2="260" y2="396"
+            <line x1="320" y1="366" x2="320" y2="396"
               className="stroke-slate-400 dark:stroke-slate-500"
               strokeWidth="1.5" markerEnd="url(#arrowhead)" />
 
             {/* Box 5: CT Retrain */}
-            <rect x="160" y="396" width="200" height="64" rx="10"
+            <rect x="220" y="396" width="200" height="64" rx="10"
               className="fill-amber-100 dark:fill-amber-900/30 stroke-amber-400 dark:stroke-amber-600"
               strokeWidth="1.5" />
-            <text x="260" y="423" textAnchor="middle"
+            <text x="320" y="423" textAnchor="middle"
               className="fill-amber-700 dark:fill-amber-300"
               fontSize="13" fontWeight="600">CT: Retrain</text>
-            <text x="260" y="443" textAnchor="middle"
+            <text x="320" y="443" textAnchor="middle"
               className="fill-amber-600 dark:fill-amber-400"
               fontSize="11">triggered by drift gate</text>
 
-            {/* Dashed feedback line: CT → CI (left side) */}
+            {/* Dashed feedback line: CT → CI (left side, 200px wide matching right) */}
             <path
-              d="M 160 428 L 100 428 L 100 240 L 160 240"
+              d="M 220 428 L 20 428 L 20 240 L 220 240"
               fill="none"
               className="stroke-amber-400 dark:stroke-amber-500"
               strokeWidth="1.5"
               strokeDasharray="5 4"
               markerEnd="url(#arrowheadAmber)"
             />
-            <text x="75" y="337" textAnchor="middle"
+            <text x="120" y="337" textAnchor="middle"
               className="fill-amber-600 dark:fill-amber-400"
               fontSize="10"
             >retrain loop</text>
 
             {/* Side box: Loan Policy Assistant — same size as main boxes (200×64) */}
-            <line x1="360" y1="334" x2="395" y2="334"
+            <line x1="420" y1="334" x2="455" y2="334"
               className="stroke-violet-400 dark:stroke-violet-500"
               strokeWidth="1.5"
               strokeDasharray="4 3"
               markerEnd="url(#arrowheadViolet)"
             />
-            <rect x="395" y="302" width="200" height="64" rx="10"
+            <rect x="455" y="302" width="200" height="64" rx="10"
               className="fill-violet-50 dark:fill-violet-900/30 stroke-violet-400 dark:stroke-violet-500"
               strokeWidth="1.5" />
-            <text x="495" y="329" textAnchor="middle"
+            <text x="555" y="329" textAnchor="middle"
               className="fill-violet-700 dark:fill-violet-300"
               fontSize="13" fontWeight="600">Loan Policy</text>
-            <text x="495" y="349" textAnchor="middle"
+            <text x="555" y="349" textAnchor="middle"
               className="fill-violet-500 dark:fill-violet-400"
               fontSize="11">Assistant (Project 3)</text>
 
